@@ -1,0 +1,24 @@
+{
+  "name": "btsintelligence",
+  "version": "1.0.0",
+  "description": "FlowMind AI – KI-Automatisierung für den Mittelstand",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build required'",
+    "lint": "npx htmlhint index.html"
+  },
+  "keywords": [
+    "ai",
+    "automation",
+    "kmu"
+  ],
+  "author": "FlowMind AI",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  },
+  "devDependencies": {
+    "htmlhint": "^1.9.2"
+  }
+}
