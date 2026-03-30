@@ -802,6 +802,12 @@ footer{
 <!-- Vercel Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
 
+<!-- Vercel Speed Insights -->
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
 <script>
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
@@ -810,4 +816,10 @@ footer{
     a.addEventListener('click', () =>
       document.getElementById('navLinks').classList.remove('open')));
 
-  const io = new 
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
