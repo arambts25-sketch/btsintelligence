@@ -1,0 +1,18 @@
+{
+  "name": "FlowMind AI",
+  "short_name": "FlowMind",
+  "description": "KI-Automatisierung für den Mittelstand",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090b12",
+  "theme_color": "#090b12",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
