@@ -443,6 +443,24 @@ footer{
 .footer-trust{font-size:.78rem;color:var(--text-med);width:100%;text-align:center;padding:8px 0}
 .footer-legal{font-size:.74rem;color:var(--text-lo)}
 
+/* CONTACT FORM */
+.contact-form{width:100%;margin-top:28px;text-align:left}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form-group label{font-size:.82rem;font-weight:600;color:var(--text-med);letter-spacing:.02em}
+.form-group input,.form-group textarea{
+  background:var(--bg-card);border:1px solid var(--border-lo);border-radius:8px;
+  padding:12px 14px;font-family:'Manrope',sans-serif;font-size:.95rem;
+  color:var(--text-hi);outline:none;transition:border-color .18s;resize:vertical;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-lo)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--amber-500)}
+.form-submit{width:100%;justify-content:center;margin-top:6px;font-size:1rem;padding:1rem 2rem;cursor:pointer;border:none}
+.form-success{margin-top:16px;padding:14px 18px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;color:#4ade80;font-size:.92rem;font-weight:500}
+.form-error{margin-top:16px;padding:14px 18px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#f87171;font-size:.92rem}
+.form-error a{color:#f87171;text-decoration:underline}
+@media(max-width:580px){.form-row{grid-template-columns:1fr}}
+
 /* IMPRESSUM */
 .impressum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:0}
 .impressum-block{background:var(--bg-card);border:1px solid var(--border-lo);border-radius:12px;padding:20px 24px}
@@ -522,7 +540,7 @@ footer{
     <li><a href="#usecases">Einsatzbereiche</a></li>
     <li><a href="#pricing">Preise</a></li>
     <li><a href="#why">Über uns</a></li>
-    <li><a href="#contact" class="nav-btn">Kostenlosen Termin sichern →</a></li>
+    <li><a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="nav-btn">Kostenlosen Termin sichern →</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -541,7 +559,7 @@ footer{
     damit Sie sich auf Ihre Arbeit konzentrieren können.
   </p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-amber">Kostenlose Potenzialanalyse →</a>
+    <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Potenzialanalyse →</a>
     <a href="#pricing" class="btn-ghost">Preise &amp; Pakete</a>
   </div>
   <div class="hero-trust">
@@ -664,7 +682,7 @@ footer{
             <li>Umsetzung in ca. 2 Wochen</li>
             <li>Onboarding &amp; Übergabe</li>
           </ul>
-          <a href="#contact" class="btn-card btn-card-outline">Termin vereinbaren</a>
+          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-outline">Termin vereinbaren</a>
         </div>
 
         <div class="price-card featured">
@@ -679,7 +697,7 @@ footer{
             <li>Umsetzung in ca. 4 Wochen</li>
             <li>Onboarding &amp; Team-Schulung</li>
           </ul>
-          <a href="#contact" class="btn-card btn-card-filled">Jetzt Termin vereinbaren</a>
+          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-filled">Jetzt Termin vereinbaren</a>
         </div>
 
         <div class="price-card">
@@ -693,7 +711,7 @@ footer{
             <li>Umsetzung in ca. 6 Wochen</li>
             <li>Ausführliches Team-Onboarding</li>
           </ul>
-          <a href="#contact" class="btn-card btn-card-outline">Termin vereinbaren</a>
+          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-outline">Termin vereinbaren</a>
         </div>
 
         <div class="price-card">
@@ -707,7 +725,7 @@ footer{
             <li>Individuelles Festpreisangebot</li>
             <li>SLA nach Vereinbarung</li>
           </ul>
-          <a href="#contact" class="btn-card btn-card-outline">Angebot einholen</a>
+          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-outline">Angebot einholen</a>
         </div>
 
       </div>
@@ -819,15 +837,46 @@ footer{
   <div class="cta-inner reveal">
     <div class="eyebrow">Jetzt kostenlos starten</div>
     <h2 class="section-title">In 30 Minuten sehen Sie,<br>wo Ihr Betrieb Zeit verliert.</h2>
-    <p class="section-lead">Kostenlose Potenzialanalyse — direkt mit den Gründern, ohne Verkaufsdruck. Sie bekommen konkrete Zahlen: Wie viele Stunden Sie pro Woche einsparen können und was das wert ist.</p>
+    <p class="section-lead">Kostenlose Potenzialanalyse — direkt mit den Gründern, ohne Verkaufsdruck. Wählen Sie einen Termin oder schreiben Sie uns direkt.</p>
     <div class="cta-actions">
-      <a href="mailto:info@btsintelligence.de" class="btn-amber">Jetzt kostenlose Potenzialanalyse anfordern →</a>
-      <a href="tel:+491784552028" class="btn-ghost">0178 / 455 2028</a>
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Termin direkt buchen →</a>
+      <a href="tel:+491784552028" class="btn-ghost">📞 0178 / 455 2028</a>
     </div>
-    <div class="cta-divider">oder direkt Kontakt aufnehmen</div>
-    <div class="cta-contacts">
+    <div class="cta-divider">oder Nachricht hinterlassen</div>
+
+    <!-- KONTAKTFORMULAR -->
+    <form id="contactForm" action="https://formspree.io/f/FORMSPREE_ID" method="POST" class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Ihr Name</label>
+          <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+        </div>
+        <div class="form-group">
+          <label for="betrieb">Betrieb / Firma</label>
+          <input type="text" id="betrieb" name="betrieb" placeholder="Mustermann Elektro GmbH">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" placeholder="max@mustermann.de" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" name="phone" placeholder="0178 / 123 4567">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Was kostet Sie aktuell am meisten Zeit?</label>
+        <textarea id="message" name="message" rows="4" placeholder="z.B. Angebote schreiben, Rechnungen nachfassen, Terminplanung..."></textarea>
+      </div>
+      <button type="submit" class="btn-amber form-submit">Kostenlose Potenzialanalyse anfordern →</button>
+      <div id="formSuccess" class="form-success" style="display:none">✓ Nachricht gesendet! Wir melden uns innerhalb von 24 Stunden.</div>
+      <div id="formError" class="form-error" style="display:none">Etwas ist schiefgelaufen. Bitte schreiben Sie uns direkt an <a href="mailto:info@btsintelligence.de">info@btsintelligence.de</a></div>
+    </form>
+
+    <div class="cta-contacts" style="margin-top:24px">
       <a href="mailto:info@btsintelligence.de" class="cta-contact">✉ info@btsintelligence.de</a>
-      <a href="https://www.btsintelligence.de" class="cta-contact" target="_blank" rel="noopener">🌐 www.btsintelligence.de</a>
       <a href="tel:+491784552028" class="cta-contact">📞 0178 / 455 2028</a>
     </div>
   </div>
@@ -908,6 +957,36 @@ footer{
       document.getElementById('navLinks').classList.remove('open');
       document.querySelector('nav').classList.remove('menu-open');
     }));
+
+  // Kontaktformular AJAX
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Wird gesendet...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          document.getElementById('formSuccess').style.display = 'block';
+          document.getElementById('formError').style.display = 'none';
+          btn.style.display = 'none';
+        } else {
+          throw new Error();
+        }
+      } catch {
+        document.getElementById('formError').style.display = 'block';
+        btn.textContent = 'Kostenlose Potenzialanalyse anfordern →';
+        btn.disabled = false;
+      }
+    });
+  }
 
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
