@@ -161,9 +161,9 @@ nav{
   background:rgba(212,144,10,.12);border:1px solid rgba(212,144,10,.32);
   border-radius:999px;padding:4px 14px;margin-bottom:32px;
   font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--amber-200);animation:rise .7s ease both;
-  white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;
+  color:var(--amber-200);animation:rise .7s ease both;white-space:nowrap;
 }
+.badge-short{display:none}
 .badge-pulse{width:6px;height:6px;background:var(--amber-400);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;scale:1}50%{opacity:.35;scale:1.7}}
 .hero-h1{
@@ -458,10 +458,13 @@ footer{
 /* RESPONSIVE */
 @media(max-width:860px){
   .nav-links{display:none}
+  nav.menu-open{
+    height:100vh;background:#090b12;backdrop-filter:none;
+    flex-direction:column;justify-content:flex-start;align-items:stretch;
+  }
   .nav-links.open{
-    display:flex;flex-direction:column;align-items:center;
-    position:fixed;inset:0;background:#090b12;z-index:300;
-    justify-content:center;gap:0;padding-top:0;
+    display:flex!important;flex-direction:column;align-items:center;
+    justify-content:center;flex:1;gap:0;
   }
   .nav-links.open a{height:auto;padding:18px 32px;font-size:1.3rem;color:var(--text-hi)!important;font-weight:600}
   .nav-links.open .nav-btn{margin:24px 0 0;padding:12px 32px!important;font-size:.95rem!important}
@@ -482,6 +485,8 @@ footer{
   .stat{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--border-hi)}
   .stat:last-child{border-bottom:none}
   .hero-badge{font-size:.65rem;letter-spacing:.05em;padding:4px 12px}
+  .badge-full{display:none}
+  .badge-short{display:inline}
 }
 </style>
 </head>
@@ -521,7 +526,7 @@ footer{
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
-  <div class="hero-badge"><span class="badge-pulse"></span>KI für Handwerksbetriebe · Elektro · Maler · SHK · Schreiner</div>
+  <div class="hero-badge"><span class="badge-pulse"></span><span class="badge-full">KI für Handwerksbetriebe · Elektro · Maler · SHK · Schreiner</span><span class="badge-short">KI für Handwerksbetriebe</span></div>
   <h1 class="hero-h1">Mehr Zeit fürs Handwerk.<br><span class="grad">Weniger Papierkram.</span></h1>
   <p class="hero-sub">
     Angebote schreiben, Rechnungen nachfassen, Termine koordinieren —
@@ -889,10 +894,13 @@ footer{
 <script>
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
+    document.querySelector('nav').classList.toggle('menu-open');
   }
   document.querySelectorAll('.nav-links a').forEach(a =>
-    a.addEventListener('click', () =>
-      document.getElementById('navLinks').classList.remove('open')));
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.querySelector('nav').classList.remove('menu-open');
+    }));
 
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
