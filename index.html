@@ -650,35 +650,48 @@ footer{
 
 /* BILLING TOGGLE */
 .billing-toggle-wrap{
-  display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap;
+  display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;
 }
 .billing-toggle{
-  display:flex;background:var(--bg-card);border:1px solid var(--border-lo);
-  border-radius:10px;padding:4px;gap:4px;
+  display:inline-flex;position:relative;
+  background:var(--bg-card);border:1px solid var(--border-lo);
+  border-radius:14px;padding:5px;gap:0;
+  box-shadow:0 2px 14px rgba(0,0,0,.28);
+}
+.billing-slider{
+  position:absolute;top:5px;left:0;width:0;
+  height:calc(100% - 10px);
+  background:var(--amber-500);border-radius:10px;
+  box-shadow:0 2px 10px rgba(212,144,10,.38);
+  transition:left .28s cubic-bezier(.4,0,.2,1),width .28s cubic-bezier(.4,0,.2,1);
+  z-index:0;pointer-events:none;
 }
 .billing-btn{
+  position:relative;z-index:1;
   background:transparent;border:none;cursor:pointer;
-  font-family:'Cabinet Grotesk',sans-serif;font-size:.82rem;font-weight:700;
-  color:var(--text-med);padding:6px 14px;border-radius:7px;
-  transition:background .18s,color .18s;white-space:nowrap;
-  display:inline-flex;align-items:center;gap:6px;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:.85rem;font-weight:700;
+  color:var(--text-med);padding:9px 20px;border-radius:10px;
+  transition:color .2s;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;line-height:1;
 }
 .billing-btn:hover{color:var(--text-hi)}
-.billing-btn.active{background:var(--amber-500);color:#080a0f}
-.save-label{
-  font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  background:rgba(255,255,255,.18);padding:2px 6px;border-radius:4px;
+.billing-btn.active{color:#080a0f}
+.discount-badge{
+  font-size:.67rem;font-weight:900;letter-spacing:.03em;
+  padding:2px 7px;border-radius:5px;
+  background:rgba(212,144,10,.15);color:var(--amber-400);
+  transition:background .2s,color .2s;
 }
-.billing-btn.active .save-label{background:rgba(8,10,15,.18)}
+.billing-btn.active .discount-badge{background:rgba(8,10,15,.2);color:#080a0f}
 .billing-note{font-size:.78rem;color:var(--text-lo)}
 .price-savings{
   display:none;font-size:.8rem;font-weight:700;
-  color:var(--amber-400);margin-top:2px;
+  color:var(--amber-400);margin-top:3px;
 }
 .price-savings.visible{display:block}
-@media(max-width:520px){
-  .billing-toggle{flex-wrap:wrap}
-  .billing-btn{font-size:.75rem;padding:5px 10px}
+@media(max-width:560px){
+  .billing-btn{font-size:.78rem;padding:8px 12px}
+  .discount-badge{display:none}
 }
 
 /* DIGITALBONUS SECTION */
@@ -1017,10 +1030,12 @@ footer{
       </div>
       <div class="billing-toggle-wrap">
         <div class="billing-toggle">
-          <button class="billing-btn active" data-period="monthly" onclick="setBilling('monthly')">Monatlich</button>
-          <button class="billing-btn" data-period="6m" onclick="setBilling('6m')">6 Monate <span class="save-label">1 Monat gratis</span></button>
-          <button class="billing-btn" data-period="12m" onclick="setBilling('12m')">12 Monate <span class="save-label">2 Monate gratis</span></button>
-                  </div>
+          <div class="billing-slider" id="billingSlider"></div>
+          <button class="billing-btn active" data-period="monthly" onclick="setBilling('monthly',this)">Monatlich</button>
+          <button class="billing-btn" data-period="6m" onclick="setBilling('6m',this)">6 Monate <span class="discount-badge">–5 %</span></button>
+          <button class="billing-btn" data-period="12m" onclick="setBilling('12m',this)">12 Monate <span class="discount-badge">–15 %</span></button>
+        </div>
+        <span class="billing-note">Vorauszahlung · ab Monat 3 monatlich kündbar</span>
       </div>
       <div class="pricing-grid" id="betreuung-grid">
 
@@ -1028,9 +1043,9 @@ footer{
           <div class="price-tier">Basis</div>
           <div class="price-for">Sicherheitsnetz für laufende Workflows</div>
           <div class="price-amount">
-            <span class="price-num" data-monthly="290 €" data-6m="1.450 €" data-12m="2.900 €">290 €</span>
+            <span class="price-num" data-monthly="290 €" data-6m="1.653 €" data-12m="2.958 €">290 €</span>
             <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings">Sie sparen <strong data-6m="290 €" data-12m="580 €"></strong></span>
+            <span class="price-savings">Sie sparen <strong data-6m="87 €" data-12m="522 €"></strong></span>
           </div>
           <ul class="price-features">
             <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
@@ -1045,9 +1060,9 @@ footer{
           <div class="price-tier">Standard</div>
           <div class="price-for">Aktive Betreuung und kontinuierliche Optimierung</div>
           <div class="price-amount">
-            <span class="price-num" data-monthly="690 €" data-6m="3.450 €" data-12m="6.900 €">690 €</span>
+            <span class="price-num" data-monthly="690 €" data-6m="3.933 €" data-12m="7.038 €">690 €</span>
             <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings">Sie sparen <strong data-6m="690 €" data-12m="1.380 €"></strong></span>
+            <span class="price-savings">Sie sparen <strong data-6m="207 €" data-12m="1.242 €"></strong></span>
           </div>
           <ul class="price-features">
             <li>Monitoring, Wartung &amp; Optimierung</li>
@@ -1061,9 +1076,9 @@ footer{
           <div class="price-tier">Profi</div>
           <div class="price-for">Dedizierter Partner für Strategie und Weiterentwicklung</div>
           <div class="price-amount">
-            <span class="price-num" data-monthly="1.290 €" data-6m="6.450 €" data-12m="12.900 €">1.290 €</span>
+            <span class="price-num" data-monthly="1.290 €" data-6m="7.353 €" data-12m="13.158 €">1.290 €</span>
             <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings">Sie sparen <strong data-6m="1.290 €" data-12m="2.580 €"></strong></span>
+            <span class="price-savings">Sie sparen <strong data-6m="387 €" data-12m="2.322 €"></strong></span>
           </div>
           <ul class="price-features">
             <li>Fester persönlicher Ansprechpartner</li>
@@ -1399,10 +1414,16 @@ footer{
     });
   }
 
-  function setBilling(period) {
-    document.querySelectorAll('.billing-btn').forEach(function(btn) {
-      btn.classList.toggle('active', btn.dataset.period === period);
+  function setBilling(period, btn) {
+    var activeBtn = btn || document.querySelector('.billing-btn[data-period="' + period + '"]');
+    document.querySelectorAll('.billing-btn').forEach(function(b) {
+      b.classList.toggle('active', b === activeBtn);
     });
+    var slider = document.getElementById('billingSlider');
+    if (slider && activeBtn) {
+      slider.style.left = activeBtn.offsetLeft + 'px';
+      slider.style.width = activeBtn.offsetWidth + 'px';
+    }
     document.querySelectorAll('#betreuung-grid .price-card').forEach(function(card) {
       var numEl = card.querySelector('.price-num[data-monthly]');
       var unitEl = card.querySelector('.price-unit[data-monthly]');
@@ -1413,7 +1434,8 @@ footer{
       if (savingsEl) {
         var strongEl = savingsEl.querySelector('strong');
         if (period !== 'monthly' && strongEl) {
-          strongEl.textContent = strongEl.getAttribute('data-' + period);
+          var pct = period === '6m' ? '5' : '15';
+          strongEl.textContent = strongEl.getAttribute('data-' + period) + '\u00a0(' + pct + '\u00a0% Nachlass)';
           savingsEl.classList.add('visible');
         } else {
           savingsEl.classList.remove('visible');
@@ -1421,6 +1443,7 @@ footer{
       }
     });
   }
+  setBilling('monthly');
 
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
