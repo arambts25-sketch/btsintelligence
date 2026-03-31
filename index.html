@@ -515,6 +515,58 @@ footer{
 .form-error a{color:#f87171;text-decoration:underline}
 @media(max-width:580px){.form-row{grid-template-columns:1fr}}
 
+/* GRÜNDERPARTNER */
+.founder-section{
+  background:linear-gradient(135deg,rgba(212,144,10,.07) 0%,rgba(79,107,240,.05) 100%);
+  border-top:1px solid rgba(212,144,10,.18);
+  border-bottom:1px solid rgba(212,144,10,.18);
+  padding:72px clamp(24px,5vw,64px);
+}
+.founder-inner{max-width:860px;margin:0 auto;text-align:center}
+.founder-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,144,10,.12);border:1px solid rgba(212,144,10,.3);
+  border-radius:100px;padding:6px 18px;
+  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--amber-400);margin-bottom:24px;
+}
+.founder-badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--amber-400);
+  animation:pulse 2s infinite;flex-shrink:0;
+}
+.founder-title{
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:clamp(2rem,4vw,2.8rem);font-weight:900;letter-spacing:-.04em;
+  color:var(--text-hi);margin-bottom:14px;
+}
+.founder-lead{
+  font-size:1.02rem;color:var(--text-med);max-width:580px;
+  margin:0 auto 36px;line-height:1.65;
+}
+.founder-perks{
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:36px;
+}
+.founder-perk{
+  display:flex;align-items:center;gap:10px;
+  background:var(--bg-card);border:1px solid var(--border-lo);border-radius:10px;
+  padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--text-hi);
+}
+.founder-perk-icon{font-size:1.1rem}
+.founder-slots{
+  display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px;
+}
+.founder-slots-label{font-size:.82rem;font-weight:600;color:var(--text-med)}
+.founder-dots{display:flex;gap:10px}
+.founder-dot{
+  width:15px;height:15px;border-radius:50%;
+  border:2px solid var(--border-hi);background:transparent;
+}
+.founder-dot.taken{background:var(--text-lo);border-color:var(--text-lo)}
+.founder-dot.free{
+  background:var(--amber-400);border-color:var(--amber-400);
+  box-shadow:0 0 10px rgba(232,168,32,.45);
+}
+.founder-note{margin-top:16px;font-size:.76rem;color:var(--text-lo)}
 /* IMPRESSUM */
 .impressum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:0}
 .impressum-block{background:var(--bg-card);border:1px solid var(--border-lo);border-radius:12px;padding:20px 24px}
@@ -562,6 +614,7 @@ footer{
   .trust-sep{display:none}
   .pricing-grid{grid-template-columns:1fr}
   .stat{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--border-hi)}
+  .stat:nth-last-child(-n+2){border-bottom:1px solid var(--border-hi)}
   .stat:last-child{border-bottom:none}
   .hero-badge{font-size:.65rem;letter-spacing:.05em;padding:4px 12px}
   .badge-full{display:none}
@@ -630,6 +683,32 @@ footer{
     <div class="stat"><div class="stat-num">990 €</div><div class="stat-label">ab Einstiegs-<br>paket (netto)</div></div>
     <div class="stat"><div class="stat-num">48 h</div><div class="stat-label">bis zum<br>Festpreisangebot</div></div>
     <div class="stat"><div class="stat-num">0 %</div><div class="stat-label">Aufschlag auf<br>Tool-Kosten</div></div>
+  </div>
+</section>
+
+<!-- GRÜNDERPARTNER -->
+<section class="founder-section">
+  <div class="founder-inner reveal">
+    <div class="founder-badge"><span class="founder-badge-dot"></span>Gründerpartner-Programm</div>
+    <h2 class="founder-title">Gemeinsam wachsen.</h2>
+    <p class="founder-lead">Als einer unserer ersten Partner profitieren Sie von einmaligen Sonderkonditionen — und wir wachsen gemeinsam mit Ihrem Betrieb.</p>
+    <div class="founder-perks">
+      <div class="founder-perk"><span class="founder-perk-icon">🎁</span>Einrichtung komplett kostenlos</div>
+      <div class="founder-perk"><span class="founder-perk-icon">💰</span>50 % Rabatt auf die ersten 3 Monate Betreuung</div>
+      <div class="founder-perk"><span class="founder-perk-icon">🤝</span>Direkter Draht zu den Gründern</div>
+    </div>
+    <div class="founder-slots">
+      <div class="founder-slots-label">Noch 4 von 5 Gründerpartner-Plätzen verfügbar</div>
+      <div class="founder-dots">
+        <div class="founder-dot taken" title="Vergeben"></div>
+        <div class="founder-dot free" title="Verfügbar"></div>
+        <div class="founder-dot free" title="Verfügbar"></div>
+        <div class="founder-dot free" title="Verfügbar"></div>
+        <div class="founder-dot free" title="Verfügbar"></div>
+      </div>
+    </div>
+    <a href="#" onclick="openModal(event)" class="btn-amber">Jetzt Platz sichern →</a>
+    <p class="founder-note">Gilt für Starter-, Wachstum- & Profi-Paket · nicht mit anderen Angeboten kombinierbar</p>
   </div>
 </section>
 
