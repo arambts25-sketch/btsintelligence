@@ -1,7 +1,7 @@
 {
-  "name": "FlowMind AI",
-  "short_name": "FlowMind",
-  "description": "KI-Automatisierung für den Mittelstand",
+  "name": "BTS Intelligence",
+  "short_name": "BTS",
+  "description": "Weniger Papierkram, mehr Zeit fürs Handwerk",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#090b12",
