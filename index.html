@@ -443,6 +443,54 @@ footer{
 .footer-trust{font-size:.78rem;color:var(--text-med);width:100%;text-align:center;padding:8px 0}
 .footer-legal{font-size:.74rem;color:var(--text-lo)}
 
+/* MODAL */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9000;
+  background:rgba(9,11,18,.85);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--bg-card);border:1px solid var(--border-hi);
+  border-radius:20px;padding:40px 32px;max-width:480px;width:100%;
+  position:relative;animation:rise .3s ease both;
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  background:transparent;border:none;cursor:pointer;
+  color:var(--text-med);font-size:1.3rem;line-height:1;padding:4px 8px;
+  transition:color .18s;
+}
+.modal-close:hover{color:var(--text-hi)}
+.modal-eyebrow{
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--amber-200);margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.modal-eyebrow::before{content:'';width:14px;height:2px;background:var(--amber-400);border-radius:2px}
+.modal-title{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:1.55rem;font-weight:900;
+  letter-spacing:-.03em;line-height:1.15;color:var(--text-hi);margin-bottom:8px;
+}
+.modal-sub{font-size:.92rem;line-height:1.65;color:var(--text-med);margin-bottom:32px}
+.modal-options{display:flex;flex-direction:column;gap:12px}
+.modal-option{
+  display:flex;align-items:center;gap:18px;
+  background:var(--bg-raised);border:1px solid var(--border-lo);
+  border-radius:12px;padding:20px;cursor:pointer;
+  transition:border-color .2s,transform .2s,box-shadow .2s;text-decoration:none;
+}
+.modal-option:hover{border-color:var(--amber-500);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,144,10,.15)}
+.modal-option-icon{
+  width:48px;height:48px;flex-shrink:0;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+}
+.modal-option-icon.calendly{background:rgba(212,144,10,.12);border:1px solid rgba(212,144,10,.28)}
+.modal-option-icon.form{background:rgba(79,107,240,.12);border:1px solid rgba(79,107,240,.25)}
+.modal-option-text{}
+.modal-option-title{font-family:'Cabinet Grotesk',sans-serif;font-size:1rem;font-weight:800;color:var(--text-hi);margin-bottom:2px}
+.modal-option-desc{font-size:.82rem;color:var(--text-med);line-height:1.5}
+@media(max-width:480px){.modal{padding:28px 20px}.modal-title{font-size:1.3rem}}
+
 /* CONTACT FORM */
 .contact-form{width:100%;margin-top:28px;text-align:left}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -540,7 +588,7 @@ footer{
     <li><a href="#usecases">Einsatzbereiche</a></li>
     <li><a href="#pricing">Preise</a></li>
     <li><a href="#why">Über uns</a></li>
-    <li><a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="nav-btn">Kostenlosen Termin sichern →</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Kostenlosen Termin sichern →</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -559,7 +607,7 @@ footer{
     damit Sie sich auf Ihre Arbeit konzentrieren können.
   </p>
   <div class="hero-actions">
-    <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Potenzialanalyse →</a>
+    <a href="#" onclick="openModal(event)" class="btn-amber">Kostenlose Potenzialanalyse →</a>
     <a href="#pricing" class="btn-ghost">Preise &amp; Pakete</a>
   </div>
   <div class="hero-trust">
@@ -839,7 +887,7 @@ footer{
     <h2 class="section-title">In 30 Minuten sehen Sie,<br>wo Ihr Betrieb Zeit verliert.</h2>
     <p class="section-lead">Kostenlose Potenzialanalyse — direkt mit den Gründern, ohne Verkaufsdruck. Wählen Sie einen Termin oder schreiben Sie uns direkt.</p>
     <div class="cta-actions">
-      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Termin direkt buchen →</a>
+      <a href="#" onclick="openModal(event)" class="btn-amber">Termin direkt buchen →</a>
       <a href="tel:+491784552028" class="btn-ghost">📞 0178 / 455 2028</a>
     </div>
     <div class="cta-divider">oder Nachricht hinterlassen</div>
@@ -881,6 +929,32 @@ footer{
     </div>
   </div>
 </section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="ctaModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos & unverbindlich</div>
+    <div class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</div>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text">
+          <div class="modal-option-title">Termin direkt buchen</div>
+          <div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div>
+        </div>
+      </a>
+      <a href="#contact" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text">
+          <div class="modal-option-title">Nachricht hinterlassen</div>
+          <div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- IMPRESSUM -->
 <section class="section section--alt" id="impressum">
@@ -948,6 +1022,22 @@ footer{
 <script defer src="/_vercel/insights/script.js"></script>
 
 <script>
+  function openModal(e) {
+    if (e) e.preventDefault();
+    document.getElementById('ctaModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('ctaModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('ctaModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
     document.querySelector('nav').classList.toggle('menu-open');
