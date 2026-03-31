@@ -496,13 +496,19 @@ footer{
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .form-group label{font-size:.82rem;font-weight:600;color:var(--text-med);letter-spacing:.02em}
-.form-group input,.form-group textarea{
+.form-group input,.form-group textarea,.form-group select{
   background:var(--bg-card);border:1px solid var(--border-lo);border-radius:8px;
   padding:12px 14px;font-family:'Manrope',sans-serif;font-size:.95rem;
   color:var(--text-hi);outline:none;transition:border-color .18s;resize:vertical;
+  appearance:none;-webkit-appearance:none;
 }
+.form-group select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239aa3cc' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;
+}
+.form-group select option{background:var(--bg-card);color:var(--text-hi)}
 .form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-lo)}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--amber-500)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--amber-500)}
 .form-submit{width:100%;justify-content:center;margin-top:6px;font-size:1rem;padding:1rem 2rem;cursor:pointer;border:none}
 .form-success{margin-top:16px;padding:14px 18px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;color:#4ade80;font-size:.92rem;font-weight:500}
 .form-error{margin-top:16px;padding:14px 18px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;color:#f87171;font-size:.92rem}
@@ -722,7 +728,7 @@ footer{
         <div class="price-card">
           <div class="price-tier">Starter</div>
           <div class="price-for">Für kleine Betriebe mit einem konkreten Prozess</div>
-          <div class="price-amount"><span class="price-num">990 €</span></div>
+          <div class="price-amount"><span class="price-num">990 €</span><span class="price-unit">netto zzgl. MwSt.</span></div>
           <ul class="price-features">
             <li>1 KI-Workflow nach Wahl</li>
             <li>Prozessanalyse &amp; Konzeption</li>
@@ -730,14 +736,14 @@ footer{
             <li>Umsetzung in ca. 2 Wochen</li>
             <li>Onboarding &amp; Übergabe</li>
           </ul>
-          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-outline">Termin vereinbaren</a>
+          <a href="#" onclick="openModal(event,'Einrichtung Starter')" class="btn-card btn-card-outline">Termin vereinbaren</a>
         </div>
 
         <div class="price-card featured">
           <div class="featured-badge">MEISTGEWÄHLT</div>
           <div class="price-tier">Wachstum</div>
           <div class="price-for">Für KMU, die mehrere Abläufe optimieren wollen</div>
-          <div class="price-amount"><span class="price-num">2.490 €</span></div>
+          <div class="price-amount"><span class="price-num">2.490 €</span><span class="price-unit">netto zzgl. MwSt.</span></div>
           <ul class="price-features">
             <li>2–3 KI-Workflows</li>
             <li>CRM-, ERP- &amp; E-Mail-Integration</li>
@@ -745,13 +751,13 @@ footer{
             <li>Umsetzung in ca. 4 Wochen</li>
             <li>Onboarding &amp; Team-Schulung</li>
           </ul>
-          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-filled">Jetzt Termin vereinbaren</a>
+          <a href="#" onclick="openModal(event,'Einrichtung Wachstum')" class="btn-card btn-card-filled">Jetzt Termin vereinbaren</a>
         </div>
 
         <div class="price-card">
           <div class="price-tier">Profi</div>
           <div class="price-for">Für KMU mit komplexen, vernetzten Prozessen</div>
-          <div class="price-amount"><span class="price-num">4.900 €</span></div>
+          <div class="price-amount"><span class="price-num">4.900 €</span><span class="price-unit">netto zzgl. MwSt.</span></div>
           <ul class="price-features">
             <li>4–6 KI-Workflows</li>
             <li>API-Anbindungen &amp; Systemintegration</li>
@@ -759,7 +765,7 @@ footer{
             <li>Umsetzung in ca. 6 Wochen</li>
             <li>Ausführliches Team-Onboarding</li>
           </ul>
-          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-outline">Termin vereinbaren</a>
+          <a href="#" onclick="openModal(event,'Einrichtung Profi')" class="btn-card btn-card-outline">Termin vereinbaren</a>
         </div>
 
         <div class="price-card">
@@ -773,7 +779,7 @@ footer{
             <li>Individuelles Festpreisangebot</li>
             <li>SLA nach Vereinbarung</li>
           </ul>
-          <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-card btn-card-outline">Angebot einholen</a>
+          <a href="#" onclick="openModal(event,'Einrichtung Enterprise')" class="btn-card btn-card-outline">Angebot einholen</a>
         </div>
 
       </div>
@@ -791,7 +797,7 @@ footer{
         <div class="price-card">
           <div class="price-tier">Basis</div>
           <div class="price-for">Sicherheitsnetz für laufende Workflows</div>
-          <div class="price-amount"><span class="price-num">290 €</span><span class="price-unit">/ Monat</span></div>
+          <div class="price-amount"><span class="price-num">290 €</span><span class="price-unit">/ Monat · netto zzgl. MwSt.</span></div>
           <ul class="price-features">
             <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
             <li>2 Anpassungen pro Monat</li>
@@ -804,7 +810,7 @@ footer{
           <div class="featured-badge">MEISTGEWÄHLT</div>
           <div class="price-tier">Standard</div>
           <div class="price-for">Aktive Betreuung und kontinuierliche Optimierung</div>
-          <div class="price-amount"><span class="price-num">690 €</span><span class="price-unit">/ Monat</span></div>
+          <div class="price-amount"><span class="price-num">690 €</span><span class="price-unit">/ Monat · netto zzgl. MwSt.</span></div>
           <ul class="price-features">
             <li>Monitoring, Wartung &amp; Optimierung</li>
             <li>5 Anpassungen pro Monat</li>
@@ -816,7 +822,7 @@ footer{
         <div class="price-card">
           <div class="price-tier">Profi</div>
           <div class="price-for">Dedizierter Partner für Strategie und Weiterentwicklung</div>
-          <div class="price-amount"><span class="price-num">1.290 €</span><span class="price-unit">/ Monat</span></div>
+          <div class="price-amount"><span class="price-num">1.290 €</span><span class="price-unit">/ Monat · netto zzgl. MwSt.</span></div>
           <ul class="price-features">
             <li>Fester persönlicher Ansprechpartner</li>
             <li>10 Anpassungen pro Monat</li>
@@ -914,6 +920,28 @@ footer{
           <input type="tel" id="phone" name="phone" placeholder="0178 / 123 4567">
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="paket_einrichtung">Einrichtung (optional)</label>
+          <select id="paket_einrichtung" name="paket_einrichtung">
+            <option value="" selected>Noch nicht sicher</option>
+            <option value="Starter">Starter — 990 € netto</option>
+            <option value="Wachstum">Wachstum — 2.490 € netto</option>
+            <option value="Profi">Profi — 4.900 € netto</option>
+            <option value="Enterprise">Enterprise — Auf Anfrage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="paket_betreuung">Laufende Betreuung (optional)</label>
+          <select id="paket_betreuung" name="paket_betreuung">
+            <option value="" selected>Noch nicht sicher</option>
+            <option value="Basis">Basis — 290 € / Monat netto</option>
+            <option value="Standard">Standard — 690 € / Monat netto</option>
+            <option value="Profi">Profi — 1.290 € / Monat netto</option>
+            <option value="Enterprise">Enterprise — Auf Anfrage</option>
+          </select>
+        </div>
+      </div>
       <div class="form-group">
         <label for="message">Was kostet Sie aktuell am meisten Zeit?</label>
         <textarea id="message" name="message" rows="4" placeholder="z.B. Angebote schreiben, Rechnungen nachfassen, Terminplanung..."></textarea>
@@ -938,7 +966,7 @@ footer{
     <div class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</div>
     <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
     <div class="modal-options">
-      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
         <div class="modal-option-icon calendly">📅</div>
         <div class="modal-option-text">
           <div class="modal-option-title">Termin direkt buchen</div>
@@ -1022,8 +1050,11 @@ footer{
 <script defer src="/_vercel/insights/script.js"></script>
 
 <script>
-  function openModal(e) {
+  function openModal(e, pkg) {
     if (e) e.preventDefault();
+    var calLink = document.getElementById('modalCalendlyLink');
+    var base = 'https://calendly.com/btsintelligence/30min';
+    calLink.href = pkg ? base + '?utm_source=website&utm_medium=pricing&utm_content=' + encodeURIComponent(pkg) : base;
     document.getElementById('ctaModal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
