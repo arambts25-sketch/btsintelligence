@@ -351,15 +351,15 @@ nav{
 }
 .price-for{font-size:.88rem;line-height:1.6;color:var(--text-med);margin-bottom:18px;min-height:2.5em}
 .price-amount{
-  display:flex;align-items:baseline;gap:6px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:2px;
   padding-bottom:18px;margin-bottom:18px;
   border-bottom:1px solid var(--border-xs);
 }
 .price-num{
   font-family:'Cabinet Grotesk',sans-serif;font-size:2.1rem;font-weight:900;
-  letter-spacing:-.04em;color:var(--text-hi);
+  letter-spacing:-.04em;color:var(--text-hi);line-height:1;
 }
-.price-unit{font-size:.9rem;color:var(--text-med)}
+.price-unit{font-size:.75rem;color:var(--text-lo);letter-spacing:.01em}
 .price-request{
   font-family:'Cabinet Grotesk',sans-serif;font-size:1.05rem;font-weight:700;
   color:var(--text-med);padding:6px 0;
@@ -1039,7 +1039,7 @@ footer{
     </svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
   </div>
   <div class="footer-links">
-    <a href="mailto:info@btsintelligence.de">Jetzt Termin vereinbaren</a>
+    <a href="#" onclick="openModal(event)">Jetzt Termin vereinbaren</a>
     <a href="tel:+491784552028">0178 / 455 2028</a>
   </div>
   <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
