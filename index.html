@@ -460,13 +460,20 @@ footer{
   .nav-links{display:none}
   nav.menu-open{
     height:100vh;background:#090b12;backdrop-filter:none;
-    flex-direction:column;justify-content:flex-start;align-items:stretch;
+    align-items:flex-start;flex-wrap:wrap;
+  }
+  nav.menu-open .hamburger{
+    position:absolute;top:18px;right:clamp(24px,5vw,64px);
   }
   .nav-links.open{
     display:flex!important;flex-direction:column;align-items:center;
-    justify-content:center;flex:1;gap:0;
+    justify-content:center;width:100%;flex:1;gap:0;margin-top:60px;
   }
   .nav-links.open a{height:auto;padding:18px 32px;font-size:1.3rem;color:var(--text-hi)!important;font-weight:600}
+  /* X icon when open */
+  nav.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.menu-open .hamburger span:nth-child(2){opacity:0}
+  nav.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav-links.open .nav-btn{margin:24px 0 0;padding:12px 32px!important;font-size:.95rem!important}
   .hamburger{display:flex}
   .hero-stats{flex-wrap:wrap;max-width:100%}
