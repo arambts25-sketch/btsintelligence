@@ -620,6 +620,103 @@ footer{
   .badge-full{display:none}
   .badge-short{display:inline}
 }
+
+/* BILLING TOGGLE */
+.billing-toggle-wrap{
+  display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap;
+}
+.billing-toggle{
+  display:flex;background:var(--bg-card);border:1px solid var(--border-lo);
+  border-radius:10px;padding:4px;gap:4px;
+}
+.billing-btn{
+  background:transparent;border:none;cursor:pointer;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:.82rem;font-weight:700;
+  color:var(--text-med);padding:6px 14px;border-radius:7px;
+  transition:background .18s,color .18s;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.billing-btn:hover{color:var(--text-hi)}
+.billing-btn.active{background:var(--amber-500);color:#080a0f}
+.save-label{
+  font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(255,255,255,.18);padding:2px 6px;border-radius:4px;
+}
+.billing-btn.active .save-label{background:rgba(8,10,15,.18)}
+.billing-note{font-size:.78rem;color:var(--text-lo)}
+.price-savings{
+  display:none;font-size:.8rem;font-weight:700;
+  color:var(--amber-400);margin-top:2px;
+}
+.price-savings.visible{display:block}
+@media(max-width:520px){
+  .billing-toggle{flex-wrap:wrap}
+  .billing-btn{font-size:.75rem;padding:5px 10px}
+}
+
+/* DIGITALBONUS SECTION */
+.foerder-section{
+  background:linear-gradient(160deg,rgba(79,107,240,.04) 0%,var(--bg-raised) 60%);
+  border-top:1px solid var(--border-xs);border-bottom:1px solid var(--border-xs);
+}
+.foerder-inner{
+  max-width:1080px;margin:0 auto;
+  padding:80px clamp(24px,5vw,64px);
+}
+.foerder-top{
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start;
+  margin-bottom:40px;
+}
+.foerder-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);
+  border-radius:999px;padding:5px 14px;
+  font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:#4ade80;margin-bottom:14px;
+}
+.foerder-headline{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:900;letter-spacing:-.03em;color:var(--text-hi);line-height:1.25;
+  margin-bottom:12px;
+}
+.foerder-sub{
+  font-size:.97rem;line-height:1.7;color:var(--text-med);max-width:560px;
+}
+.foerder-sub strong{color:var(--text-hi);font-weight:600}
+.foerder-logo-box{
+  background:rgba(255,255,255,.04);border:1px solid var(--border-lo);
+  border-radius:12px;padding:14px 20px;text-align:center;
+  font-size:.78rem;color:var(--text-lo);white-space:nowrap;flex-shrink:0;
+  line-height:1.6;
+}
+.foerder-logo-flag{font-size:1.6rem;display:block;margin-bottom:4px}
+.foerder-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:14px;margin-bottom:28px;
+}
+.foerder-card{
+  background:var(--bg-card);border:1px solid var(--border-lo);
+  border-radius:12px;padding:20px;
+}
+.foerder-card-val{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:1.5rem;font-weight:900;
+  letter-spacing:-.03em;color:var(--text-hi);margin-bottom:4px;
+}
+.foerder-card-val em{color:var(--amber-400);font-style:normal}
+.foerder-card-desc{font-size:.85rem;line-height:1.55;color:var(--text-med)}
+.foerder-note{
+  background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);
+  border-radius:12px;padding:16px 20px;
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.9rem;line-height:1.6;color:var(--text-hi);margin-bottom:28px;
+}
+.foerder-note strong{color:var(--text-hi)}
+.foerder-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.foerder-small{font-size:.82rem;color:var(--text-lo)}
+@media(max-width:680px){
+  .foerder-top{grid-template-columns:1fr}
+  .foerder-logo-box{display:none}
+}
 </style>
 </head>
 <body>
@@ -868,15 +965,26 @@ footer{
     <div class="pricing-group reveal">
       <div class="group-header">
         <span class="group-title">Laufende Betreuung</span>
-        <span class="group-pill">monatlich kündbar</span>
         <div class="group-line"></div>
       </div>
-      <div class="pricing-grid">
+      <div class="billing-toggle-wrap">
+        <div class="billing-toggle">
+          <button class="billing-btn active" data-period="monthly" onclick="setBilling('monthly')">Monatlich</button>
+          <button class="billing-btn" data-period="6m" onclick="setBilling('6m')">6 Monate <span class="save-label">1 Monat gratis</span></button>
+          <button class="billing-btn" data-period="12m" onclick="setBilling('12m')">12 Monate <span class="save-label">2 Monate gratis</span></button>
+        </div>
+        <span class="billing-note">Vorauszahlung · ab Monat 3 monatlich kündbar</span>
+      </div>
+      <div class="pricing-grid" id="betreuung-grid">
 
         <div class="price-card">
           <div class="price-tier">Basis</div>
           <div class="price-for">Sicherheitsnetz für laufende Workflows</div>
-          <div class="price-amount"><span class="price-num">290 €</span><span class="price-unit">/ Monat · netto zzgl. MwSt.</span></div>
+          <div class="price-amount">
+            <span class="price-num" data-monthly="290 €" data-6m="1.450 €" data-12m="2.900 €">290 €</span>
+            <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+            <span class="price-savings">Sie sparen <strong data-6m="290 €" data-12m="580 €"></strong></span>
+          </div>
           <ul class="price-features">
             <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
             <li>2 Anpassungen pro Monat</li>
@@ -889,7 +997,11 @@ footer{
           <div class="featured-badge">MEISTGEWÄHLT</div>
           <div class="price-tier">Standard</div>
           <div class="price-for">Aktive Betreuung und kontinuierliche Optimierung</div>
-          <div class="price-amount"><span class="price-num">690 €</span><span class="price-unit">/ Monat · netto zzgl. MwSt.</span></div>
+          <div class="price-amount">
+            <span class="price-num" data-monthly="690 €" data-6m="3.450 €" data-12m="6.900 €">690 €</span>
+            <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+            <span class="price-savings">Sie sparen <strong data-6m="690 €" data-12m="1.380 €"></strong></span>
+          </div>
           <ul class="price-features">
             <li>Monitoring, Wartung &amp; Optimierung</li>
             <li>5 Anpassungen pro Monat</li>
@@ -901,7 +1013,11 @@ footer{
         <div class="price-card">
           <div class="price-tier">Profi</div>
           <div class="price-for">Dedizierter Partner für Strategie und Weiterentwicklung</div>
-          <div class="price-amount"><span class="price-num">1.290 €</span><span class="price-unit">/ Monat · netto zzgl. MwSt.</span></div>
+          <div class="price-amount">
+            <span class="price-num" data-monthly="1.290 €" data-6m="6.450 €" data-12m="12.900 €">1.290 €</span>
+            <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+            <span class="price-savings">Sie sparen <strong data-6m="1.290 €" data-12m="2.580 €"></strong></span>
+          </div>
           <ul class="price-features">
             <li>Fester persönlicher Ansprechpartner</li>
             <li>10 Anpassungen pro Monat</li>
@@ -928,6 +1044,49 @@ footer{
     <div class="pricing-note reveal">
       <span style="flex-shrink:0">ℹ️</span>
       <span><strong>Hinweis zu Tool-Kosten:</strong> Je nach Workflow entstehen Drittanbieter-Kosten (z.B. KI-APIs, Automatisierungsplattformen). Diese werden direkt mit dem jeweiligen Anbieter abgerechnet — wir erheben keinen Aufschlag.</span>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITALBONUS FÖRDERUNG -->
+<section class="foerder-section">
+  <div class="foerder-inner reveal">
+    <div class="foerder-top">
+      <div>
+        <div class="foerder-badge">🏛 Staatliche Förderung</div>
+        <h2 class="foerder-headline">Bis zu 7.500 € Zuschuss vom Freistaat Bayern —<br>nicht rückzahlbar.</h2>
+        <p class="foerder-sub">Der <strong>Digitalbonus Bayern</strong> fördert KI-Digitalisierungsprojekte kleiner Betriebe mit bis zu 50 % der Projektkosten. BTS Intelligence-Leistungen sind explizit förderfähig — Einrichtung und bis zu 18 Monate laufende Betreuung inklusive.</p>
+      </div>
+      <div class="foerder-logo-box">
+        <span class="foerder-logo-flag">🦁</span>
+        Digitalbonus Bayern<br>Freistaat Bayern
+      </div>
+    </div>
+    <div class="foerder-grid">
+      <div class="foerder-card">
+        <div class="foerder-card-val"><em>50 %</em></div>
+        <div class="foerder-card-desc">Förderquote auf förderfähige Projektkosten</div>
+      </div>
+      <div class="foerder-card">
+        <div class="foerder-card-val">bis <em>7.500 €</em></div>
+        <div class="foerder-card-desc">Zuschuss Standard — direkt, nicht rückzahlbar</div>
+      </div>
+      <div class="foerder-card">
+        <div class="foerder-card-val">bis <em>30.000 €</em></div>
+        <div class="foerder-card-desc">Zuschuss beim KI-Sondermodul (Digitalbonus Plus)</div>
+      </div>
+      <div class="foerder-card">
+        <div class="foerder-card-val"><em>&lt; 50</em> MA</div>
+        <div class="foerder-card-desc">Bayerischer Betrieb, Umsatz unter 10 Mio. €</div>
+      </div>
+    </div>
+    <div class="foerder-note">
+      <span style="flex-shrink:0;font-size:1.1rem">📅</span>
+      <span><strong>Neu: Antragsstellung ab 1. April 2026 möglich.</strong> Wir begleiten Sie auf Wunsch durch den Antragsprozess — sprechen Sie uns beim kostenlosen Erstgespräch darauf an.</span>
+    </div>
+    <div class="foerder-cta-row">
+      <a href="#" onclick="openModal(event)" class="btn-amber">Förderung im Erstgespräch besprechen →</a>
+      <span class="foerder-small">Wir prüfen gemeinsam Ihre Förderfähigkeit — kostenlos &amp; unverbindlich.</span>
     </div>
   </div>
 </section>
@@ -1189,6 +1348,29 @@ footer{
         document.getElementById('formError').style.display = 'block';
         btn.textContent = 'Kostenlose Potenzialanalyse anfordern →';
         btn.disabled = false;
+      }
+    });
+  }
+
+  function setBilling(period) {
+    document.querySelectorAll('.billing-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.period === period);
+    });
+    document.querySelectorAll('#betreuung-grid .price-card').forEach(function(card) {
+      var numEl = card.querySelector('.price-num[data-monthly]');
+      var unitEl = card.querySelector('.price-unit[data-monthly]');
+      var savingsEl = card.querySelector('.price-savings');
+      if (!numEl) return;
+      numEl.textContent = numEl.getAttribute('data-' + period);
+      unitEl.textContent = unitEl.getAttribute('data-' + period);
+      if (savingsEl) {
+        var strongEl = savingsEl.querySelector('strong');
+        if (period !== 'monthly' && strongEl) {
+          strongEl.textContent = strongEl.getAttribute('data-' + period);
+          savingsEl.classList.add('visible');
+        } else {
+          savingsEl.classList.remove('visible');
+        }
       }
     });
   }
