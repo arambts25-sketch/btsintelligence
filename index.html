@@ -567,33 +567,40 @@ footer{
   margin:0 auto 36px;line-height:1.65;
 }
 .founder-perks-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-  max-width:780px;margin:0 auto 20px;
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  max-width:600px;margin:0 auto 20px;
 }
 .founder-perk-card{
   background:var(--bg-card);border:1px solid var(--border-lo);
-  border-radius:14px;padding:20px;text-align:left;
+  border-radius:16px;padding:28px 24px;text-align:left;
+  position:relative;overflow:hidden;
 }
-.founder-perk-pkg{
-  font-family:'Cabinet Grotesk',sans-serif;font-size:.7rem;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--amber-400);
-  margin-bottom:14px;
+.founder-perk-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--amber-500) 0%,transparent 80%);
 }
-.founder-perk-row{
-  padding:11px 0;border-bottom:1px solid var(--border-xs);
+.founder-perk-saving{
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:2.2rem;font-weight:900;letter-spacing:-.05em;
+  color:var(--amber-400);line-height:1;margin-bottom:4px;
+  display:flex;align-items:baseline;gap:6px;
 }
-.founder-perk-row:first-of-type{padding-top:0}
-.founder-perk-row:last-child{border-bottom:none;padding-bottom:0}
-.founder-perk-row-type{
-  font-size:.68rem;font-weight:600;color:var(--text-lo);
-  text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;
+.founder-perk-saving span{
+  font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--amber-200);
 }
-.founder-perk-row-val{
-  font-family:'Cabinet Grotesk',sans-serif;font-size:.95rem;font-weight:800;
-  color:var(--text-med);letter-spacing:-.01em;
+.founder-perk-title{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:1rem;font-weight:800;
+  letter-spacing:-.02em;color:var(--text-hi);line-height:1.3;
+  margin-bottom:10px;margin-top:14px;
 }
-.founder-perk-row-val.is-benefit{color:var(--text-hi)}
-.founder-perk-row-sub{font-size:.76rem;color:var(--text-lo);margin-top:2px}
+.founder-perk-pkg-tag{
+  display:inline-flex;
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--text-med);background:var(--bg-raised);border:1px solid var(--border-lo);
+  border-radius:999px;padding:3px 10px;margin-bottom:12px;
+}
+.founder-perk-desc{font-size:.84rem;line-height:1.65;color:var(--text-med)}
 .founder-perk-shared{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--bg-card);border:1px solid var(--border-lo);
@@ -601,7 +608,7 @@ footer{
   font-size:.9rem;font-weight:600;color:var(--text-hi);
   margin-bottom:32px;
 }
-@media(max-width:680px){
+@media(max-width:520px){
   .founder-perks-grid{grid-template-columns:1fr}
 }
 .founder-slots{
@@ -862,42 +869,16 @@ footer{
     <p class="founder-lead">Als einer unserer ersten Partner profitieren Sie von einmaligen Sonderkonditionen — und wir wachsen gemeinsam mit Ihrem Betrieb.</p>
     <div class="founder-perks-grid">
       <div class="founder-perk-card">
-        <div class="founder-perk-pkg">Starter</div>
-        <div class="founder-perk-row">
-          <div class="founder-perk-row-type">Einrichtung</div>
-          <div class="founder-perk-row-val is-benefit">🎁 Kostenlos</div>
-          <div class="founder-perk-row-sub">Wert 990 € netto zzgl. MwSt.</div>
-        </div>
-        <div class="founder-perk-row">
-          <div class="founder-perk-row-type">Betreuung</div>
-          <div class="founder-perk-row-val">Regulärer Preis</div>
-        </div>
+        <div class="founder-perk-saving">990 €<span>gespart</span></div>
+        <div class="founder-perk-title">Einrichtung komplett kostenlos</div>
+        <div class="founder-perk-pkg-tag">Starter-Paket</div>
+        <div class="founder-perk-desc">Der reguläre Einrichtungspreis entfällt vollständig — Sie starten ohne Vorabkosten.</div>
       </div>
       <div class="founder-perk-card">
-        <div class="founder-perk-pkg">Wachstum</div>
-        <div class="founder-perk-row">
-          <div class="founder-perk-row-type">Einrichtung</div>
-          <div class="founder-perk-row-val">2.490 € netto</div>
-          <div class="founder-perk-row-sub">Festpreis zzgl. MwSt.</div>
-        </div>
-        <div class="founder-perk-row">
-          <div class="founder-perk-row-type">Betreuung</div>
-          <div class="founder-perk-row-val is-benefit">🏷️ 50 % Rabatt</div>
-          <div class="founder-perk-row-sub">Erste 3 Monate</div>
-        </div>
-      </div>
-      <div class="founder-perk-card">
-        <div class="founder-perk-pkg">Profi</div>
-        <div class="founder-perk-row">
-          <div class="founder-perk-row-type">Einrichtung</div>
-          <div class="founder-perk-row-val">4.900 € netto</div>
-          <div class="founder-perk-row-sub">Festpreis zzgl. MwSt.</div>
-        </div>
-        <div class="founder-perk-row">
-          <div class="founder-perk-row-type">Betreuung</div>
-          <div class="founder-perk-row-val is-benefit">🏷️ 50 % Rabatt</div>
-          <div class="founder-perk-row-sub">Erste 3 Monate</div>
-        </div>
+        <div class="founder-perk-saving">50 %<span>Nachlass</span></div>
+        <div class="founder-perk-title">Halber Preis in den ersten 3 Monaten</div>
+        <div class="founder-perk-pkg-tag">Wachstum- &amp; Profi-Paket</div>
+        <div class="founder-perk-desc">50 % Rabatt auf die laufende Betreuung — für die ersten 3 Monate nach Go-Live.</div>
       </div>
     </div>
     <div class="founder-perk-shared">
