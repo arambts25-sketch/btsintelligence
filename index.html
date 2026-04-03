@@ -629,20 +629,58 @@ footer{
   margin-bottom:32px;
 }
 .founder-slots{
-  display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px;
+  display:flex;justify-content:center;margin-bottom:32px;
 }
-.founder-slots-label{font-size:.82rem;font-weight:600;color:var(--text-med)}
-.founder-dots{display:flex;gap:10px}
+.founder-slots-inner{
+  display:flex;align-items:center;gap:24px;
+  background:rgba(212,144,10,.07);
+  border:1px solid rgba(212,144,10,.25);
+  border-radius:16px;padding:20px 28px;
+  max-width:480px;width:100%;
+}
+.founder-slots-left{
+  display:flex;flex-direction:column;align-items:center;
+  min-width:56px;border-right:1px solid rgba(212,144,10,.2);padding-right:20px;
+}
+.founder-slots-num{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:2.8rem;font-weight:900;
+  color:var(--amber-400);line-height:1;
+}
+.founder-slots-sublabel{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-lo);text-align:center;margin-top:4px}
+.founder-slots-right{display:flex;flex-direction:column;gap:10px;flex:1}
+.founder-slots-title{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lo)}
+.founder-dots{display:flex;gap:8px;align-items:center}
 .founder-dot{
-  width:15px;height:15px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.founder-dot::before{
+  content:'';display:block;
+  width:28px;height:28px;border-radius:8px;
   border:2px solid var(--border-hi);background:transparent;
+  transition:all .2s;
 }
-.founder-dot.taken{background:var(--text-lo);border-color:var(--text-lo)}
-.founder-dot.free{
-  background:var(--amber-400);border-color:var(--amber-400);
-  box-shadow:0 0 10px rgba(232,168,32,.45);
+.founder-dot.taken::before{background:rgba(255,255,255,.08);border-color:var(--text-lo)}
+.founder-dot.free::before{
+  background:rgba(232,168,32,.15);border-color:var(--amber-400);
+  box-shadow:0 0 12px rgba(232,168,32,.35);
 }
-.founder-note{margin-top:16px;font-size:.76rem;color:var(--text-lo)}
+.founder-dot-label{font-size:.55rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-lo)}
+.founder-dot.free .founder-dot-label{color:var(--amber-300)}
+.founder-slots-urgency{font-size:.72rem;color:var(--text-lo);line-height:1.4}
+.founder-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.btn-founder-prices{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:13px 24px;border-radius:10px;font-size:.95rem;font-weight:700;
+  border:1.5px solid rgba(212,144,10,.4);color:var(--amber-300);
+  text-decoration:none;transition:all .2s;
+}
+.btn-founder-prices:hover{border-color:var(--amber-400);background:rgba(212,144,10,.08);color:var(--amber-200)}
+.founder-note{margin-top:8px;font-size:.76rem;color:var(--text-lo)}
+@media(max-width:480px){
+  .founder-slots-inner{flex-direction:column;align-items:center;text-align:center;gap:16px}
+  .founder-slots-left{border-right:none;border-bottom:1px solid rgba(212,144,10,.2);padding-right:0;padding-bottom:16px;width:100%}
+  .founder-ctas{flex-direction:column;align-items:center}
+}
 /* IMPRESSUM */
 .impressum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:0}
 .impressum-block{background:var(--bg-card);border:1px solid var(--border-lo);border-radius:12px;padding:20px 24px}
@@ -914,8 +952,8 @@ footer{
         <div class="founder-perk-card founder-perk-card--retainer">
           <div class="founder-perk-retainer-num">50 %<span>Nachlass</span></div>
           <div class="founder-perk-retainer-info">
-            <div class="founder-perk-title">Halber Retainer — erste 3 Monate</div>
-            <div class="founder-perk-desc">Gilt für alle Pakete — egal ob Starter, Wachstum oder Profi. Die laufende Betreuung kostet in den ersten 3 Monaten die Hälfte, danach der reguläre Preis.</div>
+            <div class="founder-perk-title">Erste 3 Monate zum halben Preis</div>
+            <div class="founder-perk-desc">Gilt für Basis, Standard &amp; Profi — egal welches Betreuungspaket Sie wählen, zahlen Sie in den ersten 3 Monaten nur die Hälfte des regulären Monatsbeitrags.</div>
           </div>
         </div>
       </div>
@@ -925,17 +963,29 @@ footer{
       Direkter Draht zu den Gründern
     </div>
     <div class="founder-slots">
-      <div class="founder-slots-label">Noch 4 von 5 Gründerpartner-Plätzen verfügbar</div>
-      <div class="founder-dots">
-        <div class="founder-dot taken" title="Vergeben"></div>
-        <div class="founder-dot free" title="Verfügbar"></div>
-        <div class="founder-dot free" title="Verfügbar"></div>
-        <div class="founder-dot free" title="Verfügbar"></div>
-        <div class="founder-dot free" title="Verfügbar"></div>
+      <div class="founder-slots-inner">
+        <div class="founder-slots-left">
+          <div class="founder-slots-num">4</div>
+          <div class="founder-slots-sublabel">Plätze noch frei</div>
+        </div>
+        <div class="founder-slots-right">
+          <div class="founder-slots-title">Gründerpartner-Plätze</div>
+          <div class="founder-dots">
+            <div class="founder-dot taken" title="Vergeben"><span class="founder-dot-label">Vergeben</span></div>
+            <div class="founder-dot free" title="Verfügbar"><span class="founder-dot-label">Frei</span></div>
+            <div class="founder-dot free" title="Verfügbar"><span class="founder-dot-label">Frei</span></div>
+            <div class="founder-dot free" title="Verfügbar"><span class="founder-dot-label">Frei</span></div>
+            <div class="founder-dot free" title="Verfügbar"><span class="founder-dot-label">Frei</span></div>
+          </div>
+          <div class="founder-slots-urgency">Dieses Angebot endet automatisch mit dem 5. Gründerpartner</div>
+        </div>
       </div>
     </div>
-    <a href="#" onclick="openModal(event)" class="btn-amber">Jetzt Platz sichern →</a>
-    <p class="founder-note">Gilt für Starter-, Wachstum- & Profi-Paket · nicht mit anderen Angeboten kombinierbar</p>
+    <div class="founder-ctas">
+      <a href="#" onclick="openModal(event)" class="btn-amber">Jetzt Platz sichern →</a>
+      <a href="#pricing" class="btn-founder-prices">Preise ansehen</a>
+    </div>
+    <p class="founder-note">Nicht mit anderen Angeboten kombinierbar</p>
   </div>
 </section>
 
