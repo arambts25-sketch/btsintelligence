@@ -567,49 +567,66 @@ footer{
   margin:0 auto 36px;line-height:1.65;
 }
 .founder-perks-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;
-  max-width:600px;margin:0 auto 20px;
+  display:flex;flex-direction:column;gap:20px;
+  max-width:760px;margin:0 auto 20px;
 }
+.founder-perks-block{display:flex;flex-direction:column}
+.founder-block-label{
+  font-size:.62rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-lo);margin-bottom:10px;text-align:left;padding-left:2px;
+}
+.founder-setup-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .founder-perk-card{
   background:var(--bg-card);border:1px solid var(--border-lo);
-  border-radius:16px;padding:28px 24px;text-align:left;
+  border-radius:16px;padding:22px 18px;text-align:left;
   position:relative;overflow:hidden;
 }
 .founder-perk-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--amber-500) 0%,transparent 80%);
 }
+.founder-perk-card--retainer{
+  display:flex;align-items:center;gap:28px;padding:24px 28px;
+}
 .founder-perk-saving{
   font-family:'Cabinet Grotesk',sans-serif;
-  font-size:2.2rem;font-weight:900;letter-spacing:-.05em;
+  font-size:1.9rem;font-weight:900;letter-spacing:-.05em;
   color:var(--amber-400);line-height:1;margin-bottom:4px;
-  display:flex;align-items:baseline;gap:6px;
+  display:flex;align-items:baseline;gap:5px;
 }
 .founder-perk-saving span{
-  font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:var(--amber-200);
 }
-.founder-perk-title{
-  font-family:'Cabinet Grotesk',sans-serif;font-size:1rem;font-weight:800;
-  letter-spacing:-.02em;color:var(--text-hi);line-height:1.3;
-  margin-bottom:10px;margin-top:14px;
+.founder-perk-retainer-num{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:3.2rem;font-weight:900;
+  letter-spacing:-.06em;color:var(--amber-400);line-height:1;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;gap:4px;min-width:90px;
 }
+.founder-perk-retainer-num span{
+  font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--amber-200);
+}
+.founder-perk-retainer-info{flex:1}
+.founder-perk-title{
+  font-family:'Cabinet Grotesk',sans-serif;font-size:.92rem;font-weight:800;
+  letter-spacing:-.02em;color:var(--text-hi);line-height:1.3;
+  margin-bottom:8px;margin-top:12px;
+}
+.founder-perk-card--retainer .founder-perk-title{margin-top:0;font-size:1rem}
 .founder-perk-pkg-tag{
   display:inline-flex;
-  font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  font-size:.64rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
   color:var(--text-med);background:var(--bg-raised);border:1px solid var(--border-lo);
-  border-radius:999px;padding:3px 10px;margin-bottom:12px;
+  border-radius:999px;padding:3px 10px;margin-bottom:10px;
 }
-.founder-perk-desc{font-size:.84rem;line-height:1.65;color:var(--text-med)}
+.founder-perk-desc{font-size:.81rem;line-height:1.65;color:var(--text-med)}
 .founder-perk-shared{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--bg-card);border:1px solid var(--border-lo);
   border-radius:10px;padding:11px 20px;
   font-size:.9rem;font-weight:600;color:var(--text-hi);
   margin-bottom:32px;
-}
-@media(max-width:520px){
-  .founder-perks-grid{grid-template-columns:1fr}
 }
 .founder-slots{
   display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px;
@@ -682,7 +699,8 @@ footer{
   .hero-badge{font-size:.65rem;letter-spacing:.05em;padding:4px 12px}
   .badge-full{display:none}
   .badge-short{display:inline}
-  .founder-perks-grid{grid-template-columns:1fr}
+  .founder-setup-row{grid-template-columns:1fr}
+  .founder-perk-card--retainer{flex-direction:column;align-items:flex-start;gap:10px}
 }
 
 /* BILLING TOGGLE */
@@ -868,22 +886,43 @@ footer{
     <h2 class="founder-title">Gemeinsam wachsen.</h2>
     <p class="founder-lead">Als einer unserer ersten Partner profitieren Sie von einmaligen Sonderkonditionen — und wir wachsen gemeinsam mit Ihrem Betrieb.</p>
     <div class="founder-perks-grid">
-      <div class="founder-perk-card">
-        <div class="founder-perk-saving">990 €<span>gespart</span></div>
-        <div class="founder-perk-title">Einrichtung komplett kostenlos</div>
-        <div class="founder-perk-pkg-tag">Starter-Paket</div>
-        <div class="founder-perk-desc">Der reguläre Einrichtungspreis entfällt vollständig — Sie starten ohne Vorabkosten.</div>
+      <div class="founder-perks-block">
+        <div class="founder-block-label">Einrichtungsgebühren</div>
+        <div class="founder-setup-row">
+          <div class="founder-perk-card">
+            <div class="founder-perk-saving">Gratis<span>statt 990 €</span></div>
+            <div class="founder-perk-title">Starter-Einrichtung</div>
+            <div class="founder-perk-pkg-tag">100 % Nachlass</div>
+            <div class="founder-perk-desc">Die komplette Einrichtung entfällt — Sie starten ohne Vorabkosten.</div>
+          </div>
+          <div class="founder-perk-card">
+            <div class="founder-perk-saving">50 %<span>Nachlass</span></div>
+            <div class="founder-perk-title">Wachstum-Einrichtung</div>
+            <div class="founder-perk-pkg-tag">statt 2.490 €</div>
+            <div class="founder-perk-desc">Sie zahlen nur 1.245 € statt der regulären 2.490 €.</div>
+          </div>
+          <div class="founder-perk-card">
+            <div class="founder-perk-saving">50 %<span>Nachlass</span></div>
+            <div class="founder-perk-title">Profi-Einrichtung</div>
+            <div class="founder-perk-pkg-tag">statt 4.900 €</div>
+            <div class="founder-perk-desc">Sie zahlen nur 2.450 € statt der regulären 4.900 €.</div>
+          </div>
+        </div>
       </div>
-      <div class="founder-perk-card">
-        <div class="founder-perk-saving">50 %<span>Nachlass</span></div>
-        <div class="founder-perk-title">Halber Einrichtungspreis</div>
-        <div class="founder-perk-pkg-tag">Wachstum- &amp; Profi-Paket</div>
-        <div class="founder-perk-desc">Die Einrichtung zum halben Preis — statt 2.490 € bzw. 4.900 € zahlen Gründerpartner nur die Hälfte.</div>
+      <div class="founder-perks-block">
+        <div class="founder-block-label">Laufende Betreuung</div>
+        <div class="founder-perk-card founder-perk-card--retainer">
+          <div class="founder-perk-retainer-num">50 %<span>Nachlass</span></div>
+          <div class="founder-perk-retainer-info">
+            <div class="founder-perk-title">Halber Retainer — erste 3 Monate</div>
+            <div class="founder-perk-desc">Gilt für alle Pakete — egal ob Starter, Wachstum oder Profi. Die laufende Betreuung kostet in den ersten 3 Monaten die Hälfte, danach der reguläre Preis.</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="founder-perk-shared">
       <span aria-hidden="true">🤝</span>
-      Direkter Draht zu den Gründern — für alle Pakete
+      Direkter Draht zu den Gründern
     </div>
     <div class="founder-slots">
       <div class="founder-slots-label">Noch 4 von 5 Gründerpartner-Plätzen verfügbar</div>
