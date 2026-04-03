@@ -1,0 +1,67 @@
+# BTS Intelligence
+
+> KI-Automatisierung für Handwerksbetriebe und KMU in ganz Bayern. Spezialisiert auf n8n-Workflows und eigene KI-Agenten.
+
+BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisierungsagentur aus dem Raum Ingolstadt, Bayern. Das Unternehmen automatisiert Geschäftsprozesse für Handwerksbetriebe (Elektro, SHK, Maler, Schreiner, Kfz) und KMU in ganz Bayern mit n8n-Workflows und maßgeschneiderten KI-Agenten.
+
+## Leistungen
+
+- **Angebotserstellung automatisieren**: Aus Aufmaßdaten werden fertige Angebote mit Briefkopf und Preisen erstellt — in Minuten statt Stunden.
+- **Rechnungs- und Mahnwesen automatisieren**: Rechnungen werden automatisch nach Auftragsabschluss gestellt, Mahnungen nach Fälligkeit verschickt — ohne manuelles Zutun.
+- **Kundenanfragen und Terminplanung**: Neue Anfragen werden sofort beantwortet und klassifiziert, Termine automatisch vorgeschlagen.
+- **Materialbeschaffung**: Bestelllisten aus Aufträgen automatisch generiert und an Lieferanten übermittelt.
+- **DSGVO-konforme Dokumentenschwärzung**: KI-gestützte automatische Erkennung und Entfernung personenbezogener Daten in Dokumenten — für Immobilienmakler, Kanzleien und andere datensensible Branchen.
+
+## Technologie
+
+- **n8n**: Open-Source-Automatisierungsplattform für komplexe Workflows, DSGVO-konform betreibbar in deutschen Rechenzentren.
+- **Eigene KI-Agenten**: Maßgeschneiderte KI-Agenten für branchenspezifische Anforderungen.
+- Alle Lösungen sind vollständig anpassbar, transparent und ohne Vendor-Lock-in.
+
+## Preise
+
+| Paket | Preis (netto, einmalig) | Leistung |
+|---|---|---|
+| Starter | 990 € | 1 KI-Workflow, ~2 Wochen |
+| Wachstum | 2.490 € | 2–3 Workflows, ~4 Wochen |
+| Profi | 4.900 € | 4–6 Workflows, ~6 Wochen |
+| Enterprise | Auf Anfrage | Ab 7 Workflows |
+
+Laufende Betreuung ab 290 €/Monat (monatlich kündbar ab Monat 3).
+
+## Förderung
+
+Der **Digitalbonus Bayern** fördert KI-Projekte kleiner Betriebe mit bis zu 50 % der Projektkosten (max. 7.500 €, beim KI-Sondermodul bis 30.000 €). Voraussetzung: Bayerischer Betrieb, < 50 Mitarbeiter, Umsatz < 10 Mio. €. Antragsstellung ab 1. April 2026. BTS Intelligence begleitet Kunden kostenlos durch den Antragsprozess.
+
+## Laufende Referenzprojekte (anonymisiert)
+
+1. **Immobilienmakler, Bayern**: Automatische DSGVO-konforme Dokumentenschwärzung mit eigenem KI-Agenten. Stundenlange manuelle Arbeit → vollautomatisch in Sekunden.
+2. **Handwerksbetrieb, Bayern**: Vollautomatisches Rechnungs- und Mahnwesen mit n8n. Ergebnis: bis zu 80 % weniger Zahlungsverzug.
+
+## Über uns
+
+- **Unternehmen**: BTS E-Commerce UG (haftungsbeschränkt)
+- **Standort**: Molsterstr. 1, 86643 Rennertshofen (Raum Ingolstadt, Bayern)
+- **Servicegebiet**: Ganz Bayern (Ingolstadt, München, Augsburg, Nürnberg, Regensburg, Landshut)
+- **Telefon**: +49 178 455 2028
+- **E-Mail**: info@btsintelligence.de
+- **Website**: https://www.btsintelligence.de
+- **Geschäftsführer**: Tufan Enes Yilmaz
+- **Registergericht**: Amtsgericht Ingolstadt, HRB 12294
+
+## FAQ
+
+**Was kostet KI-Automatisierung für Handwerksbetriebe?**
+Ab 990 € netto (1 Workflow). Über den Digitalbonus Bayern sind bis zu 50 % förderfähig.
+
+**Wie lange dauert die Einrichtung?**
+2–6 Wochen je nach Paket. Festpreisangebot innerhalb von 48 Stunden.
+
+**Ist die Lösung DSGVO-konform?**
+Ja. n8n kann in deutschen Rechenzentren betrieben werden. Alle Lösungen nach deutschem Datenschutzrecht.
+
+**Bin ich an einen langen Vertrag gebunden?**
+Nein. Laufende Betreuung ist monatlich kündbar ab Monat 3.
+
+**Arbeiten Sie nur im Raum Ingolstadt?**
+Nein. Wir betreuen Betriebe in ganz Bayern — Erstgespräch und Betreuung remote, auf Wunsch auch vor Ort.
