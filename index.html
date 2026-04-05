@@ -1012,6 +1012,10 @@ details[open] .faq-q::after{transform:rotate(45deg)}
   color:var(--amber-400);margin-top:4px;
 }
 .price-savings.visible{display:block}
+.price-total{font-size:.8rem;color:var(--text-lo);margin-top:3px}
+.price-total:empty{display:none}
+.price-features-group-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-lo);margin:14px 0 6px;}
+.price-badge-inline{display:inline-block;font-size:.7rem;font-weight:700;background:var(--amber-400);color:#000;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle;text-transform:uppercase;letter-spacing:.04em}
 @media(max-width:600px){
   .billing-controls{padding:14px 16px;gap:16px}
   .billing-sep{display:none}
@@ -1371,84 +1375,10 @@ details[open] .faq-q::after{transform:rotate(45deg)}
     <div class="reveal">
       <div class="eyebrow">Investition</div>
       <h2 class="section-title">Klare Preise, kein Overhead.</h2>
-      <p class="section-lead">Einrichtung und Betreuung sind frei kombinierbar — wählen Sie nur, was Sie brauchen. Alle Preise netto zzgl. MwSt.</p>
+      <p class="section-lead">Ein Abo — Einrichtung, Automatisierung und Betreuung alles inklusive. Alle Preise netto zzgl. MwSt.</p>
     </div>
 
-    <!-- ── Rubrik 1: Einrichtung ── -->
     <div class="pricing-group reveal">
-      <div class="group-header">
-        <span class="group-title">Einrichtung</span>
-        <span class="group-pill">einmalig</span>
-        <div class="group-line"></div>
-      </div>
-      <div class="pricing-grid">
-
-        <div class="price-card">
-          <div class="price-tier">Einstieg</div>
-          <div class="price-for">Für kleine Betriebe mit einem konkreten Prozess</div>
-          <div class="price-amount"><span class="price-num">990 €</span><span class="price-unit">netto zzgl. MwSt.</span></div>
-          <ul class="price-features">
-            <li>1 KI-Workflow nach Wahl</li>
-            <li>Prozessanalyse &amp; Konzeption</li>
-            <li>Vollständige Implementierung</li>
-            <li>Umsetzung in ca. 2 Wochen</li>
-            <li>Onboarding &amp; Übergabe</li>
-          </ul>
-          <a href="#" onclick="openModal(event,'Einrichtung Einstieg')" class="btn-card btn-card-outline">Termin vereinbaren</a>
-        </div>
-
-        <div class="price-card featured">
-          <div class="featured-badge">MEISTGEWÄHLT</div>
-          <div class="price-tier">Ausbau</div>
-          <div class="price-for">Für KMU, die mehrere Abläufe optimieren wollen</div>
-          <div class="price-amount"><span class="price-num">2.490 €</span><span class="price-unit">netto zzgl. MwSt.</span></div>
-          <ul class="price-features">
-            <li>2–3 KI-Workflows</li>
-            <li>CRM-, ERP- &amp; E-Mail-Integration</li>
-            <li>Prozessanalyse &amp; Konzeption</li>
-            <li>Umsetzung in ca. 4 Wochen</li>
-            <li>Onboarding &amp; Team-Schulung</li>
-          </ul>
-          <a href="#" onclick="openModal(event,'Einrichtung Ausbau')" class="btn-card btn-card-filled">Jetzt Termin vereinbaren</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-tier">Komplett</div>
-          <div class="price-for">Für KMU mit komplexen, vernetzten Prozessen</div>
-          <div class="price-amount"><span class="price-num">4.900 €</span><span class="price-unit">netto zzgl. MwSt.</span></div>
-          <ul class="price-features">
-            <li>4–6 KI-Workflows</li>
-            <li>API-Anbindungen &amp; Systemintegration</li>
-            <li>Prozessanalyse &amp; Konzeption</li>
-            <li>Umsetzung in ca. 6 Wochen</li>
-            <li>Ausführliches Team-Onboarding</li>
-          </ul>
-          <a href="#" onclick="openModal(event,'Einrichtung Komplett')" class="btn-card btn-card-outline">Termin vereinbaren</a>
-        </div>
-
-        <div class="price-card">
-          <div class="price-tier">Enterprise</div>
-          <div class="price-for">Ab 7 Workflows oder mit besonderen Anforderungen</div>
-          <div class="price-amount"><div class="price-request">Auf Anfrage</div></div>
-          <ul class="price-features">
-            <li>Individuelle Workflow-Anzahl</li>
-            <li>On-Premise oder Cloud</li>
-            <li>Dediziertes Projektteam</li>
-            <li>Individuelles Festpreisangebot</li>
-            <li>SLA nach Vereinbarung</li>
-          </ul>
-          <a href="#" onclick="openModal(event,'Einrichtung Enterprise')" class="btn-card btn-card-outline">Angebot einholen</a>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── Rubrik 2: Laufende Betreuung ── -->
-    <div class="pricing-group reveal">
-      <div class="group-header">
-        <span class="group-title">Laufende Betreuung</span>
-        <div class="group-line"></div>
-      </div>
       <div class="billing-controls">
         <div class="billing-section">
           <div class="billing-section-label">Zahlweise</div>
@@ -1472,83 +1402,139 @@ details[open] .faq-q::after{transform:rotate(45deg)}
       <p class="billing-note" id="billingNote">Mindestlaufzeit 3 Monate · monatlich kündbar ab Monat 3</p>
       <div class="pricing-grid" id="betreuung-grid">
 
+        <!-- Starter -->
         <div class="price-card">
-          <div class="price-tier">Basis-Wartung</div>
-          <div class="price-for">Sicherheitsnetz für laufende Workflows</div>
+          <div class="price-tier">Starter</div>
+          <div class="price-for">Ein Prozessbereich. Schnell live, sofort spürbar.</div>
           <div class="price-amount">
             <span class="price-num"
-              data-mm="290 €" data-m6="276 €" data-m12="261 €"
-              data-om="827 €" data-o6="1.566 €" data-o12="2.958 €">290 €</span>
+              data-mm="490 €" data-m6="466 €" data-m12="441 €"
+              data-om="1.397 €" data-o6="2.646 €" data-o12="4.998 €">490 €</span>
             <span class="price-unit"
-              data-mm="/ Monat · netto zzgl. MwSt." data-m6="/ Monat · netto zzgl. MwSt." data-m12="/ Monat · netto zzgl. MwSt."
-              data-om="/ 3 Monate · netto zzgl. MwSt." data-o6="/ 6 Monate · netto zzgl. MwSt." data-o12="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+              data-mm="pro Monat · netto zzgl. MwSt." data-m6="pro Monat · netto zzgl. MwSt." data-m12="pro Monat · netto zzgl. MwSt."
+              data-om="Gesamtbetrag · netto zzgl. MwSt." data-o6="Gesamtbetrag · netto zzgl. MwSt." data-o12="Gesamtbetrag · netto zzgl. MwSt.">pro Monat · netto zzgl. MwSt.</span>
+            <span class="price-total"
+              data-mm="Gesamtbetrag: 1.470 €" data-m6="Gesamtbetrag: 2.796 €" data-m12="Gesamtbetrag: 5.292 €"
+              data-om="" data-o6="" data-o12="">Gesamtbetrag: 1.470 €</span>
             <span class="price-savings"
-              data-save-mm="" data-save-m6="Sie sparen 87 € (–5 % Nachlass)" data-save-m12="Sie sparen 348 € (–10 % Nachlass)"
-              data-save-om="Sie sparen 43 € (–5 % Nachlass)" data-save-o6="Sie sparen 174 € (–10 % Nachlass)" data-save-o12="Sie sparen 522 € (–15 % Nachlass)"></span>
+              data-save-mm="" data-save-m6="Sie sparen 147 € (–5 % Nachlass)" data-save-m12="Sie sparen 588 € (–10 % Nachlass)"
+              data-save-om="Sie sparen 74 € (–5 % Nachlass)" data-save-o6="Sie sparen 294 € (–10 % Nachlass)" data-save-o12="Sie sparen 882 € (–15 % Nachlass)"></span>
           </div>
+          <div class="price-features-group-label">Automatisierung</div>
+          <ul class="price-features">
+            <li>1 vollautomatisierter Prozessbereich</li>
+            <li>Bis zu 2 Systemintegrationen</li>
+            <li>KI-gestützte Grundautomatisierung</li>
+          </ul>
+          <div class="price-features-group-label">Betreuung</div>
           <ul class="price-features">
             <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
             <li>2 Anpassungen pro Monat</li>
-            <li>E-Mail-Support (48 Std. Reaktion)</li>
+            <li>E-Mail-Support · Reaktion in 48h</li>
             <li>Monatlicher Status-Bericht</li>
+            <li>Dedizierter Ansprechpartner</li>
           </ul>
+          <a href="#" onclick="openModal(event,'Starter')" class="btn-card btn-card-outline">Termin vereinbaren</a>
         </div>
 
+        <!-- Professional -->
         <div class="price-card featured">
           <div class="featured-badge">MEISTGEWÄHLT</div>
-          <div class="price-tier">Aktiv-Betreuung</div>
-          <div class="price-for">Aktive Betreuung und kontinuierliche Optimierung</div>
+          <div class="price-tier">Professional</div>
+          <div class="price-for">Mehrere Abläufe, vernetzt. Büro läuft automatisch.</div>
           <div class="price-amount">
             <span class="price-num"
-              data-mm="690 €" data-m6="656 €" data-m12="621 €"
-              data-om="1.967 €" data-o6="3.726 €" data-o12="7.038 €">690 €</span>
+              data-mm="890 €" data-m6="846 €" data-m12="801 €"
+              data-om="2.537 €" data-o6="4.806 €" data-o12="9.078 €">890 €</span>
             <span class="price-unit"
-              data-mm="/ Monat · netto zzgl. MwSt." data-m6="/ Monat · netto zzgl. MwSt." data-m12="/ Monat · netto zzgl. MwSt."
-              data-om="/ 3 Monate · netto zzgl. MwSt." data-o6="/ 6 Monate · netto zzgl. MwSt." data-o12="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+              data-mm="pro Monat · netto zzgl. MwSt." data-m6="pro Monat · netto zzgl. MwSt." data-m12="pro Monat · netto zzgl. MwSt."
+              data-om="Gesamtbetrag · netto zzgl. MwSt." data-o6="Gesamtbetrag · netto zzgl. MwSt." data-o12="Gesamtbetrag · netto zzgl. MwSt.">pro Monat · netto zzgl. MwSt.</span>
+            <span class="price-total"
+              data-mm="Gesamtbetrag: 2.670 €" data-m6="Gesamtbetrag: 5.076 €" data-m12="Gesamtbetrag: 9.612 €"
+              data-om="" data-o6="" data-o12="">Gesamtbetrag: 2.670 €</span>
             <span class="price-savings"
-              data-save-mm="" data-save-m6="Sie sparen 207 € (–5 % Nachlass)" data-save-m12="Sie sparen 828 € (–10 % Nachlass)"
-              data-save-om="Sie sparen 103 € (–5 % Nachlass)" data-save-o6="Sie sparen 414 € (–10 % Nachlass)" data-save-o12="Sie sparen 1.242 € (–15 % Nachlass)"></span>
+              data-save-mm="" data-save-m6="Sie sparen 267 € (–5 % Nachlass)" data-save-m12="Sie sparen 1.068 € (–10 % Nachlass)"
+              data-save-om="Sie sparen 134 € (–5 % Nachlass)" data-save-o6="Sie sparen 534 € (–10 % Nachlass)" data-save-o12="Sie sparen 1.602 € (–15 % Nachlass)"></span>
           </div>
+          <div class="price-features-group-label">Automatisierung</div>
           <ul class="price-features">
-            <li>Monitoring, Wartung &amp; Optimierung</li>
+            <li>2–3 vernetzte Prozessbereiche</li>
+            <li>CRM-, ERP- &amp; E-Mail-Integration</li>
+            <li>KI-Agenten für wiederkehrende Aufgaben</li>
+            <li>Team-Onboarding &amp; Schulung</li>
+          </ul>
+          <div class="price-features-group-label">Betreuung</div>
+          <ul class="price-features">
+            <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
             <li>5 Anpassungen pro Monat</li>
-            <li>Priority-Support (8 Std. Reaktion)</li>
+            <li>Priority-Support · Reaktion in 8h</li>
             <li>Monatlicher Review-Call (30 Min.)</li>
+            <li>Dedizierter Ansprechpartner</li>
           </ul>
+          <a href="#" onclick="openModal(event,'Professional')" class="btn-card btn-card-filled">Jetzt Termin vereinbaren</a>
         </div>
 
-        <div class="price-card">
-          <div class="price-tier">Rundum-Service</div>
-          <div class="price-for">Dedizierter Partner für Strategie und Weiterentwicklung</div>
-          <div class="price-amount">
-            <span class="price-num"
-              data-mm="1.290 €" data-m6="1.226 €" data-m12="1.161 €"
-              data-om="3.677 €" data-o6="6.966 €" data-o12="13.158 €">1.290 €</span>
-            <span class="price-unit"
-              data-mm="/ Monat · netto zzgl. MwSt." data-m6="/ Monat · netto zzgl. MwSt." data-m12="/ Monat · netto zzgl. MwSt."
-              data-om="/ 3 Monate · netto zzgl. MwSt." data-o6="/ 6 Monate · netto zzgl. MwSt." data-o12="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings"
-              data-save-mm="" data-save-m6="Sie sparen 387 € (–5 % Nachlass)" data-save-m12="Sie sparen 1.548 € (–10 % Nachlass)"
-              data-save-om="Sie sparen 193 € (–5 % Nachlass)" data-save-o6="Sie sparen 774 € (–10 % Nachlass)" data-save-o12="Sie sparen 2.322 € (–15 % Nachlass)"></span>
-          </div>
-          <ul class="price-features">
-            <li>Fester persönlicher Ansprechpartner</li>
-            <li>10 Anpassungen pro Monat</li>
-            <li>Priority-Support (4 Std. Reaktion)</li>
-            <li>Strategie-Call monatlich (60 Min.)</li>
-          </ul>
-        </div>
-
+        <!-- Enterprise -->
         <div class="price-card">
           <div class="price-tier">Enterprise</div>
-          <div class="price-for">Individuelles SLA, dediziertes Betreuungsteam</div>
-          <div class="price-amount"><div class="price-request">Auf Anfrage</div></div>
+          <div class="price-for">Vollautomatisierter Betrieb. Ihr persönlicher KI-Partner.</div>
+          <div class="price-amount">
+            <span class="price-num"
+              data-mm="1.490 €" data-m6="1.416 €" data-m12="1.341 €"
+              data-om="4.247 €" data-o6="8.046 €" data-o12="15.198 €">1.490 €</span>
+            <span class="price-unit"
+              data-mm="pro Monat · netto zzgl. MwSt." data-m6="pro Monat · netto zzgl. MwSt." data-m12="pro Monat · netto zzgl. MwSt."
+              data-om="Gesamtbetrag · netto zzgl. MwSt." data-o6="Gesamtbetrag · netto zzgl. MwSt." data-o12="Gesamtbetrag · netto zzgl. MwSt.">pro Monat · netto zzgl. MwSt.</span>
+            <span class="price-total"
+              data-mm="Gesamtbetrag: 4.470 €" data-m6="Gesamtbetrag: 8.496 €" data-m12="Gesamtbetrag: 16.092 €"
+              data-om="" data-o6="" data-o12="">Gesamtbetrag: 4.470 €</span>
+            <span class="price-savings"
+              data-save-mm="" data-save-m6="Sie sparen 447 € (–5 % Nachlass)" data-save-m12="Sie sparen 1.788 € (–10 % Nachlass)"
+              data-save-om="Sie sparen 224 € (–5 % Nachlass)" data-save-o6="Sie sparen 894 € (–10 % Nachlass)" data-save-o12="Sie sparen 2.682 € (–15 % Nachlass)"></span>
+          </div>
+          <div class="price-features-group-label">Automatisierung</div>
           <ul class="price-features">
-            <li>Individuelles Service-Level-Agreement</li>
-            <li>Reaktionszeit nach Vereinbarung</li>
-            <li>Dediziertes Betreuungsteam</li>
-            <li>Individuelle KPIs &amp; Reports</li>
+            <li>4–6 vollvernetzte Prozessbereiche</li>
+            <li>API-Anbindungen &amp; Systemintegration</li>
+            <li>Maßgeschneiderte KI-Agenten</li>
+            <li>Ausführliches Team-Onboarding</li>
           </ul>
+          <div class="price-features-group-label">Betreuung</div>
+          <ul class="price-features">
+            <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
+            <li>10 Anpassungen pro Monat</li>
+            <li>Priority-Support · Reaktion in 4h</li>
+            <li>Monatlicher Strategie-Call (60 Min.)</li>
+            <li>Dedizierter Ansprechpartner</li>
+            <li>Schriftliches SLA <span class="price-badge-inline">nur hier</span></li>
+          </ul>
+          <a href="#" onclick="openModal(event,'Enterprise')" class="btn-card btn-card-outline">Termin vereinbaren</a>
+        </div>
+
+        <!-- Individuell -->
+        <div class="price-card">
+          <div class="price-tier">Individuell</div>
+          <div class="price-for">Besondere Anforderungen. Wir bauen genau das, was Sie brauchen.</div>
+          <div class="price-amount"><div class="price-request">Auf Anfrage</div></div>
+          <ul class="price-features price-features--plain">
+            <li>Festpreisangebot in 48h</li>
+            <li>Individuelle Laufzeit &amp; Konditionen</li>
+          </ul>
+          <div class="price-features-group-label">Automatisierung</div>
+          <ul class="price-features">
+            <li>Unbegrenzte Prozessbereiche</li>
+            <li>On-Premise oder Cloud nach Wahl</li>
+            <li>Eigenes KI-Modell möglich</li>
+            <li>Branchenspezifische Sonderlösungen</li>
+          </ul>
+          <div class="price-features-group-label">Betreuung</div>
+          <ul class="price-features">
+            <li>Alles aus Enterprise</li>
+            <li>Individuelles SLA nach Vereinbarung</li>
+            <li>Dediziertes Projektteam</li>
+            <li>Individuelle KPIs &amp; Reporting</li>
+          </ul>
+          <a href="#" onclick="openModal(event,'Individuell')" class="btn-card btn-card-outline">Angebot einholen</a>
         </div>
 
       </div>
@@ -1968,6 +1954,8 @@ details[open] .faq-q::after{transform:rotate(45deg)}
         savingsEl.textContent = txt;
         savingsEl.classList.toggle('visible', txt !== '');
       }
+      var totalEl = card.querySelector('.price-total');
+      if (totalEl) totalEl.textContent = totalEl.getAttribute('data-' + key) || '';
     });
   }
 
