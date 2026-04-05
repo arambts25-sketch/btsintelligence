@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 608" width="1080" height="608">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1080" y2="608" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#090b12"/>
+      <stop offset="100%" stop-color="#0d101e"/>
+    </linearGradient>
+    <linearGradient id="iconG" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6b82f5"/>
+      <stop offset="100%" stop-color="#2a3fa8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="608" fill="url(#bg)"/>
+
+  <!-- Glow blobs -->
+  <circle cx="160" cy="304" r="340" fill="#4f6bf0" fill-opacity="0.07"/>
+  <circle cx="900" cy="150" r="260" fill="#e8a820" fill-opacity="0.05"/>
+  <circle cx="980" cy="500" r="180" fill="#4f6bf0" fill-opacity="0.04"/>
+
+  <!-- Grid lines subtle -->
+  <line x1="0" y1="152" x2="1080" y2="152" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="0" y1="304" x2="1080" y2="304" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="0" y1="456" x2="1080" y2="456" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="270" y1="0" x2="270" y2="608" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="540" y1="0" x2="540" y2="608" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1"/>
+  <line x1="810" y1="0" x2="810" y2="608" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1"/>
+
+  <!-- Left: Logo icon -->
+  <rect x="72" y="180" width="80" height="80" rx="18" fill="url(#iconG)"/>
+  <path d="M88 198h21a12 12 0 0 1 0 24H88v-24z" fill="white" fill-opacity=".95"/>
+  <path d="M88 222h22.5a13.5 13.5 0 0 1 0 27H88v-27z" fill="white" fill-opacity=".65"/>
+  <circle cx="126" cy="206" r="5.5" fill="#e8a820"/>
+  <line x1="126" y1="211.5" x2="126" y2="242" stroke="#e8a820" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Company name next to logo -->
+  <text x="166" y="213" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#eef0ff" letter-spacing="2">BTS</text>
+  <text x="166" y="234" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#7b93f5" letter-spacing="7">INTELLIGENCE</text>
+  <text x="166" y="252" font-family="Arial, sans-serif" font-size="10" fill="#555d80" letter-spacing="2">KI-AUTOMATISIERUNG · INGOLSTADT & GANZ BAYERN</text>
+
+  <!-- Divider line -->
+  <line x1="72" y1="278" x2="580" y2="278" stroke="#1e2540" stroke-width="1"/>
+
+  <!-- Main headline -->
+  <text x="72" y="340" font-family="Arial Black, Arial, sans-serif" font-size="54" font-weight="900" fill="#eef0ff">Mehr Zeit fürs</text>
+  <text x="72" y="400" font-family="Arial Black, Arial, sans-serif" font-size="54" font-weight="900" fill="#e8a820">Handwerk.</text>
+  <text x="72" y="450" font-family="Arial, sans-serif" font-size="20" fill="#9aa3cc">Angebote · Rechnungen · Mahnwesen · Terminplanung</text>
+  <text x="72" y="478" font-family="Arial, sans-serif" font-size="20" fill="#9aa3cc">vollautomatisch mit n8n &amp; eigenen KI-Agenten.</text>
+
+  <!-- CTA badge -->
+  <rect x="72" y="508" width="240" height="44" rx="22" fill="#4f6bf0" fill-opacity="0.15" stroke="#4f6bf0" stroke-opacity="0.4" stroke-width="1.5"/>
+  <text x="192" y="535" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#7b93f5" text-anchor="middle">Digitalbonus Bayern förderfähig</text>
+
+  <!-- Right: Stat cards -->
+  <rect x="690" y="155" width="310" height="88" rx="16" fill="#111525" stroke="#1e2540" stroke-width="1"/>
+  <text x="720" y="202" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#e8a820">2–6</text>
+  <text x="780" y="191" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">Wochen</text>
+  <text x="780" y="208" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">bis zum Go-Live</text>
+
+  <rect x="690" y="257" width="310" height="88" rx="16" fill="#111525" stroke="#1e2540" stroke-width="1"/>
+  <text x="720" y="304" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#7b93f5">990 €</text>
+  <text x="820" y="293" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">ab Einrichtung</text>
+  <text x="820" y="310" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">netto zzgl. MwSt.</text>
+
+  <rect x="690" y="359" width="310" height="88" rx="16" fill="#111525" stroke="#1e2540" stroke-width="1"/>
+  <text x="720" y="406" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#e8a820">100%</text>
+  <text x="820" y="395" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">DSGVO-konform</text>
+  <text x="820" y="412" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">Daten bleiben in DE</text>
+
+  <rect x="690" y="461" width="310" height="88" rx="16" fill="#111525" stroke="#1e2540" stroke-width="1"/>
+  <text x="720" y="508" font-family="Arial Black, Arial, sans-serif" font-size="38" font-weight="900" fill="#7b93f5">48h</text>
+  <text x="800" y="497" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">Festpreisangebot</text>
+  <text x="800" y="514" font-family="Arial, sans-serif" font-size="13" fill="#9aa3cc">nach Erstgespräch</text>
+
+  <!-- URL bottom left -->
+  <text x="72" y="590" font-family="Arial, sans-serif" font-size="13" fill="#555d80">btsintelligence.de · +49 178 455 2028 · info@btsintelligence.de</text>
+</svg>

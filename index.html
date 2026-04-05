@@ -955,50 +955,67 @@ details[open] .faq-q::after{transform:rotate(45deg)}
   .founder-perk-card--retainer{flex-direction:column;align-items:flex-start;gap:10px}
 }
 
-/* BILLING TOGGLE */
-.billing-toggle-wrap{
-  display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;
+/* BILLING CONTROLS */
+.billing-controls{
+  display:inline-flex;align-items:stretch;
+  background:var(--bg-card);border:1px solid var(--border-lo);
+  border-radius:16px;padding:18px 24px;gap:24px;
+  margin-bottom:10px;flex-wrap:wrap;
+  box-shadow:0 2px 16px rgba(0,0,0,.22);
+}
+.billing-section{display:flex;flex-direction:column;gap:10px}
+.billing-section-label{
+  font-size:.63rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-lo);
+}
+.billing-sep{
+  width:1px;background:var(--border-lo);align-self:stretch;
+  margin:0 4px;flex-shrink:0;
 }
 .billing-toggle{
   display:inline-flex;position:relative;
-  background:var(--bg-card);border:1px solid var(--border-lo);
-  border-radius:14px;padding:5px;gap:0;
-  box-shadow:0 2px 14px rgba(0,0,0,.28);
+  background:rgba(0,0,0,.18);border:1px solid var(--border-lo);
+  border-radius:10px;padding:4px;
 }
 .billing-slider{
-  position:absolute;top:5px;left:0;width:0;
-  height:calc(100% - 10px);
-  background:var(--amber-500);border-radius:10px;
-  box-shadow:0 2px 10px rgba(212,144,10,.38);
-  transition:left .28s cubic-bezier(.4,0,.2,1),width .28s cubic-bezier(.4,0,.2,1);
+  position:absolute;top:4px;left:0;width:0;
+  height:calc(100% - 8px);
+  background:var(--amber-500);border-radius:7px;
+  box-shadow:0 2px 8px rgba(212,144,10,.4);
+  transition:left .24s cubic-bezier(.4,0,.2,1),width .24s cubic-bezier(.4,0,.2,1);
   z-index:0;pointer-events:none;
 }
 .billing-btn{
   position:relative;z-index:1;
   background:transparent;border:none;cursor:pointer;
-  font-family:'Cabinet Grotesk',sans-serif;font-size:.85rem;font-weight:700;
-  color:var(--text-med);padding:9px 20px;border-radius:10px;
-  transition:color .2s;white-space:nowrap;
-  display:inline-flex;align-items:center;gap:7px;line-height:1;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:.83rem;font-weight:700;
+  color:var(--text-med);padding:7px 16px;border-radius:7px;
+  transition:color .18s;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;line-height:1;
 }
 .billing-btn:hover{color:var(--text-hi)}
 .billing-btn.active{color:#080a0f}
 .discount-badge{
-  font-size:.67rem;font-weight:900;letter-spacing:.03em;
-  padding:2px 7px;border-radius:5px;
-  background:rgba(212,144,10,.15);color:var(--amber-400);
-  transition:background .2s,color .2s;
+  font-size:.62rem;font-weight:900;letter-spacing:.02em;
+  padding:2px 6px;border-radius:4px;
+  background:rgba(212,144,10,.18);color:var(--amber-400);
+  transition:background .18s,color .18s;
 }
-.billing-btn.active .discount-badge{background:rgba(8,10,15,.2);color:#080a0f}
-.billing-note{font-size:.78rem;color:var(--text-lo)}
+.billing-btn.active .discount-badge{background:rgba(8,10,15,.18);color:#080a0f}
+.billing-note{
+  font-size:.75rem;color:var(--text-lo);margin-bottom:24px;
+  display:flex;align-items:center;gap:6px;
+}
+.billing-note::before{content:'ℹ';font-size:.8rem;opacity:.5}
 .price-savings{
   display:none;font-size:.8rem;font-weight:700;
-  color:var(--amber-400);margin-top:3px;
+  color:var(--amber-400);margin-top:4px;
 }
 .price-savings.visible{display:block}
-@media(max-width:560px){
-  .billing-btn{font-size:.78rem;padding:8px 12px}
-  .discount-badge{display:none}
+@media(max-width:600px){
+  .billing-controls{padding:14px 16px;gap:16px}
+  .billing-sep{display:none}
+  .billing-btn{font-size:.78rem;padding:7px 12px}
 }
 
 /* DIGITALBONUS SECTION */
@@ -1432,24 +1449,42 @@ details[open] .faq-q::after{transform:rotate(45deg)}
         <span class="group-title">Laufende Betreuung</span>
         <div class="group-line"></div>
       </div>
-      <div class="billing-toggle-wrap">
-        <div class="billing-toggle">
-          <div class="billing-slider" id="billingSlider"></div>
-          <button class="billing-btn active" data-period="monthly" onclick="setBilling('monthly',this)">Monatlich</button>
-          <button class="billing-btn" data-period="6m" onclick="setBilling('6m',this)">6 Monate <span class="discount-badge">–5 %</span></button>
-          <button class="billing-btn" data-period="12m" onclick="setBilling('12m',this)">12 Monate <span class="discount-badge">–15 %</span></button>
+      <div class="billing-controls">
+        <div class="billing-section">
+          <div class="billing-section-label">Zahlweise</div>
+          <div class="billing-toggle" id="zahlweiseToggle">
+            <div class="billing-slider" id="zahlweiseSlider"></div>
+            <button class="billing-btn active" data-zw="monthly" onclick="setZahlweise('monthly',this)">Monatlich</button>
+            <button class="billing-btn" data-zw="once" onclick="setZahlweise('once',this)">Einmalig <span class="discount-badge">Mehr Rabatt</span></button>
+          </div>
         </div>
-        <span class="billing-note">Vorauszahlung · ab Monat 3 monatlich kündbar</span>
+        <div class="billing-sep"></div>
+        <div class="billing-section">
+          <div class="billing-section-label">Laufzeit</div>
+          <div class="billing-toggle" id="laufzeitToggle">
+            <div class="billing-slider" id="laufzeitSlider"></div>
+            <button class="billing-btn active" data-lz="monthly" onclick="setLaufzeit('monthly',this)">3 Monate <span class="discount-badge" id="lzBadge3m" style="display:none">–5 %</span></button>
+            <button class="billing-btn" data-lz="6m" onclick="setLaufzeit('6m',this)">6 Monate <span class="discount-badge" id="lzBadge6m">–5 %</span></button>
+            <button class="billing-btn" data-lz="12m" onclick="setLaufzeit('12m',this)">12 Monate <span class="discount-badge" id="lzBadge12m">–10 %</span></button>
+          </div>
+        </div>
       </div>
+      <p class="billing-note" id="billingNote">Mindestlaufzeit 3 Monate · monatlich kündbar ab Monat 3</p>
       <div class="pricing-grid" id="betreuung-grid">
 
         <div class="price-card">
           <div class="price-tier">Basis</div>
           <div class="price-for">Sicherheitsnetz für laufende Workflows</div>
           <div class="price-amount">
-            <span class="price-num" data-monthly="290 €" data-6m="1.653 €" data-12m="2.958 €">290 €</span>
-            <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings">Sie sparen <strong data-6m="87 €" data-12m="522 €"></strong></span>
+            <span class="price-num"
+              data-mm="290 €" data-m6="276 €" data-m12="261 €"
+              data-om="827 €" data-o6="1.566 €" data-o12="2.958 €">290 €</span>
+            <span class="price-unit"
+              data-mm="/ Monat · netto zzgl. MwSt." data-m6="/ Monat · netto zzgl. MwSt." data-m12="/ Monat · netto zzgl. MwSt."
+              data-om="/ 3 Monate · netto zzgl. MwSt." data-o6="/ 6 Monate · netto zzgl. MwSt." data-o12="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+            <span class="price-savings"
+              data-save-mm="" data-save-m6="Sie sparen 87 € (–5 % Nachlass)" data-save-m12="Sie sparen 348 € (–10 % Nachlass)"
+              data-save-om="Sie sparen 43 € (–5 % Nachlass)" data-save-o6="Sie sparen 174 € (–10 % Nachlass)" data-save-o12="Sie sparen 522 € (–15 % Nachlass)"></span>
           </div>
           <ul class="price-features">
             <li>Proaktives Monitoring &amp; Fehlerbehebung</li>
@@ -1464,9 +1499,15 @@ details[open] .faq-q::after{transform:rotate(45deg)}
           <div class="price-tier">Standard</div>
           <div class="price-for">Aktive Betreuung und kontinuierliche Optimierung</div>
           <div class="price-amount">
-            <span class="price-num" data-monthly="690 €" data-6m="3.933 €" data-12m="7.038 €">690 €</span>
-            <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings">Sie sparen <strong data-6m="207 €" data-12m="1.242 €"></strong></span>
+            <span class="price-num"
+              data-mm="690 €" data-m6="656 €" data-m12="621 €"
+              data-om="1.967 €" data-o6="3.726 €" data-o12="7.038 €">690 €</span>
+            <span class="price-unit"
+              data-mm="/ Monat · netto zzgl. MwSt." data-m6="/ Monat · netto zzgl. MwSt." data-m12="/ Monat · netto zzgl. MwSt."
+              data-om="/ 3 Monate · netto zzgl. MwSt." data-o6="/ 6 Monate · netto zzgl. MwSt." data-o12="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+            <span class="price-savings"
+              data-save-mm="" data-save-m6="Sie sparen 207 € (–5 % Nachlass)" data-save-m12="Sie sparen 828 € (–10 % Nachlass)"
+              data-save-om="Sie sparen 103 € (–5 % Nachlass)" data-save-o6="Sie sparen 414 € (–10 % Nachlass)" data-save-o12="Sie sparen 1.242 € (–15 % Nachlass)"></span>
           </div>
           <ul class="price-features">
             <li>Monitoring, Wartung &amp; Optimierung</li>
@@ -1480,9 +1521,15 @@ details[open] .faq-q::after{transform:rotate(45deg)}
           <div class="price-tier">Profi</div>
           <div class="price-for">Dedizierter Partner für Strategie und Weiterentwicklung</div>
           <div class="price-amount">
-            <span class="price-num" data-monthly="1.290 €" data-6m="7.353 €" data-12m="13.158 €">1.290 €</span>
-            <span class="price-unit" data-monthly="/ Monat · netto zzgl. MwSt." data-6m="/ 6 Monate · netto zzgl. MwSt." data-12m="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
-            <span class="price-savings">Sie sparen <strong data-6m="387 €" data-12m="2.322 €"></strong></span>
+            <span class="price-num"
+              data-mm="1.290 €" data-m6="1.226 €" data-m12="1.161 €"
+              data-om="3.677 €" data-o6="6.966 €" data-o12="13.158 €">1.290 €</span>
+            <span class="price-unit"
+              data-mm="/ Monat · netto zzgl. MwSt." data-m6="/ Monat · netto zzgl. MwSt." data-m12="/ Monat · netto zzgl. MwSt."
+              data-om="/ 3 Monate · netto zzgl. MwSt." data-o6="/ 6 Monate · netto zzgl. MwSt." data-o12="/ 12 Monate · netto zzgl. MwSt.">/ Monat · netto zzgl. MwSt.</span>
+            <span class="price-savings"
+              data-save-mm="" data-save-m6="Sie sparen 387 € (–5 % Nachlass)" data-save-m12="Sie sparen 1.548 € (–10 % Nachlass)"
+              data-save-om="Sie sparen 193 € (–5 % Nachlass)" data-save-o6="Sie sparen 774 € (–10 % Nachlass)" data-save-o12="Sie sparen 2.322 € (–15 % Nachlass)"></span>
           </div>
           <ul class="price-features">
             <li>Fester persönlicher Ansprechpartner</li>
@@ -1872,36 +1919,82 @@ details[open] .faq-q::after{transform:rotate(45deg)}
     });
   }
 
-  function setBilling(period, btn) {
-    var activeBtn = btn || document.querySelector('.billing-btn[data-period="' + period + '"]');
-    document.querySelectorAll('.billing-btn').forEach(function(b) {
-      b.classList.toggle('active', b === activeBtn);
-    });
-    var slider = document.getElementById('billingSlider');
+  var currentZW = 'monthly'; // monthly | once
+  var currentLZ = 'monthly'; // monthly | 6m | 12m
+
+  function moveSlider(sliderId, activeBtn) {
+    var slider = document.getElementById(sliderId);
     if (slider && activeBtn) {
       slider.style.left = activeBtn.offsetLeft + 'px';
       slider.style.width = activeBtn.offsetWidth + 'px';
     }
+  }
+
+  function updateLaufzeitBadges() {
+    var lz3m = document.getElementById('lzBadge3m');
+    var lz6m = document.getElementById('lzBadge6m');
+    var lz12m = document.getElementById('lzBadge12m');
+    var isOnce = currentZW === 'once';
+    if (lz3m) lz3m.style.display = isOnce ? '' : 'none';
+    if (lz6m) lz6m.textContent = isOnce ? '–10 %' : '–5 %';
+    if (lz12m) lz12m.textContent = isOnce ? '–15 %' : '–10 %';
+  }
+
+  function updateNote() {
+    var note = document.getElementById('billingNote');
+    if (!note) return;
+    var notes = {
+      'monthly-monthly': 'Mindestlaufzeit 3 Monate · monatlich kündbar ab Monat 3',
+      'monthly-6m':      '6 Monate Mindestlaufzeit · monatlich kündbar ab Monat 6',
+      'monthly-12m':     '12 Monate Mindestlaufzeit',
+      'once-monthly':    'Einmalige Vorauszahlung für 3 Monate · kündbar ab Monat 3',
+      'once-6m':         'Einmalige Vorauszahlung für 6 Monate',
+      'once-12m':        'Einmalige Vorauszahlung für 12 Monate'
+    };
+    note.textContent = notes[currentZW + '-' + currentLZ] || '';
+  }
+
+  function updatePrices() {
+    var key = (currentZW === 'monthly' ? 'm' : 'o') + (currentLZ === 'monthly' ? 'm' : currentLZ === '6m' ? '6' : '12');
     document.querySelectorAll('#betreuung-grid .price-card').forEach(function(card) {
-      var numEl = card.querySelector('.price-num[data-monthly]');
-      var unitEl = card.querySelector('.price-unit[data-monthly]');
+      var numEl = card.querySelector('.price-num[data-mm]');
+      var unitEl = card.querySelector('.price-unit[data-mm]');
       var savingsEl = card.querySelector('.price-savings');
       if (!numEl) return;
-      numEl.textContent = numEl.getAttribute('data-' + period);
-      unitEl.textContent = unitEl.getAttribute('data-' + period);
+      numEl.textContent = numEl.getAttribute('data-' + key) || '';
+      if (unitEl) unitEl.textContent = unitEl.getAttribute('data-' + key) || '';
       if (savingsEl) {
-        var strongEl = savingsEl.querySelector('strong');
-        if (period !== 'monthly' && strongEl) {
-          var pct = period === '6m' ? '5' : '15';
-          strongEl.textContent = strongEl.getAttribute('data-' + period) + '\u00a0(' + pct + '\u00a0% Nachlass)';
-          savingsEl.classList.add('visible');
-        } else {
-          savingsEl.classList.remove('visible');
-        }
+        var txt = savingsEl.getAttribute('data-save-' + key) || '';
+        savingsEl.textContent = txt;
+        savingsEl.classList.toggle('visible', txt !== '');
       }
     });
   }
-  setBilling('monthly');
+
+  function setZahlweise(zw, btn) {
+    currentZW = zw;
+    var activeBtn = btn || document.querySelector('[data-zw="' + zw + '"]');
+    document.querySelectorAll('[data-zw]').forEach(function(b) { b.classList.toggle('active', b === activeBtn); });
+    moveSlider('zahlweiseSlider', activeBtn);
+    updateLaufzeitBadges();
+    // Badge-Änderung verändert Button-Breiten → Laufzeit-Slider neu ausrichten
+    var activeLzBtn = document.querySelector('[data-lz="' + currentLZ + '"]');
+    moveSlider('laufzeitSlider', activeLzBtn);
+    updateNote();
+    updatePrices();
+  }
+
+  function setLaufzeit(lz, btn) {
+    currentLZ = lz;
+    var activeBtn = btn || document.querySelector('[data-lz="' + lz + '"]');
+    document.querySelectorAll('[data-lz]').forEach(function(b) { b.classList.toggle('active', b === activeBtn); });
+    moveSlider('laufzeitSlider', activeBtn);
+    updateNote();
+    updatePrices();
+  }
+
+  setZahlweise('monthly');
+  setLaufzeit('monthly');
 
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });

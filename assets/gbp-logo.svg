@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="bgG" x1="0" y1="0" x2="600" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#090b12"/>
+      <stop offset="100%" stop-color="#0d101e"/>
+    </linearGradient>
+    <linearGradient id="iconG" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6b82f5"/>
+      <stop offset="100%" stop-color="#2a3fa8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="600" fill="url(#bgG)"/>
+
+  <!-- Glow -->
+  <circle cx="300" cy="240" r="220" fill="#4f6bf0" fill-opacity="0.07"/>
+  <circle cx="300" cy="240" r="140" fill="#4f6bf0" fill-opacity="0.05"/>
+
+  <!-- Icon box -->
+  <rect x="220" y="110" width="160" height="160" rx="36" fill="url(#iconG)"/>
+
+  <!-- B shape -->
+  <path d="M248 138h42a24 24 0 0 1 0 48h-42v-48z" fill="white" fill-opacity=".95"/>
+  <path d="M248 186h45a27 27 0 0 1 0 54h-45v-54z" fill="white" fill-opacity=".65"/>
+
+  <!-- Amber dot + line -->
+  <circle cx="336" cy="152" r="11" fill="#e8a820"/>
+  <line x1="336" y1="163" x2="336" y2="226" stroke="#e8a820" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Company name -->
+  <text x="300" y="332" font-family="Arial Black, Arial, sans-serif" font-size="52" font-weight="900" fill="#eef0ff" text-anchor="middle" letter-spacing="2">BTS</text>
+  <text x="300" y="372" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#7b93f5" text-anchor="middle" letter-spacing="10">INTELLIGENCE</text>
+
+  <!-- Divider -->
+  <line x1="170" y1="400" x2="430" y2="400" stroke="#1e2540" stroke-width="1"/>
+
+  <!-- Tagline -->
+  <text x="300" y="436" font-family="Arial, sans-serif" font-size="15" fill="#555d80" text-anchor="middle" letter-spacing="2">KI-AUTOMATISIERUNG · BAYERN</text>
+</svg>
