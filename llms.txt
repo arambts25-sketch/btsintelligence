@@ -18,20 +18,26 @@ BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisi
 - **Eigene KI-Agenten**: Maßgeschneiderte KI-Agenten für branchenspezifische Anforderungen.
 - Alle Lösungen sind vollständig anpassbar, transparent und ohne Vendor-Lock-in.
 
-## Preise
+## Preise (Abo-Modell, netto zzgl. MwSt.)
 
-| Paket | Preis (netto, einmalig) | Leistung |
-|---|---|---|
-| Starter | 990 € | 1 KI-Workflow, ~2 Wochen |
-| Wachstum | 2.490 € | 2–3 Workflows, ~4 Wochen |
-| Profi | 4.900 € | 4–6 Workflows, ~6 Wochen |
-| Enterprise | Auf Anfrage | Ab 7 Workflows |
+| Paket | Preis | Prozessbereiche | Go-Live |
+|---|---|---|---|
+| Starter | 490 €/Monat | 1 Prozessbereich | ~2 Wochen |
+| Professional | 890 €/Monat | 2–3 Prozessbereiche | ~4 Wochen |
+| Enterprise | 1.490 €/Monat | 4–6 Prozessbereiche | ~6 Wochen |
+| Individuell | Auf Anfrage | Unbegrenzt | Nach Vereinbarung |
 
-Laufende Betreuung ab 290 €/Monat (monatlich kündbar ab Monat 3).
+Einrichtung, Automatisierung und laufender Support sind im Abo enthalten. Mindestlaufzeit 3 Monate, danach monatlich kündbar. Treuerabatte: –5 % (6 Monate), –10 % (12 Monate).
 
 ## Förderung
 
-Der **Digitalbonus Bayern** fördert KI-Projekte kleiner Betriebe mit bis zu 50 % der Projektkosten (max. 7.500 €, beim KI-Sondermodul bis 30.000 €). Voraussetzung: Bayerischer Betrieb, < 50 Mitarbeiter, Umsatz < 10 Mio. €. Antragsstellung ab 1. April 2026. BTS Intelligence begleitet Kunden kostenlos durch den Antragsprozess.
+Der **Digitalbonus Bayern** fördert KI-Projekte kleiner Betriebe mit bis zu 50 % der Projektkosten:
+- **Digitalbonus Standard**: max. 7.500 € Zuschuss
+- **Digitalbonus Plus (KI-Sondermodul)**: max. 30.000 € Zuschuss
+
+Voraussetzung: Bayerischer Betrieb, < 50 Mitarbeiter, Umsatz < 10 Mio. €. Antragsstellung ab 1. April 2026 möglich, Programm läuft bis 31. Dezember 2027. BTS Intelligence begleitet Kunden kostenlos durch den Antragsprozess.
+
+Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 
 ## Laufende Referenzprojekte (anonymisiert)
 
@@ -41,27 +47,32 @@ Der **Digitalbonus Bayern** fördert KI-Projekte kleiner Betriebe mit bis zu 50 
 ## Über uns
 
 - **Unternehmen**: BTS E-Commerce UG (haftungsbeschränkt)
+- **Gründer & Geschäftsführer**: Tufan Enes Yilmaz
 - **Standort**: Molsterstr. 1, 86643 Rennertshofen (Raum Ingolstadt, Bayern)
 - **Servicegebiet**: Ganz Bayern (Ingolstadt, München, Augsburg, Nürnberg, Regensburg, Landshut)
 - **Telefon**: +49 178 455 2028
 - **E-Mail**: info@btsintelligence.de
 - **Website**: https://www.btsintelligence.de
-- **Geschäftsführer**: Tufan Enes Yilmaz
 - **Registergericht**: Amtsgericht Ingolstadt, HRB 12294
+
+## Ratgeber / Content
+
+- Digitalbonus Bayern 2026 Leitfaden: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
+- Ratgeber-Übersicht: https://www.btsintelligence.de/ratgeber/
 
 ## FAQ
 
 **Was kostet KI-Automatisierung für Handwerksbetriebe?**
-Ab 990 € netto (1 Workflow). Über den Digitalbonus Bayern sind bis zu 50 % förderfähig.
+Ab 490 €/Monat netto (Starter, 1 Prozessbereich, alles inklusive). Über den Digitalbonus Bayern sind bis zu 50 % förderfähig — effektiv ab 245 €/Monat.
 
 **Wie lange dauert die Einrichtung?**
-2–6 Wochen je nach Paket. Festpreisangebot innerhalb von 48 Stunden.
+2–6 Wochen je nach Paket. Festpreisangebot innerhalb von 48 Stunden nach Erstgespräch.
 
 **Ist die Lösung DSGVO-konform?**
-Ja. n8n kann in deutschen Rechenzentren betrieben werden. Alle Lösungen nach deutschem Datenschutzrecht.
+Ja. n8n kann in deutschen Rechenzentren betrieben werden. Alle Lösungen nach deutschem Datenschutzrecht entwickelt.
 
 **Bin ich an einen langen Vertrag gebunden?**
-Nein. Laufende Betreuung ist monatlich kündbar ab Monat 3.
+Nein. Laufende Betreuung ist monatlich kündbar ab Monat 3. Keine versteckten Kosten.
 
 **Arbeiten Sie nur im Raum Ingolstadt?**
 Nein. Wir betreuen Betriebe in ganz Bayern — Erstgespräch und Betreuung remote, auf Wunsch auch vor Ort.
