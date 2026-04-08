@@ -115,6 +115,7 @@
     currentZW = zw;
     var activeBtn = btn || document.querySelector('[data-zw="' + zw + '"]');
     document.querySelectorAll('[data-zw]').forEach(function(b) { b.classList.toggle('active', b === activeBtn); });
+    document.querySelectorAll('[data-zw]').forEach(function(b) { b.setAttribute('aria-pressed', b === activeBtn ? 'true' : 'false'); });
     moveSlider('zahlweiseSlider', activeBtn);
     updateLaufzeitBadges();
     // Badge-Änderung verändert Button-Breiten → Laufzeit-Slider neu ausrichten
@@ -128,6 +129,7 @@
     currentLZ = lz;
     var activeBtn = btn || document.querySelector('[data-lz="' + lz + '"]');
     document.querySelectorAll('[data-lz]').forEach(function(b) { b.classList.toggle('active', b === activeBtn); });
+    document.querySelectorAll('[data-lz]').forEach(function(b) { b.setAttribute('aria-pressed', b === activeBtn ? 'true' : 'false'); });
     moveSlider('laufzeitSlider', activeBtn);
     updateNote();
     updatePrices();

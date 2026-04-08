@@ -55,10 +55,19 @@ Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 - **Website**: https://www.btsintelligence.de
 - **Registergericht**: Amtsgericht Ingolstadt, HRB 12294
 
+## Seiten
+
+- Startseite: https://www.btsintelligence.de/
+- Leistungen: https://www.btsintelligence.de/leistungen/
+- Preise & Pakete: https://www.btsintelligence.de/preise/
+- Über uns: https://www.btsintelligence.de/ueber-uns/
+
 ## Ratgeber / Content
 
-- Digitalbonus Bayern 2026 Leitfaden: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 - Ratgeber-Übersicht: https://www.btsintelligence.de/ratgeber/
+- Digitalbonus Bayern 2026 Leitfaden: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
+- Rechnungen automatisieren Handwerk: https://www.btsintelligence.de/ratgeber/rechnungen-automatisieren-handwerk
+- KI-Automatisierung Handwerk mit n8n: https://www.btsintelligence.de/ratgeber/ki-automatisierung-handwerk-n8n
 
 ## FAQ
 
