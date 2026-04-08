@@ -19,12 +19,12 @@
 
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
-    document.querySelector('nav').classList.toggle('menu-open');
+    document.querySelector('nav.site-nav').classList.toggle('menu-open');
   }
   document.querySelectorAll('.nav-links a').forEach(a =>
     a.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('open');
-      document.querySelector('nav').classList.remove('menu-open');
+      document.querySelector('nav.site-nav').classList.remove('menu-open');
     }));
 
   // Kontaktformular AJAX

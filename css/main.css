@@ -35,7 +35,7 @@ a{text-decoration:none}
 h1,h2,h3,h4{font-family:'Cabinet Grotesk',sans-serif}
 
 /* NAV */
-nav{
+nav.site-nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   height:60px;display:flex;align-items:center;justify-content:space-between;
   padding:0 clamp(24px,5vw,64px);
@@ -692,11 +692,11 @@ details[open] .faq-q::after{transform:rotate(45deg)}
 /* RESPONSIVE */
 @media(max-width:860px){
   .nav-links{display:none}
-  nav.menu-open{
+  nav.site-nav.menu-open{
     height:100vh;background:#090b12;backdrop-filter:none;
     align-items:flex-start;flex-wrap:wrap;
   }
-  nav.menu-open .hamburger{
+  nav.site-nav.menu-open .hamburger{
     position:absolute;top:18px;right:clamp(24px,5vw,64px);
   }
   .nav-links.open{
@@ -705,9 +705,9 @@ details[open] .faq-q::after{transform:rotate(45deg)}
   }
   .nav-links.open a{height:auto;padding:18px 32px;font-size:1.3rem;color:var(--text-hi)!important;font-weight:600}
   /* X icon when open */
-  nav.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  nav.menu-open .hamburger span:nth-child(2){opacity:0}
-  nav.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  nav.site-nav.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.site-nav.menu-open .hamburger span:nth-child(2){opacity:0}
+  nav.site-nav.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav-links.open .nav-btn{margin:24px 0 0;padding:12px 32px!important;font-size:.95rem!important}
   .hamburger{display:flex}
   .hero-stats{flex-wrap:wrap;max-width:100%}
