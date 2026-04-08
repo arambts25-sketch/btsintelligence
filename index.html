@@ -219,8 +219,8 @@
 <header role="banner">
 <!-- NAV -->
 <nav aria-label="Hauptnavigation">
-  <a href="#" class="nav-logo">
-<span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span>
+  <a href="/" class="nav-logo">
+    <span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/leistungen/">Leistungen</a></li>
@@ -230,7 +230,7 @@
     <li><a href="/ratgeber/">Ratgeber</a></li>
     <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </div>
 </nav>
