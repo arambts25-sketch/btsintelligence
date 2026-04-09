@@ -27,13 +27,32 @@
       document.querySelector('nav.site-nav').classList.remove('menu-open');
     }));
 
-  // Kontaktformular — normales POST zu N8N
+  // Kontaktformular AJAX → N8N Webhook
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', () => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       const btn = form.querySelector('.form-submit');
       btn.textContent = 'Wird gesendet...';
       btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        if (res.ok) {
+          form.reset();
+          document.getElementById('formSuccess').style.display = 'block';
+          document.getElementById('formError').style.display = 'none';
+          btn.style.display = 'none';
+        } else {
+          throw new Error();
+        }
+      } catch {
+        document.getElementById('formError').style.display = 'block';
+        btn.textContent = 'Kostenlose Potenzialanalyse anfordern →';
+        btn.disabled = false;
+      }
     });
   }
 
