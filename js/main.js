@@ -27,7 +27,7 @@
       document.querySelector('nav.site-nav').classList.remove('menu-open');
     }));
 
-  // Kontaktformular AJAX → N8N Webhook
+  // Kontaktformular AJAX
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -39,6 +39,7 @@
         const res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
           form.reset();
