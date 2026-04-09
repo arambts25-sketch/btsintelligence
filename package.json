@@ -19,6 +19,7 @@
     "@vercel/speed-insights": "^2.0.0"
   },
   "devDependencies": {
-    "htmlhint": "^1.9.2"
+    "htmlhint": "^1.9.2",
+    "sharp": "^0.34.5"
   }
 }
