@@ -1,0 +1,18 @@
+name: Notify n8n on Deployment
+on:
+  deployment_status: # Wird gefeuert, wenn Vercel den Status an GitHub meldet
+
+jobs:
+  on-success:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger n8n Webhook
+        run: |
+          curl -X POST https://n8n.btsintelligence.de/webhook/vercel-deploy \
+          -H "Content-Type: application/json" \
+          -d '{
+            "project": "${{ github.repository }}",
+            "status": "success",
+            "url": "${{ github.event.deployment_status.target_url }}"
+          }'
