@@ -1422,3 +1422,261 @@ details[open] .faq-q::after{transform:rotate(45deg)}
   .demo-result-actions a,
   .demo-result-actions button { text-align: center; width: 100%; }
 }
+
+/* ============================================================
+   ANGEBOTSERSTELLUNG DEMO – FORM & QUOTE STYLES
+   ============================================================ */
+
+.angebot-form-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hi);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.angebot-form-group { margin-bottom: 20px; }
+
+.angebot-form-label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text-med);
+  margin-bottom: 8px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.angebot-select,
+.angebot-input {
+  width: 100%;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-hi);
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: var(--text-hi);
+  font-family: 'Manrope', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .2s;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.angebot-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7299' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.angebot-select option { background: #131523; }
+.angebot-select:focus, .angebot-input:focus { border-color: var(--blue-400); }
+
+.angebot-leistungen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.angebot-check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-lo);
+  border-radius: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-size: .8rem;
+  color: var(--text-med);
+  transition: border-color .15s, color .15s;
+  user-select: none;
+  line-height: 1.3;
+}
+
+.angebot-check-item input[type="checkbox"] {
+  accent-color: var(--blue-400);
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.angebot-check-item.checked {
+  border-color: rgba(79,107,240,.35);
+  color: var(--text-hi);
+}
+
+/* Quote document */
+.angebot-doc-wrap { max-width: 700px; margin: 0 auto; }
+
+.angebot-doc {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,.4);
+  color: #1a1a2e;
+  font-family: 'Manrope', sans-serif;
+}
+
+.angebot-doc-header {
+  background: linear-gradient(130deg, #4f6bf0 0%, #2a3fa8 100%);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.angebot-doc-logo-name {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.angebot-doc-logo-sub { font-size: .7rem; opacity: .75; margin-top: 2px; }
+
+.angebot-doc-title-block { text-align: right; }
+
+.angebot-doc-title {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.angebot-doc-nr { font-size: .72rem; opacity: .85; margin-top: 4px; }
+
+.angebot-doc-body { padding: 24px 28px; }
+
+.angebot-doc-addresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 20px;
+  font-size: .8rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.angebot-doc-addr-label {
+  font-size: .66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.angebot-doc-betreff {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: .95rem;
+  color: #111;
+  padding: 12px 0;
+  border-top: 1px solid #e8ecf5;
+  border-bottom: 1px solid #e8ecf5;
+  margin-bottom: 16px;
+}
+
+.angebot-doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .78rem;
+  margin-bottom: 16px;
+}
+
+.angebot-doc-table th {
+  background: #f0f3ff;
+  padding: 7px 10px;
+  text-align: left;
+  font-weight: 700;
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #555;
+}
+
+.angebot-doc-table th.r, .angebot-doc-table td.r { text-align: right; }
+
+.angebot-doc-table td {
+  padding: 8px 10px;
+  color: #333;
+  border-bottom: 1px solid #eef0f8;
+}
+
+.angebot-doc-table tbody tr:last-child td { border-bottom: none; }
+
+.angebot-doc-totals {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  padding-top: 12px;
+  border-top: 2px solid #e8ecf5;
+  margin-bottom: 16px;
+}
+
+.angebot-doc-totals-row {
+  display: flex;
+  gap: 48px;
+  font-size: .8rem;
+  color: #555;
+}
+
+.angebot-doc-totals-row.brutto {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #111;
+  padding-top: 8px;
+  border-top: 1px solid #ccc;
+  margin-top: 4px;
+}
+
+.angebot-doc-note {
+  font-size: .71rem;
+  color: #888;
+  line-height: 1.65;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.angebot-doc-actions {
+  background: #f8f9ff;
+  border-top: 1px solid #e8ecf5;
+  padding: 14px 28px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.angebot-doc-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .75rem;
+  color: #5b74e8;
+  background: rgba(79,107,240,.1);
+  border: 1px solid rgba(79,107,240,.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-left: auto;
+}
+
+@media (max-width: 580px) {
+  .angebot-leistungen-grid { grid-template-columns: 1fr; }
+  .angebot-form-wrap { padding: 20px 16px; }
+  .angebot-doc-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .angebot-doc-title-block { text-align: left; }
+  .angebot-doc-addresses { grid-template-columns: 1fr; gap: 12px; }
+  .angebot-doc-body { padding: 20px 16px; }
+  .angebot-doc-actions { padding: 14px 16px; }
+  .angebot-doc-badge { margin-left: 0; }
+  .angebot-doc-table { font-size: .7rem; }
+}
