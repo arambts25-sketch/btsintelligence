@@ -93,19 +93,80 @@
       </div>
     </div>
 
-    <!-- Video -->
+    <!-- Interaktive Demo -->
     <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
       <div class="wrap">
-        <p class="eyebrow">Demo-Video</p>
-        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 24px;">Der Workflow in 60 Sekunden</h2>
-        <div class="demo-video-wrap">
-          <div class="demo-video-placeholder">
-            <div class="demo-video-icon">▶</div>
-            <div class="demo-video-label">
-              <strong>Demo-Video folgt in Kürze</strong>
-              Vollständige Schritt-für-Schritt-Walkthrough des Workflows
+        <p class="eyebrow">Live-Demo</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 8px;">Jetzt selbst ausprobieren</h2>
+        <p class="section-lead" style="margin: 0 0 32px;">PDF hochladen — geschwärzte Version sofort herunterladen.</p>
+
+        <div class="demo-upload-container">
+
+          <!-- State 1: Upload -->
+          <div id="demoUploadState">
+            <div class="demo-upload-zone" id="dropZone" role="button" tabindex="0" aria-label="PDF hochladen">
+              <div class="demo-upload-zone-icon">📄</div>
+              <div class="demo-upload-zone-text">
+                <strong>PDF hier ablegen</strong>
+                <span>oder klicken zum Auswählen</span>
+                <span class="demo-upload-hint">Nur PDF · max. 5 MB · Datei wird nach Verarbeitung nicht gespeichert</span>
+              </div>
+            </div>
+            <input type="file" id="pdfInput" accept=".pdf" style="display:none" aria-hidden="true">
+
+            <div class="demo-file-preview" id="filePreview" style="display:none;margin-top:16px">
+              <span class="demo-file-preview-icon">📄</span>
+              <span class="demo-file-preview-name" id="filePreviewName"></span>
+              <button class="demo-file-remove" onclick="demoRemoveFile()" aria-label="Datei entfernen">✕</button>
+            </div>
+
+            <label class="demo-consent-label" style="margin-top:16px">
+              <input type="checkbox" id="consentCheck" onchange="demoUpdateBtn()">
+              <span>Ich bestätige, berechtigt zu sein, diese Datei zu verarbeiten. Sie wird ausschließlich für diese Demo-Schwärzung verwendet und danach nicht gespeichert.</span>
+            </label>
+
+            <button id="demoSubmitBtn" class="btn-amber" onclick="demoStart()" disabled style="margin-top:20px;width:100%;text-align:center">Dokument jetzt schwärzen →</button>
+          </div>
+
+          <!-- State 2: Processing -->
+          <div id="demoProcessingState" class="demo-processing" style="display:none">
+            <div class="demo-spinner"></div>
+            <div class="demo-processing-text">
+              <strong id="demoProcessingLabel">Dokument wird analysiert…</strong>
+              <span>KI-gestützte PII-Erkennung läuft</span>
             </div>
           </div>
+
+          <!-- State 3: Result -->
+          <div id="demoResultState" style="display:none">
+            <div class="demo-result-card">
+              <div class="demo-result-header">
+                <span class="demo-result-header-icon">✅</span>
+                <div>
+                  <strong>Schwärzung abgeschlossen</strong>
+                  <span id="demoResultFilename"></span>
+                </div>
+              </div>
+              <div class="demo-audit-grid" id="demoAuditGrid"></div>
+              <div class="demo-result-actions">
+                <a id="demoDownloadBtn" class="btn-amber" download>Geschwärzte PDF herunterladen →</a>
+                <button class="btn-ghost" onclick="demoReset()">Neue Demo starten</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- State 4: Error -->
+          <div id="demoErrorState" style="display:none">
+            <div class="demo-error">
+              <span class="demo-error-icon">⚠️</span>
+              <div class="demo-error-text">
+                <strong>Fehler bei der Verarbeitung</strong>
+                <span id="demoErrorMsg">Bitte erneut versuchen.</span>
+              </div>
+              <button class="btn-ghost" onclick="demoReset()" style="flex-shrink:0;margin-left:auto">Erneut →</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -271,6 +332,107 @@
     </div>
   </div>
 
+  <script>
+  (function () {
+    var WEBHOOK = 'https://n8n.btsintelligence.de/webhook/dsgvo-demo';
+    var MAX_MB = 5;
+    var _file = null;
+
+    function el(id) { return document.getElementById(id); }
+    function showState(s) {
+      ['demoUploadState','demoProcessingState','demoResultState','demoErrorState'].forEach(function(id) {
+        el(id).style.display = (id === s) ? '' : 'none';
+      });
+    }
+
+    var dz = el('dropZone');
+    dz.addEventListener('click', function () { el('pdfInput').click(); });
+    dz.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') el('pdfInput').click(); });
+    dz.addEventListener('dragover', function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    dz.addEventListener('dragleave', function () { dz.classList.remove('dragover'); });
+    dz.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dz.classList.remove('dragover');
+      if (e.dataTransfer.files[0]) demoSetFile(e.dataTransfer.files[0]);
+    });
+    el('pdfInput').addEventListener('change', function (e) {
+      if (e.target.files[0]) demoSetFile(e.target.files[0]);
+    });
+
+    window.demoSetFile = function (file) {
+      if (!file.name.toLowerCase().endsWith('.pdf')) { alert('Bitte nur PDF-Dateien hochladen.'); return; }
+      if (file.size > MAX_MB * 1024 * 1024) { alert('Datei zu groß. Maximal ' + MAX_MB + ' MB erlaubt.'); return; }
+      _file = file;
+      el('filePreviewName').textContent = file.name;
+      el('filePreview').style.display = 'flex';
+      el('dropZone').style.display = 'none';
+      demoUpdateBtn();
+    };
+
+    window.demoRemoveFile = function () {
+      _file = null;
+      el('pdfInput').value = '';
+      el('filePreview').style.display = 'none';
+      el('dropZone').style.display = 'flex';
+      demoUpdateBtn();
+    };
+
+    window.demoUpdateBtn = function () {
+      el('demoSubmitBtn').disabled = !(_file && el('consentCheck').checked);
+    };
+
+    window.demoReset = function () {
+      demoRemoveFile();
+      el('consentCheck').checked = false;
+      demoUpdateBtn();
+      showState('demoUploadState');
+    };
+
+    window.demoStart = async function () {
+      if (!_file) return;
+      showState('demoProcessingState');
+      var labels = ['Dokument wird analysiert…','PII-Erkennung läuft…','Daten werden geschwärzt…','Audit wird erstellt…'];
+      var li = 0;
+      var iv = setInterval(function () {
+        li = (li + 1) % labels.length;
+        el('demoProcessingLabel').textContent = labels[li];
+      }, 2500);
+
+      try {
+        var fd = new FormData();
+        fd.append('data', _file, _file.name);
+        var resp = await fetch(WEBHOOK, { method: 'POST', body: fd });
+        clearInterval(iv);
+        if (!resp.ok) throw new Error('Server-Fehler ' + resp.status);
+        var result = await resp.json();
+        if (!result.success) throw new Error('Verarbeitung fehlgeschlagen');
+
+        var bin = atob(result.pdf_base64);
+        var arr = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+        var blob = new Blob([arr], { type: 'application/pdf' });
+        var url = URL.createObjectURL(blob);
+
+        el('demoDownloadBtn').href = url;
+        el('demoDownloadBtn').download = result.filename;
+        el('demoResultFilename').textContent = result.filename;
+
+        var a = result.audit.analyse;
+        var cats = Array.isArray(a.erkannte_kategorien) ? a.erkannte_kategorien.join(', ') : 'PII';
+        el('demoAuditGrid').innerHTML =
+          '<div class="demo-audit-stat"><span>' + a.entfernte_tokens + '</span><label>Geschwärzte Tokens</label></div>' +
+          '<div class="demo-audit-stat"><span>' + cats + '</span><label>Kategorien</label></div>' +
+          '<div class="demo-audit-stat"><span>EU/Frankfurt</span><label>Server-Standort</label></div>';
+
+        showState('demoResultState');
+      } catch (err) {
+        clearInterval(iv);
+        el('demoErrorMsg').textContent = err.message || 'Bitte erneut versuchen.';
+        showState('demoErrorState');
+      }
+    };
+  })();
+  </script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="/js/main.js" defer></script>
 </body>
