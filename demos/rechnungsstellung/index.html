@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rechnungsstellung automatisieren: Demo | BTS Intelligence</title>
+  <meta name="description" content="Live-Demo: Gewerk wählen, Leistungen eingeben — automatisch erstellte Rechnung mit Fälligkeitsdatum, MwSt. und Bankverbindung. Direkt als PDF exportierbar.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.btsintelligence.de/demos/rechnungsstellung/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.btsintelligence.de/demos/rechnungsstellung/">
+  <meta property="og:title" content="Rechnungsstellung automatisieren Demo | BTS Intelligence">
+  <meta property="og:description" content="Leistungen eingeben, Rechnung in Sekunden — KI-gestützte Rechnungsstellung live erleben.">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="BTS Intelligence">
+  <meta name="theme-color" content="#090b12">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Manrope:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Manrope:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Manrope:wght@400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    @media print {
+      header, footer, nav, .skip-to-content, .modal-overlay,
+      #rechnungFormState, #rechnungProcessingState,
+      .section:not(#demoPrintSection), .demo-hero,
+      .angebot-doc-actions .btn-ghost { display: none !important; }
+      body { background: #fff !important; }
+      #demoPrintSection { padding: 0 !important; }
+      .angebot-doc { box-shadow: none !important; border-radius: 0 !important; }
+      .angebot-doc-actions { border-top: none; background: none; padding-top: 0; }
+      .angebot-doc-badge { display: none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Rechnungsstellung automatisieren",
+    "description": "KI-Workflow: Auftragsabschluss erkennen, Rechnung erstellen, versenden und Zahlungseingang überwachen",
+    "provider": {"@id": "https://www.btsintelligence.de/#business"},
+    "step": [
+      {"@type": "HowToStep", "name": "Auftragsabschluss melden", "text": "Gewerk, Leistungen und Menge werden aus dem Auftrag übernommen"},
+      {"@type": "HowToStep", "name": "Rechnung wird berechnet", "text": "Positionen, MwSt., Fälligkeitsdatum und Bankverbindung automatisch befüllt"},
+      {"@type": "HowToStep", "name": "Rechnung wird erstellt", "text": "Vollständiges Dokument mit Rechnungsnummer, Leistungszeitraum und Bankverbindung"},
+      {"@type": "HowToStep", "name": "Versenden & Mahnwesen", "text": "PDF automatisch per E-Mail, Zahlungseingang wird überwacht"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+  <header role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a href="/" class="nav-logo">
+        <span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/leistungen/">Leistungen</a></li>
+        <li><a href="/preise/">Preise</a></li>
+        <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+        <li><a href="/ueber-uns/">Über uns</a></li>
+        <li><a href="/ratgeber/">Ratgeber</a></li>
+        <li><a href="/demos/" aria-current="page">Demos</a></li>
+        <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <div class="wrap">
+      <div class="demo-hero">
+        <nav aria-label="Breadcrumb" style="margin-bottom: 24px;">
+          <ol style="display:flex;gap:8px;list-style:none;padding:0;margin:0;font-size:.85rem;color:var(--text-lo)">
+            <li><a href="/" style="color:var(--text-lo);text-decoration:none;">Startseite</a></li>
+            <li style="opacity:.5">›</li>
+            <li><a href="/demos/" style="color:var(--text-lo);text-decoration:none;">Demos</a></li>
+            <li style="opacity:.5">›</li>
+            <li style="color:var(--text-med)">Rechnungsstellung</li>
+          </ol>
+        </nav>
+
+        <div class="demo-hero-tags">
+          <span class="demo-tag demo-tag--primary">Handwerk &amp; Gewerbe</span>
+          <span class="demo-tag demo-tag--amber">KI-Workflow</span>
+          <span class="demo-tag">Rechnungen</span>
+          <span class="demo-tag">Mahnwesen</span>
+        </div>
+
+        <h1 class="demo-hero-title">Rechnungsstellung<br>automatisch nach Auftragsabschluss</h1>
+        <p class="demo-hero-lead">
+          Auftrag abgeschlossen — Rechnung raus, fertig. Dieser KI-Workflow erstellt
+          nach Auftragsabschluss automatisch eine vollständige Rechnung mit Leistungszeitraum,
+          Fälligkeitsdatum und Bankverbindung. Geleistete Anzahlungen werden automatisch verrechnet.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interaktive Demo -->
+    <section class="section" id="demoPrintSection" style="padding-top: 20px; padding-bottom: 20px;">
+      <div class="wrap">
+        <p class="eyebrow">Live-Demo</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 8px;">Jetzt selbst ausprobieren</h2>
+        <p class="section-lead" style="margin: 0 0 32px;">Gewerk und Leistungen eingeben — fertige Rechnung erscheint sofort.</p>
+
+        <!-- State 1: Form -->
+        <div id="rechnungFormState">
+          <div class="angebot-form-wrap">
+
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="rechnungGewerk">Gewerk</label>
+              <select class="angebot-select" id="rechnungGewerk" onchange="rechnungGewerkChange()">
+                <option value="">Bitte Gewerk wählen…</option>
+                <option value="maler">Maler &amp; Lackierer</option>
+                <option value="sanitaer">Sanitär &amp; Heizung</option>
+                <option value="elektro">Elektro</option>
+                <option value="fliesen">Fliesenleger</option>
+                <option value="schreiner">Schreiner / Zimmermann</option>
+              </select>
+            </div>
+
+            <div class="angebot-form-group" id="rLeistungenGroup" style="display:none">
+              <label class="angebot-form-label">Leistungen <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--text-lo)">(Mehrfachauswahl)</span></label>
+              <div class="angebot-leistungen-grid" id="rLeistungenContainer"></div>
+            </div>
+
+            <div class="angebot-form-group" id="rMengeGroup" style="display:none">
+              <label class="angebot-form-label" id="rMengeLabelText" for="rechnungMenge">Fläche in m²</label>
+              <input class="angebot-input" type="number" id="rechnungMenge" min="1" max="9999" placeholder="z.B. 80" oninput="rechnungUpdateBtn()">
+            </div>
+
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="rechnungKunde">Kundenname <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--text-lo)">(optional)</span></label>
+              <input class="angebot-input" type="text" id="rechnungKunde" placeholder="z.B. Max Mustermann">
+            </div>
+
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="rechnungAnzahlung">Geleistete Anzahlung <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--text-lo)">(optional, in €)</span></label>
+              <input class="angebot-input" type="number" id="rechnungAnzahlung" min="0" max="999999" placeholder="z.B. 500" step="0.01">
+            </div>
+
+            <button id="rechnungGenerierenBtn" class="btn-amber" onclick="rechnungStart()" disabled style="width:100%;text-align:center;margin-top:4px">Rechnung erstellen →</button>
+          </div>
+        </div>
+
+        <!-- State 2: Processing -->
+        <div id="rechnungProcessingState" class="demo-processing" style="display:none">
+          <div class="demo-spinner"></div>
+          <div class="demo-processing-text">
+            <strong id="rechnungProcessLabel">Auftragsdaten werden übernommen…</strong>
+            <span>Rechnung wird automatisch erstellt</span>
+          </div>
+        </div>
+
+        <!-- State 3: Result -->
+        <div id="rechnungResultState" style="display:none">
+          <div class="angebot-doc-wrap" id="rechnungDocContent"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Workflow-Schritte -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <p class="eyebrow">So funktioniert's</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 40px;">4 Schritte, vollständig automatisiert</h2>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <span class="workflow-step-icon">✅</span>
+            <div class="workflow-step-num">Schritt 1</div>
+            <div class="workflow-step-title">Auftragsabschluss</div>
+            <div class="workflow-step-desc">Auftrag wird als abgeschlossen markiert — in der Handwerker-App, CRM oder per E-Mail-Trigger.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">🧾</span>
+            <div class="workflow-step-num">Schritt 2</div>
+            <div class="workflow-step-title">Rechnung kalkulieren</div>
+            <div class="workflow-step-desc">Positionen, MwSt., Anzahlungsverrechnung und Fälligkeitsdatum werden automatisch berechnet.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">📄</span>
+            <div class="workflow-step-num">Schritt 3</div>
+            <div class="workflow-step-title">PDF erstellen</div>
+            <div class="workflow-step-desc">Vollständiges Dokument mit Rechnungsnummer, Leistungszeitraum, Bankverbindung und Zahlungsfrist.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">📬</span>
+            <div class="workflow-step-num">Schritt 4</div>
+            <div class="workflow-step-title">Versenden &amp; Mahnwesen</div>
+            <div class="workflow-step-desc">PDF automatisch per E-Mail — und nach Fälligkeit werden Mahnstufen automatisch ausgelöst.</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px">
+          <div class="uc-card reveal">
+            <div class="uc-icon">⚡</div>
+            <h3>Sofort nach Abnahme</h3>
+            <p>Kein Warten, kein manuelles Anlegen. Die Rechnung geht raus, sobald der Auftrag als erledigt gilt — automatisch und fehlerfrei.</p>
+          </div>
+          <div class="uc-card reveal">
+            <div class="uc-icon">🔢</div>
+            <h3>Anzahlungen verrechnet</h3>
+            <p>Geleistete Anzahlungen werden automatisch abgezogen. Der verbleibende Betrag wird gesondert ausgewiesen — klar und transparent.</p>
+          </div>
+          <div class="uc-card reveal">
+            <div class="uc-icon">📬</div>
+            <h3>Automatisches Mahnwesen</h3>
+            <p>Bei Zahlungsverzug startet der Mahnprozess ohne manuellen Eingriff — 1. Erinnerung, Mahnung, Eskalation nach konfigurierbaren Fristen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usecase -->
+    <section class="section">
+      <div class="wrap" style="max-width: 760px; margin: 0 auto;">
+        <p class="eyebrow">Praxisbeispiel</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem);">Elektriker: Rechnung in 0 Minuten nach Abnahme</h2>
+        <p style="color:var(--text-med);line-height:1.75;margin-bottom:24px">
+          Ein Elektriker schließt eine Baustelle ab und trägt in der App "Auftrag erledigt" ein.
+          Früher hieß das: zurück ins Büro, Auftrag raussuchen, Rechnung in Word tippen,
+          Rechnungsnummer vergeben, MwSt. berechnen, PDF erstellen, E-Mail schreiben — gut 30 Minuten pro Rechnung.
+        </p>
+        <p style="color:var(--text-med);line-height:1.75;margin-bottom:24px">
+          Mit dem automatisierten Workflow wird die Rechnung sofort erstellt und per E-Mail verschickt.
+          Die geleistete Anzahlung wird automatisch verrechnet, das Fälligkeitsdatum gesetzt.
+          Und wenn nicht gezahlt wird: Das Mahnwesen läuft von selbst.
+        </p>
+        <div style="background:var(--bg-card);border:1px solid var(--border-hi);border-radius:12px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start">
+          <div style="font-size:1.5rem;flex-shrink:0">💸</div>
+          <div>
+            <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;color:var(--text-hi);margin-bottom:4px">Schneller bezahlt — weniger offene Posten</div>
+            <div style="color:var(--text-med);font-size:.9rem">Betriebe mit automatisierter Rechnungsstellung berichten von durchschnittlich 40 % kürzeren Zahlungszeiten — weil die Rechnung sofort kommt und das Mahnwesen konsequent greift.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--alt">
+      <div class="wrap" style="text-align:center">
+        <p class="eyebrow">Interesse?</p>
+        <h2 class="section-title" style="max-width:480px;margin:0 auto 16px">Rechnungsstellung für Ihren Betrieb einrichten</h2>
+        <p class="section-lead" style="margin:0 auto 32px;text-align:center">
+          Mit Ihrer Preisliste, Ihrem Briefkopf und Ihren Mahnfristen — individuell eingerichtet in wenigen Tagen.
+        </p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a href="#" onclick="openModal(event)" class="btn-amber">Kostenloses Erstgespräch →</a>
+          <a href="/demos/" class="btn-ghost">← Alle Demos</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px">
+        <rect width="32" height="32" rx="8" fill="url(#lg-rech)"/>
+        <path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/>
+        <path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/>
+        <circle cx="22" cy="13" r="2.5" fill="#e8a820"/>
+        <line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="lg-rech" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4f6bf0"/>
+            <stop offset="100%" stop-color="#2a3fa8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+    </div>
+    <div class="footer-links">
+      <a href="/leistungen/">Leistungen</a>
+      <a href="/preise/">Preise</a>
+      <a href="/demos/">Demos</a>
+      <a href="/ueber-uns/">Über uns</a>
+      <a href="/ratgeber/">Ratgeber</a>
+      <a href="#" onclick="openModal(event)">Termin buchen</a>
+      <a href="tel:+491784552028">0178 / 455 2028</a>
+    </div>
+    <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+    <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a></div>
+  </footer>
+
+  <div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalTitleRech">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+      <div id="modalTitleRech" style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--text-hi);margin-bottom:8px">Kostenloses Erstgespräch</div>
+      <p style="color:var(--text-med);font-size:.9rem;margin-bottom:24px">30 Minuten, unverbindlich – wir zeigen Ihnen, was konkret möglich ist.</p>
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber" style="display:block;text-align:center">Termin bei Calendly buchen →</a>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var LEISTUNGEN = {
+      maler: [
+        { id: 'rml1', text: 'Wände streichen (2 Anstriche)', einheit: 'm²', ep: 12.50, checked: true },
+        { id: 'rml2', text: 'Decken streichen (2 Anstriche)', einheit: 'm²', ep: 15.00, checked: true },
+        { id: 'rml3', text: 'Tapezieren (inkl. Tapete)', einheit: 'm²', ep: 18.50, checked: false },
+        { id: 'rml4', text: 'Grundierung auftragen', einheit: 'm²', ep: 5.50, checked: true },
+      ],
+      sanitaer: [
+        { id: 'rsa1', text: 'WC-Anlage vollständig installieren', einheit: 'Stk.', ep: 380, checked: true },
+        { id: 'rsa2', text: 'Waschbecken mit Armatur montieren', einheit: 'Stk.', ep: 280, checked: true },
+        { id: 'rsa3', text: 'Dusche einbauen (inkl. Armatur)', einheit: 'Stk.', ep: 580, checked: false },
+        { id: 'rsa4', text: 'Badewanne einbauen (inkl. Armatur)', einheit: 'Stk.', ep: 720, checked: false },
+      ],
+      elektro: [
+        { id: 'rel1', text: 'Doppelsteckdose setzen', einheit: 'Stk.', ep: 85, checked: true },
+        { id: 'rel2', text: 'Lichtschalter setzen', einheit: 'Stk.', ep: 65, checked: true },
+        { id: 'rel3', text: 'Deckenauslass + Leuchte installieren', einheit: 'Stk.', ep: 120, checked: true },
+        { id: 'rel4', text: 'Leitungen verlegen (NYM-J 3×1,5)', einheit: 'lfm', ep: 28, checked: false },
+      ],
+      fliesen: [
+        { id: 'rfl1', text: 'Bodenfliesen verlegen (inkl. Kleber)', einheit: 'm²', ep: 38, checked: true },
+        { id: 'rfl2', text: 'Wandfliesen verlegen (inkl. Kleber)', einheit: 'm²', ep: 45, checked: true },
+        { id: 'rfl3', text: 'Verfugen + Silikon abdichten', einheit: 'm²', ep: 9, checked: true },
+        { id: 'rfl4', text: 'Untergrund vorbereiten (Schleif./Spachteln)', einheit: 'm²', ep: 15, checked: false },
+      ],
+      schreiner: [
+        { id: 'rsc1', text: 'Parkett verlegen (schwimmend)', einheit: 'm²', ep: 28, checked: true },
+        { id: 'rsc2', text: 'Sockelleisten montieren', einheit: 'lfm', ep: 8, checked: true },
+        { id: 'rsc3', text: 'Innentür einbauen (inkl. Zarge)', einheit: 'Stk.', ep: 380, checked: false },
+        { id: 'rsc4', text: 'Fenster einbauen (inkl. Dämmung)', einheit: 'Stk.', ep: 480, checked: false },
+      ],
+    };
+
+    var GEWERK_LABELS = {
+      maler: 'Maler & Lackierer',
+      sanitaer: 'Sanitär & Heizung',
+      elektro: 'Elektro',
+      fliesen: 'Fliesenleger',
+      schreiner: 'Schreiner / Zimmermann',
+    };
+
+    var MENGE_INFO = {
+      maler:    { label: 'Gesamtfläche in m²',         placeholder: 'z.B. 80' },
+      sanitaer: { label: 'Anzahl Einheiten (Stk.)',     placeholder: 'z.B. 4' },
+      elektro:  { label: 'Anzahl Punkte / Steckdosen',  placeholder: 'z.B. 15' },
+      fliesen:  { label: 'Gesamtfläche in m²',          placeholder: 'z.B. 35' },
+      schreiner:{ label: 'Fläche in m² / Stückzahl',    placeholder: 'z.B. 60' },
+    };
+
+    function el(id) { return document.getElementById(id); }
+
+    function showState(s) {
+      ['rechnungFormState', 'rechnungProcessingState', 'rechnungResultState'].forEach(function (id) {
+        el(id).style.display = (id === s) ? '' : 'none';
+      });
+    }
+
+    function fmt(n) {
+      return n.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+
+    function dateFmt(d) {
+      return d.toLocaleDateString('de-DE');
+    }
+
+    window.rechnungGewerkChange = function () {
+      var gewerk = el('rechnungGewerk').value;
+      var container = el('rLeistungenContainer');
+      var group = el('rLeistungenGroup');
+      var mengeGroup = el('rMengeGroup');
+
+      if (!gewerk) {
+        group.style.display = 'none';
+        mengeGroup.style.display = 'none';
+        el('rechnungGenerierenBtn').disabled = true;
+        return;
+      }
+
+      var info = MENGE_INFO[gewerk];
+      el('rMengeLabelText').textContent = info.label;
+      el('rechnungMenge').placeholder = info.placeholder;
+
+      var html = '';
+      LEISTUNGEN[gewerk].forEach(function (l) {
+        html += '<label class="angebot-check-item' + (l.checked ? ' checked' : '') + '" id="rlbl-' + l.id + '">' +
+          '<input type="checkbox" id="' + l.id + '"' + (l.checked ? ' checked' : '') +
+          ' onchange="rechnungCheckChange(\'' + l.id + '\')">' +
+          l.text + '</label>';
+      });
+      container.innerHTML = html;
+
+      group.style.display = '';
+      mengeGroup.style.display = '';
+      rechnungUpdateBtn();
+    };
+
+    window.rechnungCheckChange = function (id) {
+      var cb = el(id);
+      var lbl = el('rlbl-' + id);
+      if (lbl) lbl.className = 'angebot-check-item' + (cb.checked ? ' checked' : '');
+    };
+
+    window.rechnungUpdateBtn = function () {
+      var gewerk = el('rechnungGewerk').value;
+      var menge = parseFloat(el('rechnungMenge').value);
+      el('rechnungGenerierenBtn').disabled = !(gewerk && menge > 0);
+    };
+
+    window.rechnungStart = function () {
+      var gewerk = el('rechnungGewerk').value;
+      var menge = parseFloat(el('rechnungMenge').value);
+      if (!gewerk || !(menge > 0)) return;
+
+      showState('rechnungProcessingState');
+
+      var steps = [
+        'Auftragsdaten werden übernommen…',
+        'Leistungspositionen werden kalkuliert…',
+        'Anzahlung wird verrechnet…',
+        'Rechnung wird formatiert…',
+      ];
+      var si = 0;
+      el('rechnungProcessLabel').textContent = steps[0];
+      var iv = setInterval(function () {
+        si = Math.min(si + 1, steps.length - 1);
+        el('rechnungProcessLabel').textContent = steps[si];
+      }, 900);
+
+      setTimeout(function () {
+        clearInterval(iv);
+        renderRechnung(gewerk, menge);
+        showState('rechnungResultState');
+      }, 3800);
+    };
+
+    function renderRechnung(gewerk, menge) {
+      var kunde = (el('rechnungKunde').value.trim() || 'Max Mustermann');
+      var anzahlungRaw = parseFloat(el('rechnungAnzahlung').value) || 0;
+      var now = new Date();
+
+      var nr = 'RE-' + now.getFullYear() + '-' + (Math.floor(Math.random() * 9000) + 1000);
+      var datum = dateFmt(now);
+      var faellig = dateFmt(new Date(now.getTime() + 14 * 86400000));
+
+      var endLeistung = new Date(now.getTime() - 3 * 86400000);
+      var startLeistung = new Date(endLeistung.getTime() - 14 * 86400000);
+      var leistungszeitraum = dateFmt(startLeistung) + ' – ' + dateFmt(endLeistung);
+
+      var gewerkLabel = GEWERK_LABELS[gewerk];
+
+      var selected = LEISTUNGEN[gewerk].filter(function (l) {
+        var cb = el(l.id);
+        return cb && cb.checked;
+      });
+      if (selected.length === 0) selected = [LEISTUNGEN[gewerk][0]];
+
+      var positionen = selected.map(function (l, i) {
+        var gp = menge * l.ep;
+        return { pos: String(i + 1).padStart(2, '0'), text: l.text, menge: menge, einheit: l.einheit, ep: l.ep, gp: gp };
+      });
+
+      var netto = positionen.reduce(function (s, p) { return s + p.gp; }, 0);
+      var mwst19 = netto * 0.19;
+      var brutto = netto + mwst19;
+      var anzahlung = Math.min(anzahlungRaw, brutto);
+      var offen = brutto - anzahlung;
+
+      var rows = positionen.map(function (p) {
+        return '<tr><td>' + p.pos + '</td><td>' + p.text + '</td>' +
+          '<td class="r">' + p.menge.toLocaleString('de-DE') + '</td>' +
+          '<td class="r">' + p.einheit + '</td>' +
+          '<td class="r">' + p.ep.toLocaleString('de-DE', { minimumFractionDigits: 2 }) + ' €</td>' +
+          '<td class="r">' + fmt(p.gp) + '</td></tr>';
+      }).join('');
+
+      var anzahlungRows = '';
+      if (anzahlung > 0) {
+        anzahlungRows =
+          '<div class="angebot-doc-totals-row paid"><span>Geleistete Anzahlung:</span><span>− ' + fmt(anzahlung) + '</span></div>' +
+          '<div class="angebot-doc-totals-row offen"><span>Verbleibender Betrag:</span><span>' + fmt(offen) + '</span></div>';
+      }
+
+      var verwendungszweck = nr + ' / ' + kunde.split(' ').pop();
+
+      el('rechnungDocContent').innerHTML =
+        '<div class="angebot-doc">' +
+          '<div class="angebot-doc-header">' +
+            '<div>' +
+              '<div class="angebot-doc-logo-name">Muster Handwerk GmbH</div>' +
+              '<div class="angebot-doc-logo-sub">Fachbetrieb für ' + gewerkLabel + '</div>' +
+            '</div>' +
+            '<div class="angebot-doc-title-block">' +
+              '<div class="angebot-doc-title">RECHNUNG</div>' +
+              '<div class="angebot-doc-nr">' + nr + ' · ' + datum + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="angebot-doc-body">' +
+            '<div class="angebot-doc-addresses">' +
+              '<div>' +
+                '<div class="angebot-doc-addr-label">Rechnungsempfänger</div>' +
+                '<strong>' + kunde + '</strong><br>' +
+                'Musterstraße 1<br>80331 München<br>Deutschland' +
+              '</div>' +
+              '<div style="text-align:right">' +
+                '<div class="angebot-doc-addr-label">Rechnungssteller</div>' +
+                '<strong>Muster Handwerk GmbH</strong><br>' +
+                'Handwerkerstr. 12<br>80339 München<br>info@muster-handwerk.de' +
+              '</div>' +
+            '</div>' +
+            '<div class="angebot-doc-betreff">Rechnung – Leistungen im Bereich ' + gewerkLabel + '<br>' +
+              '<span style="font-weight:400;font-size:.8rem;color:#888">Leistungszeitraum: ' + leistungszeitraum + '</span>' +
+            '</div>' +
+            '<table class="angebot-doc-table">' +
+              '<thead><tr>' +
+                '<th style="width:36px">Pos.</th>' +
+                '<th>Leistungsbeschreibung</th>' +
+                '<th class="r" style="width:56px">Menge</th>' +
+                '<th class="r" style="width:52px">Einh.</th>' +
+                '<th class="r" style="width:80px">EP netto</th>' +
+                '<th class="r" style="width:88px">GP netto</th>' +
+              '</tr></thead>' +
+              '<tbody>' + rows + '</tbody>' +
+            '</table>' +
+            '<div class="angebot-doc-totals">' +
+              '<div class="angebot-doc-totals-row"><span>Nettobetrag:</span><span>' + fmt(netto) + '</span></div>' +
+              '<div class="angebot-doc-totals-row"><span>zzgl. 19 % MwSt.:</span><span>' + fmt(mwst19) + '</span></div>' +
+              '<div class="angebot-doc-totals-row brutto"><span>Rechnungsbetrag brutto:</span><span>' + fmt(brutto) + '</span></div>' +
+              anzahlungRows +
+            '</div>' +
+            '<div class="rechnung-bank-details">' +
+              '<strong>Bankverbindung:</strong> Muster Handwerk GmbH &nbsp;·&nbsp; ' +
+              'IBAN: DE12 3456 7890 1234 5678 90 &nbsp;·&nbsp; BIC: SSKMDEMMXXX &nbsp;·&nbsp; Stadtsparkasse München<br>' +
+              '<strong>Verwendungszweck:</strong> ' + verwendungszweck + ' &nbsp;·&nbsp; ' +
+              '<strong>Fällig bis:</strong> ' + faellig +
+            '</div>' +
+            '<div class="angebot-doc-note">' +
+              'Bitte überweisen Sie den ' + (anzahlung > 0 ? 'verbleibenden Betrag von <strong>' + fmt(offen) + '</strong>' : 'Rechnungsbetrag') +
+              ' bis zum <strong>' + faellig + '</strong> unter Angabe des Verwendungszwecks.<br>' +
+              'Bei Fragen zur Rechnung wenden Sie sich bitte an info@muster-handwerk.de. Vielen Dank für Ihren Auftrag.' +
+            '</div>' +
+          '</div>' +
+          '<div class="angebot-doc-actions">' +
+            '<button class="btn-amber" onclick="window.print()" style="font-size:.85rem;padding:10px 20px">Als PDF speichern →</button>' +
+            '<button class="btn-ghost" onclick="rechnungReset()" style="font-size:.85rem;padding:10px 20px">Neue Rechnung</button>' +
+            '<span class="angebot-doc-badge">⚡ Automatisch generiert</span>' +
+          '</div>' +
+        '</div>';
+    }
+
+    window.rechnungReset = function () {
+      el('rechnungGewerk').value = '';
+      el('rechnungMenge').value = '';
+      el('rechnungKunde').value = '';
+      el('rechnungAnzahlung').value = '';
+      el('rLeistungenGroup').style.display = 'none';
+      el('rMengeGroup').style.display = 'none';
+      el('rechnungGenerierenBtn').disabled = true;
+      el('rechnungDocContent').innerHTML = '';
+      showState('rechnungFormState');
+    };
+
+  })();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
