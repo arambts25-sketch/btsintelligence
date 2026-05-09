@@ -420,7 +420,7 @@
         var a = result.audit.analyse;
         var cats = Array.isArray(a.erkannte_kategorien) ? a.erkannte_kategorien.join(', ') : 'PII';
         el('demoAuditGrid').innerHTML =
-          '<div class="demo-audit-stat"><span>' + a.entfernte_tokens + '</span><label>Geschwärzte Tokens</label></div>' +
+          '<div class="demo-audit-stat"><span>' + a.token_analysiert + '</span><label>Tokens analysiert</label></div>' +
           '<div class="demo-audit-stat"><span>' + cats + '</span><label>Kategorien</label></div>' +
           '<div class="demo-audit-stat"><span>EU/Frankfurt</span><label>Server-Standort</label></div>';
 
