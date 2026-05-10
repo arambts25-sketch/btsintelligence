@@ -400,11 +400,11 @@ footer{
 }
 .footer-logo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:.95rem;letter-spacing:-.03em;color:var(--text-hi)}
 .footer-logo-mark{color:var(--amber-400)}
-.footer-links{display:flex;gap:24px}
+.footer-links{display:flex;flex-wrap:wrap;gap:12px 24px}
 .footer-links a{font-size:.88rem;color:var(--text-med);transition:color .18s}
 .footer-links a:hover{color:var(--text-hi)}
 .footer-trust{font-size:.78rem;color:var(--text-med);width:100%;text-align:center;padding:8px 0}
-.footer-legal{font-size:.74rem;color:var(--text-lo)}
+.footer-legal{font-size:.74rem;color:var(--text-lo);word-break:break-word}
 
 /* MODAL */
 .modal-overlay{
