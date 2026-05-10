@@ -77,7 +77,7 @@
         "name": "Wie hoch ist die maximale Förderung beim Digitalbonus Bayern für KI-Projekte?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Beim Digitalbonus Standard sind es bis zu 7.500 € (50 % von max. 15.000 € förderfähigen Kosten). Beim Digitalbonus Plus (KI-Sondermodul) sind es bis zu 30.000 € (50 % von max. 60.000 €). Ein BTS-Intelligence-Starter-Paket über 12 Monate (5.880 €) wäre z.B. zu 50 % förderbar — effektiv nur 245 €/Monat."
+          "text": "Beim Digitalbonus Standard sind es bis zu 7.500 € (50 % von max. 15.000 € förderfähigen Kosten). Beim Digitalbonus Plus (KI-Sondermodul) sind es bis zu 30.000 € (50 % von max. 60.000 €). Eine 12-Monats-Automatisierung von BTS Intelligence im Einstiegssegment (Gesamtinvestition ca. 5.000–7.000 €) wäre damit zu 50 % förderbar — die effektiven Monatskosten halbieren sich entsprechend."
         }
       }
     ]
@@ -94,14 +94,13 @@
     <span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/#ki-prozess-handwerk">Prozess</a></li>
-    <li><a href="/#ki-leistungen-handwerk">Leistungen</a></li>
-    <li><a href="/#ki-preise-handwerk">Preise</a></li>
+    <li><a href="/leistungen/">Leistungen</a></li>
+    <li><a href="/preise/">Preise</a></li>
     <li><a href="/#digitalbonus-bayern">Förderung</a></li>
-    <li><a href="/#ki-agentur-ingolstadt">Warum wir</a></li>
-    <li><a href="/#faq-ki-handwerksbetriebe">FAQ</a></li>
-    <li><a href="/ratgeber/" class="nav-links-active">Ratgeber</a></li>
-    <li><a href="/#ki-beratung-kostenlos" class="nav-btn">Termin buchen →</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber/" aria-current="page">Ratgeber</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -242,26 +241,27 @@
 
   <h2>Konkrete Förderrechnung: Was bleibt für Sie übrig?</h2>
 
-  <p>Ein Beispiel mit dem BTS-Intelligence-Starter-Paket (490 €/Monat) über 12 Monate:</p>
+  <p>Zwei Beispiele für typische Investitionsgrößen (verbindlicher Festpreis im individuellen Angebot — siehe <a href="/preise/">Preise &amp; Konditionen</a>):</p>
 
   <div class="article-box">
-    <div class="article-box-title">💰 Rechenbeispiel: Starter-Paket 12 Monate</div>
+    <div class="article-box-title">💰 Rechenbeispiel: Einstieg (1 Prozessbereich, 12 Monate)</div>
     <ul>
-      <li>Gesamtkosten über 12 Monate: <strong>5.880 €</strong> netto</li>
-      <li>Förderfähig (50 %): <strong>2.940 €</strong></li>
-      <li>Verbleibende Kosten nach Förderung: <strong>2.940 €</strong></li>
-      <li>Effektiver Monatsbeitrag: <strong>245 € statt 490 €</strong></li>
+      <li>Typische Gesamtinvestition über 12 Monate: <strong>ca. 6.000 €</strong> netto</li>
+      <li>Förderfähig (50 %): <strong>ca. 3.000 €</strong></li>
+      <li>Verbleibende Kosten nach Förderung: <strong>ca. 3.000 €</strong></li>
+      <li>Effektiver Monatsbeitrag: <strong>ca. 250 €/Monat (statt ca. 500 €)</strong></li>
     </ul>
   </div>
 
   <div class="article-box">
-    <div class="article-box-title">💰 Rechenbeispiel: Professional-Paket 12 Monate</div>
+    <div class="article-box-title">💰 Rechenbeispiel: Mittlere Lösung (2–3 vernetzte Prozessbereiche, 12 Monate)</div>
     <ul>
-      <li>Gesamtkosten über 12 Monate: <strong>10.680 €</strong> netto</li>
-      <li>Förderfähig (50 %, gedeckelt bei 7.500 €): <strong>7.500 €</strong></li>
-      <li>Verbleibende Kosten nach Förderung: <strong>3.180 €</strong></li>
-      <li>Effektiver Monatsbeitrag: <strong>265 € statt 890 €</strong></li>
+      <li>Typische Gesamtinvestition über 12 Monate: <strong>ca. 11.000 €</strong> netto</li>
+      <li>Förderfähig (50 %, gedeckelt bei 7.500 € im Standard-Programm): <strong>5.500 €</strong></li>
+      <li>Verbleibende Kosten nach Förderung: <strong>ca. 5.500 €</strong></li>
+      <li>Effektiver Monatsbeitrag: <strong>ca. 460 €/Monat (statt ca. 920 €)</strong></li>
     </ul>
+    <p style="margin-top: 12px; font-size: .85rem; color: var(--text-lo);">Beim Digitalbonus Plus (KI-Sondermodul) sind sogar bis zu 30.000 € Zuschuss möglich.</p>
   </div>
 
   <h2>Schritt-für-Schritt: So stellen Sie den Antrag</h2>
@@ -320,34 +320,34 @@
       <tr>
         <th>Prozess</th>
         <th>Zeitersparnis</th>
-        <th>Passendes Paket</th>
+        <th>Typischer Aufwand</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Angebotserstellung aus Aufmaßdaten</td>
         <td>~3 h/Woche</td>
-        <td>Starter</td>
+        <td>1 Prozessbereich</td>
       </tr>
       <tr>
         <td>Rechnungsstellung &amp; Mahnwesen</td>
         <td>~2 h/Woche + weniger Zahlungsverzug</td>
-        <td>Starter</td>
+        <td>1 Prozessbereich</td>
       </tr>
       <tr>
         <td>Kundenanfragen &amp; Terminplanung</td>
         <td>~1,5 h/Tag</td>
-        <td>Starter oder Professional</td>
+        <td>1–2 Prozessbereiche</td>
       </tr>
       <tr>
         <td>Materialbeschaffung &amp; Lieferantenkommunikation</td>
         <td>~2 h/Woche</td>
-        <td>Professional</td>
+        <td>2–3 vernetzte Prozessbereiche</td>
       </tr>
       <tr>
         <td>DSGVO-Dokumentenschwärzung (Immobilien)</td>
         <td>Stunden → Sekunden</td>
-        <td>Professional</td>
+        <td>Spezialisierter KI-Agent</td>
       </tr>
     </tbody>
   </table>
@@ -376,7 +376,7 @@
 
   <h2>Fazit: Jetzt ist der richtige Zeitpunkt</h2>
 
-  <p>Der Digitalbonus Bayern ist eine der attraktivsten Fördermaßnahmen für bayerische Handwerksbetriebe, die KI-Automatisierung einführen möchten. Mit bis zu 50 % Förderung sinken die effektiven Kosten erheblich — aus 490 € / Monat werden realistisch 245 € / Monat.</p>
+  <p>Der Digitalbonus Bayern ist eine der attraktivsten Fördermaßnahmen für bayerische Handwerksbetriebe, die KI-Automatisierung einführen möchten. Mit bis zu 50 % Förderung sinken die effektiven Kosten erheblich — typische Einstiegsinvestitionen halbieren sich entsprechend.</p>
 
   <p>Zwei Dinge sind dabei entscheidend: <strong>Erstens</strong>, der Antrag muss <em>vor</em> dem Vertragsabschluss gestellt werden. <strong>Zweitens</strong>, die Haushaltsmittel sind begrenzt — wer früh beantragt, hat bessere Chancen auf Bewilligung.</p>
 
@@ -384,7 +384,7 @@
 
   <!-- Author box -->
   <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
-    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">👤</div>
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
     <div>
       <div class="article-box-title" style="margin-bottom: 4px;">Tufan Enes Yilmaz</div>
       <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">Geschäftsführer &amp; Gründer von BTS Intelligence. Spezialisiert auf KI-Automatisierung mit n8n für Handwerksbetriebe und KMU in Bayern. BTS Intelligence begleitet Betriebe vom Digitalbonus-Antrag bis zur fertigen Automatisierungslösung.</p>
@@ -422,6 +422,32 @@
 
 </main>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="ctaModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos & unverbindlich</div>
+    <div class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</div>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text">
+          <div class="modal-option-title">Termin direkt buchen</div>
+          <div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div>
+        </div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text">
+          <div class="modal-option-title">Nachricht hinterlassen</div>
+          <div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
@@ -440,30 +466,19 @@
     </svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
   </div>
   <div class="footer-links">
+    <a href="/leistungen/">Leistungen</a>
+    <a href="/preise/">Preise</a>
+    <a href="/ueber-uns/">Über uns</a>
     <a href="/ratgeber/">Ratgeber</a>
-    <a href="/#ki-beratung-kostenlos">Jetzt Termin vereinbaren</a>
+    <a href="/demos/">Demos</a>
+    <a href="#" onclick="openModal(event)">Termin buchen</a>
     <a href="tel:+491784552028">0178 / 455 2028</a>
   </div>
   <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
-  <div class="footer-legal">© 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+  <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
 </footer>
 
 <script defer src="/_vercel/insights/script.js"></script>
-<script>
-  function toggleMenu() {
-    const links = document.getElementById('navLinks');
-    const nav = document.querySelector('nav');
-    const btn = document.getElementById('hamburger');
-    links.classList.toggle('open');
-    nav.classList.toggle('menu-open');
-    btn.setAttribute('aria-expanded', links.classList.contains('open') ? 'true' : 'false');
-  }
-  document.querySelectorAll('.nav-links a').forEach(a =>
-    a.addEventListener('click', () => {
-      document.getElementById('navLinks').classList.remove('open');
-      document.querySelector('nav').classList.remove('menu-open');
-      document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
-    }));
-</script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>
