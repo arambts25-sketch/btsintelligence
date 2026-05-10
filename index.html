@@ -133,7 +133,7 @@
         "name": "Wie lange dauert die Einrichtung eines KI-Workflows?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Je nach Paket dauert die Implementierung 2 bis 6 Wochen. Das Starter-Paket ist in ca. 2 Wochen live, Professional in ca. 4 Wochen, Enterprise in ca. 6 Wochen. Innerhalb von 48 Stunden nach dem Erstgespräch erhalten Sie ein verbindliches Festpreisangebot."
+          "text": "Die Implementierung dauert je nach Projektumfang 2 bis 6 Wochen. Kleinere Projekte mit einem Prozessbereich sind in ca. 2 Wochen live, größere Vorhaben mit mehreren vernetzten Bereichen in 4–6 Wochen. Innerhalb von 48 Stunden nach dem Erstgespräch erhalten Sie ein verbindliches Festpreisangebot."
         }
       },
       {
@@ -189,6 +189,7 @@
 ]
 </script>
 <link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/css/main.css">
 
 </head>
@@ -243,7 +244,7 @@
   </div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">2–6</div><div class="stat-label">Wochen bis<br>zum ersten Ergebnis</div></div>
-    <div class="stat"><div class="stat-num">490 €</div><div class="stat-label">ab Starter-<br>Paket (netto)</div></div>
+    <div class="stat"><div class="stat-num">3 M.</div><div class="stat-label">Mindest­<br>laufzeit</div></div>
     <div class="stat"><div class="stat-num">48 h</div><div class="stat-label">bis zum<br>Festpreisangebot</div></div>
     <div class="stat"><div class="stat-num">0 %</div><div class="stat-label">Aufschlag auf<br>Tool-Kosten</div></div>
   </div>
@@ -257,25 +258,13 @@
     <p class="founder-lead">Als einer unserer ersten Partner profitieren Sie von einmaligen Sonderkonditionen — und wir wachsen gemeinsam mit Ihrem Betrieb.</p>
     <div class="founder-perks-grid">
       <div class="founder-perks-block">
-        <div class="founder-block-label">Erste 3 Monate — 30 % auf alle Pakete</div>
-        <div class="founder-setup-row">
-          <div class="founder-perk-card">
+        <div class="founder-block-label">Erste 3 Monate — 30 % auf Ihr Festpreisangebot</div>
+        <div class="founder-setup-row" style="justify-content:center">
+          <div class="founder-perk-card" style="max-width:380px">
             <div class="founder-perk-saving">30 %<span>Nachlass</span></div>
-            <div class="founder-perk-title">Starter</div>
-            <div class="founder-perk-pkg-tag">statt 490 € / Monat</div>
-            <div class="founder-perk-desc">Sie zahlen in den ersten 3 Monaten nur 343 € statt 490 € pro Monat.</div>
-          </div>
-          <div class="founder-perk-card">
-            <div class="founder-perk-saving">30 %<span>Nachlass</span></div>
-            <div class="founder-perk-title">Professional</div>
-            <div class="founder-perk-pkg-tag">statt 890 € / Monat</div>
-            <div class="founder-perk-desc">Sie zahlen in den ersten 3 Monaten nur 623 € statt 890 € pro Monat.</div>
-          </div>
-          <div class="founder-perk-card">
-            <div class="founder-perk-saving">30 %<span>Nachlass</span></div>
-            <div class="founder-perk-title">Enterprise</div>
-            <div class="founder-perk-pkg-tag">statt 1.490 € / Monat</div>
-            <div class="founder-perk-desc">Sie zahlen in den ersten 3 Monaten nur 1.043 € statt 1.490 € pro Monat.</div>
+            <div class="founder-perk-title">Gründer-Rabatt</div>
+            <div class="founder-perk-pkg-tag">auf Ihren individuellen Basispreis</div>
+            <div class="founder-perk-desc">In den ersten 3 Monaten zahlen Sie 30 % weniger auf Ihr persönliches Festpreisangebot — als Dankeschön für Ihr frühes Vertrauen.</div>
           </div>
         </div>
       </div>
@@ -574,7 +563,7 @@
 
       <details class="faq-item">
         <summary class="faq-q">Wie lange dauert es, bis mein Betrieb live ist?</summary>
-        <p class="faq-a">Je nach Paket 2 bis 6 Wochen. Das Starter-Paket ist in <strong>ca. 2 Wochen live</strong>, Professional in ca. 4 Wochen, Enterprise in ca. 6 Wochen. Innerhalb von <strong>48 Stunden</strong> nach dem Erstgespräch erhalten Sie ein verbindliches Festpreisangebot — ohne Stundensatz-Überraschungen.</p>
+        <p class="faq-a">Je nach Projektumfang 2 bis 6 Wochen. Kleinere Projekte (1 Prozessbereich) sind in <strong>ca. 2 Wochen live</strong>, größere Vorhaben mit mehreren vernetzten Bereichen in 4–6 Wochen. Innerhalb von <strong>48 Stunden</strong> nach dem Erstgespräch erhalten Sie ein verbindliches Festpreisangebot — ohne Stundensatz-Überraschungen.</p>
       </details>
 
       <details class="faq-item">
@@ -637,13 +626,12 @@
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="paket_einrichtung">Paket (optional)</label>
+          <label for="paket_einrichtung">Projektgröße (optional)</label>
           <select id="paket_einrichtung" name="paket">
             <option value="" selected>Noch nicht sicher</option>
-            <option value="Starter">Starter — 490 € / Monat netto</option>
-            <option value="Professional">Professional — 890 € / Monat netto</option>
-            <option value="Enterprise">Enterprise — 1.490 € / Monat netto</option>
-            <option value="Individuell">Individuell — Auf Anfrage</option>
+            <option value="Klein">Klein — 1–2 Prozessbereiche</option>
+            <option value="Mittel">Mittel — 3–5 Prozessbereiche</option>
+            <option value="Groß">Groß — 6+ Prozessbereiche</option>
           </select>
         </div>
       </div>
