@@ -605,25 +605,29 @@
     <div class="cta-divider">oder Nachricht hinterlassen</div>
 
     <!-- KONTAKTFORMULAR -->
-    <form id="contactForm" action="https://formspree.io/f/mbdpykal" method="POST" class="contact-form">
+    <form id="contactForm" action="https://formspree.io/f/mbdpykal" method="POST" class="contact-form" novalidate>
+      <p class="form-legend">Felder mit <span class="req" aria-hidden="true">*</span> sind Pflichtfelder.</p>
       <div class="form-row">
         <div class="form-group">
-          <label for="name">Ihr Name</label>
-          <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+          <label for="name">Ihr Name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Max Mustermann" required aria-required="true" aria-describedby="name-hint">
+          <div class="field-error" id="name-hint" role="alert" aria-live="polite"></div>
         </div>
         <div class="form-group">
-          <label for="betrieb">Betrieb / Firma</label>
-          <input type="text" id="betrieb" name="betrieb" placeholder="Mustermann Elektro GmbH">
+          <label for="betrieb">Unternehmen / Betrieb</label>
+          <input type="text" id="betrieb" name="betrieb" placeholder="Mustermann GmbH">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" name="email" placeholder="max@mustermann.de" required>
+          <label for="email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" placeholder="max@mustermann.de" required aria-required="true" aria-describedby="email-hint">
+          <div class="field-error" id="email-hint" role="alert" aria-live="polite"></div>
         </div>
         <div class="form-group">
           <label for="phone">Telefon</label>
-          <input type="tel" id="phone" name="phone" placeholder="0178 / 123 4567">
+          <input type="tel" id="phone" name="phone" placeholder="0178 / 123 4567" aria-describedby="phone-hint">
+          <div class="field-error" id="phone-hint" role="alert" aria-live="polite"></div>
         </div>
       </div>
       <div class="form-row">
@@ -639,9 +643,10 @@
       </div>
       <div class="form-group">
         <label for="message">Was kostet Sie aktuell am meisten Zeit?</label>
-        <textarea id="message" name="message" rows="4" placeholder="z.B. Angebote schreiben, Rechnungen nachfassen, Terminplanung..."></textarea>
+        <textarea id="message" name="message" rows="4" placeholder="z.B. Angebote schreiben, Rechnungen nachfassen, E-Mail-Routing, Reporting…"></textarea>
       </div>
       <button type="submit" class="btn-amber form-submit" aria-label="Kontaktformular absenden">Kostenlose Potenzialanalyse anfordern →</button>
+      <p class="form-privacy">Mit dem Absenden stimmen Sie zu, dass wir Ihre Angaben gemäß <a href="/datenschutz/">Datenschutzerklärung</a> zur Bearbeitung Ihrer Anfrage verwenden. Keine Weitergabe an Dritte, kein Newsletter, jederzeit widerrufbar.</p>
       <div id="formSuccess" class="form-success" style="display:none">
         <strong>✓ Vielen Dank für Ihre Nachricht!</strong><br><br>
         Wir haben Ihre Anfrage erhalten und melden uns persönlich innerhalb von 24 Stunden bei Ihnen.<br><br>
@@ -660,11 +665,11 @@
 
 </main>
 <!-- MODAL -->
-<div class="modal-overlay" id="ctaModal">
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
     <div class="modal-eyebrow">Kostenlos & unverbindlich</div>
-    <div class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
     <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
     <div class="modal-options">
       <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
@@ -754,6 +759,12 @@
   <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
   <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
 </footer>
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="true">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
 
 <!-- Vercel Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>

@@ -357,11 +357,11 @@
 </main>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="ctaModal">
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
     <div class="modal-eyebrow">Kostenlos & unverbindlich</div>
-    <div class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
     <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
     <div class="modal-options">
       <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
@@ -414,6 +414,12 @@
   <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
   <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
 </footer>
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="true">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
 
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="/js/main.js" defer></script>
