@@ -30,6 +30,10 @@
   --border-hi: rgba(79,107,240,.22);
   --border-lo: rgba(238,240,255,.08);
   --border-xs: rgba(238,240,255,.05);
+
+  /* Semantic aliases — used across regional landing pages, ratgeber articles, sticky CTA */
+  --accent:     var(--amber-400);
+  --card-bg:    var(--bg-card);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
