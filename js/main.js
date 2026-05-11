@@ -79,30 +79,28 @@
   });
 
   // ===== MOBILE STICKY CTA BAR =====
+  // Immer sichtbar auf Mobile (CSS-gesteuert), nur ausgeblendet wenn Modal offen.
   (function(){
     var sticky = document.getElementById('mobileStickyCta');
     if (!sticky) return;
-    var SHOW_AT = 600;
-    var HIDE_AT = 400;
-    var shown = false;
-    function onScroll(){
-      if (window.innerWidth > 768) {
-        if (shown) { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); shown = false; }
-        return;
-      }
-      // nicht zeigen, wenn Modal offen
+    sticky.setAttribute('aria-hidden', 'false');
+    function update(){
       var modal = document.getElementById('ctaModal');
       if (modal && modal.classList.contains('open')) {
-        if (shown) { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); shown = false; }
-        return;
+        sticky.classList.add('hidden');
+        sticky.setAttribute('aria-hidden', 'true');
+      } else {
+        sticky.classList.remove('hidden');
+        sticky.setAttribute('aria-hidden', 'false');
       }
-      var y = window.scrollY || window.pageYOffset;
-      if (!shown && y > SHOW_AT) { sticky.classList.add('show'); sticky.setAttribute('aria-hidden','false'); shown = true; }
-      else if (shown && y < HIDE_AT) { sticky.classList.remove('show'); sticky.setAttribute('aria-hidden','true'); shown = false; }
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    onScroll();
+    // Modal-Open-Status beobachten (MutationObserver auf class-Attribut)
+    var modal = document.getElementById('ctaModal');
+    if (modal) {
+      var mo = new MutationObserver(update);
+      mo.observe(modal, { attributes: true, attributeFilter: ['class'] });
+    }
+    update();
   })();
 
   // ===== KONTAKTFORMULAR mit Inline-Validierung =====
