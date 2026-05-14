@@ -1,22 +1,25 @@
 # BTS Intelligence
 
-> KI-Automatisierung für Handwerksbetriebe und KMU in ganz Bayern. Spezialisiert auf n8n-Workflows und eigene KI-Agenten.
+> KI-Automatisierung und Prozessautomatisierung für Mittelstand, Steuerkanzleien, Immobilienmakler, Dienstleister und Handwerk in ganz Bayern. Spezialisiert auf maßgeschneiderte Workflows und KI-Agenten — DSGVO-konform aus Deutschland.
 
-BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisierungsagentur aus dem Raum Ingolstadt, Bayern. Das Unternehmen automatisiert Geschäftsprozesse für Handwerksbetriebe (Elektro, SHK, Maler, Schreiner, Kfz) und KMU in ganz Bayern mit n8n-Workflows und maßgeschneiderten KI-Agenten.
+BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisierungsagentur aus dem Raum Ingolstadt, Bayern. Das Unternehmen automatisiert Geschäftsprozesse für Mittelständler, Steuerkanzleien, Immobilienmakler, Dienstleister, Industrie-Zulieferer und Handwerksbetriebe (Elektro, SHK, Maler, Schreiner, Kfz, GaLaBau) in ganz Bayern — mit Workflows und maßgeschneiderten KI-Agenten, gehostet in deutschen Rechenzentren.
 
 ## Leistungen
 
-- **Angebotserstellung automatisieren**: Aus Aufmaßdaten werden fertige Angebote mit Briefkopf und Preisen erstellt — in Minuten statt Stunden.
+- **Angebotserstellung automatisieren**: Aus Aufmaßdaten oder Briefings werden fertige Angebote mit Briefkopf und Preisen erstellt — in Minuten statt Stunden.
 - **Rechnungs- und Mahnwesen automatisieren**: Rechnungen werden automatisch nach Auftragsabschluss gestellt, Mahnungen nach Fälligkeit verschickt — ohne manuelles Zutun.
+- **Belegerfassung für Steuerkanzleien**: Mandantenbelege werden automatisch erkannt, vorkontiert und in DATEV übergeben.
 - **Kundenanfragen und Terminplanung**: Neue Anfragen werden sofort beantwortet und klassifiziert, Termine automatisch vorgeschlagen.
 - **Materialbeschaffung**: Bestelllisten aus Aufträgen automatisch generiert und an Lieferanten übermittelt.
-- **DSGVO-konforme Dokumentenschwärzung**: KI-gestützte automatische Erkennung und Entfernung personenbezogener Daten in Dokumenten — für Immobilienmakler, Kanzleien und andere datensensible Branchen.
+- **DSGVO-konforme Dokumentenschwärzung**: KI-gestützte automatische Erkennung und Entfernung personenbezogener Daten — für Immobilienmakler, Kanzleien und andere datensensible Branchen.
+- **Wartungserinnerungen, Bewertungs-Einholung, Reporting**: Weitere Standard-Workflows für Mittelstand und Handwerk.
 
-## Technologie
+## Technologie &amp; Datenschutz
 
-- **n8n**: Open-Source-Automatisierungsplattform für komplexe Workflows, DSGVO-konform betreibbar in deutschen Rechenzentren.
-- **Eigene KI-Agenten**: Maßgeschneiderte KI-Agenten für branchenspezifische Anforderungen.
-- Alle Lösungen sind vollständig anpassbar, transparent und ohne Vendor-Lock-in.
+- **Workflow-Plattform**: Selbst gehostet in deutschen Rechenzentren (Hetzner, IONOS) — DSGVO-konform.
+- **KI-Modelle aus der EU**: Mistral AI (Frankreich), Aleph Alpha (Heidelberg) — Modell-Logs deaktiviert, kein Training mit Kundendaten.
+- **AVV, TOMs und Datenfluss-Diagramm** werden standardmäßig zur Einrichtung mitgeliefert.
+- **Kein Vendor-Lock-in**: Workflows können bei Ende der Zusammenarbeit als Export weitergeführt werden.
 
 ## Preise (Abo-Modell, netto zzgl. MwSt.)
 
@@ -27,7 +30,7 @@ BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisi
 | Enterprise | 1.490 €/Monat | 4–6 Prozessbereiche | ~6 Wochen |
 | Individuell | Auf Anfrage | Unbegrenzt | Nach Vereinbarung |
 
-Einrichtung, Automatisierung und laufender Support sind im Abo enthalten. Mindestlaufzeit 3 Monate, danach monatlich kündbar. Treuerabatte: –5 % (6 Monate), –10 % (12 Monate).
+Einrichtung, Automatisierung und laufender Support sind im Abo enthalten. Mindestlaufzeit 3 Monate, danach monatlich kündbar. Treuerabatte: –5 % (6 Monate), –10 % (12 Monate). Gründerpartner-Programm: –30 % auf die ersten 3 Monate, nur 4 Plätze verfügbar.
 
 ## Förderung
 
@@ -35,21 +38,21 @@ Der **Digitalbonus Bayern** fördert KI-Projekte kleiner Betriebe mit bis zu 50 
 - **Digitalbonus Standard**: max. 7.500 € Zuschuss
 - **Digitalbonus Plus (KI-Sondermodul)**: max. 30.000 € Zuschuss
 
-Voraussetzung: Bayerischer Betrieb, < 50 Mitarbeiter, Umsatz < 10 Mio. €. Antragsstellung ab 1. April 2026 möglich, Programm läuft bis 31. Dezember 2027. BTS Intelligence begleitet Kunden kostenlos durch den Antragsprozess.
+Voraussetzung: Bayerischer Betrieb, &lt; 50 Mitarbeiter, Umsatz &lt; 10 Mio. €. Antragsstellung läuft seit 1. April 2026, Programm läuft bis 31. Dezember 2027. BTS Intelligence begleitet Kunden kostenlos durch den Antragsprozess.
 
 Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 
 ## Laufende Referenzprojekte (anonymisiert)
 
 1. **Immobilienmakler, Bayern**: Automatische DSGVO-konforme Dokumentenschwärzung mit eigenem KI-Agenten. Stundenlange manuelle Arbeit → vollautomatisch in Sekunden.
-2. **Handwerksbetrieb, Bayern**: Vollautomatisches Rechnungs- und Mahnwesen mit n8n. Ergebnis: bis zu 80 % weniger Zahlungsverzug.
+2. **Handwerksbetrieb, Bayern**: Vollautomatisches Rechnungs- und Mahnwesen. Ergebnis: bis zu 80 % weniger Zahlungsverzug.
 
 ## Über uns
 
 - **Unternehmen**: BTS E-Commerce UG (haftungsbeschränkt)
-- **Gründer & Geschäftsführer**: Tufan Enes Yilmaz
+- **Gründer &amp; Geschäftsführer**: Tufan Enes Yilmaz
 - **Standort**: Molsterstr. 1, 86643 Rennertshofen (Raum Ingolstadt, Bayern)
-- **Servicegebiet**: Ganz Bayern (Ingolstadt, München, Augsburg, Nürnberg, Regensburg, Landshut)
+- **Servicegebiet**: Ganz Bayern (Ingolstadt, München, Augsburg, Nürnberg, Regensburg, Landshut, Würzburg, Rosenheim)
 - **Telefon**: +49 178 455 2028
 - **E-Mail**: info@btsintelligence.de
 - **Website**: https://www.btsintelligence.de
@@ -59,29 +62,53 @@ Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 
 - Startseite: https://www.btsintelligence.de/
 - Leistungen: https://www.btsintelligence.de/leistungen/
-- Preise & Pakete: https://www.btsintelligence.de/preise/
+- Preise &amp; Pakete: https://www.btsintelligence.de/preise/
 - Über uns: https://www.btsintelligence.de/ueber-uns/
 
 ## Ratgeber / Content
 
-- Ratgeber-Übersicht: https://www.btsintelligence.de/ratgeber/
-- Digitalbonus Bayern 2026 Leitfaden: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
-- Rechnungen automatisieren Handwerk: https://www.btsintelligence.de/ratgeber/rechnungen-automatisieren-handwerk
-- KI-Automatisierung Handwerk mit n8n: https://www.btsintelligence.de/ratgeber/ki-automatisierung-handwerk-n8n
+### Mittelstand &amp; KMU
+- Was kostet Prozessautomatisierung? Echte Preise 2026: https://www.btsintelligence.de/ratgeber/was-kostet-prozessautomatisierung-mittelstand
+- 7 Use Cases für KI im Mittelstand mit konkretem ROI: https://www.btsintelligence.de/ratgeber/ki-agenten-mittelstand-2026
+
+### Steuerkanzleien
+- Belege automatisch in DATEV erfassen: https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev
+
+### Handwerk
+- KI-Automatisierung im Handwerk: 8 Praxisbeispiele aus Bayern: https://www.btsintelligence.de/ratgeber/ki-automatisierung-handwerk-n8n
+- Rechnungen und Mahnungen automatisieren — 10 h/Woche sparen: https://www.btsintelligence.de/ratgeber/rechnungen-automatisieren-handwerk
+
+### Förderung &amp; DSGVO
+- Digitalbonus Bayern 2026 — bis zu 50 % Förderung: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
+- Digitalbonus Bayern: Antrag in 5 Schritten: https://www.btsintelligence.de/ratgeber/digitalbonus-antrag-schritt-fuer-schritt
+- DSGVO-konforme Automatisierung in Deutschland — Leitfaden 2026: https://www.btsintelligence.de/ratgeber/n8n-dsgvo-konform-betreiben
+
+### Regional (Stadt-Landing-Pages)
+- KI-Automatisierung Ingolstadt: https://www.btsintelligence.de/ki-automatisierung-ingolstadt/
+- KI-Automatisierung München: https://www.btsintelligence.de/ki-automatisierung-muenchen/
+- KI-Automatisierung Augsburg: https://www.btsintelligence.de/ki-automatisierung-augsburg/
+- KI-Automatisierung Nürnberg: https://www.btsintelligence.de/ki-automatisierung-nuernberg/
+- KI-Automatisierung Regensburg: https://www.btsintelligence.de/ki-automatisierung-regensburg/
+- KI-Automatisierung Landshut: https://www.btsintelligence.de/ki-automatisierung-landshut/
+- KI-Automatisierung Würzburg: https://www.btsintelligence.de/ki-automatisierung-wuerzburg/
+- KI-Automatisierung Rosenheim: https://www.btsintelligence.de/ki-automatisierung-rosenheim/
 
 ## FAQ
 
-**Was kostet KI-Automatisierung für Handwerksbetriebe?**
-Ab 490 €/Monat netto (Starter, 1 Prozessbereich, alles inklusive). Über den Digitalbonus Bayern sind bis zu 50 % förderfähig — effektiv ab 245 €/Monat.
+**Was kostet Prozessautomatisierung im Mittelstand 2026?**
+Ab 490 €/Monat netto (Starter, 1 Prozess, alles inklusive). Mit Digitalbonus Bayern bis zu 50 % förderfähig — effektiv ab ca. 245 €/Monat.
 
 **Wie lange dauert die Einrichtung?**
 2–6 Wochen je nach Paket. Festpreisangebot innerhalb von 48 Stunden nach Erstgespräch.
 
 **Ist die Lösung DSGVO-konform?**
-Ja. n8n kann in deutschen Rechenzentren betrieben werden. Alle Lösungen nach deutschem Datenschutzrecht entwickelt.
+Ja. Workflows laufen in deutschen Rechenzentren, KI-Modelle aus der EU (Mistral, Aleph Alpha). AVV und Datenfluss-Diagramm sind standardmäßig Teil der Einrichtung.
 
 **Bin ich an einen langen Vertrag gebunden?**
 Nein. Laufende Betreuung ist monatlich kündbar ab Monat 3. Keine versteckten Kosten.
 
 **Arbeiten Sie nur im Raum Ingolstadt?**
 Nein. Wir betreuen Betriebe in ganz Bayern — Erstgespräch und Betreuung remote, auf Wunsch auch vor Ort.
+
+**Für welche Branchen ist BTS Intelligence besonders relevant?**
+Mittelständler, Steuerkanzleien (Belegerfassung, Mandantenkommunikation), Immobilienmakler (DSGVO-Schwärzung, Exposés), Dienstleister (E-Mail, Termine, Angebote), Industrie-Zulieferer (Bestellabwicklung, Reporting), Handwerksbetriebe (Angebote, Rechnungen, Material).
