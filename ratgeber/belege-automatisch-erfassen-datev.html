@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belege automatisch in DATEV erfassen: 1 Tag pro Woche sparen | BTS Intelligence</title>
+<meta name="description" content="Wie Steuerkanzleien Mandantenbelege automatisch erfassen, vorkontieren und in DATEV übergeben — Schritt für Schritt, mit Aufwand, Kosten und realistischer Zeitersparnis.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev">
+<meta property="og:title" content="Belege automatisch in DATEV erfassen: 1 Tag pro Woche sparen">
+<meta property="og:description" content="Wie Steuerkanzleien Mandantenbelege automatisch erfassen und in DATEV übergeben — mit realistischen Zahlen aus der Praxis.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="BTS Intelligence">
+<meta name="theme-color" content="#090b12">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev",
+    "headline": "Belege automatisch in DATEV erfassen — wie Steuerkanzleien einen Tag pro Woche zurückgewinnen",
+    "description": "Vom Mandanten-Posteingang in die Buchführung: Wie ein automatisierter Beleg-Workflow Kanzleien spürbar entlastet — Aufwand, Kosten und realistische Zeitersparnis.",
+    "datePublished": "2026-05-14",
+    "dateModified": "2026-05-14",
+    "author": {"@type": "Person", "@id": "https://www.btsintelligence.de/#founder", "name": "Tufan Enes Yilmaz"},
+    "publisher": {"@type": "Organization", "@id": "https://www.btsintelligence.de/#business", "name": "BTS Intelligence"},
+    "url": "https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev",
+    "inLanguage": "de-DE",
+    "about": ["DATEV", "Steuerkanzlei Automatisierung", "Belegerfassung", "Mandantenbelege", "Buchhaltung digital"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.btsintelligence.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://www.btsintelligence.de/ratgeber/"},
+      {"@type": "ListItem", "position": 3, "name": "Belege automatisch in DATEV erfassen", "item": "https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev"}
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Was bedeutet 'Belege automatisch erfassen' für eine Steuerkanzlei?","acceptedAnswer":{"@type":"Answer","text":"Mandanten senden Belege (per Mail, Foto oder Upload) — das System erkennt automatisch Lieferant, Betrag, Datum, Steuersatz und Kontierung, prüft auf Doubletten und stellt sie mandatengenau in DATEV Unternehmen online oder DATEV Belegtransfer ein. Die Sachbearbeiterin prüft am Ende nur noch Sonderfälle statt jeden einzelnen Beleg manuell zu erfassen."}},
+      {"@type":"Question","name":"Wie viel Zeit spart das in einer durchschnittlichen Kanzlei?","acceptedAnswer":{"@type":"Answer","text":"In laufenden Projekten sehen wir 5–8 Stunden Zeitersparnis pro Sachbearbeiterin pro Woche bei mittleren Mandantenstrukturen. Das entspricht ungefähr einem Arbeitstag, der für Beratung statt für Belegerfassung frei wird. Hochskaliert über 5 Mitarbeitende sind das schnell 25–40 Stunden pro Woche."}},
+      {"@type":"Question","name":"Funktioniert das mit DATEV Unternehmen online und Belegtransfer?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir nutzen die offiziellen DATEV-Schnittstellen (Belegtransfer-Webservice, DATEV Unternehmen online API). Die Belege landen mandantengenau und vorkontiert im DATEV-System der Kanzlei. Direkte Übergabe in Kanzlei-Rechnungswesen ist je nach Setup möglich."}},
+      {"@type":"Question","name":"Was passiert mit fehlerhaften oder unklaren Belegen?","acceptedAnswer":{"@type":"Answer","text":"Unklare Belege (unleserliche Aufnahme, fehlende Pflichtangaben, ungewöhnliche Kontierung) werden in eine separate Prüfliste sortiert und an die Sachbearbeiterin gemeldet — nicht in DATEV durchgereicht. So bleibt die Qualität in der Buchhaltung sauber und die Sachbearbeiterin behält die Hoheit über Sonderfälle."}},
+      {"@type":"Question","name":"Ist das DSGVO-konform — Mandantendaten sind sensibel?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der Workflow läuft auf einem deutschen Server, alle Belege werden verschlüsselt verarbeitet, der KI-Anbieter ist standardmäßig ein EU-Modell (Mistral oder Aleph Alpha). AVV ist Bestandteil der Einrichtung, ein Datenfluss-Diagramm für Ihr Verarbeitungsverzeichnis liefern wir mit."}},
+      {"@type":"Question","name":"Wie lange dauert die Einrichtung und was kostet sie?","acceptedAnswer":{"@type":"Answer","text":"Typischerweise 2–4 Wochen vom Erstgespräch bis zum produktiven Betrieb. Investition ab 890 € pro Monat (Wachstum-Paket), alles inklusive — Einrichtung, DATEV-Anbindung, KI-Erkennung, laufender Support. Über den Digitalbonus Bayern können bis zu 50 % der Kosten zurückerstattet werden."}}
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+<header role="banner">
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo"><span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/leistungen/">Leistungen</a></li>
+    <li><a href="/preise/">Preise</a></li>
+    <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber/" aria-current="page">Ratgeber</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<!-- ARTICLE HERO -->
+<section class="article-hero section--alt" style="padding-top: calc(60px + 72px); padding-bottom: 48px; text-align: center;">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">Startseite</a><span>›</span>
+      <a href="/ratgeber/">Ratgeber</a><span>›</span>
+      <span>Belege automatisch erfassen</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom: 20px; display: inline-flex;">
+      <span class="badge-pulse"></span>
+      Für Steuerkanzleien · DATEV
+    </div>
+    <h1 class="section-title" style="max-width: 880px; margin: 0 auto 20px;">
+      Belege automatisch in DATEV erfassen —<br>einen Tag pro Woche zurückgewinnen.
+    </h1>
+    <div class="article-meta">
+      <span>📅 14. Mai 2026</span>
+      <span>✍ Tufan Enes Yilmaz, BTS Intelligence</span>
+      <span>⏱ ca. 8 Min. Lesezeit</span>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>5–8 h</em></div>
+        <div class="foerder-card-desc">Zeitersparnis / Woche / Sachbearbeiterin</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>2–4</em> Wochen</div>
+        <div class="foerder-card-desc">bis produktiv</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val">ab <em>890 €</em></div>
+        <div class="foerder-card-desc">pro Monat — alles inkl.</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>100 %</em></div>
+        <div class="foerder-card-desc">DSGVO, deutsches Hosting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<div class="article-body" style="padding-top: 56px;">
+
+  <p><strong>Worum es geht:</strong> Mandantenbelege erfassen ist in den meisten Steuerkanzleien noch immer Routinearbeit — wertvolle Sachbearbeiter-Zeit für eine Tätigkeit, die heute zu großen Teilen automatisierbar ist. Dieser Ratgeber zeigt, wie ein automatisierter Beleg-Workflow für DATEV-Kanzleien tatsächlich funktioniert, was er kostet — und warum sich die Mühe insbesondere bei einer Kanzlei mit mehreren Sachbearbeitern schon nach wenigen Monaten rechnet.</p>
+
+  <h2>Das eigentliche Problem ist nicht der Beleg — sondern die Reibung drumherum</h2>
+
+  <p>Wer mit Steuerberatern spricht, hört immer dieselbe Geschichte: Belege kommen aus 5 Kanälen rein — per Mail, per Foto, per WhatsApp, per Upload, per Post. Sachbearbeiterinnen sammeln, sortieren, scannen, kontieren, prüfen auf Doppelt-Erfassung und buchen schließlich in DATEV. Pro Beleg sind das oft 3–5 Minuten — und bei einer Kanzlei mit 80 Mandanten und durchschnittlich 30 Belegen pro Mandat pro Monat sind das schnell <strong>200 Stunden im Quartal</strong>, die nicht in Beratung fließen.</p>
+
+  <div class="article-box">
+    <div class="article-box-title">📊 Die typischen Reibungspunkte</div>
+    <ul>
+      <li><strong>Verschiedene Quellen</strong> — E-Mail-Anhang, Foto, Scan, Upload, Post</li>
+      <li><strong>Unleserliche Belege</strong> — schiefe Fotos, verknitterte Bons</li>
+      <li><strong>Doppelt erfasste Belege</strong> — Mandant schickt Beleg zweimal, niemand merkt es</li>
+      <li><strong>Manuelle Kontierung</strong> — gleicher Lieferant, jedes Mal neu nachschlagen</li>
+      <li><strong>Unklare Belege</strong> — landen oft tagelang in „Ich frag den Mandanten" -Limbo</li>
+    </ul>
+  </div>
+
+  <h2>Wie ein automatisierter Beleg-Workflow konkret abläuft</h2>
+
+  <p>Der Workflow, den wir in Kanzleien einrichten, besteht aus vier klar abgegrenzten Schritten — jeder davon prüfbar, jeder davon einzeln optimierbar. Das ist wichtig, weil eine Kanzlei nicht „die KI" einführt, sondern <em>konkrete Verbesserungen</em> pro Arbeitsschritt.</p>
+
+  <h3>Schritt 1: Einsammeln aus allen Kanälen</h3>
+
+  <p>Der Workflow überwacht eine zentrale Eingangs-Adresse (z. B. <em>belege@kanzlei.de</em>), einen Mandanten-Upload-Bereich und auf Wunsch auch WhatsApp Business. Jeder eingehende Beleg wird automatisch dem richtigen Mandanten zugeordnet — anhand der Absender-E-Mail, einer Mandantennummer im Betreff oder eines Mandanten-Tokens beim Upload.</p>
+
+  <h3>Schritt 2: Auslesen und Strukturieren</h3>
+
+  <p>Ein KI-Modell (Mistral OCR, vollständig EU-gehostet) liest den Beleg und extrahiert die relevanten Felder: Lieferant, Datum, Bruttobetrag, Nettobetrag, Steuersatz, Belegnummer. Bei wiederkehrenden Lieferanten lernt das System aus früheren Kontierungen und schlägt die passende SKR03/SKR04-Kontierung vor. Bei unbekannten Lieferanten fragt es nach Regeln, die in einer kanzleieigenen Liste hinterlegt sind.</p>
+
+  <h3>Schritt 3: Plausibilität prüfen</h3>
+
+  <p>Bevor ein Beleg in DATEV landet, durchläuft er drei automatische Prüfungen:</p>
+
+  <ul>
+    <li><strong>Doubletten-Check</strong> — gleicher Lieferant, gleicher Betrag, gleiches Datum in den letzten 30 Tagen?</li>
+    <li><strong>Pflichtangaben-Check</strong> — Datum, Lieferant, USt-ID (bei Rechnungen &gt; 250 €), Steuerausweis vorhanden?</li>
+    <li><strong>Anomalie-Check</strong> — Betrag deutlich höher als bei diesem Lieferanten sonst? Ungewöhnliche Kontierung vorgeschlagen?</li>
+  </ul>
+
+  <p>Belege, die alle Prüfungen bestehen, gehen direkt weiter. Belege mit Auffälligkeiten landen in einer separaten Prüfliste — die Sachbearbeiterin entscheidet dort gezielt, nicht über jeden Beleg.</p>
+
+  <h3>Schritt 4: Übergabe an DATEV</h3>
+
+  <p>Plausibel geprüfte Belege werden mandantengenau an DATEV übergeben — entweder als vorkontierter Belegtransfer-Eintrag oder direkt ins Kanzlei-Rechnungswesen, je nach Setup der Kanzlei. Alle Belege werden zusätzlich verschlüsselt im DSGVO-konformen Belegarchiv abgelegt, mit Querverweis zur DATEV-Belegnummer.</p>
+
+  <div class="article-box">
+    <div class="article-box-title">⏱ Effekt in Zahlen</div>
+    <ul>
+      <li>Vorher: ca. 3–5 Min. pro Beleg manuelle Bearbeitung</li>
+      <li>Nachher: ca. 20–40 Sek. pro Beleg (nur noch Kontrolle bei Auffälligkeiten)</li>
+      <li>Bei 600 Belegen pro Monat: <strong>~ 25 Stunden Zeitersparnis pro Sachbearbeiterin pro Monat</strong></li>
+    </ul>
+  </div>
+
+  <h2>Wer profitiert besonders — und wer eher nicht?</h2>
+
+  <p>Wir sind ehrlich: Nicht jede Kanzlei profitiert gleich stark. Hier eine ehrliche Einschätzung:</p>
+
+  <table class="article-table">
+    <thead>
+      <tr>
+        <th>Kanzlei-Profil</th>
+        <th>Empfehlung</th>
+        <th>Erwartete ROI-Zeit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3–10 Mitarbeiter, 50+ aktive Mandate</td>
+        <td><strong>Klare Empfehlung</strong> — schneller Hebel</td>
+        <td>3–6 Monate</td>
+      </tr>
+      <tr>
+        <td>Einzelkanzlei mit 20–40 Mandaten</td>
+        <td>Lohnt sich, wenn Beleg-Aufkommen hoch</td>
+        <td>6–9 Monate</td>
+      </tr>
+      <tr>
+        <td>Große Kanzlei (15+ MA, eigenes IT-Team)</td>
+        <td>Lohnt sich, ggf. teilweise selbst aufbauen</td>
+        <td>6–12 Monate</td>
+      </tr>
+      <tr>
+        <td>Kanzlei mit DATEV Unternehmen online erst frisch eingeführt</td>
+        <td>Erst 6 Monate stabilisieren lassen, dann automatisieren</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Kanzlei mit überwiegend Lohn-Mandaten</td>
+        <td>Geringer Hebel — andere Workflows priorisieren</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>DSGVO &amp; Datenschutz — was eine Kanzlei sicherstellen muss</h2>
+
+  <p>Mandantendaten unterliegen besonderem Berufsgeheimnis. Drei Punkte sind nicht verhandelbar:</p>
+
+  <ol>
+    <li><strong>Hosting in Deutschland</strong> — der gesamte Workflow läuft auf einem deutschen Server (Hetzner oder IONOS), nicht in den USA, nicht in der Cloud eines Anbieters mit ungewissem Datenfluss.</li>
+    <li><strong>KI-Modell aus der EU</strong> — wir setzen standardmäßig Mistral (Frankreich) oder Aleph Alpha (Heidelberg) ein. Modell-Logs sind deaktiviert, Belege werden nicht zum Training verwendet.</li>
+    <li><strong>AVV und Verarbeitungsverzeichnis</strong> — beides liefern wir vorbereitet zur Einrichtung, sodass die Kanzlei die Aufnahme in das eigene VVT problemlos vornehmen kann.</li>
+  </ol>
+
+  <p>Auf Wunsch erstellen wir zusätzlich eine vorgefertigte Datenschutz-Folgenabschätzung (DSFA), die in vielen Kanzleien für die Berufsaufsicht relevant ist.</p>
+
+  <!-- Inline CTA -->
+  <div class="article-cta">
+    <div class="foerder-badge" style="margin-bottom: 16px; display: inline-flex;">📅 Kostenloses Erstgespräch</div>
+    <h3>Wie viel Zeit könnte <em>Ihre</em> Kanzlei gewinnen?</h3>
+    <p>In 30 Minuten am Telefon schauen wir uns Ihr Mandanten- und Beleg-Volumen an und zeigen ehrlich, ob sich der Aufwand für Sie lohnt — mit konkreter Zeitersparnis-Schätzung.</p>
+    <div class="cta-actions" style="justify-content: center;">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Potenzialanalyse →</a>
+      <a href="/preise/" class="btn-ghost">Preise &amp; Konditionen</a>
+    </div>
+    <p style="font-size: .8rem; color: var(--text-lo); margin-top: 16px; margin-bottom: 0;">Kostenlos &amp; unverbindlich · Direkt mit den Gründern · 30 Min.</p>
+  </div>
+
+  <h2>Was es konkret kostet — und was inklusive ist</h2>
+
+  <p>Für mittlere Steuerkanzleien (3–10 Mitarbeitende) liegt das passende Paket meistens im <strong>Wachstum-Bereich ab 890 € pro Monat</strong>. Darin enthalten:</p>
+
+  <ul>
+    <li>Komplette Einrichtung des Beleg-Workflows</li>
+    <li>DATEV-Anbindung (Belegtransfer oder DATEV Unternehmen online)</li>
+    <li>KI-Belegerkennung mit EU-Modell, DSGVO-konformes Hosting</li>
+    <li>Doubletten- und Anomalie-Erkennung</li>
+    <li>Mandanten-Onboarding (Anleitung &amp; Vorlagen für Mandanten)</li>
+    <li>Laufende Optimierung und Lernen aus Korrekturen</li>
+    <li>Persönlicher Support direkt mit den Gründern</li>
+  </ul>
+
+  <p>Bei längerer Laufzeit gibt es Treuerabatte (5 % bei 6 Monaten, 10 % bei 12 Monaten). Über den <a href="/ratgeber/digitalbonus-bayern-2026">Digitalbonus Bayern</a> sind bis zu 50 % der Kosten erstattungsfähig — gerade Steuerkanzleien fallen häufig in die förderfähige Größenklasse.</p>
+
+  <h2>Was Sie als Kanzlei vor dem Start vorbereiten sollten</h2>
+
+  <p>Damit die Einrichtung schnell durchläuft, hilft es, vorab drei Dinge zu klären:</p>
+
+  <ol>
+    <li><strong>Mandantenliste mit gewünschten Kontenrahmen</strong> (SKR03 oder SKR04, ggf. mandantenspezifische Konten)</li>
+    <li><strong>DATEV-Zugangsdaten</strong> (Belegtransfer-Token oder DATEV Unternehmen online API)</li>
+    <li><strong>Beispielbelege</strong> aus 2–3 Mandaten zur Kalibrierung des Erkennungsmodells</li>
+  </ol>
+
+  <p>Mehr braucht es nicht. Die eigentliche Einrichtung übernehmen wir.</p>
+
+  <h2>Häufige Fragen — ehrlich beantwortet</h2>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn das KI-Modell falsch kontiert?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Bei unsicherer Kontierung wird der Beleg in die Prüfliste sortiert — landet also nicht „blind" in DATEV. Sie korrigieren ihn einmal, das System merkt sich die Regel für diesen Lieferanten und macht es beim nächsten Mal richtig. Die Trefferquote bei wiederkehrenden Lieferanten liegt nach 4–6 Wochen typischerweise bei über 95 %.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was passiert mit dem Workflow, wenn ich die Zusammenarbeit beende?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Sie erhalten die komplette Workflow-Definition als Export — keine proprietären Sperren. Damit kann jeder andere Dienstleister oder ein eigenes IT-Team den Workflow weiterbetreiben. Wir bauen so, dass kein Vendor-Lock-in entsteht.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Können wir das auf bestimmte Mandate beschränken?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja. Viele Kanzleien starten mit 5–10 Mandaten und erweitern, sobald die Sachbearbeiterin sich an den neuen Workflow gewöhnt hat. Die Mandanten-Whitelist ist im laufenden Betrieb flexibel anpassbar.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Brauchen wir spezielle IT-Kenntnisse in der Kanzlei?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Nein. Die komplette Einrichtung und der laufende Betrieb laufen bei uns. Die Sachbearbeiterinnen arbeiten weiter wie gewohnt mit DATEV — der Unterschied ist, dass dort plötzlich vorkontierte Belege ankommen statt Stapel zu erfassen.</p>
+  </details>
+
+  <!-- Author box -->
+  <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
+    <div>
+      <div class="article-box-title" style="margin-bottom: 4px;">Tufan Enes Yilmaz</div>
+      <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">Geschäftsführer &amp; Gründer von BTS Intelligence. Begleitet Steuerkanzleien und Buchhaltungsabteilungen in Bayern bei der Einführung von Beleg- und Buchhaltungs-Automatisierung — von der DSGVO-Architektur bis zur DATEV-Anbindung.</p>
+    </div>
+  </div>
+
+  <!-- Back to ratgeber -->
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-lo); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/ratgeber/" class="btn-ghost" style="font-size: .875rem;">← Alle Ratgeber</a>
+    <a href="/ratgeber/was-kostet-prozessautomatisierung-mittelstand" class="btn-ghost" style="font-size: .875rem;">Was kostet Automatisierung? →</a>
+    <a href="/ratgeber/n8n-dsgvo-konform-betreiben" class="btn-ghost" style="font-size: .875rem;">DSGVO-Architektur verstehen</a>
+  </div>
+
+</div><!-- /.article-body -->
+
+<!-- BOTTOM CTA -->
+<section class="foerder-section" style="margin-top: 64px;">
+  <div class="foerder-inner">
+    <div class="foerder-top">
+      <div>
+        <div class="foerder-badge">🏛 Bis zu 50 % Förderung</div>
+        <h2 class="foerder-headline">Für bayerische Kanzleien:<br>Digitalbonus deckt bis zu 50 % der Kosten.</h2>
+        <p class="foerder-sub">Wir prüfen kostenlos, ob Ihre Kanzlei förderberechtigt ist — und begleiten Sie auf Wunsch durch den Antrag. Sprechen Sie uns beim Erstgespräch darauf an.</p>
+      </div>
+      <div class="foerder-logo-box">
+        <span class="foerder-logo-flag">🦁</span>
+        Digitalbonus Bayern<br>Freistaat Bayern
+      </div>
+    </div>
+    <div class="foerder-cta-row">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Förderung im Erstgespräch besprechen →</a>
+      <span class="foerder-small">Kostenlos &amp; unverbindlich · 30 Min. · direkt mit den Gründern</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos &amp; unverbindlich</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text"><div class="modal-option-title">Termin direkt buchen</div><div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div></div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text"><div class="modal-option-title">Nachricht hinterlassen</div><div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px">
+      <rect width="32" height="32" rx="8" fill="url(#lgdatev)"/>
+      <path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/>
+      <path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/>
+      <circle cx="22" cy="13" r="2.5" fill="#e8a820"/>
+      <line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/>
+      <defs><linearGradient id="lgdatev" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4f6bf0"/><stop offset="100%" stop-color="#2a3fa8"/></linearGradient></defs>
+    </svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+  </div>
+  <div class="footer-links">
+    <a href="/leistungen/">Leistungen</a><a href="/preise/">Preise</a><a href="/ueber-uns/">Über uns</a><a href="/ratgeber/">Ratgeber</a><a href="/demos/">Demos</a><a href="#" onclick="openModal(event)">Termin buchen</a><a href="tel:+491784552028">0178 / 455 2028</a>
+  </div>
+  <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+  <div class="footer-legal">Alle Preise netto zzgl. MwSt. · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+</footer>
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
