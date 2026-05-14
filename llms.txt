@@ -9,9 +9,12 @@ BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisi
 - **Angebotserstellung automatisieren**: Aus Aufmaßdaten oder Briefings werden fertige Angebote mit Briefkopf und Preisen erstellt — in Minuten statt Stunden.
 - **Rechnungs- und Mahnwesen automatisieren**: Rechnungen werden automatisch nach Auftragsabschluss gestellt, Mahnungen nach Fälligkeit verschickt — ohne manuelles Zutun.
 - **Belegerfassung für Steuerkanzleien**: Mandantenbelege werden automatisch erkannt, vorkontiert und in DATEV übergeben.
-- **Kundenanfragen und Terminplanung**: Neue Anfragen werden sofort beantwortet und klassifiziert, Termine automatisch vorgeschlagen.
-- **Materialbeschaffung**: Bestelllisten aus Aufträgen automatisch generiert und an Lieferanten übermittelt.
-- **DSGVO-konforme Dokumentenschwärzung**: KI-gestützte automatische Erkennung und Entfernung personenbezogener Daten — für Immobilienmakler, Kanzleien und andere datensensible Branchen.
+- **Exposé-Erstellung für Makler**: Aus Objektdaten und Fotos zu fertigen PDFs im eigenen Layout — DSGVO-konform und MaBV-tauglich.
+- **DSGVO-konforme Schwärzung**: Verträge, Akten, Dokumente werden gerichtsfest geschwärzt — echte Inhaltsentfernung, Audit-Trail inklusive.
+- **E-Mail-Postfach automatisch sortieren**: Klassifikation, Standardantworten, Eskalation — Outlook, Gmail, IMAP.
+- **Angebote automatisch nachfassen**: Gestaffelte Follow-up-Sequenzen, Stopp bei Kundenantwort, in Ihrem Tonfall.
+- **Aufmaß zu Angebot im Handwerk**: Foto, Formular oder Sprachnotiz vom Aufmaß zum fertigen PDF mit eigenen Preisen.
+- **Kundenanfragen und Terminplanung**: Neue Anfragen werden sofort beantwortet und klassifiziert.
 - **Wartungserinnerungen, Bewertungs-Einholung, Reporting**: Weitere Standard-Workflows für Mittelstand und Handwerk.
 
 ## Technologie &amp; Datenschutz
@@ -74,7 +77,16 @@ Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 ### Steuerkanzleien
 - Belege automatisch in DATEV erfassen: https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev
 
+### Immobilienmakler
+- Exposé in 10 Minuten statt 2 Stunden: https://www.btsintelligence.de/ratgeber/expose-schneller-erstellen-makler
+- Verträge &amp; Dokumente DSGVO-konform schwärzen: https://www.btsintelligence.de/ratgeber/vertraege-dsgvo-konform-schwaerzen
+
+### Dienstleister &amp; Beratungen
+- E-Mail-Postfach automatisch sortieren: https://www.btsintelligence.de/ratgeber/email-postfach-automatisch-sortieren
+- Angebote automatisch nachfassen: https://www.btsintelligence.de/ratgeber/angebote-nachfassen-automatisch
+
 ### Handwerk
+- Aufmaß in Angebot umwandeln — mit eigenen Preisen: https://www.btsintelligence.de/ratgeber/aufmass-in-angebot-umwandeln
 - KI-Automatisierung im Handwerk: 8 Praxisbeispiele aus Bayern: https://www.btsintelligence.de/ratgeber/ki-automatisierung-handwerk-n8n
 - Rechnungen und Mahnungen automatisieren — 10 h/Woche sparen: https://www.btsintelligence.de/ratgeber/rechnungen-automatisieren-handwerk
 
