@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materialbestellung im Handwerk automatisieren | BTS Intelligence</title>
+<meta name="description" content="Wie Handwerksbetriebe Materialbestellungen automatisieren — Bestandsüberwachung, Lieferanten-Auswahl, Bestellungen, Lieferschein-Abgleich. Schluss mit Baustopps wegen fehlender Schraube.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.btsintelligence.de/ratgeber/material-bestellen-handwerk-lieferanten">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.btsintelligence.de/ratgeber/material-bestellen-handwerk-lieferanten">
+<meta property="og:title" content="Materialbestellung im Handwerk automatisieren — Schluss mit Baustopps">
+<meta property="og:description" content="Bestandsüberwachung, Bestellung, Lieferschein-Abgleich automatisch — kein Stillstand wegen fehlendem Material mehr.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="BTS Intelligence">
+<meta name="theme-color" content="#090b12">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://www.btsintelligence.de/ratgeber/material-bestellen-handwerk-lieferanten",
+    "headline": "Materialbestellung im Handwerk automatisieren: Schluss mit Baustopps",
+    "description": "Wie Handwerksbetriebe Materialbestellungen automatisieren — Bestandsüberwachung, Lieferanten-Auswahl, Bestellungen versenden, Lieferschein-Abgleich. Aus der bayerischen Praxis.",
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {"@type": "Person", "@id": "https://www.btsintelligence.de/#founder", "name": "Tufan Enes Yilmaz"},
+    "publisher": {"@type": "Organization", "@id": "https://www.btsintelligence.de/#business", "name": "BTS Intelligence"},
+    "url": "https://www.btsintelligence.de/ratgeber/material-bestellen-handwerk-lieferanten",
+    "inLanguage": "de-DE",
+    "about": ["Materialbestellung Handwerk", "Bestellliste Lieferant automatisch", "Bestandsführung Handwerk", "Lieferanten-Bestellung digital"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.btsintelligence.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://www.btsintelligence.de/ratgeber/"},
+      {"@type": "ListItem", "position": 3, "name": "Materialbestellung Handwerk", "item": "https://www.btsintelligence.de/ratgeber/material-bestellen-handwerk-lieferanten"}
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Wie funktioniert automatische Materialbestellung im Handwerk konkret?","acceptedAnswer":{"@type":"Answer","text":"Ein Workflow überwacht den Bestand wichtiger Materialien (Schrauben, Kabel, Profile, Rohre, was bei Ihnen typisch ist). Unterschreitet ein Material die definierte Mindestmenge, erstellt der Workflow eine Bestellanfrage an den Vorzugs-Lieferanten — mit Stückzahl, Artikelnummer, gewünschtem Liefertermin. Sie geben frei, die Bestellung geht raus. Der Lieferschein wird beim Eingang gescannt und mit der Bestellung abgeglichen."}},
+      {"@type":"Question","name":"Brauche ich dafür eine Warenwirtschaft?","acceptedAnswer":{"@type":"Answer","text":"Hilfreich, aber nicht zwingend. Mit einer Warenwirtschaft (z. B. Lexware, Sage, eEvolution, branchenspezifische Lösungen) ist die Bestandsführung sauberer. Ohne Warenwirtschaft arbeiten wir mit einer einfachen Bestands-Tabelle (Excel/Google Sheets), die der Workflow pflegt. Für sehr kleine Betriebe oft sogar die bessere Lösung — keine zusätzliche Software-Lizenz."}},
+      {"@type":"Question","name":"Welche Lieferanten lassen sich anbinden?","acceptedAnswer":{"@type":"Answer","text":"Drei Wege: 1) Lieferanten mit elektronischer Bestell-Schnittstelle (EDI, OXOMI, große Großhändler) werden direkt angebunden. 2) Lieferanten ohne API erhalten die Bestellung per E-Mail mit strukturiertem PDF — die meisten arbeiten so. 3) Bei Bedarf öffnet der Workflow das Bestell-Portal des Lieferanten und füllt es maschinell aus. Welcher Weg für Ihre 5–15 wichtigsten Lieferanten passt, klären wir im Erstgespräch."}},
+      {"@type":"Question","name":"Was passiert bei Lieferengpässen oder Preis-Schwankungen?","acceptedAnswer":{"@type":"Answer","text":"Der Workflow kann pro Material 2–3 Lieferanten in Prioritäts-Reihenfolge hinterlegt haben. Wenn der Vorzugs-Lieferant nicht liefern kann oder den Preis stark anhebt, schlägt das System Alternativen vor — Sie entscheiden. Vollautomatischer Lieferanten-Wechsel ist konfigurierbar, aber bei den meisten Betrieben bleibt diese Entscheidung im Entwurfs-Modus."}},
+      {"@type":"Question","name":"Wie lange dauert die Einrichtung für einen Handwerksbetrieb?","acceptedAnswer":{"@type":"Answer","text":"Typisch 3–5 Wochen vom Erstgespräch bis zum produktiven Betrieb. Die Hauptaufgabe ist die Aufnahme Ihrer Top-50 bis Top-200 Material-Artikel mit Mindestbeständen und Lieferanten-Zuordnung — das geht meist in 1–2 Workshop-Stunden mit Ihrem Lagerverantwortlichen. Nach Erstgespräch erhalten Sie binnen 48 Stunden ein verbindliches Festpreisangebot."}}
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+<header role="banner">
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo"><span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/leistungen/">Leistungen</a></li>
+    <li><a href="/preise/">Preise</a></li>
+    <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber/" aria-current="page">Ratgeber</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<section class="article-hero section--alt" style="padding-top: calc(60px + 72px); padding-bottom: 48px; text-align: center;">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">Startseite</a><span>›</span>
+      <a href="/ratgeber/">Ratgeber</a><span>›</span>
+      <span>Materialbestellung Handwerk</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom: 20px; display: inline-flex;">
+      <span class="badge-pulse"></span>
+      Für Elektro · SHK · Maler · Schreiner · Kfz · GaLaBau
+    </div>
+    <h1 class="section-title" style="max-width: 920px; margin: 0 auto 20px;">
+      Materialbestellung im Handwerk automatisieren —<br>Schluss mit Baustopps.
+    </h1>
+    <div class="article-meta">
+      <span>📅 15. Mai 2026</span>
+      <span>✍ Tufan Enes Yilmaz, BTS Intelligence</span>
+      <span>⏱ ca. 9 Min. Lesezeit</span>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val">🚫 <em>Stillstand</em></div>
+        <div class="foerder-card-desc">durch fehlendes Material</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>Top 200</em></div>
+        <div class="foerder-card-desc">Artikel meist ausreichend</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>EDI · Mail · Portal</em></div>
+        <div class="foerder-card-desc">jeder Lieferant anbindbar</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>3–5</em> Wochen</div>
+        <div class="foerder-card-desc">bis produktiv</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="article-body" style="padding-top: 56px;">
+
+  <p><strong>Worum es geht:</strong> Jeder Handwerksbetrieb kennt es: Die Baustelle steht still, weil eine einzelne Schraube oder ein Profil fehlt. Der Geselle fährt zum Baumarkt — eine Stunde weg, der Bautag verloren. Dieser Ratgeber zeigt, wie Handwerksbetriebe Materialbestellung automatisieren: Bestandsüberwachung, Bestellungen an Lieferanten versenden, Lieferschein-Abgleich. Mit oder ohne Warenwirtschaft, mit Anbindung an Großhändler oder per E-Mail-Bestellung, und mit klaren Spielregeln für Lieferengpässe.</p>
+
+  <h2>Das echte Problem ist nicht das Bestellen — es ist das Vergessen</h2>
+
+  <p>Materialbestellung im Handwerk scheitert selten am Bestell-Akt selbst. Der Lieferant ist bekannt, die Bestell-Wege etabliert. Was schiefgeht, ist die <strong>rechtzeitige Auslösung</strong> einer Bestellung:</p>
+
+  <ul>
+    <li>Der Lagerist sieht nicht, dass nur noch 5 Profile da sind — und ein Auftrag bracht 30</li>
+    <li>Die Bestellung wird vergessen, weil Donnerstag andere Themen wichtiger waren</li>
+    <li>Mehrere Mitarbeiter denken, der jeweils andere bestellt — keiner tut es</li>
+    <li>Saisonale Verbrauchs-Schwankungen werden unterschätzt</li>
+    <li>Lieferzeiten sind unterschiedlich — was beim einen Lieferanten 2 Tage dauert, kann beim anderen 2 Wochen sein</li>
+  </ul>
+
+  <p>Die Konsequenz: Baustopps, Mehrarbeit, frustrierte Kunden, teurere Kurzfristkäufe im Baumarkt. Eine automatische Bestandsüberwachung mit Bestell-Auslösung löst genau das.</p>
+
+  <h2>Wie ein automatischer Bestell-Workflow konkret funktioniert</h2>
+
+  <h3>1. Bestandsführung — woher die Daten kommen</h3>
+
+  <p>Für eine automatische Bestellung muss der Workflow wissen, was im Lager ist. Drei mögliche Quellen:</p>
+
+  <ul>
+    <li><strong>Warenwirtschafts-System:</strong> Wenn Sie eine Warenwirtschaft nutzen (Lexware, Sage, Branchen-Lösungen), liest der Workflow den Bestand direkt aus der Datenbank.</li>
+    <li><strong>Lager-App auf Tablet:</strong> Der Lagerist scannt Material per Barcode beim Ein- und Ausgang. Auch hier ohne Warenwirtschaft möglich, mit einfacher App-Lösung.</li>
+    <li><strong>Pflege-Tabelle (Excel/Google Sheets):</strong> Bei kleinen Betrieben oft pragmatisch — eine einfache Tabelle mit Artikel, Bestand, Mindestmenge. Der Workflow pflegt sie automatisch durch Auftragsverarbeitung und Lieferschein-Abgleich.</li>
+  </ul>
+
+  <h3>2. Bestands-Logik mit Sicherheits-Puffer</h3>
+
+  <p>Pro Artikel werden definiert:</p>
+
+  <ul>
+    <li><strong>Mindestbestand:</strong> Bei welchem Stand wird bestellt</li>
+    <li><strong>Bestellmenge:</strong> Wie viel wird typischerweise nachgekauft</li>
+    <li><strong>Lieferzeit:</strong> Wie lange dauert die Anlieferung typisch</li>
+    <li><strong>Verbrauchs-Muster:</strong> Gibt es saisonale Spitzen (z. B. mehr Profile im Frühjahr)?</li>
+  </ul>
+
+  <p>Bei wichtigen Materialien wird ein Sicherheits-Puffer ergänzt: Bestellung wird ausgelöst, sobald „aktueller Bestand minus erwarteter Verbrauch in Lieferzeit kleiner als Sicherheitsbestand" — nicht erst, wenn der Mindestbestand erreicht ist.</p>
+
+  <h3>3. Lieferanten-Auswahl</h3>
+
+  <p>Pro Material sind 1–3 Lieferanten in Prioritäts-Reihenfolge hinterlegt. Der Workflow nimmt automatisch den Vorzugs-Lieferanten. Sonder-Regeln möglich:</p>
+
+  <ul>
+    <li>Bei Bestellungen über bestimmten Mengen-Schwellen wechselt zu Lieferant 2 (besserer Großkunden-Rabatt)</li>
+    <li>Bei Eilbestellungen wechselt zu Lieferant 3 (kürzere Lieferzeit, höherer Preis)</li>
+    <li>Bei nicht-Lieferbarkeit beim Vorzugs-Lieferant wird Alternative geprüft</li>
+  </ul>
+
+  <h3>4. Bestell-Übermittlung</h3>
+
+  <p>Je nach Lieferant unterschiedlich:</p>
+
+  <table class="article-table">
+    <thead>
+      <tr><th>Weg</th><th>Lieferanten-Typ</th><th>Was passiert</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>EDI / API</td><td>Große Großhändler (Elektro, SHK, Sanitär)</td><td>Bestellung wird direkt im System des Lieferanten angelegt</td></tr>
+      <tr><td>OXOMI / OFML</td><td>Branchenspezifische Standards</td><td>Strukturierter Bestell-Datensatz übermittelt</td></tr>
+      <tr><td>E-Mail mit PDF</td><td>Mittlere Lieferanten, regionale Anbieter</td><td>PDF mit Bestelldaten als Anhang an Bestell-E-Mail-Adresse</td></tr>
+      <tr><td>Web-Portal</td><td>Lieferanten ohne API mit eigenem Bestell-Portal</td><td>Workflow füllt Portal-Formular maschinell aus</td></tr>
+      <tr><td>Fax / Anruf</td><td>Sehr kleine, traditionelle Lieferanten</td><td>Nicht automatisierbar — Workflow bereitet Bestellung als Druck-Dokument vor, Sie versenden</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5. Wareneingang &amp; Lieferschein-Abgleich</h3>
+
+  <p>Wenn die Lieferung ankommt, wird der Lieferschein gescannt (oder fotografiert per Handy). Der Workflow liest Artikel und Mengen, vergleicht mit der Bestellung. Bei Abweichungen (zu wenig geliefert, falsches Material) wird das als Reklamation markiert. Bei Übereinstimmung wird der Bestand automatisch hochgesetzt und die Lieferanten-Rechnung kann für die Belegerfassung vorbereitet werden.</p>
+
+  <!-- Inline CTA -->
+  <div class="article-cta">
+    <div class="foerder-badge" style="margin-bottom: 16px; display: inline-flex;">📅 Kostenloses Erstgespräch</div>
+    <h3>Wann hatten Sie zuletzt Stillstand wegen fehlendem Material?</h3>
+    <p>30 Minuten am Telefon — wir hören uns Ihre typischen Engpässe an, schauen welche 30–50 Artikel bei Ihnen am häufigsten ausgehen, und sagen ehrlich, ob ein Bestell-Workflow für Ihre Betriebsgröße sinnvoll ist.</p>
+    <div class="cta-actions" style="justify-content: center;">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Analyse →</a>
+      <a href="/leistungen/" class="btn-ghost">Leistungen ansehen</a>
+    </div>
+    <p style="font-size: .8rem; color: var(--text-lo); margin-top: 16px; margin-bottom: 0;">Kostenlos &amp; unverbindlich · Direkt mit den Gründern · 30 Min.</p>
+  </div>
+
+  <h2>Was sich für den Betrieb spürbar ändert</h2>
+
+  <div class="article-box">
+    <div class="article-box-title">Keine vergessenen Bestellungen mehr</div>
+    <p>Der Workflow überwacht jeden Tag, niemand muss „dran denken". Die häufigste Ursache für Material-Engpässe verschwindet.</p>
+  </div>
+
+  <div class="article-box">
+    <div class="article-box-title">Weniger Notkäufe im Baumarkt</div>
+    <p>Notkäufe sind teuer und kosten Zeit. Mit korrekter Bestandsführung und rechtzeitiger Bestellung sinkt der Anteil drastisch — typisch von 15 % aller Käufe auf unter 3 %.</p>
+  </div>
+
+  <div class="article-box">
+    <div class="article-box-title">Bessere Konditionen durch konsolidierte Bestellungen</div>
+    <p>Wenn der Workflow Bestellungen sinnvoll zusammenfasst (statt alle 3 Tage eine Mini-Bestellung), erreichen Sie häufiger Großkunden-Schwellen und damit bessere Rabatte beim Lieferanten.</p>
+  </div>
+
+  <div class="article-box">
+    <div class="article-box-title">Audit-Trail bei Liefer-Reklamationen</div>
+    <p>Jede Bestellung, jede Anlieferung, jede Abweichung wird protokolliert. Bei Reklamationen haben Sie Beweis-Material — was wurde bestellt, was geliefert, wann eingegangen.</p>
+  </div>
+
+  <h2>Häufige Fragen</h2>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Wir haben über 5.000 Material-Artikel — müssen die alle aufgenommen werden?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Nein, und das ist auch nicht sinnvoll. Erfahrungsgemäß machen die Top 200 Artikel 80 % des Verbrauchs aus — und genau dort entsteht der Stillstand. Mit den Top 200 anfangen, später erweitern. Niemand pflegt 5.000 Artikel manuell, das System auch nicht.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn die Materialnummern beim Lieferanten anders sind als bei uns?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Normalfall im Handwerk. In der Einrichtung wird pro Artikel eine Mapping-Tabelle gepflegt: interne Bezeichnung — Lieferant-A-Artikelnummer — Lieferant-B-Artikelnummer. Der Workflow setzt automatisch um. Bei Lieferanten-Wechsel wird auch die Artikelnummer mit gewechselt.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Können wir Bestellungen freigeben lassen, bevor sie rausgehen?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja, vollständig konfigurierbar. Sie können definieren: Bestellungen unter einer Wert-Schwelle automatisch, alle größeren als Entwurf zur Freigabe. Auch nach Lieferant unterschiedlich (Lieferant A immer automatisch, Lieferant B immer mit Freigabe). Viele Betriebe starten mit Freigabe-Modus und gehen nach 4 Wochen Vertrauen in den Vollautomatik-Modus.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn der Lagerverantwortliche in Urlaub ist?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Genau dann zeigt sich der größte Wert. Der Workflow läuft unabhängig vom Lagerverantwortlichen weiter — Bestellungen werden ausgelöst, Lieferungen abgeglichen. Der Vertretende muss nur freigeben (wenn Sie diesen Modus haben), oder gar nichts tun (im Vollautomatik-Modus).</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Können auch projektbezogene Material-Bestellungen automatisiert werden?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja, das ist eine Erweiterung. Aus einem freigegebenen Angebot oder einer Aufmaß-Liste kann der Workflow die nötigen Materialien gegen den Lagerbestand prüfen und gezielt für den Auftrag nachbestellen — mit Bezug auf das Projekt, sodass die Buchhaltung später die Kosten zuordnen kann. Das ist meist die zweite Welle nach der Standard-Bestandsführung.</p>
+  </details>
+
+  <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
+    <div>
+      <div class="article-box-title" style="margin-bottom: 4px;">Tufan Enes Yilmaz</div>
+      <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">Geschäftsführer &amp; Gründer von BTS Intelligence. Begleitet bayerische Handwerksbetriebe (Elektro, SHK, Maler, Schreiner, Kfz, GaLaBau) bei der Automatisierung von Materialwirtschaft und Bestell-Workflows — pragmatisch, mit Anbindung an Ihre bestehenden Lieferanten.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-lo); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/ratgeber/" class="btn-ghost" style="font-size: .875rem;">← Alle Ratgeber</a>
+    <a href="/ratgeber/aufmass-in-angebot-umwandeln" class="btn-ghost" style="font-size: .875rem;">Aufmaß → Angebot →</a>
+    <a href="/ratgeber/ki-automatisierung-handwerk-n8n" class="btn-ghost" style="font-size: .875rem;">8 Beispiele Handwerk</a>
+  </div>
+
+</div><!-- /.article-body -->
+
+<section class="cta-section" style="padding-top: 32px; padding-bottom: 96px;">
+  <div class="cta-inner">
+    <div class="eyebrow">Kostenloses Erstgespräch</div>
+    <h2 class="section-title">Welche fehlende Schraube<br>hat Sie zuletzt einen Tag gekostet?</h2>
+    <p class="section-lead">30 Minuten am Telefon — wir hören uns Ihre typischen Material-Engpässe an und sagen ehrlich, wo ein Bestell-Workflow den größten Hebel hätte.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Termin direkt buchen →</a>
+      <a href="/" class="btn-ghost">Zur Startseite</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos &amp; unverbindlich</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text"><div class="modal-option-title">Termin direkt buchen</div><div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div></div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text"><div class="modal-option-title">Nachricht hinterlassen</div><div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px"><rect width="32" height="32" rx="8" fill="url(#lgmat)"/><path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/><path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/><circle cx="22" cy="13" r="2.5" fill="#e8a820"/><line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="lgmat" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4f6bf0"/><stop offset="100%" stop-color="#2a3fa8"/></linearGradient></defs></svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+  </div>
+  <div class="footer-links"><a href="/leistungen/">Leistungen</a><a href="/preise/">Preise</a><a href="/ueber-uns/">Über uns</a><a href="/ratgeber/">Ratgeber</a><a href="/demos/">Demos</a><a href="#" onclick="openModal(event)">Termin buchen</a><a href="tel:+491784552028">0178 / 455 2028</a></div>
+  <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+  <div class="footer-legal">© 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+</footer>
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
