@@ -9,11 +9,16 @@ BTS Intelligence (BTS E-Commerce UG, haftungsbeschränkt) ist eine KI-Automatisi
 - **Angebotserstellung automatisieren**: Aus Aufmaßdaten oder Briefings werden fertige Angebote mit Briefkopf und Preisen erstellt — in Minuten statt Stunden.
 - **Rechnungs- und Mahnwesen automatisieren**: Rechnungen werden automatisch nach Auftragsabschluss gestellt, Mahnungen nach Fälligkeit verschickt — ohne manuelles Zutun.
 - **Belegerfassung für Steuerkanzleien**: Mandantenbelege werden automatisch erkannt, vorkontiert und in DATEV übergeben.
+- **Mandantenkommunikation für Kanzleien**: Erinnerungen, Belege-Anfragen, Standard-Antworten — alle Routine-Kommunikation läuft automatisch, Mandantengeheimnis-tauglich.
+- **Fristen &amp; Mahnwesen Kanzlei**: Fristen sicher überwachen, Mandanten-Mahnwesen in 3 Stufen automatisieren — DATEV bleibt führendes System.
 - **Exposé-Erstellung für Makler**: Aus Objektdaten und Fotos zu fertigen PDFs im eigenen Layout — DSGVO-konform und MaBV-tauglich.
 - **DSGVO-konforme Schwärzung**: Verträge, Akten, Dokumente werden gerichtsfest geschwärzt — echte Inhaltsentfernung, Audit-Trail inklusive.
 - **E-Mail-Postfach automatisch sortieren**: Klassifikation, Standardantworten, Eskalation — Outlook, Gmail, IMAP.
+- **Termin-Koordination mit Kunden**: Anfragen in natürlicher Sprache, Kalender-Anbindung, automatische Slot-Vorschläge — ohne Calendly-Chaos.
 - **Angebote automatisch nachfassen**: Gestaffelte Follow-up-Sequenzen, Stopp bei Kundenantwort, in Ihrem Tonfall.
+- **CRM-Pflege automatisieren**: Kontakte aus E-Mails, Aktivitäts-Logging, Dubletten-Bereinigung, DSGVO-konforme B2B-Anreicherung.
 - **Aufmaß zu Angebot im Handwerk**: Foto, Formular oder Sprachnotiz vom Aufmaß zum fertigen PDF mit eigenen Preisen.
+- **Materialbestellung im Handwerk**: Bestandsüberwachung, Lieferanten-Bestellung, Lieferschein-Abgleich — kein Stillstand wegen fehlender Schraube.
 - **Kundenanfragen und Terminplanung**: Neue Anfragen werden sofort beantwortet und klassifiziert.
 - **Wartungserinnerungen, Bewertungs-Einholung, Reporting**: Weitere Standard-Workflows für Mittelstand und Handwerk.
 
@@ -71,11 +76,16 @@ Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 ## Ratgeber / Content
 
 ### Mittelstand &amp; KMU
+- Büroarbeit automatisieren: 12 Aufgaben für KMU: https://www.btsintelligence.de/ratgeber/bueroarbeit-automatisieren-mittelstand
+- KI im Unternehmen einführen — der 4-Schritte-Plan: https://www.btsintelligence.de/ratgeber/ki-im-unternehmen-einfuehren-schritte
+- Welche Prozesse automatisieren — und welche nicht: https://www.btsintelligence.de/ratgeber/welche-prozesse-automatisieren-kmu
 - Was kostet Prozessautomatisierung? Echte Preise 2026: https://www.btsintelligence.de/ratgeber/was-kostet-prozessautomatisierung-mittelstand
 - 7 Use Cases für KI im Mittelstand mit konkretem ROI: https://www.btsintelligence.de/ratgeber/ki-agenten-mittelstand-2026
 
 ### Steuerkanzleien
+- Mandantenkommunikation automatisieren: https://www.btsintelligence.de/ratgeber/mandantenkommunikation-automatisieren-kanzlei
 - Belege automatisch in DATEV erfassen: https://www.btsintelligence.de/ratgeber/belege-automatisch-erfassen-datev
+- Fristen &amp; Mahnwesen in der Steuerkanzlei: https://www.btsintelligence.de/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren
 
 ### Immobilienmakler
 - Exposé in 10 Minuten statt 2 Stunden: https://www.btsintelligence.de/ratgeber/expose-schneller-erstellen-makler
@@ -83,10 +93,13 @@ Ratgeber: https://www.btsintelligence.de/ratgeber/digitalbonus-bayern-2026
 
 ### Dienstleister &amp; Beratungen
 - E-Mail-Postfach automatisch sortieren: https://www.btsintelligence.de/ratgeber/email-postfach-automatisch-sortieren
+- Termine mit Kunden automatisch koordinieren: https://www.btsintelligence.de/ratgeber/termine-automatisch-koordinieren-kunden
 - Angebote automatisch nachfassen: https://www.btsintelligence.de/ratgeber/angebote-nachfassen-automatisch
+- CRM-Pflege automatisieren — Schluss mit Excel-Friedhof: https://www.btsintelligence.de/ratgeber/crm-pflege-automatisieren-dienstleister
 
 ### Handwerk
 - Aufmaß in Angebot umwandeln — mit eigenen Preisen: https://www.btsintelligence.de/ratgeber/aufmass-in-angebot-umwandeln
+- Materialbestellung im Handwerk automatisieren: https://www.btsintelligence.de/ratgeber/material-bestellen-handwerk-lieferanten
 - KI-Automatisierung im Handwerk: 8 Praxisbeispiele aus Bayern: https://www.btsintelligence.de/ratgeber/ki-automatisierung-handwerk-n8n
 - Rechnungen und Mahnungen automatisieren — 10 h/Woche sparen: https://www.btsintelligence.de/ratgeber/rechnungen-automatisieren-handwerk
 
@@ -123,4 +136,4 @@ Nein. Laufende Betreuung ist monatlich kündbar ab Monat 3. Keine versteckten Ko
 Nein. Wir betreuen Betriebe in ganz Bayern — Erstgespräch und Betreuung remote, auf Wunsch auch vor Ort.
 
 **Für welche Branchen ist BTS Intelligence besonders relevant?**
-Mittelständler, Steuerkanzleien (Belegerfassung, Mandantenkommunikation), Immobilienmakler (DSGVO-Schwärzung, Exposés), Dienstleister (E-Mail, Termine, Angebote), Industrie-Zulieferer (Bestellabwicklung, Reporting), Handwerksbetriebe (Angebote, Rechnungen, Material).
+Mittelständler, Steuerkanzleien (Belegerfassung, Mandantenkommunikation, Fristen), Immobilienmakler (DSGVO-Schwärzung, Exposés), Dienstleister (E-Mail, Termine, Angebote, CRM-Pflege), Industrie-Zulieferer (Bestellabwicklung, Reporting), Handwerksbetriebe (Angebote, Rechnungen, Material).
