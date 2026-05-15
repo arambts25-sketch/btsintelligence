@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termine mit Kunden automatisch koordinieren | BTS Intelligence</title>
+<meta name="description" content="Wie Dienstleister, Berater und Inhaber Terminanfragen automatisch koordinieren — ohne Calendly-Chaos, mit Kalender-Anbindung, Erinnerungen und höflichen Verschiebungen. Aus der Praxis.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.btsintelligence.de/ratgeber/termine-automatisch-koordinieren-kunden">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.btsintelligence.de/ratgeber/termine-automatisch-koordinieren-kunden">
+<meta property="og:title" content="Termine mit Kunden automatisch koordinieren — ohne Calendly-Chaos">
+<meta property="og:description" content="Terminanfragen erkennen, Slot vorschlagen, eintragen — mit Kalender-Anbindung, Erinnerungen und natürlicher Sprache.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="BTS Intelligence">
+<meta name="theme-color" content="#090b12">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://www.btsintelligence.de/ratgeber/termine-automatisch-koordinieren-kunden",
+    "headline": "Termine mit Kunden automatisch koordinieren — ohne Calendly-Chaos",
+    "description": "Wie Terminanfragen automatisch erkannt, Slots vorgeschlagen und nach Bestätigung eingetragen werden — mit Kalender-Anbindung, Erinnerungen und höflichen Verschiebungen.",
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {"@type": "Person", "@id": "https://www.btsintelligence.de/#founder", "name": "Tufan Enes Yilmaz"},
+    "publisher": {"@type": "Organization", "@id": "https://www.btsintelligence.de/#business", "name": "BTS Intelligence"},
+    "url": "https://www.btsintelligence.de/ratgeber/termine-automatisch-koordinieren-kunden",
+    "inLanguage": "de-DE",
+    "about": ["Termine koordinieren Tool", "Terminbuchung automatisieren", "Outlook Termin automatisch", "Calendly Alternative"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.btsintelligence.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://www.btsintelligence.de/ratgeber/"},
+      {"@type": "ListItem", "position": 3, "name": "Termine automatisch koordinieren", "item": "https://www.btsintelligence.de/ratgeber/termine-automatisch-koordinieren-kunden"}
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Was ist der Unterschied zu einem Tool wie Calendly?","acceptedAnswer":{"@type":"Answer","text":"Calendly funktioniert so: Der Kunde bekommt einen Link, klickt sich durch eine generische Buchungsmaske. Ein automatisierter Terminkoordinations-Workflow läuft anders: Der Kunde schreibt eine ganz normale E-Mail ('Können wir nächste Woche kurz reden?'), die KI erkennt die Anfrage, schaut in Ihren Kalender, schlägt im Namen Ihrer Kanzlei/Agentur konkrete Termine vor — in natürlicher Sprache, in Ihrem Ton. Buchungslinks bleiben optional."}},
+      {"@type":"Question","name":"Funktioniert das mit meinem Outlook- oder Google-Kalender?","acceptedAnswer":{"@type":"Answer","text":"Ja, beides. Outlook/Microsoft 365 über die Graph API, Google Workspace über die Calendar API. Auch mehrere Kalender (Geschäft, privat, Team-Kalender) lassen sich gleichzeitig prüfen, sodass keine Termin-Überschneidungen passieren. Bei IMAP-Hosts wird über CalDAV angebunden."}},
+      {"@type":"Question","name":"Können Mitarbeiter und Teammitglieder unterschiedliche Verfügbarkeiten haben?","acceptedAnswer":{"@type":"Answer","text":"Ja. Pro Mitarbeiter konfigurierbar: Welche Zeitfenster grundsätzlich verfügbar sind, welche Termin-Typen er/sie annehmen kann (Erstgespräch ja, Kalkulationstermin nein), welche Vorbereitungs-Zeit nötig ist, ob Fahrzeit eingerechnet werden soll. Der Workflow wählt automatisch den richtigen Mitarbeiter für den richtigen Termin-Typ aus."}},
+      {"@type":"Question","name":"Was, wenn der Kunde verschieben muss?","acceptedAnswer":{"@type":"Answer","text":"Der Kunde antwortet einfach auf die Bestätigungs-E-Mail ('Geht das eine Stunde später?' oder 'Lieber Donnerstag'). Der Workflow erkennt die Verschiebungs-Anfrage, prüft den Kalender und schlägt neue Termine vor. Auch Absagen werden erkannt und der Slot automatisch wieder freigegeben."}},
+      {"@type":"Question","name":"Wie sicher ist das gegen Doppel-Buchungen?","acceptedAnswer":{"@type":"Answer","text":"Doppel-Buchungen werden technisch verhindert. Der Workflow blockiert den Slot beim Vorschlag mit einer Sperre (vergleichbar einem Soft-Lock), sodass kein paralleler Vorgang denselben Slot vergeben kann. Erst bei Bestätigung wird der Termin endgültig eingetragen. Bei nicht-Bestätigung nach typisch 24 Stunden gibt der Workflow den Slot wieder frei."}}
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+<header role="banner">
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo"><span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/leistungen/">Leistungen</a></li>
+    <li><a href="/preise/">Preise</a></li>
+    <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber/" aria-current="page">Ratgeber</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<section class="article-hero section--alt" style="padding-top: calc(60px + 72px); padding-bottom: 48px; text-align: center;">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">Startseite</a><span>›</span>
+      <a href="/ratgeber/">Ratgeber</a><span>›</span>
+      <span>Termine automatisch koordinieren</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom: 20px; display: inline-flex;">
+      <span class="badge-pulse"></span>
+      Für Dienstleister · Berater · Inhaber
+    </div>
+    <h1 class="section-title" style="max-width: 920px; margin: 0 auto 20px;">
+      Termine mit Kunden automatisch koordinieren —<br>ohne Calendly-Chaos.
+    </h1>
+    <div class="article-meta">
+      <span>📅 15. Mai 2026</span>
+      <span>✍ Tufan Enes Yilmaz, BTS Intelligence</span>
+      <span>⏱ ca. 8 Min. Lesezeit</span>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>Outlook</em><br>Google<br>CalDAV</div>
+        <div class="foerder-card-desc">jede Kalender-Welt</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>natürliche</em><br>Sprache</div>
+        <div class="foerder-card-desc">keine Buchungs-Maske</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>0</em> Doppel-<br>buchungen</div>
+        <div class="foerder-card-desc">durch Slot-Sperre</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>3</em> Wochen</div>
+        <div class="foerder-card-desc">bis produktiv</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="article-body" style="padding-top: 56px;">
+
+  <p><strong>Worum es geht:</strong> Termin-Pingpong gehört zu den unsichtbaren Zeitfressern im Dienstleister-Alltag. „Wie wäre Dienstag?" — „Geht nicht, Mittwoch?" — „Vormittag oder Nachmittag?" — drei Mails für einen 30-Minuten-Slot. Es geht besser: Ein automatisierter Workflow erkennt Termin-Wünsche, prüft den Kalender, schlägt konkrete Slots vor — und trägt nach Bestätigung ein. Ohne dass der Kunde sich durch ein generisches Tool klicken muss. Dieser Ratgeber zeigt, wie das in der Praxis aussieht.</p>
+
+  <h2>Warum reines Calendly nicht für jeden passt</h2>
+
+  <p>Tools wie Calendly, Cal.com oder TidyCal sind technisch ausgereift und für viele Anwendungsfälle gut. Aber: sie haben drei strukturelle Schwächen, wenn die Kunden-Beziehung wichtig ist:</p>
+
+  <ul>
+    <li><strong>Generische Oberfläche:</strong> Der Kunde bekommt das gleiche Buchungs-Interface wie bei einem Massendienstleister. Wirkt unpersönlich, vor allem bei Beratungs-orientierten Branchen.</li>
+    <li><strong>Friktion beim Buchen:</strong> Link öffnen, Datum wählen, Uhrzeit wählen, Formular ausfüllen, bestätigen — vier Klicks und das Verlassen der E-Mail. Drop-off-Rate steigt mit jedem Schritt.</li>
+    <li><strong>Keine Verschiebungs-Logik:</strong> Wenn der Kunde später verschieben muss, geht das Spiel von vorne los — oder er muss den Link erneut öffnen.</li>
+  </ul>
+
+  <p>Die Alternative: Ein Workflow, der direkt in der natürlichen E-Mail-Konversation arbeitet — der Kunde bleibt im Mail-Programm, der Workflow tut so, als wäre er Ihr Backoffice.</p>
+
+  <h2>Wie eine natürliche Termin-Automation funktioniert</h2>
+
+  <h3>1. Anfrage-Erkennung in der eingehenden Mail</h3>
+
+  <p>Der Workflow scannt eingehende E-Mails und erkennt, ob es um einen Termin geht — „Können wir telefonieren?", „Hätten Sie nächste Woche Zeit?", „Ich würde gerne vorbeikommen". Dabei wird auch erkannt, was für ein Termin gemeint ist (Telefonat, Beratungsgespräch, Vor-Ort-Termin, Werkstattbesuch).</p>
+
+  <h3>2. Kontext aus dem Kalender</h3>
+
+  <p>Der Workflow prüft Ihren Kalender — oder den Kalender mehrerer Mitarbeiter, falls Sie ein Team sind. Berücksichtigt werden:</p>
+
+  <ul>
+    <li>Verfügbare Zeitfenster (Ihre Geschäftszeiten)</li>
+    <li>Sperrzeiten (Mittagspause, Fokuszeiten)</li>
+    <li>Vorbereitungs-Zeit (manche Termine brauchen 15 Min Vorbereitung)</li>
+    <li>Fahrzeit (bei Vor-Ort-Terminen, je nach Anfahrtsstrecke)</li>
+    <li>Termin-Typ-spezifische Regeln (Erstgespräch nur Dienstag/Donnerstag, etc.)</li>
+  </ul>
+
+  <h3>3. Antwort in natürlicher Sprache</h3>
+
+  <p>Statt eines Buchungs-Links bekommt der Kunde eine ganz normale Mail-Antwort: „Gerne — ich hätte am Mittwoch 10:00 oder am Donnerstag 14:30. Was passt Ihnen besser?" Drei konkrete Slots, in Ihrem Ton, mit Ihrer Signatur. Auf Wunsch ergänzbar mit Buchungs-Link als zusätzlicher Komfort.</p>
+
+  <h3>4. Slot-Sperre während Abstimmung</h3>
+
+  <p>Sobald der Workflow drei Slots vorschlägt, werden diese im Kalender als „Soft-Lock" markiert — sie erscheinen als blockiert für andere Termin-Vergaben, aber noch nicht endgültig. Wenn der Kunde nicht innerhalb von 24–48 Stunden bestätigt, gibt der Workflow die Slots wieder frei.</p>
+
+  <h3>5. Bestätigung und Eintrag</h3>
+
+  <p>Antwortet der Kunde mit „Donnerstag 14:30 passt", wird der Termin endgültig eingetragen — mit Kunden-Daten, Termin-Typ, Vorbereitungs-Notizen. Eine Kalender-Einladung (.ics) geht raus, eine Erinnerung wird geplant.</p>
+
+  <h3>6. Erinnerungen und Verschiebungen</h3>
+
+  <p>24 Stunden vor Termin geht eine Erinnerung an den Kunden. Wenn der Kunde verschieben muss („Geht das eine Stunde später?"), erkennt der Workflow das, prüft den Kalender und reagiert mit Alternativen. Auch Absagen werden erkannt und der Slot freigegeben.</p>
+
+  <!-- Inline CTA -->
+  <div class="article-cta">
+    <div class="foerder-badge" style="margin-bottom: 16px; display: inline-flex;">📅 Kostenloses Erstgespräch</div>
+    <h3>Wie viele E-Mails kostet Sie ein einziger Termin im Durchschnitt?</h3>
+    <p>30 Minuten am Telefon — wir hören uns Ihren typischen Termin-Workflow an und sagen, ob eine Automatisierung in Ihrer Konstellation Sinn macht. Mit konkreten Beispielen aus Ihrer Branche.</p>
+    <div class="cta-actions" style="justify-content: center;">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Analyse →</a>
+      <a href="/leistungen/" class="btn-ghost">Leistungen ansehen</a>
+    </div>
+    <p style="font-size: .8rem; color: var(--text-lo); margin-top: 16px; margin-bottom: 0;">Kostenlos &amp; unverbindlich · Direkt mit den Gründern · 30 Min.</p>
+  </div>
+
+  <h2>Konkrete Anwendungsfälle aus der Praxis</h2>
+
+  <div class="article-box">
+    <div class="article-box-title">Steuerkanzlei mit 4 Beratern</div>
+    <p>Ankommende Mandanten-Anfragen werden automatisch dem zuständigen Berater zugeordnet (basierend auf Mandanten-Stammdaten in DATEV). Vorbereitungs-Zeit pro Termin-Typ konfiguriert (Erstgespräch 60 Min mit 30 Min Vorbereitung, Folge-Termin 30 Min ohne Vorbereitung). Ergebnis: 60 % weniger Termin-Pingpong-Mails.</p>
+  </div>
+
+  <div class="article-box">
+    <div class="article-box-title">Beratungsbüro mit Vor-Ort-Terminen</div>
+    <p>Bei Außenterminen rechnet der Workflow die Fahrzeit zwischen Adressen ein (über Google Maps API). Aufeinanderfolgende Termine in der gleichen Region werden bevorzugt geplant — keine sinnlosen Quer-durchs-Bundesland-Touren.</p>
+  </div>
+
+  <div class="article-box">
+    <div class="article-box-title">Handwerksbetrieb mit Werkstatt- und Außenterminen</div>
+    <p>Termine in der Werkstatt werden vom Workflow nur für bestimmte Wochentage vorgeschlagen, Außenmontage-Termine nur nach Auftrag und in Pakete-Logik (mehrere Kunden pro Tour). Werkstatt-Team und Montage-Team haben getrennte Verfügbarkeits-Pools.</p>
+  </div>
+
+  <h2>Was Sie für die Einrichtung definieren</h2>
+
+  <ol>
+    <li><strong>Welche Termin-Typen gibt es bei Ihnen?</strong> (Erstgespräch, Folge-Termin, Vor-Ort, Telefonat, etc.)</li>
+    <li><strong>Wie lange dauert jeder Termin-Typ?</strong> (inkl. Vorbereitungs-Puffer)</li>
+    <li><strong>Wer kann welchen Termin-Typ annehmen?</strong> (bei Team)</li>
+    <li><strong>Wann sind Sie generell verfügbar?</strong> (Geschäftszeiten, Wochentage)</li>
+    <li><strong>Welche Sperrzeiten gibt es?</strong> (Mittagspause, Fokuszeiten, fester Tag pro Woche frei)</li>
+    <li><strong>Wie soll die Erinnerung aussehen?</strong> (Zeitpunkt, Tonfall, ggf. mit Vorbereitungs-Information)</li>
+  </ol>
+
+  <p>Diese Konfiguration nehmen wir in der Einrichtung gemeinsam mit Ihnen vor — typisch 1–2 Stunden Workshop, danach läuft der Workflow.</p>
+
+  <h2>Häufige Fragen</h2>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn die KI eine Termin-Anfrage missversteht — z. B. eine Beschwerde als Termin-Wunsch?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Das passiert in der Anlaufphase selten, aber kann vorkommen. Lösung: In den ersten 4 Wochen läuft der Workflow im „Entwurfs-Modus" — er bereitet die Antwort vor, sendet aber nicht automatisch. Sie prüfen kurz, geben frei. Wenn die Treffsicherheit über 95 % ist, wechseln Sie in den Vollautomatik-Modus. Bei sensiblen Mail-Typen (Beschwerden, Vertragsänderungen) kann der Workflow dauerhaft im Entwurfs-Modus bleiben.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Können wir parallel Calendly oder ein anderes Buchungs-Tool weiter nutzen?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja, das ist sogar oft sinnvoll. Beispiel: Calendly für Erstgespräche von Webseiten-Leads (selbstbedienung), automatische Mail-Koordination für Bestandskunden-Termine (persönlich). Der Workflow synchronisiert sich mit Calendly-Slots, sodass keine Doppel-Buchungen entstehen.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn ein Kunde lieber telefonisch buchen will?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Bleibt unberührt. Wer anruft, bekommt einen Menschen — der Workflow kümmert sich nur um schriftliche Kommunikation. Wenn nach einem Anruf der Termin im Kalender eingetragen wird, erkennt der Workflow das automatisch und gibt eventuell vorgeschlagene Slots wieder frei.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Funktioniert das auch bei Außenterminen mit Anfahrt?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja. Der Workflow kann Adressen auswerten, Fahrzeit über Google Maps berechnen, und nur Termine vorschlagen, die mit Fahrzeit + Termindauer + Rückfahrt sinnvoll passen. Bei wiederkehrenden Außenterminen im gleichen Gebiet (z. B. mehrere Kunden in München) werden diese bevorzugt gebündelt.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Wie schnell ist sowas einsatzbereit?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Typisch 2–3 Wochen vom Erstgespräch bis zum produktiven Betrieb. Die Kalender-Anbindung ist meist innerhalb eines Tages eingerichtet, die ersten 2 Wochen lernt das System Ihre Termin-Logik. Nach Erstgespräch erhalten Sie binnen 48 Stunden ein verbindliches Festpreisangebot.</p>
+  </details>
+
+  <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
+    <div>
+      <div class="article-box-title" style="margin-bottom: 4px;">Tufan Enes Yilmaz</div>
+      <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">Geschäftsführer &amp; Gründer von BTS Intelligence. Begleitet Dienstleister, Beratungen und Handwerksbetriebe in Bayern bei der Einführung intelligenter Termin-Koordination — pragmatisch, ohne Calendly-Zwang.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-lo); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/ratgeber/" class="btn-ghost" style="font-size: .875rem;">← Alle Ratgeber</a>
+    <a href="/ratgeber/email-postfach-automatisch-sortieren" class="btn-ghost" style="font-size: .875rem;">E-Mail-Sortierung →</a>
+    <a href="/ratgeber/angebote-nachfassen-automatisch" class="btn-ghost" style="font-size: .875rem;">Angebote nachfassen</a>
+  </div>
+
+</div><!-- /.article-body -->
+
+<section class="cta-section" style="padding-top: 32px; padding-bottom: 96px;">
+  <div class="cta-inner">
+    <div class="eyebrow">Kostenloses Erstgespräch</div>
+    <h2 class="section-title">Wie viel Termin-Pingpong<br>steckt in Ihrem Posteingang?</h2>
+    <p class="section-lead">30 Minuten am Telefon — wir hören uns Ihren typischen Termin-Workflow an und prüfen ehrlich, ob Automatisierung der richtige Schritt ist.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Termin direkt buchen →</a>
+      <a href="/" class="btn-ghost">Zur Startseite</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos &amp; unverbindlich</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text"><div class="modal-option-title">Termin direkt buchen</div><div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div></div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text"><div class="modal-option-title">Nachricht hinterlassen</div><div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px"><rect width="32" height="32" rx="8" fill="url(#lgtm)"/><path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/><path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/><circle cx="22" cy="13" r="2.5" fill="#e8a820"/><line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="lgtm" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4f6bf0"/><stop offset="100%" stop-color="#2a3fa8"/></linearGradient></defs></svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+  </div>
+  <div class="footer-links"><a href="/leistungen/">Leistungen</a><a href="/preise/">Preise</a><a href="/ueber-uns/">Über uns</a><a href="/ratgeber/">Ratgeber</a><a href="/demos/">Demos</a><a href="#" onclick="openModal(event)">Termin buchen</a><a href="tel:+491784552028">0178 / 455 2028</a></div>
+  <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+  <div class="footer-legal">© 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+</footer>
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
