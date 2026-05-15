@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM-Pflege automatisieren: Schluss mit Excel-Friedhof | BTS</title>
+<meta name="description" content="Wie Dienstleister, Beratungen und KMU ihr CRM endlich aktuell halten — automatische Kontakt-Anreicherung, Aktivitäts-Logging, Datenpflege. Mit HubSpot, Pipedrive, Zoho.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.btsintelligence.de/ratgeber/crm-pflege-automatisieren-dienstleister">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.btsintelligence.de/ratgeber/crm-pflege-automatisieren-dienstleister">
+<meta property="og:title" content="CRM-Pflege automatisieren: Schluss mit dem Excel-Friedhof">
+<meta property="og:description" content="Wie Sie Ihr CRM automatisch aktuell halten — Kontakt-Anreicherung, Aktivitäts-Logging, Datenpflege ohne manuellen Aufwand.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="BTS Intelligence">
+<meta name="theme-color" content="#090b12">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://www.btsintelligence.de/ratgeber/crm-pflege-automatisieren-dienstleister",
+    "headline": "CRM-Pflege automatisieren: Schluss mit dem Excel-Friedhof",
+    "description": "Wie Dienstleister und KMU ihr CRM automatisch aktuell halten — Kontakt-Anreicherung, Aktivitäts-Logging, Datenpflege. Mit HubSpot, Pipedrive, Zoho oder eigenem System.",
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {"@type": "Person", "@id": "https://www.btsintelligence.de/#founder", "name": "Tufan Enes Yilmaz"},
+    "publisher": {"@type": "Organization", "@id": "https://www.btsintelligence.de/#business", "name": "BTS Intelligence"},
+    "url": "https://www.btsintelligence.de/ratgeber/crm-pflege-automatisieren-dienstleister",
+    "inLanguage": "de-DE",
+    "about": ["CRM Pflege", "CRM automatisieren KMU", "Datenpflege CRM", "CRM Datenqualität"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.btsintelligence.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://www.btsintelligence.de/ratgeber/"},
+      {"@type": "ListItem", "position": 3, "name": "CRM-Pflege automatisieren", "item": "https://www.btsintelligence.de/ratgeber/crm-pflege-automatisieren-dienstleister"}
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Was bedeutet CRM-Pflege automatisieren konkret?","acceptedAnswer":{"@type":"Answer","text":"Ein automatischer Workflow hält Ihr CRM ohne manuellen Aufwand aktuell: Neue Kontakte werden aus E-Mail-Signaturen erkannt und angelegt, alle E-Mails und Termine mit Kontakten werden automatisch dem richtigen Datensatz zugeordnet, Dubletten werden zusammengeführt, fehlende Daten werden aus öffentlich verfügbaren Quellen ergänzt (Unternehmensname, Branche, Adresse)."}},
+      {"@type":"Question","name":"Funktioniert das mit HubSpot, Pipedrive oder Zoho?","acceptedAnswer":{"@type":"Answer","text":"Ja, mit allen großen CRM-Systemen über deren APIs. HubSpot bietet sehr saubere Schnittstellen, Pipedrive und Zoho ebenfalls. Auch eigene Datenbank-basierte CRMs (Airtable, Notion mit CRM-Setup, Excel/Google Sheets als CRM) lassen sich anbinden — wobei wir bei letzterem oft empfehlen, parallel den Umstieg auf ein richtiges CRM zu prüfen."}},
+      {"@type":"Question","name":"Werden Daten aus öffentlichen Quellen DSGVO-konform angereichert?","acceptedAnswer":{"@type":"Answer","text":"Nur unter bestimmten Voraussetzungen. Daten aus B2B-Quellen wie Handelsregister, Impressum öffentlicher Websites oder LinkedIn-Firmenprofilen können verwendet werden. Persönliche Informationen über Privatkontakte werden nicht aus dritten Quellen angereichert — das wäre nicht DSGVO-konform. Wir konfigurieren konservativ und dokumentieren alle Quellen im Audit-Log."}},
+      {"@type":"Question","name":"Wer haftet, wenn die Automatisierung falsche Daten überschreibt?","acceptedAnswer":{"@type":"Answer","text":"Der Workflow überschreibt nichts ohne Genehmigung. Standard-Konfiguration: Bei Konflikten zwischen vorhandenen und neuen Daten wird der Konflikt als Vorschlag markiert, Sie entscheiden. Vollautomatik gibt es nur für klare Anreicherungen (leere Felder werden mit verlässlichen Quellen-Daten gefüllt) — niemals für Überschreibungen."}},
+      {"@type":"Question","name":"Lohnt sich das, wenn wir nur 200 Kontakte haben?","acceptedAnswer":{"@type":"Answer","text":"Selten. Der Aufwand für Einrichtung und Workflow-Lizenz ist bei sehr kleinen Datenbeständen oft höher als der Nutzen. Ab ca. 500–1000 aktiven Kontakten lohnt es sich meist deutlich. Bei kleineren Beständen sind manuelle Disziplin und einfache CRM-Workflows die bessere Wahl."}}
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+<header role="banner">
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo"><span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/leistungen/">Leistungen</a></li>
+    <li><a href="/preise/">Preise</a></li>
+    <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber/" aria-current="page">Ratgeber</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<section class="article-hero section--alt" style="padding-top: calc(60px + 72px); padding-bottom: 48px; text-align: center;">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">Startseite</a><span>›</span>
+      <a href="/ratgeber/">Ratgeber</a><span>›</span>
+      <span>CRM-Pflege automatisieren</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom: 20px; display: inline-flex;">
+      <span class="badge-pulse"></span>
+      Für Dienstleister · Vertrieb · KMU
+    </div>
+    <h1 class="section-title" style="max-width: 920px; margin: 0 auto 20px;">
+      CRM-Pflege automatisieren —<br>Schluss mit dem Excel-Friedhof.
+    </h1>
+    <div class="article-meta">
+      <span>📅 15. Mai 2026</span>
+      <span>✍ Tufan Enes Yilmaz, BTS Intelligence</span>
+      <span>⏱ ca. 8 Min. Lesezeit</span>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>HubSpot</em><br>Pipedrive<br>Zoho</div>
+        <div class="foerder-card-desc">alle gängigen CRMs</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>auto.</em><br>Anreicherung</div>
+        <div class="foerder-card-desc">aus B2B-Quellen, DSGVO-konform</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>0</em> manuelle<br>Logs</div>
+        <div class="foerder-card-desc">Mails/Termine automatisch zugeordnet</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>2–4</em> Wochen</div>
+        <div class="foerder-card-desc">bis produktiv</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="article-body" style="padding-top: 56px;">
+
+  <p><strong>Worum es geht:</strong> Das schönste CRM ist nutzlos, wenn die Daten nicht stimmen. In vielen Dienstleister-Betrieben verkommt das CRM zum „Excel-Friedhof" — Kontakte ohne Aktivität, Aktivitäten ohne Kontakt-Zuordnung, Dubletten, leere Pflichtfelder. Dieser Ratgeber zeigt, wie ein automatisierter Pflege-Workflow das CRM ohne manuelle Disziplin sauber hält — neue Kontakte werden aus E-Mails erkannt, Aktivitäten automatisch zugeordnet, Daten aus B2B-Quellen ergänzt.</p>
+
+  <h2>Warum CRMs in der Praxis veröden</h2>
+
+  <p>Die meisten CRM-Einführungen scheitern nicht an Technik, sondern an einem unkomfortablen Wahrheit: <strong>Manuelle Pflege wird nicht durchgehalten.</strong> Drei typische Symptome:</p>
+
+  <ul>
+    <li><strong>Aktivitäten landen nicht im CRM:</strong> Wer hat zuletzt mit Kunde Müller gesprochen? Niemand weiß es, weil die E-Mail nur in Outlook liegt, der Anruf in der Anruferliste und das Vor-Ort-Gespräch in keinem System.</li>
+    <li><strong>Kontakte werden mehrfach angelegt:</strong> Vertrieb legt „Müller GmbH" neu an, weil die Suche nach „Mueller" nichts findet. Daraus werden Dubletten, die mit der Zeit zur Mehrarbeit werden.</li>
+    <li><strong>Pflichtfelder bleiben leer:</strong> Branche, Mitarbeiteranzahl, Adresse — vieles wird beim Anlegen nicht eingetragen, weil die Information „später nachträgt" werden soll. Wird nie nachgetragen.</li>
+  </ul>
+
+  <p>Folge: Das CRM wird zur Buchhalter-Lösung — pflichtgemäß da, aber operativ kaum genutzt. Genau das ändert ein automatisierter Pflege-Workflow.</p>
+
+  <h2>Die fünf Pflege-Bereiche, die automatisierbar sind</h2>
+
+  <h3>1. Neue Kontakte automatisch anlegen</h3>
+
+  <p>Eingehende E-Mails werden gescannt — wenn der Absender nicht im CRM ist, wird er automatisch angelegt. Aus der E-Mail-Signatur werden Name, Position, Firma, Adresse und Telefonnummer extrahiert. Aus dem Firmen-Domain wird die Firmen-Website nachgeschlagen, daraus Branche, Größe, Standorte ergänzt.</p>
+
+  <h3>2. Aktivitäten automatisch zuordnen</h3>
+
+  <p>Jede E-Mail an oder von einer CRM-Adresse wird automatisch dem Kontakt-Datensatz zugeordnet. Termine aus dem Kalender (mit Teilnehmer-E-Mail) ebenfalls. Anrufe, falls über VoIP-System: ja. Vor-Ort-Termine via Kalendereintrag: ja. So entsteht eine vollständige Aktivitäts-Historie, ohne dass jemand „Aktivität loggen" klicken muss.</p>
+
+  <h3>3. Dubletten erkennen und zusammenführen</h3>
+
+  <p>Wenn „Müller GmbH" und „Mueller GmbH" beide im CRM sind, erkennt der Workflow das durch unscharfe Suche (Levenshtein-Distanz, Telefon-Match, E-Mail-Match, Adressen-Match) und schlägt Zusammenführung vor. Beim Zusammenführen werden alle Aktivitäten beider Datensätze gemerged. Vollautomatisch zusammengeführt wird nur bei eindeutigen Treffern — bei Unsicherheit landet die Entscheidung beim verantwortlichen Mitarbeiter.</p>
+
+  <h3>4. Datenanreicherung aus B2B-Quellen</h3>
+
+  <p>Leere Felder werden aus öffentlich verfügbaren B2B-Quellen ergänzt:</p>
+
+  <ul>
+    <li><strong>Handelsregister:</strong> Rechtsform, Gründungsdatum, Geschäftsführer</li>
+    <li><strong>Impressum öffentlicher Websites:</strong> Adresse, Telefonnummer</li>
+    <li><strong>LinkedIn-Firmenprofil:</strong> Mitarbeiterzahl, Branche, Standorte</li>
+    <li><strong>Bundesanzeiger:</strong> Umsatz-Größenklasse, Bilanz-Daten (sofern publiziert)</li>
+  </ul>
+
+  <p>Wichtig: Nur B2B-Daten, keine privaten Informationen. Persönliche Kontakte werden nicht „nach-recherchiert" — das wäre DSGVO-kritisch.</p>
+
+  <h3>5. Status-Updates und Pipeline-Pflege</h3>
+
+  <p>Wenn ein Angebot rausgeht (erkannt aus dem E-Mail-Anhang oder dem Angebots-Tool), wird der Deal-Status im CRM automatisch von „Erstkontakt" auf „Angebot raus" gesetzt. Wenn die Antwort „kein Interesse" kommt, eskaliert der Workflow zur manuellen Entscheidung: „Soll der Deal auf 'Verloren' gesetzt werden? Mit Grund?"</p>
+
+  <!-- Inline CTA -->
+  <div class="article-cta">
+    <div class="foerder-badge" style="margin-bottom: 16px; display: inline-flex;">📅 Kostenloses Erstgespräch</div>
+    <h3>Wie aktuell ist Ihr CRM heute — ehrlich gefragt?</h3>
+    <p>30 Minuten am Telefon — wir hören uns Ihren CRM-Stand an, schauen welche Pflege-Lücken am meisten weh tun, und sagen ehrlich, ob Automatisierung in Ihrer Konstellation Sinn macht.</p>
+    <div class="cta-actions" style="justify-content: center;">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Analyse →</a>
+      <a href="/leistungen/" class="btn-ghost">Leistungen ansehen</a>
+    </div>
+    <p style="font-size: .8rem; color: var(--text-lo); margin-top: 16px; margin-bottom: 0;">Kostenlos &amp; unverbindlich · Direkt mit den Gründern · 30 Min.</p>
+  </div>
+
+  <h2>Praxis-Beispiel: Beratungsbüro mit HubSpot</h2>
+
+  <p>Eine Unternehmensberatung mit 12 Mitarbeitern hatte HubSpot eingeführt, aber die Vertriebs-Mannschaft pflegte konsequent vorbei. Nach Einführung des Pflege-Workflows:</p>
+
+  <ul>
+    <li><strong>Vor:</strong> 1.200 Kontakte, davon 70 % ohne Aktivität in den letzten 12 Monaten, 25 % vermutete Dubletten, 60 % unvollständige Datenfelder</li>
+    <li><strong>Nach 8 Wochen:</strong> 980 Kontakte (Dubletten zusammengeführt), 100 % aller Mail- und Termin-Aktivitäten erfasst, Pflichtfelder zu 95 % gefüllt</li>
+    <li><strong>Konsequenz:</strong> Vertrieb arbeitet wieder im CRM, weil die Daten stimmen. Reporting-Berichte (welche Branchen, welche Pipeline-Phasen) sind erstmals belastbar.</li>
+  </ul>
+
+  <p>Wichtig: Das war keine einmalige Aktion, sondern ein dauerhafter Workflow. Die Pflege bleibt automatisch erhalten — auch wenn neue Mitarbeiter dazukommen.</p>
+
+  <h2>DSGVO und CRM-Anreicherung — was zu beachten ist</h2>
+
+  <p>Daten-Anreicherung aus externen Quellen ist DSGVO-relevant. Drei Prinzipien:</p>
+
+  <ol>
+    <li><strong>Nur B2B-Daten:</strong> Anreicherung ist nur für geschäftliche Kontaktdaten zulässig — und auch dort nur aus öffentlich zugänglichen Quellen.</li>
+    <li><strong>Audit-Log:</strong> Jede Anreicherung wird protokolliert: Welches Feld wurde wann aus welcher Quelle gefüllt. So lässt sich bei Auskunfts-Anfragen exakt nachweisen, woher Daten stammen.</li>
+    <li><strong>Korrektur-Recht:</strong> Wenn ein Kontakt seine Daten korrigieren lässt (z. B. „Wir haben die Adresse geändert"), wird der Korrektur-Wert geschützt — die Anreicherung überschreibt nicht.</li>
+  </ol>
+
+  <h2>Häufige Fragen</h2>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Müssen wir vorher ein bestimmtes CRM einführen?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Nein. Wir arbeiten mit dem System, das Sie haben — HubSpot, Pipedrive, Zoho, Salesforce, oder auch Airtable/Notion-basierte CRMs. Bei sehr kleinen Excel-CRMs empfehlen wir oft parallel den Umstieg auf ein richtiges CRM, weil sonst die Skalierung bald an die Grenzen kommt. Diese Empfehlung folgt aus dem Erstgespräch.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn wir das CRM ablösen wollen — bleiben die Daten bei uns?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Selbstverständlich. Der Pflege-Workflow ist eine Schicht über Ihrem CRM, nicht eine Alternative. Bei Wechsel des CRMs migrieren wir die Daten zum neuen System und passen den Workflow an. Vendor-Lock-in gibt es nicht — die Workflow-Definitionen erhalten Sie als Export.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Werden private E-Mails (z. B. an einen Kunden auch privater Kontakt) zugeordnet?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Nur wenn der Empfänger im CRM ist. Reine private E-Mails (an Familie, Freunde außerhalb des Geschäfts) landen nicht im CRM, weil dort keine Empfänger gepflegt sind. Bei gemischter Korrespondenz (Geschäftspartner, der gleichzeitig befreundet ist) gilt: Geschäftliche Themen werden zugeordnet, private E-Mails können über Schlagwort-Regeln ausgenommen werden.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Können wir die Anreicherung nur für bestimmte Branchen aktivieren?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja, sehr fein steuerbar. Sie können konfigurieren: Welche Felder werden überhaupt angereichert, aus welchen Quellen, für welche Branchen, für welche Größenklassen. Vielen Kunden reicht eine Standard-Konfiguration für die ersten 6 Monate, danach wird verfeinert.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Wie schnell ist sowas einsatzbereit?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Typisch 2–4 Wochen vom Erstgespräch bis zum produktiven Betrieb. Die CRM-Anbindung ist meist innerhalb von 1–2 Tagen eingerichtet, die ersten 2–3 Wochen testet und lernt der Workflow Ihre Pflege-Regeln. Nach Erstgespräch erhalten Sie binnen 48 Stunden ein verbindliches Festpreisangebot.</p>
+  </details>
+
+  <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
+    <div>
+      <div class="article-box-title" style="margin-bottom: 4px;">Tufan Enes Yilmaz</div>
+      <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">Geschäftsführer &amp; Gründer von BTS Intelligence. Begleitet Dienstleister und Beratungen bei der Automatisierung von CRM-Pflege und Vertriebs-Workflows — DSGVO-konform und ohne Vendor-Lock-in.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-lo); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/ratgeber/" class="btn-ghost" style="font-size: .875rem;">← Alle Ratgeber</a>
+    <a href="/ratgeber/angebote-nachfassen-automatisch" class="btn-ghost" style="font-size: .875rem;">Angebote nachfassen →</a>
+    <a href="/ratgeber/email-postfach-automatisch-sortieren" class="btn-ghost" style="font-size: .875rem;">E-Mail-Sortierung</a>
+  </div>
+
+</div><!-- /.article-body -->
+
+<section class="cta-section" style="padding-top: 32px; padding-bottom: 96px;">
+  <div class="cta-inner">
+    <div class="eyebrow">Kostenloses Erstgespräch</div>
+    <h2 class="section-title">Wie viele Stunden würde Ihr Vertrieb<br>mit einem aktuellen CRM gewinnen?</h2>
+    <p class="section-lead">30 Minuten am Telefon — wir prüfen mit Ihnen, welche Pflege-Lücken bei Ihnen am stärksten weh tun, und ob Automatisierung der richtige Schritt ist.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Termin direkt buchen →</a>
+      <a href="/" class="btn-ghost">Zur Startseite</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos &amp; unverbindlich</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text"><div class="modal-option-title">Termin direkt buchen</div><div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div></div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text"><div class="modal-option-title">Nachricht hinterlassen</div><div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px"><rect width="32" height="32" rx="8" fill="url(#lgcrm)"/><path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/><path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/><circle cx="22" cy="13" r="2.5" fill="#e8a820"/><line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="lgcrm" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4f6bf0"/><stop offset="100%" stop-color="#2a3fa8"/></linearGradient></defs></svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+  </div>
+  <div class="footer-links"><a href="/leistungen/">Leistungen</a><a href="/preise/">Preise</a><a href="/ueber-uns/">Über uns</a><a href="/ratgeber/">Ratgeber</a><a href="/demos/">Demos</a><a href="#" onclick="openModal(event)">Termin buchen</a><a href="tel:+491784552028">0178 / 455 2028</a></div>
+  <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+  <div class="footer-legal">© 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+</footer>
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
