@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fristen &amp; Mahnwesen in der Steuerkanzlei automatisieren | BTS</title>
+<meta name="description" content="Wie Steuerkanzleien Fristen-Überwachung und Mandanten-Mahnwesen zuverlässig automatisieren — DATEV-Anbindung, Eskalations-Logik, Mandantengeheimnis. Aus der bayerischen Praxis.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.btsintelligence.de/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.btsintelligence.de/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren">
+<meta property="og:title" content="Fristen &amp; Mahnwesen in der Steuerkanzlei automatisieren">
+<meta property="og:description" content="Fristen sicher überwachen, Mandanten-Mahnwesen automatisieren — DATEV-Anbindung, Eskalations-Logik, mandantengeheimnistauglich.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="BTS Intelligence">
+<meta name="theme-color" content="#090b12">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://www.btsintelligence.de/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren",
+    "headline": "Fristen &amp; Mahnwesen in der Steuerkanzlei automatisieren",
+    "description": "Wie Steuerkanzleien Fristen-Überwachung und Mandanten-Mahnwesen sicher automatisieren — mit DATEV-Anbindung, Eskalations-Stufen und Mandantengeheimnis-tauglicher Architektur.",
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {"@type": "Person", "@id": "https://www.btsintelligence.de/#founder", "name": "Tufan Enes Yilmaz"},
+    "publisher": {"@type": "Organization", "@id": "https://www.btsintelligence.de/#business", "name": "BTS Intelligence"},
+    "url": "https://www.btsintelligence.de/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren",
+    "inLanguage": "de-DE",
+    "about": ["Fristenmanagement Kanzlei", "Mahnwesen Steuerberater", "Fristen automatisieren", "Mandanten-Mahnwesen"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.btsintelligence.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://www.btsintelligence.de/ratgeber/"},
+      {"@type": "ListItem", "position": 3, "name": "Fristen &amp; Mahnwesen in der Steuerkanzlei", "item": "https://www.btsintelligence.de/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren"}
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Welche Fristen lassen sich in der Steuerkanzlei automatisch überwachen?","acceptedAnswer":{"@type":"Answer","text":"Alle wiederkehrenden Fristen mit klarer Kalender-Logik: USt-Voranmeldungen (monatlich/quartalsweise), Lohnsteuer-Anmeldung, Einkommensteuer-Vorauszahlungen, Körperschaftsteuer-Vorauszahlungen, Jahresabschluss-Fristen, Steuererklärungsfristen, Belegabgabe-Termine. Auch interne Fristen für Mandanten-Reaktionen lassen sich überwachen und stufenweise eskalieren."}},
+      {"@type":"Question","name":"Wie funktioniert Mahnwesen gegenüber Mandanten — die müssen ja nicht zahlen?","acceptedAnswer":{"@type":"Answer","text":"Es geht nicht primär um Geld-Mahnwesen, sondern um Mitwirkungs-Mahnwesen: Mandant hat zugesagt, Belege bis Datum X zu liefern, hat es nicht getan. Der Workflow eskaliert in Stufen: 1) freundliche Erinnerung, 2) konkreter Hinweis auf Konsequenz (z. B. Frist beim Finanzamt), 3) Eskalation an zuständigen Berater. Echtes Honorar-Mahnwesen läuft separat über Buchhaltung."}},
+      {"@type":"Question","name":"Können wir Fristen-Erinnerungen ans Finanzamt automatisieren?","acceptedAnswer":{"@type":"Answer","text":"Nicht die Übermittlung selbst — die läuft weiter über DATEV/ELSTER mit Ihrer Freigabe als Berater. Aber: Der Workflow überwacht alle anstehenden Fristen, benachrichtigt den zuständigen Bearbeiter rechtzeitig, prüft, ob alle nötigen Belege vom Mandanten da sind, und blockiert keine Frist mehr durch versehentliche Übersehung."}},
+      {"@type":"Question","name":"Wie sicher ist das gegenüber dem Risiko von versäumten Fristen?","acceptedAnswer":{"@type":"Answer","text":"Genau dieser Punkt ist der größte Vorteil. Ein automatisches Fristen-System hat keine Urlaubsausfälle, keine Krankheits-Bedingten Lücken, keine 'das ist nicht mein Mandant'-Verwirrung. Der Workflow überwacht jede Frist mit klar definierten Eskalations-Stufen — der Berater entscheidet nur über die inhaltliche Bearbeitung."}},
+      {"@type":"Question","name":"Können wir bestehende DATEV-Fristen-Funktionen weiter nutzen?","acceptedAnswer":{"@type":"Answer","text":"Ja. DATEV bietet eigene Fristen-Verwaltung — diese bleibt führendes System. Der Automatisierungs-Workflow ergänzt sie durch automatische Mandanten-Kommunikation und Eskalations-Logik. So bekommen Sie das Beste aus beidem: DATEV als Quelle der Wahrheit, Workflow als handelnde Schicht."}}
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+<header role="banner">
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo"><span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/leistungen/">Leistungen</a></li>
+    <li><a href="/preise/">Preise</a></li>
+    <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber/" aria-current="page">Ratgeber</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<section class="article-hero section--alt" style="padding-top: calc(60px + 72px); padding-bottom: 48px; text-align: center;">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">Startseite</a><span>›</span>
+      <a href="/ratgeber/">Ratgeber</a><span>›</span>
+      <span>Fristen &amp; Mahnwesen Kanzlei</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom: 20px; display: inline-flex;">
+      <span class="badge-pulse"></span>
+      Für Steuerkanzleien · Wirtschaftsprüfer
+    </div>
+    <h1 class="section-title" style="max-width: 900px; margin: 0 auto 20px;">
+      Fristen &amp; Mahnwesen in der Steuerkanzlei —<br>sicher automatisieren statt zittern.
+    </h1>
+    <div class="article-meta">
+      <span>📅 15. Mai 2026</span>
+      <span>✍ Tufan Enes Yilmaz, BTS Intelligence</span>
+      <span>⏱ ca. 8 Min. Lesezeit</span>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val">🔔 <em>Alle</em> Fristen</div>
+        <div class="foerder-card-desc">in einem System</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>3</em> Stufen</div>
+        <div class="foerder-card-desc">automatische Eskalation</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>DATEV</em></div>
+        <div class="foerder-card-desc">bleibt führendes System</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val">🔒 <em>Mandanten-<br>geheimnis</em></div>
+        <div class="foerder-card-desc">tauglich konfiguriert</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="article-body" style="padding-top: 56px;">
+
+  <p><strong>Worum es geht:</strong> Versäumte Fristen sind das größte Haftungsrisiko einer Kanzlei. Gleichzeitig fressen Fristen-Überwachung und Mandanten-Erinnerungen jeden Monat zweistellige Stundenzahlen. Beides löst sich, wenn die Routine sauber automatisiert wird — mit DATEV als führendem System, Eskalations-Logik gegenüber Mandanten und klarer Mandantengeheimnis-Architektur. Dieser Ratgeber zeigt, wie das in der Praxis aussieht.</p>
+
+  <h2>Die zwei Seiten des Fristen-Problems</h2>
+
+  <h3>Seite 1: Interne Fristen-Überwachung</h3>
+
+  <p>In jeder Kanzlei laufen Hunderte Fristen parallel — monatliche USt-Voranmeldungen, quartalsweise EÜR-Berichte, jährliche Bilanzen, dazu Bescheid-Reaktionsfristen, Einspruchsfristen, Verlängerungsfristen. DATEV verwaltet diese Fristen technisch sauber — aber die Aufmerksamkeit muss jemand investieren. Sobald die zuständige Person Urlaub hat oder krank wird, entsteht ein Risiko.</p>
+
+  <h3>Seite 2: Mitwirkungs-Mahnwesen Mandanten</h3>
+
+  <p>Der Mandant hat zugesagt, Belege bis Datum X zu liefern. Liefert er nicht, muss jemand nachhaken — höflich, aber bestimmt. Bleibt er weiterhin still, eskaliert der Fall zum Berater. In vielen Kanzleien fehlt für diese Eskalations-Logik die Struktur — und entweder rutschen Fristen durch, oder der Mandant wird nicht rechtzeitig erinnert.</p>
+
+  <p>Beide Probleme lassen sich mit einem Workflow lösen, der DATEV-Daten auswertet und in klaren Stufen kommuniziert.</p>
+
+  <h2>Wie ein automatisches Fristen-System konkret funktioniert</h2>
+
+  <h3>1. Datenquelle: DATEV</h3>
+
+  <p>Über die DATEV-API werden alle relevanten Fristen je Mandant ausgelesen — geplante Bearbeitungs-Termine, anstehende Voranmeldungen, Bescheids-Reaktions-Termine. DATEV bleibt das führende System; der Workflow liest nur, was dort steht.</p>
+
+  <h3>2. Status-Prüfung</h3>
+
+  <p>Pro Frist prüft der Workflow automatisch: Sind die nötigen Belege/Unterlagen vom Mandanten da? Ist die interne Bearbeitung gestartet? Wenn nicht, wer ist verantwortlich?</p>
+
+  <h3>3. Eskalations-Logik in drei Stufen</h3>
+
+  <table class="article-table">
+    <thead>
+      <tr><th>Stufe</th><th>Auslöser</th><th>Aktion</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Stufe 1 — Freundliche Erinnerung</td><td>10 Tage vor Frist, Belege fehlen</td><td>E-Mail an Mandanten mit konkretem Belege-Wunsch</td></tr>
+      <tr><td>Stufe 2 — Bestimmte Erinnerung</td><td>5 Tage vor Frist, weiter keine Reaktion</td><td>E-Mail mit klarem Hinweis auf Konsequenz (Frist beim Finanzamt, mögliche Säumniszuschläge)</td></tr>
+      <tr><td>Stufe 3 — Eskalation intern</td><td>2 Tage vor Frist, immer noch keine Reaktion</td><td>Markierung im internen System + Push-Nachricht an zuständigen Berater + Vorschlag für persönlichen Anruf</td></tr>
+      <tr><td>Stufe 4 — Frist-Schutz</td><td>1 Tag vor Frist, Belege da, aber Bearbeitung noch nicht abgeschlossen</td><td>Push-Nachricht an Bearbeiter + Vorgesetzten — visueller Alarm im System</td></tr>
+    </tbody>
+  </table>
+
+  <p>Die Stufen-Logik ist konfigurierbar. Eine Kanzlei mit kurzfristig reagierenden Mandanten arbeitet vielleicht mit Stufe 1 erst 7 Tage vor Frist; eine andere mit länger erfahrungsgemäß langsamen Mandanten beginnt 14 Tage vorher.</p>
+
+  <h3>4. Berater-Cockpit</h3>
+
+  <p>Pro Berater zeigt ein Dashboard alle anstehenden Fristen der nächsten 14 Tage — sortiert nach Status (grün/gelb/rot) und Eskalations-Stufe. So weiß jeder Berater morgens auf einen Blick, wo es heute hakt und was Aufmerksamkeit braucht.</p>
+
+  <h3>5. Audit-Trail</h3>
+
+  <p>Jede Erinnerung, jede Eskalation, jede Bearbeitungs-Aktion wird mit Zeitstempel und Verantwortlichem protokolliert. Sollte trotz Automatisierung etwas schiefgehen, lässt sich exakt nachvollziehen, wer wann was wusste — wichtig für Haftungs-Fragen.</p>
+
+  <!-- Inline CTA -->
+  <div class="article-cta">
+    <div class="foerder-badge" style="margin-bottom: 16px; display: inline-flex;">📅 Kostenloses Erstgespräch</div>
+    <h3>Wo ist Ihre Kanzlei beim Thema Fristen am verletzlichsten?</h3>
+    <p>30 Minuten am Telefon — wir hören uns Ihr aktuelles Fristen-System an, prüfen die schwächsten Punkte, und sagen ehrlich, wo Automatisierung den größten Sicherheits-Gewinn bringt — DATEV bleibt führendes System.</p>
+    <div class="cta-actions" style="justify-content: center;">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Analyse →</a>
+      <a href="/leistungen/" class="btn-ghost">Leistungen ansehen</a>
+    </div>
+    <p style="font-size: .8rem; color: var(--text-lo); margin-top: 16px; margin-bottom: 0;">Kostenlos &amp; unverbindlich · Direkt mit den Gründern · 30 Min.</p>
+  </div>
+
+  <h2>Mandantengeheimnis — warum es bei diesem Workflow besonders kritisch ist</h2>
+
+  <p>Ein Fristen-System sieht: Welcher Mandant hat welche steuerliche Pflicht offen, was steht zur Bearbeitung an, welche Voranmeldungs-Beträge sind im Raum. Das sind hochsensible Informationen. Drei technische Vorkehrungen sind Pflicht:</p>
+
+  <ol>
+    <li><strong>Deutsches Hosting:</strong> Der Workflow läuft in einem deutschen Rechenzentrum (Hetzner, IONOS), nicht in US-Cloud. Auch das DATEV-API-Zugriffs-Token verlässt deutsches Territorium nicht.</li>
+    <li><strong>Pseudonymisierung in KI-Anteilen:</strong> Wenn Erinnerungstexte mit KI verfasst werden, wird der Mandantenname vor Anfrage durch Platzhalter ersetzt und nach Antwort wieder eingesetzt. Die KI verfasst Textstrukturen, sieht aber keine identifizierenden Daten.</li>
+    <li><strong>Zugriffs-Logging:</strong> Jeder API-Aufruf zwischen Workflow und DATEV wird protokolliert. Bei einer Mandanten-Anfrage „wer hatte Zugriff auf meine Daten?" können Sie eine vollständige Antwort geben.</li>
+  </ol>
+
+  <p>AVV (Auftragsverarbeitungsvereinbarung) zwischen Kanzlei und Workflow-Anbieter ist Pflicht. Eine gemeinsam unterzeichnete TOM-Dokumentation ergänzt — auch für das Finanzamt-Audit, falls je gefragt wird.</p>
+
+  <h2>Was sich für die Kanzlei spürbar ändert</h2>
+
+  <ul>
+    <li><strong>Weniger Routine-Stunden:</strong> Erinnerungs- und Nachhak-Anrufe entfallen — typisch 5–10 Stunden pro Woche</li>
+    <li><strong>Höhere Frist-Sicherheit:</strong> Versäumte Fristen werden faktisch unmöglich — der Workflow erinnert mehrstufig</li>
+    <li><strong>Mehr Beratungs-Zeit:</strong> Steuerberater haben Zeit für inhaltliche Mandanten-Arbeit statt Verwaltungs-Anrufe</li>
+    <li><strong>Mandanten-Zufriedenheit:</strong> Mandanten erleben die Kanzlei als organisiert, proaktiv, professionell</li>
+    <li><strong>Geringere Haftung:</strong> Der Audit-Trail dokumentiert, was wann gemeldet wurde — wichtig bei Mandantenstreitigkeiten</li>
+  </ul>
+
+  <h2>Häufige Fragen</h2>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn die DATEV-API nicht alle Daten liefert, die wir brauchen?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">In der Regel reichen die DATEV-Standard-Schnittstellen für die wichtigsten Fristen. Bei sehr spezifischen Konstellationen ergänzen wir mit Daten aus anderen Quellen (z. B. Outlook-Kalender, eigene Excel-Listen, externe Fristen-Tools). Was im Erstgespräch geklärt wird: Welche genauen Fristen wir bei Ihnen überwachen sollen und woher der Workflow diese Daten zieht.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Kann der Workflow Fristen-Verlängerungen automatisch beantragen?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Den Antrag selbst nicht — das bleibt eine bewertende Berater-Entscheidung. Aber: Der Workflow kann erkennen, wenn eine Frist kritisch wird, und automatisch einen Verlängerungs-Antrag im Entwurfs-Modus vorbereiten (mit den richtigen Mandantendaten, dem korrekten Aktenzeichen, der passenden Begründungs-Vorlage). Der Berater prüft und sendet ab — das spart 5–10 Minuten pro Fall.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Wie reagieren Mandanten typischerweise auf automatische Erinnerungen?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Erfahrungsgemäß positiv. Mandanten schätzen die Klarheit — sie wissen früh, was zu tun ist, und haben einen einheitlichen, professionellen Eindruck. Wichtig ist der Tonfall: Die Erinnerungen sollen klingen wie Sie, nicht wie ein Standard-Robo-Text. In der Einrichtungs-Phase formulieren wir die Texte gemeinsam mit Ihnen, damit sie zu Ihrer Kanzlei-Tonalität passen.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Welche Eskalations-Stufen sind sinnvoll bei wirklich schwierigen Mandanten?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Über die Standard-Stufen hinaus können Sie für bestimmte Mandantenklassen Sonder-Regeln definieren — z. B. „bei Mandant X immer 14 Tage vor Frist erste Erinnerung, danach im 3-Tages-Rhythmus". Oder „Mandant Y bekommt nie automatische Mails, sondern wird immer persönlich angerufen". Solche Sonder-Logiken werden pro Mandant konfiguriert und können jederzeit angepasst werden.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was, wenn ein Mitarbeiter den Workflow umgeht und einen Mandanten doch manuell erinnert?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Kein Problem. Der Workflow erkennt, wenn ein Mandant aus anderen Gründen reagiert (z. B. nach einem Anruf Belege liefert) und passt seine Erinnerungs-Logik automatisch an. Niemand muss „den Workflow ausschalten" für individuelle Mandanten-Behandlung. Das ist explizit so designed — Automatisierung ergänzt menschliche Kommunikation, ersetzt sie nicht.</p>
+  </details>
+
+  <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
+    <div>
+      <div class="article-box-title" style="margin-bottom: 4px;">Tufan Enes Yilmaz</div>
+      <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">Geschäftsführer &amp; Gründer von BTS Intelligence. Begleitet bayerische Steuerkanzleien bei der Automatisierung von Fristen-Überwachung und Mandantenkommunikation — DATEV-anbindungs-erfahren, mandantengeheimnistauglich.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-lo); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/ratgeber/" class="btn-ghost" style="font-size: .875rem;">← Alle Ratgeber</a>
+    <a href="/ratgeber/mandantenkommunikation-automatisieren-kanzlei" class="btn-ghost" style="font-size: .875rem;">Mandantenkommunikation</a>
+    <a href="/ratgeber/belege-automatisch-erfassen-datev" class="btn-ghost" style="font-size: .875rem;">Belege auto. in DATEV →</a>
+  </div>
+
+</div><!-- /.article-body -->
+
+<section class="cta-section" style="padding-top: 32px; padding-bottom: 96px;">
+  <div class="cta-inner">
+    <div class="eyebrow">Kostenloses Erstgespräch</div>
+    <h2 class="section-title">Welche Frist hat Ihnen<br>zuletzt schlaflose Nächte beschert?</h2>
+    <p class="section-lead">30 Minuten am Telefon — wir hören zu, wo Ihre Fristen-Lage heute am verletzlichsten ist, und sagen ehrlich, ob Automatisierung hier wirklich hilft.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Termin direkt buchen →</a>
+      <a href="/" class="btn-ghost">Zur Startseite</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos &amp; unverbindlich</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text"><div class="modal-option-title">Termin direkt buchen</div><div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div></div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text"><div class="modal-option-title">Nachricht hinterlassen</div><div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px"><rect width="32" height="32" rx="8" fill="url(#lgfm)"/><path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/><path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/><circle cx="22" cy="13" r="2.5" fill="#e8a820"/><line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="lgfm" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4f6bf0"/><stop offset="100%" stop-color="#2a3fa8"/></linearGradient></defs></svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+  </div>
+  <div class="footer-links"><a href="/leistungen/">Leistungen</a><a href="/preise/">Preise</a><a href="/ueber-uns/">Über uns</a><a href="/ratgeber/">Ratgeber</a><a href="/demos/">Demos</a><a href="#" onclick="openModal(event)">Termin buchen</a><a href="tel:+491784552028">0178 / 455 2028</a></div>
+  <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+  <div class="footer-legal">© 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+</footer>
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
