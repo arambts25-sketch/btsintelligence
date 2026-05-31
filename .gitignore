@@ -1,0 +1,6 @@
+# Claude Code lokale Einstellungen (gehören nicht ins Repo)
+.claude/
+
+# OS / Editor
+Thumbs.db
+.DS_Store
