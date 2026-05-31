@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead-Recherche &amp; KI-Anreicherung: Demo | BTS Intelligence</title>
+  <meta name="description" content="Live-Demo: Region und Branche eingeben — automatisch lokale Betriebe finden, Websites analysieren und per KI qualifizieren. Fertige Lead-Liste mit Fit-Score in Sekunden.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.btsintelligence.de/demos/lead-recherche/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.btsintelligence.de/demos/lead-recherche/">
+  <meta property="og:title" content="Lead-Recherche &amp; KI-Anreicherung Demo | BTS Intelligence">
+  <meta property="og:description" content="Region eingeben, qualifizierte Leads in Sekunden — KI-gestützte Lead-Recherche live erleben.">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="BTS Intelligence">
+  <meta name="theme-color" content="#090b12">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+  <style>
+    /* --- Lead-Karten (auf diese Seite begrenzt) --- */
+    .lead-result-head { margin-bottom: 6px; }
+    .lead-result-head h3 { font-family:'Cabinet Grotesk',sans-serif; font-size:1.3rem; color:var(--text-hi); margin:0; }
+    .lead-summary { display:flex; gap:14px 22px; flex-wrap:wrap; margin:0 0 24px; font-size:.85rem; color:var(--text-med); }
+    .lead-summary strong { color:var(--text-hi); }
+    .lead-list { display:grid; gap:16px; max-width:760px; margin:0 auto; }
+    .lead-card { background:var(--bg-card); border:1px solid var(--border-hi); border-radius:14px; padding:20px 22px; }
+    .lead-card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+    .lead-name { font-family:'Cabinet Grotesk',sans-serif; font-weight:800; font-size:1.05rem; color:var(--text-hi); margin:0 0 5px; }
+    .lead-stars { font-size:.8rem; color:var(--amber-400); letter-spacing:1px; }
+    .lead-stars span { color:var(--text-lo); letter-spacing:0; margin-left:4px; }
+    .lead-status { display:inline-block; font-size:.7rem; font-weight:600; color:#5ed99b; background:rgba(70,209,138,.1); border-radius:999px; padding:3px 10px; margin-top:8px; }
+    .lead-meta { display:flex; flex-wrap:wrap; gap:7px 18px; margin:14px 0 0; font-size:.82rem; color:var(--text-med); }
+    .lead-meta-item { display:flex; align-items:center; gap:6px; }
+    .lead-meta-item a { color:var(--blue-200); text-decoration:none; }
+    .lead-email-missing { color:var(--text-lo); font-style:italic; }
+    .lead-summary-text { font-size:.86rem; color:var(--text-med); line-height:1.6; border-top:1px solid var(--border-lo); padding-top:12px; margin-top:14px; }
+    .fit-badge { flex-shrink:0; text-align:center; border-radius:10px; padding:9px 12px; min-width:66px; }
+    .fit-badge-score { font-family:'Cabinet Grotesk',sans-serif; font-weight:800; font-size:1.45rem; line-height:1; display:block; }
+    .fit-badge-label { font-size:.6rem; text-transform:uppercase; letter-spacing:.08em; margin-top:4px; display:block; }
+    .fit-high { background:rgba(70,209,138,.12); color:#5ed99b; }
+    .fit-mid  { background:rgba(232,168,32,.1);  color:var(--amber-400); }
+    .fit-low  { background:rgba(238,240,255,.06); color:var(--text-med); }
+    .lead-actions { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:28px; }
+    .lead-count-row { display:flex; align-items:center; gap:14px; }
+    .lead-count-row input[type=range] { flex:1; accent-color:var(--amber-400); }
+    .lead-count-val { font-family:'Cabinet Grotesk',sans-serif; font-weight:800; color:var(--text-hi); min-width:24px; text-align:center; }
+
+    @media print {
+      header, footer, nav, .skip-to-content, .modal-overlay,
+      #leadFormState, #leadProcessingState,
+      .section:not(#demoPrintSection), .demo-hero,
+      .lead-actions { display: none !important; }
+      body { background: #fff !important; }
+      #demoPrintSection { padding: 0 !important; }
+      .lead-result-head h3, .lead-summary, .lead-summary strong { color:#111 !important; }
+      .lead-card { background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important; break-inside:avoid; }
+      .lead-name { color:#111 !important; }
+      .lead-meta, .lead-summary-text { color:#333 !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Lead-Recherche & KI-Anreicherung automatisieren",
+    "description": "KI-Workflow: Lokale Betriebe finden, Dubletten abgleichen, Websites analysieren und Leads per KI qualifizieren",
+    "provider": {"@id": "https://www.btsintelligence.de/#business"},
+    "step": [
+      {"@type": "HowToStep", "name": "Region & Branche eingeben", "text": "Suchregion und Zielbranche werden an die Lead-Suche übergeben"},
+      {"@type": "HowToStep", "name": "Betriebe finden & entdoppeln", "text": "Lokale Betriebe werden gesucht und gegen das CRM auf Dubletten geprüft"},
+      {"@type": "HowToStep", "name": "Websites analysieren", "text": "Jede Website wird besucht, E-Mail extrahiert und der Inhalt für die KI vorbereitet"},
+      {"@type": "HowToStep", "name": "KI-Qualifizierung", "text": "Die KI vergibt einen Fit-Score und eine Zusammenfassung, der Lead wird im CRM qualifiziert"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+  <header role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a href="/" class="nav-logo">
+        <span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/leistungen/">Leistungen</a></li>
+        <li><a href="/preise/">Preise</a></li>
+        <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+        <li><a href="/ueber-uns/">Über uns</a></li>
+        <li><a href="/ratgeber/">Ratgeber</a></li>
+        <li><a href="/demos/" aria-current="page">Demos</a></li>
+        <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <div class="wrap">
+      <div class="demo-hero">
+        <nav aria-label="Breadcrumb" style="margin-bottom: 24px;">
+          <ol style="display:flex;gap:8px;list-style:none;padding:0;margin:0;font-size:.85rem;color:var(--text-lo)">
+            <li><a href="/" style="color:var(--text-lo);text-decoration:none;">Startseite</a></li>
+            <li style="opacity:.5">›</li>
+            <li><a href="/demos/" style="color:var(--text-lo);text-decoration:none;">Demos</a></li>
+            <li style="opacity:.5">›</li>
+            <li style="color:var(--text-med)">Lead-Recherche</li>
+          </ol>
+        </nav>
+
+        <div class="demo-hero-tags">
+          <span class="demo-tag demo-tag--primary">Vertrieb &amp; Neukundengewinnung</span>
+          <span class="demo-tag demo-tag--amber">KI-Workflow</span>
+          <span class="demo-tag">Lead-Suche</span>
+          <span class="demo-tag">CRM-Anreicherung</span>
+        </div>
+
+        <h1 class="demo-hero-title">Lead-Recherche<br>&amp; KI-Anreicherung automatisch</h1>
+        <p class="demo-hero-lead">
+          Region und Branche eingeben — und der Workflow findet lokale Betriebe, gleicht sie
+          gegen Ihr CRM ab, besucht jede Website und lässt eine KI das Automatisierungspotenzial
+          bewerten. Heraus kommt eine fertige, qualifizierte Lead-Liste mit Fit-Score und Kontaktdaten.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interaktive Demo -->
+    <section class="section" id="demoPrintSection" style="padding-top: 20px; padding-bottom: 20px;">
+      <div class="wrap">
+        <p class="eyebrow">Live-Demo</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 8px;">Jetzt selbst ausprobieren</h2>
+        <p class="section-lead" style="margin: 0 0 32px;">Region und Branche eingeben — qualifizierte Lead-Liste erscheint sofort.</p>
+
+        <!-- State 1: Form -->
+        <div id="leadFormState">
+          <div class="angebot-form-wrap">
+
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="leadRegion">Region</label>
+              <input class="angebot-input" type="text" id="leadRegion" placeholder="z.B. München, Ingolstadt, Augsburg" oninput="leadFormChange()" maxlength="60">
+            </div>
+
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="leadBranche">Branche</label>
+              <select class="angebot-select" id="leadBranche" onchange="leadFormChange()">
+                <option value="">Bitte Branche wählen…</option>
+                <option value="elektro">Elektriker</option>
+                <option value="sanitaer">Sanitär &amp; Heizung</option>
+                <option value="maler">Maler &amp; Lackierer</option>
+                <option value="fliesen">Fliesenleger</option>
+                <option value="schreiner">Schreiner / Tischler</option>
+                <option value="dachdecker">Dachdecker</option>
+              </select>
+            </div>
+
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="leadCount">Anzahl Leads <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--text-lo)">(Demo-Begrenzung)</span></label>
+              <div class="lead-count-row">
+                <input type="range" id="leadCount" min="3" max="12" value="8" oninput="document.getElementById('leadCountVal').textContent=this.value">
+                <span class="lead-count-val" id="leadCountVal">8</span>
+              </div>
+            </div>
+
+            <button id="leadStartBtn" class="btn-amber" onclick="leadStart()" disabled style="width:100%;text-align:center;margin-top:4px">Lead-Recherche starten →</button>
+            <p style="text-align:center;font-size:.75rem;color:var(--text-lo);margin:14px 0 0">Demo: Daten werden lokal im Browser erzeugt — keine echte Suche, keine Speicherung.</p>
+          </div>
+        </div>
+
+        <!-- State 2: Processing -->
+        <div id="leadProcessingState" class="demo-processing" style="display:none">
+          <div class="demo-spinner"></div>
+          <div class="demo-processing-text">
+            <strong id="leadProcessLabel">Lead-Suche wird gestartet…</strong>
+            <span id="leadProcessPhase">Workflow 1 · Lead Scraper</span>
+          </div>
+        </div>
+
+        <!-- State 3: Result -->
+        <div id="leadResultState" style="display:none">
+          <div id="leadResultContent"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Workflow-Schritte -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <p class="eyebrow">So funktioniert's</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 40px;">4 Schritte, vollständig automatisiert</h2>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <span class="workflow-step-icon">🔍</span>
+            <div class="workflow-step-num">Schritt 1</div>
+            <div class="workflow-step-title">Betriebe finden</div>
+            <div class="workflow-step-desc">Region und Branche werden an die Lead-Suche übergeben — lokale Betriebe mit Adresse, Telefon und Bewertung werden gesammelt.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">🗂️</span>
+            <div class="workflow-step-num">Schritt 2</div>
+            <div class="workflow-step-title">Dublettenabgleich</div>
+            <div class="workflow-step-desc">Jeder Treffer wird gegen das CRM geprüft. Nur wirklich neue Betriebe werden als Lead angelegt — keine Doppelungen.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">🌐</span>
+            <div class="workflow-step-num">Schritt 3</div>
+            <div class="workflow-step-title">Website-Analyse</div>
+            <div class="workflow-step-desc">Die Website jedes Leads wird besucht, die E-Mail extrahiert und der Inhalt für die KI-Bewertung aufbereitet.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">🤖</span>
+            <div class="workflow-step-num">Schritt 4</div>
+            <div class="workflow-step-title">KI-Qualifizierung</div>
+            <div class="workflow-step-desc">Die KI vergibt einen Fit-Score (1–10) und eine kurze Zusammenfassung. Der Lead landet qualifiziert im CRM.</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px">
+          <div class="uc-card reveal">
+            <div class="uc-icon">🎯</div>
+            <h3>Vorqualifiziert statt Kaltliste</h3>
+            <p>Statt einer rohen Adressliste erhalten Sie bewertete Leads — mit Fit-Score und Begründung. Der Vertrieb startet direkt bei den vielversprechendsten Kontakten.</p>
+          </div>
+          <div class="uc-card reveal">
+            <div class="uc-icon">🗂️</div>
+            <h3>Sauberes CRM ohne Dubletten</h3>
+            <p>Der automatische Abgleich verhindert Doppelungen. Jeder Lead wird genau einmal angelegt — mit Bewertung, Kontaktdaten und KI-Analyse als Notiz.</p>
+          </div>
+          <div class="uc-card reveal">
+            <div class="uc-icon">⚡</div>
+            <h3>Stunden Recherche in Minuten</h3>
+            <p>Was sonst manuelles Googeln, Website-Lesen und Abtippen bedeutet, läuft vollautomatisch — ganze Regionen lassen sich in einem Durchlauf abdecken.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usecase -->
+    <section class="section">
+      <div class="wrap" style="max-width: 760px; margin: 0 auto;">
+        <p class="eyebrow">Praxisbeispiel</p>
+        <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem);">Vom Stadtnamen zur Vertriebsliste — ohne Handarbeit</h2>
+        <p style="color:var(--text-med);line-height:1.75;margin-bottom:24px">
+          Ein Vertriebsteam will Handwerksbetriebe in einer neuen Region ansprechen. Früher hieß das:
+          stundenlang googeln, jede Website öffnen, Kontaktdaten heraussuchen, abtippen und manuell einschätzen,
+          ob der Betrieb überhaupt passt — fehleranfällig und kaum skalierbar.
+        </p>
+        <p style="color:var(--text-med);line-height:1.75;margin-bottom:24px">
+          Mit dem automatisierten Workflow genügen zwei Eingaben: Region und Branche. Der Rest läuft von selbst —
+          Betriebe finden, entdoppeln, Websites analysieren, per KI bewerten. Das Ergebnis ist eine sofort
+          bespielbare Lead-Liste, in der die spannendsten Kontakte oben stehen.
+        </p>
+        <div style="background:var(--bg-card);border:1px solid var(--border-hi);border-radius:12px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start">
+          <div style="font-size:1.5rem;flex-shrink:0">📈</div>
+          <div>
+            <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;color:var(--text-hi);margin-bottom:4px">Mehr Termine bei gleichem Aufwand</div>
+            <div style="color:var(--text-med);font-size:.9rem">Wer mit vorqualifizierten Leads startet, spricht gezielter an und verschwendet keine Zeit mit unpassenden Kontakten — die Trefferquote im Erstkontakt steigt spürbar.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--alt">
+      <div class="wrap" style="text-align:center">
+        <p class="eyebrow">Interesse?</p>
+        <h2 class="section-title" style="max-width:480px;margin:0 auto 16px">Lead-Recherche für Ihr Vertriebsteam einrichten</h2>
+        <p class="section-lead" style="margin:0 auto 32px;text-align:center">
+          Mit Ihren Zielbranchen, Ihren Regionen und Ihrem CRM — individuell eingerichtet in wenigen Tagen.
+        </p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a href="#" onclick="openModal(event)" class="btn-amber">Kostenloses Erstgespräch →</a>
+          <a href="/demos/" class="btn-ghost">← Alle Demos</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px">
+        <rect width="32" height="32" rx="8" fill="url(#lg-lead)"/>
+        <path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/>
+        <path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/>
+        <circle cx="22" cy="13" r="2.5" fill="#e8a820"/>
+        <line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="lg-lead" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4f6bf0"/>
+            <stop offset="100%" stop-color="#2a3fa8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+    </div>
+    <div class="footer-links">
+      <a href="/leistungen/">Leistungen</a>
+      <a href="/preise/">Preise</a>
+      <a href="/demos/">Demos</a>
+      <a href="/ueber-uns/">Über uns</a>
+      <a href="/ratgeber/">Ratgeber</a>
+      <a href="#" onclick="openModal(event)">Termin buchen</a>
+      <a href="tel:+491784552028">0178 / 455 2028</a>
+    </div>
+    <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+    <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+  </footer>
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+
+  <div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalTitleLead">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+      <div id="modalTitleLead" style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.4rem;font-weight:800;color:var(--text-hi);margin-bottom:8px">Kostenloses Erstgespräch</div>
+      <p style="color:var(--text-med);font-size:.9rem;margin-bottom:24px">30 Minuten, unverbindlich – wir zeigen Ihnen, was konkret möglich ist.</p>
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber" style="display:block;text-align:center">Termin bei Calendly buchen →</a>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var BRANCHEN = {
+      elektro:    { label: 'Elektriker',           nouns: ['Elektrotechnik', 'Elektro', 'Elektroinstallation'], services: ['Elektroinstallationen', 'Smart-Home-Technik', 'Photovoltaik-Anlagen'] },
+      sanitaer:   { label: 'Sanitär & Heizung',    nouns: ['Sanitär & Heizung', 'Haustechnik', 'Bad & Heizung'], services: ['Bäder & Sanitär', 'Heizungsbau', 'Wartung & Notdienst'] },
+      maler:      { label: 'Maler & Lackierer',    nouns: ['Malerbetrieb', 'Maler & Lackierer', 'Malermeister'], services: ['Innenanstriche', 'Fassadengestaltung', 'Lackierarbeiten'] },
+      fliesen:    { label: 'Fliesenleger',         nouns: ['Fliesen & Naturstein', 'Fliesenfachbetrieb', 'Fliesenleger'], services: ['Bad-Fliesen', 'Naturstein', 'Außenbeläge'] },
+      schreiner:  { label: 'Schreiner / Tischler', nouns: ['Schreinerei', 'Tischlerei', 'Möbelwerkstatt'], services: ['Möbelbau nach Maß', 'Innenausbau', 'Türen & Fenster'] },
+      dachdecker: { label: 'Dachdecker',           nouns: ['Dachdeckerei', 'Bedachungen', 'Dachtechnik'], services: ['Steildach', 'Flachdach-Abdichtung', 'Dachsanierung'] }
+    };
+
+    var SURNAMES = ['Hofmann', 'Wagner', 'Bauer', 'Huber', 'Fischer', 'Weber', 'Maier', 'Brandl', 'Vogel', 'Berger', 'Keller', 'Gruber', 'Stadler', 'Sedlmeier', 'Reindl', 'Ostermann', 'Lang', 'Wimmer', 'Schuster', 'Eder'];
+    var STREETS = ['Hauptstraße', 'Bahnhofstraße', 'Industriestraße', 'Lindenweg', 'Ringstraße', 'Gewerbepark', 'Mühlweg', 'Am Anger', 'Schulstraße', 'Kirchplatz'];
+
+    function el(id) { return document.getElementById(id); }
+
+    function showState(s) {
+      ['leadFormState', 'leadProcessingState', 'leadResultState'].forEach(function (id) {
+        el(id).style.display = (id === s) ? '' : 'none';
+      });
+    }
+
+    // --- Deterministischer PRNG, damit gleiche Eingabe gleiche Demo liefert ---
+    function hashSeed(str) {
+      var h = 2166136261;
+      for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+      return h >>> 0;
+    }
+    function mulberry32(a) {
+      return function () {
+        a |= 0; a = a + 0x6D2B79F5 | 0;
+        var t = Math.imul(a ^ a >>> 15, 1 | a);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+
+    function slugify(s) {
+      return s.toLowerCase()
+        .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+        .replace(/&/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    }
+
+    function stars(r) {
+      var full = Math.round(r), s = '';
+      for (var i = 0; i < 5; i++) s += (i < full ? '★' : '☆');
+      return s;
+    }
+
+    function summaryFor(b, fit, svc) {
+      if (fit >= 7) {
+        return 'Inhabergeführter Betrieb mit Schwerpunkt ' + svc + '. Angebote, Terminabsprachen und Rechnungen laufen überwiegend manuell per Telefon und Papier — hohes Potenzial für Automatisierung bei Angebotserstellung und Kundenkommunikation.';
+      }
+      if (fit >= 5) {
+        return 'Solide aufgestellter Betrieb im Bereich ' + svc + ' mit erster Digitalisierung (Online-Kontaktformular, einfache Terminanfrage). Punktuelles Potenzial bei Rechnungsstellung und Lead-Nachverfolgung.';
+      }
+      return 'Bereits weit digitalisierter Betrieb (' + svc + ') mit Online-Buchung und gepflegtem CRM. Geringes zusätzliches Automatisierungspotenzial.';
+    }
+
+    function generate(region, brancheKey, count) {
+      var b = BRANCHEN[brancheKey];
+      var rnd = mulberry32(hashSeed(region.toLowerCase() + '|' + brancheKey + '|' + count));
+      function pick(arr) { return arr[Math.floor(rnd() * arr.length)]; }
+
+      // Nachnamen mischen (keine Doppelungen)
+      var names = SURNAMES.slice();
+      for (var i = names.length - 1; i > 0; i--) {
+        var j = Math.floor(rnd() * (i + 1));
+        var t = names[i]; names[i] = names[j]; names[j] = t;
+      }
+
+      var leads = [];
+      for (var k = 0; k < count; k++) {
+        var surname = names[k % names.length];
+        var noun = pick(b.nouns);
+        var pat = Math.floor(rnd() * 3);
+        var name = pat === 0 ? noun + ' ' + surname
+                 : pat === 1 ? surname + ' ' + noun + ' GmbH'
+                 :             noun + ' ' + surname + ' & Sohn';
+        var sl = slugify(name);
+        var rating = Math.min(5, Math.round((3.6 + rnd() * 1.4) * 10) / 10);
+        var ratingCount = 5 + Math.floor(rnd() * 235);
+        var fit = Math.max(4, Math.min(10, Math.round(5.5 + rnd() * 4.5)));
+        var hasEmail = rnd() < 0.72;
+        var street = pick(STREETS);
+        var hn = 1 + Math.floor(rnd() * 120);
+        var plz = 80000 + Math.floor(rnd() * 9999);
+        var phone = '0' + (8000 + Math.floor(rnd() * 1999)) + ' / ' + (100000 + Math.floor(rnd() * 899999));
+
+        leads.push({
+          name: name,
+          domain: sl + '.de',
+          email: hasEmail ? 'info@' + sl + '.de' : '',
+          rating: rating,
+          ratingCount: ratingCount,
+          fit: fit,
+          addr: street + ' ' + hn + ', ' + plz + ' ' + region,
+          phone: phone,
+          summary: summaryFor(b, fit, pick(b.services))
+        });
+      }
+      // sortiert: vielversprechendste Leads zuerst
+      leads.sort(function (a, c) { return c.fit - a.fit; });
+
+      var found = count + 3 + Math.floor(rnd() * 7); // Dedupe-Effekt: mehr gescannt als angelegt
+      return { found: found, leads: leads };
+    }
+
+    function fitClass(f) { return f >= 7 ? 'fit-high' : f >= 5 ? 'fit-mid' : 'fit-low'; }
+    function fitLabel(f) { return f >= 7 ? 'Hoch' : f >= 5 ? 'Mittel' : 'Niedrig'; }
+
+    function renderResult(region, data) {
+      var leads = data.leads;
+      var withEmail = leads.filter(function (l) { return l.email; }).length;
+      var avg = (leads.reduce(function (s, l) { return s + l.fit; }, 0) / leads.length).toFixed(1);
+
+      var cards = leads.map(function (l) {
+        var emailHtml = l.email
+          ? '<a href="#" onclick="return false">' + l.email + '</a>'
+          : '<span class="lead-email-missing">keine E-Mail gefunden</span>';
+        return '<div class="lead-card">' +
+          '<div class="lead-card-top">' +
+            '<div>' +
+              '<div class="lead-name">' + l.name + '</div>' +
+              '<div class="lead-stars">' + stars(l.rating) + '<span>' + l.rating.toFixed(1) + ' (' + l.ratingCount + ' Bewertungen)</span></div>' +
+              '<span class="lead-status">✓ Qualifiziert</span>' +
+            '</div>' +
+            '<div class="fit-badge ' + fitClass(l.fit) + '">' +
+              '<span class="fit-badge-score">' + l.fit + '</span>' +
+              '<span class="fit-badge-label">Fit ' + fitLabel(l.fit) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="lead-meta">' +
+            '<span class="lead-meta-item">📍 ' + l.addr + '</span>' +
+            '<span class="lead-meta-item">📞 ' + l.phone + '</span>' +
+            '<span class="lead-meta-item">🌐 <a href="#" onclick="return false">' + l.domain + '</a></span>' +
+            '<span class="lead-meta-item">✉️ ' + emailHtml + '</span>' +
+          '</div>' +
+          '<div class="lead-summary-text"><strong style="color:var(--blue-200);font-weight:600">🤖 KI-Analyse:</strong> ' + l.summary + '</div>' +
+        '</div>';
+      }).join('');
+
+      el('leadResultContent').innerHTML =
+        '<div class="lead-result-head"><h3>' + leads.length + ' qualifizierte Leads in ' + region + '</h3></div>' +
+        '<div class="lead-summary">' +
+          '<span>📊 <strong>' + data.found + '</strong> Betriebe gescannt</span>' +
+          '<span>✨ <strong>' + leads.length + '</strong> neu qualifiziert</span>' +
+          '<span>⭐ Ø Fit-Score <strong>' + avg + '</strong>/10</span>' +
+          '<span>✉️ <strong>' + withEmail + '</strong> mit E-Mail</span>' +
+        '</div>' +
+        '<div class="lead-list">' + cards + '</div>' +
+        '<div class="lead-actions">' +
+          '<button class="btn-amber" onclick="window.print()" style="font-size:.85rem;padding:10px 20px">Als PDF speichern →</button>' +
+          '<button class="btn-ghost" onclick="leadReset()" style="font-size:.85rem;padding:10px 20px">Neue Recherche</button>' +
+        '</div>';
+    }
+
+    window.leadFormChange = function () {
+      var ok = el('leadRegion').value.trim().length > 1 && el('leadBranche').value;
+      el('leadStartBtn').disabled = !ok;
+    };
+
+    window.leadStart = function () {
+      var region = el('leadRegion').value.trim();
+      var branche = el('leadBranche').value;
+      if (region.length < 2 || !branche) return;
+      var count = Math.max(3, Math.min(12, parseInt(el('leadCount').value, 10) || 8));
+
+      var data = generate(region, branche, count);
+
+      showState('leadProcessingState');
+
+      var steps = [
+        { p: 'Workflow 1 · Lead Scraper',  t: 'Lokale Betriebe werden gesucht…' },
+        { p: 'Workflow 1 · Lead Scraper',  t: data.found + ' Betriebe in ' + region + ' gefunden…' },
+        { p: 'Workflow 1 · Lead Scraper',  t: 'Dublettenabgleich mit dem CRM…' },
+        { p: 'Workflow 1 · Lead Scraper',  t: data.leads.length + ' neue Leads angelegt…' },
+        { p: 'Workflow 2 · Lead Enricher', t: 'Websites werden besucht…' },
+        { p: 'Workflow 2 · Lead Enricher', t: 'E-Mail-Adressen werden extrahiert…' },
+        { p: 'Workflow 2 · Lead Enricher', t: 'KI bewertet das Automatisierungspotenzial…' },
+        { p: 'Workflow 2 · Lead Enricher', t: 'Leads werden qualifiziert…' }
+      ];
+
+      var si = 0;
+      el('leadProcessLabel').textContent = steps[0].t;
+      el('leadProcessPhase').textContent = steps[0].p;
+      var iv = setInterval(function () {
+        si = Math.min(si + 1, steps.length - 1);
+        el('leadProcessLabel').textContent = steps[si].t;
+        el('leadProcessPhase').textContent = steps[si].p;
+      }, 760);
+
+      setTimeout(function () {
+        clearInterval(iv);
+        renderResult(region, data);
+        showState('leadResultState');
+        window.scrollTo({ top: el('demoPrintSection').offsetTop - 60, behavior: 'smooth' });
+      }, steps.length * 760 + 400);
+    };
+
+    window.leadReset = function () {
+      el('leadRegion').value = '';
+      el('leadBranche').value = '';
+      el('leadCount').value = 8;
+      el('leadCountVal').textContent = '8';
+      el('leadStartBtn').disabled = true;
+      el('leadResultContent').innerHTML = '';
+      showState('leadFormState');
+    };
+
+  })();
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
