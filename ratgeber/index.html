@@ -37,15 +37,73 @@
 </script>
 
 <style>
-  .cluster-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 8px; }
-  .cluster-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border-lo); background: rgba(255,255,255,.02); color: var(--text-med); font-size: .85rem; font-weight: 500; cursor: pointer; transition: all .15s ease; text-decoration: none; }
-  .cluster-chip:hover, .cluster-chip.active { background: rgba(79,107,240,.15); border-color: rgba(79,107,240,.4); color: var(--text-hi); }
-  .cluster-chip-count { font-size: .75rem; opacity: .6; }
   .cluster { margin: 56px 0; scroll-margin-top: 90px; }
   .cluster-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border-lo); }
   .cluster-eyebrow { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent, #e8a820); font-weight: 700; }
   .cluster-title { font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--text-hi); margin: 0; line-height: 1.2; }
   .cluster-lead { font-size: 1rem; line-height: 1.65; color: var(--text-med); max-width: 720px; margin: 4px 0 0; }
+
+  /* ===== Ratgeber-Übersicht: Suche, Filter, Featured (JS-Enhancement) ===== */
+
+  /* Featured-Strip (neuester Artikel) */
+  .rg-featured { margin: 32px 0 8px; }
+  .rg-featured-card { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; background: var(--bg-card); border: 1px solid var(--border-hi); border-radius: 18px; overflow: hidden; text-decoration: none; transition: border-color .22s, transform .22s, box-shadow .22s; }
+  .rg-featured-card:hover { border-color: rgba(79,107,240,.45); transform: translateY(-3px); box-shadow: 0 18px 48px rgba(0,0,0,.4); }
+  .rg-featured-side { display: flex; align-items: center; justify-content: center; padding: 32px; background: linear-gradient(135deg, rgba(79,107,240,.16), rgba(42,63,168,.10)); border-right: 1px solid var(--border-lo); }
+  .rg-featured-badge-lg { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; letter-spacing: -.03em; color: var(--text-hi); text-align: center; line-height: 1.15; }
+  .rg-featured-badge-lg span { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--amber-200); margin-bottom: 10px; }
+  .rg-featured-body { padding: 32px clamp(24px, 3vw, 40px); display: flex; flex-direction: column; justify-content: center; }
+  .rg-featured-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber-200); margin-bottom: 12px; }
+  .rg-featured-title { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 900; letter-spacing: -.028em; color: var(--text-hi); line-height: 1.22; margin-bottom: 12px; }
+  .rg-featured-excerpt { font-size: .95rem; line-height: 1.7; color: var(--text-med); margin-bottom: 18px; }
+  .rg-featured-cta { font-size: .9rem; font-weight: 700; color: var(--blue-200); }
+  @media (max-width: 760px) { .rg-featured-card { grid-template-columns: 1fr; } .rg-featured-side { padding: 22px; border-right: none; border-bottom: 1px solid var(--border-lo); } }
+
+  /* Toolbar: sticky Such- & Filterleiste */
+  .rg-toolbar { position: sticky; top: 60px; z-index: 50; margin: 28px 0 8px; padding: 16px; border-radius: 16px; background: rgba(13,16,30,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-lo); }
+  .rg-search-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .rg-search { position: relative; flex: 1 1 280px; min-width: 200px; }
+  .rg-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-lo); pointer-events: none; }
+  .rg-search input { width: 100%; padding: 12px 40px 12px 42px; border-radius: 999px; border: 1px solid var(--border-lo); background: rgba(255,255,255,.03); color: var(--text-hi); font-family: inherit; font-size: .95rem; transition: border-color .15s, background .15s; }
+  .rg-search input::placeholder { color: var(--text-lo); }
+  .rg-search input:focus { outline: none; border-color: rgba(79,107,240,.5); background: rgba(255,255,255,.05); }
+  .rg-search-clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border: none; border-radius: 999px; background: rgba(255,255,255,.06); color: var(--text-med); font-size: .9rem; cursor: pointer; display: none; align-items: center; justify-content: center; line-height: 1; }
+  .rg-search-clear:hover { background: rgba(255,255,255,.12); color: var(--text-hi); }
+  .rg-search.has-value .rg-search-clear { display: flex; }
+  .rg-sort { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid var(--border-lo); background: rgba(255,255,255,.02); flex-shrink: 0; }
+  .rg-sort button { padding: 8px 14px; border: none; border-radius: 999px; background: transparent; color: var(--text-med); font-family: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .15s ease; }
+  .rg-sort button[aria-pressed="true"] { background: rgba(79,107,240,.18); color: var(--text-hi); }
+  .rg-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .rg-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border-lo); background: rgba(255,255,255,.02); color: var(--text-med); font-family: inherit; font-size: .85rem; font-weight: 500; cursor: pointer; transition: all .15s ease; }
+  .rg-chip:hover { background: rgba(79,107,240,.1); border-color: rgba(79,107,240,.3); color: var(--text-hi); }
+  .rg-chip[aria-pressed="true"] { background: rgba(79,107,240,.18); border-color: rgba(79,107,240,.45); color: var(--text-hi); }
+  .rg-chip-count { font-size: .75rem; opacity: .6; }
+  .rg-count { font-size: .85rem; color: var(--text-med); margin: 18px 0 4px; }
+  .rg-count strong { color: var(--text-hi); }
+
+  /* "Neu"-Badge auf Karten */
+  .blog-card { position: relative; }
+  .blog-card-new { position: absolute; top: 14px; right: 14px; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1a1100; background: var(--amber-400); border-radius: 999px; padding: 3px 9px; box-shadow: 0 2px 10px rgba(232,168,32,.35); }
+
+  /* Results-Grid (flache, gefilterte Ansicht) */
+  #resultsView { margin-top: 8px; }
+  #resultsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
+  .rg-context-lead { margin: 8px 0 4px; }
+  .rg-context-lead h2 { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--text-hi); margin: 0 0 8px; line-height: 1.2; }
+  .rg-context-lead p { font-size: 1rem; line-height: 1.65; color: var(--text-med); max-width: 720px; margin: 0; }
+  .rg-empty { text-align: center; padding: 64px 24px; color: var(--text-med); }
+  .rg-empty-title { font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--text-hi); margin-bottom: 10px; }
+  .rg-empty button { margin-top: 18px; padding: 10px 20px; border-radius: 999px; border: 1px solid rgba(79,107,240,.4); background: rgba(79,107,240,.12); color: var(--text-hi); font-family: inherit; font-size: .9rem; font-weight: 600; cursor: pointer; transition: all .15s ease; }
+  .rg-empty button:hover { background: rgba(79,107,240,.2); }
+
+  /* JS-gesteuerte Sichtbarkeit */
+  .js-on .rg-js-hidden { display: none !important; }
+  [hidden] { display: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rg-featured-card, .rg-chip, .rg-sort button, .rg-search input { transition: none; }
+    .rg-featured-card:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -82,16 +140,31 @@
     </div>
     <div class="eyebrow">Wissen &amp; Praxis</div>
     <h1 class="section-title">Ratgeber: Prozesse<br>im Unternehmen automatisieren</h1>
-    <p class="section-lead">Konkret. Aus Bayern. Ohne IT-Jargon. Wir zeigen, wo in Ihrem Betrieb echte Zeit verschwindet — und wie Sie sie zurückholen. Klicken Sie auf Ihre Branche oder Frage:</p>
+    <p class="section-lead">Konkret. Aus Bayern. Ohne IT-Jargon. Wir zeigen, wo in Ihrem Betrieb echte Zeit verschwindet — und wie Sie sie zurückholen. Suchen Sie nach Thema oder filtern Sie nach Ihrer Branche:</p>
 
-    <nav class="cluster-nav" aria-label="Ratgeber nach Branche">
-      <a class="cluster-chip" href="#cluster-kmu">Mittelstand &amp; KMU</a>
-      <a class="cluster-chip" href="#cluster-kanzleien">Steuerkanzleien</a>
-      <a class="cluster-chip" href="#cluster-makler">Immobilienmakler</a>
-      <a class="cluster-chip" href="#cluster-dienstleister">Dienstleister</a>
-      <a class="cluster-chip" href="#cluster-handwerk">Handwerk</a>
-      <a class="cluster-chip" href="#cluster-foerderung">Förderung</a>
-    </nav>
+    <!-- Featured: neuester Artikel (per JS befüllt) -->
+    <div class="rg-featured" id="rgFeatured" hidden></div>
+
+    <!-- Such- & Filterleiste (Progressive Enhancement; ohne JS verborgen) -->
+    <div class="rg-toolbar" id="rgToolbar" hidden>
+      <div class="rg-search-row">
+        <div class="rg-search" id="rgSearchWrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" id="rgSearch" role="searchbox" aria-label="Ratgeber durchsuchen" aria-controls="resultsGrid" placeholder="Thema, Branche oder Frage suchen…" autocomplete="off">
+          <button type="button" class="rg-search-clear" id="rgSearchClear" aria-label="Suche löschen">✕</button>
+        </div>
+        <div class="rg-sort" role="group" aria-label="Sortierung">
+          <button type="button" id="rgSortBranche" aria-pressed="true">Nach Branche</button>
+          <button type="button" id="rgSortNeueste" aria-pressed="false">Neueste zuerst</button>
+        </div>
+      </div>
+      <div class="rg-chips" id="rgChips" role="group" aria-label="Nach Branche filtern"><!-- per JS befüllt --></div>
+    </div>
+
+    <p class="rg-count" id="rgCount" aria-live="polite" hidden></p>
+
+    <!-- Browse-Ansicht (Default & No-JS-Fallback): die Branchen-Cluster -->
+    <div id="browseView">
 
     <!-- CLUSTER A: KMU / Mittelstand -->
     <section class="cluster" id="cluster-kmu">
@@ -103,7 +176,7 @@
 
       <div class="blog-grid">
 
-        <a href="/ratgeber/bueroarbeit-automatisieren-mittelstand" class="blog-card">
+        <a href="/ratgeber/bueroarbeit-automatisieren-mittelstand" class="blog-card" data-cluster="kmu" data-date="2026-05-15">
           <span class="blog-card-tag">Top-of-Funnel</span>
           <div class="blog-card-title">Büroarbeit automatisieren: 12 Aufgaben, die jeder Mittelständler abgeben kann</div>
           <p class="blog-card-excerpt">12 wiederkehrende Verwaltungs-Routinen, die KMU heute realistisch automatisieren können — mit Aufwand, Risiken, Reihenfolge. Aus der bayerischen Praxis.</p>
@@ -114,7 +187,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/ki-im-unternehmen-einfuehren-schritte" class="blog-card">
+        <a href="/ratgeber/ki-im-unternehmen-einfuehren-schritte" class="blog-card" data-cluster="kmu" data-date="2026-05-15">
           <span class="blog-card-tag">Einführung</span>
           <div class="blog-card-title">KI im Unternehmen einführen: Der pragmatische 4-Schritte-Plan</div>
           <p class="blog-card-excerpt">Wie KMU ohne IT-Abteilung KI einführen — Use Case finden, Anbieter prüfen, Pilot fahren, ausrollen. Mit ehrlichen Risiken und Stolpersteinen.</p>
@@ -125,7 +198,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/welche-prozesse-automatisieren-kmu" class="blog-card">
+        <a href="/ratgeber/welche-prozesse-automatisieren-kmu" class="blog-card" data-cluster="kmu" data-date="2026-05-15">
           <span class="blog-card-tag">Priorisierung</span>
           <div class="blog-card-title">Welche Prozesse Sie wirklich automatisieren sollten — und welche nicht</div>
           <p class="blog-card-excerpt">Klare Kriterien für KMU: was sich für Automatisierung eignet, was bewusst Mensch bleiben sollte. Mit Ja-Nein-Liste und 30-Minuten-Selbst-Audit.</p>
@@ -136,7 +209,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/was-kostet-prozessautomatisierung-mittelstand" class="blog-card">
+        <a href="/ratgeber/was-kostet-prozessautomatisierung-mittelstand" class="blog-card" data-cluster="kmu" data-date="2026-05-16">
           <span class="blog-card-tag">Preis-Faktoren</span>
           <div class="blog-card-title">Was bestimmt den Preis von Prozessautomatisierung? Faktoren-Check für KMU 2026</div>
           <p class="blog-card-excerpt">Welche fünf Faktoren den Preis bestimmen + drei Projekt-Profile aus dem Mittelstand. Mit Make-or-Buy-Vergleichsmatrix und Digitalbonus-Hinweis.</p>
@@ -147,7 +220,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/ki-agenten-mittelstand-2026" class="blog-card">
+        <a href="/ratgeber/ki-agenten-mittelstand-2026" class="blog-card" data-cluster="kmu" data-date="2026-05-11">
           <span class="blog-card-tag">Strategie</span>
           <div class="blog-card-title">7 Use Cases für KI im Mittelstand 2026 — mit konkretem ROI</div>
           <p class="blog-card-excerpt">Sieben Anwendungsfälle, bei denen sich KI für mittelständische Unternehmen wirklich rechnet — mit Zeitersparnis, Investitions-Range und Payback-Zeit.</p>
@@ -171,7 +244,7 @@
 
       <div class="blog-grid">
 
-        <a href="/ratgeber/mandantenkommunikation-automatisieren-kanzlei" class="blog-card">
+        <a href="/ratgeber/mandantenkommunikation-automatisieren-kanzlei" class="blog-card" data-cluster="kanzleien" data-date="2026-05-15">
           <span class="blog-card-tag">Mandanten-Kommunikation</span>
           <div class="blog-card-title">Mandantenkommunikation automatisieren — wieder Zeit für Beratung statt Erinnern</div>
           <p class="blog-card-excerpt">Wie Kanzleien Routine-Kommunikation mit Mandanten automatisieren — Erinnerungen, Belege-Anfragen, Standard-Antworten. Mandantengeheimnistauglich.</p>
@@ -182,7 +255,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/belege-automatisch-erfassen-datev" class="blog-card">
+        <a href="/ratgeber/belege-automatisch-erfassen-datev" class="blog-card" data-cluster="kanzleien" data-date="2026-05-14">
           <span class="blog-card-tag">Kanzlei-Praxis</span>
           <div class="blog-card-title">Belege automatisch in DATEV erfassen — wie Steuerkanzleien einen Tag pro Woche zurückgewinnen</div>
           <p class="blog-card-excerpt">Vom Mandanten-Posteingang in die Buchführung: Wie ein automatisierter Beleg-Workflow Kanzleien spürbar entlastet — und was Sie an Setup brauchen.</p>
@@ -193,7 +266,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren" class="blog-card">
+        <a href="/ratgeber/fristen-mahnwesen-steuerkanzlei-automatisieren" class="blog-card" data-cluster="kanzleien" data-date="2026-05-15">
           <span class="blog-card-tag">Fristen-Management</span>
           <div class="blog-card-title">Fristen &amp; Mahnwesen in der Steuerkanzlei automatisieren</div>
           <p class="blog-card-excerpt">Fristen sicher überwachen, Mandanten-Mahnwesen in Stufen automatisieren — DATEV-Anbindung, Eskalations-Logik, mandantengeheimnistauglich konfiguriert.</p>
@@ -217,7 +290,7 @@
 
       <div class="blog-grid">
 
-        <a href="/ratgeber/expose-schneller-erstellen-makler" class="blog-card">
+        <a href="/ratgeber/expose-schneller-erstellen-makler" class="blog-card" data-cluster="makler" data-date="2026-05-14">
           <span class="blog-card-tag">Makler-Praxis</span>
           <div class="blog-card-title">Exposé in 10 Minuten statt 2 Stunden — wie Makler die Routine abgeben</div>
           <p class="blog-card-excerpt">Aus Objektdaten und Fotos zum fertigen Exposé-PDF — in Ihrem Stil, mit MaBV-Pflichtangaben, DSGVO-konform. Mit Beispielen aus einem laufenden Projekt.</p>
@@ -228,7 +301,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/vertraege-dsgvo-konform-schwaerzen" class="blog-card">
+        <a href="/ratgeber/vertraege-dsgvo-konform-schwaerzen" class="blog-card" data-cluster="makler" data-date="2026-05-14">
           <span class="blog-card-tag">DSGVO · Schwärzung</span>
           <div class="blog-card-title">Verträge &amp; Dokumente DSGVO-konform schwärzen — automatisch</div>
           <p class="blog-card-excerpt">Was eine echte gerichtsfeste Schwärzung können muss — und warum ein PDF mit schwarzem Rechteck nicht reicht. Für Makler, Kanzleien, Verwaltungen.</p>
@@ -252,7 +325,7 @@
 
       <div class="blog-grid">
 
-        <a href="/ratgeber/email-postfach-automatisch-sortieren" class="blog-card">
+        <a href="/ratgeber/email-postfach-automatisch-sortieren" class="blog-card" data-cluster="dienstleister" data-date="2026-05-14">
           <span class="blog-card-tag">E-Mail-Triage</span>
           <div class="blog-card-title">E-Mail-Postfach automatisch sortieren — den Vormittag zurückgewinnen</div>
           <p class="blog-card-excerpt">Klassifikation, Standardantworten und Eskalation — wie Outlook, Gmail und IMAP-Postfächer sich automatisch ordnen, ohne dass Wichtiges verloren geht.</p>
@@ -263,7 +336,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/termine-automatisch-koordinieren-kunden" class="blog-card">
+        <a href="/ratgeber/termine-automatisch-koordinieren-kunden" class="blog-card" data-cluster="dienstleister" data-date="2026-05-15">
           <span class="blog-card-tag">Terminkoordination</span>
           <div class="blog-card-title">Termine mit Kunden automatisch koordinieren — ohne Calendly-Chaos</div>
           <p class="blog-card-excerpt">Terminanfragen erkennen, Kalender prüfen, konkrete Slots in natürlicher Sprache vorschlagen, eintragen. Mit Outlook, Google oder CalDAV.</p>
@@ -274,7 +347,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/angebote-nachfassen-automatisch" class="blog-card">
+        <a href="/ratgeber/angebote-nachfassen-automatisch" class="blog-card" data-cluster="dienstleister" data-date="2026-05-14">
           <span class="blog-card-tag">Sales-Workflow</span>
           <div class="blog-card-title">Angebote automatisch nachfassen — aus Stille werden Abschlüsse</div>
           <p class="blog-card-excerpt">Wie ein gestaffeltes Follow-up nach 3-7-14 Tagen den vergessenen Angeboten Leben einhaucht — höflich, präsent, ohne Druck.</p>
@@ -285,7 +358,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/crm-pflege-automatisieren-dienstleister" class="blog-card">
+        <a href="/ratgeber/crm-pflege-automatisieren-dienstleister" class="blog-card" data-cluster="dienstleister" data-date="2026-05-15">
           <span class="blog-card-tag">CRM-Hygiene</span>
           <div class="blog-card-title">CRM-Pflege automatisieren — Schluss mit dem Excel-Friedhof</div>
           <p class="blog-card-excerpt">Wie Sie Ihr CRM aktuell halten ohne manuellen Aufwand — Kontakt-Anlage aus E-Mails, Aktivitäts-Logging, Dubletten-Bereinigung, DSGVO-konforme Anreicherung.</p>
@@ -296,7 +369,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/google-bewertungen-automatisch-einholen" class="blog-card">
+        <a href="/ratgeber/google-bewertungen-automatisch-einholen" class="blog-card" data-cluster="dienstleister" data-date="2026-05-31">
           <span class="blog-card-tag">Reputation</span>
           <div class="blog-card-title">Google-Bewertungen automatisch einholen — mehr Rezensionen, ohne nachzufragen</div>
           <p class="blog-card-excerpt">Bewertungsanfrage zum richtigen Zeitpunkt per E-Mail, WhatsApp oder SMS, negative Erfahrungen intern abfangen, neue Rezensionen automatisch beantworten — DSGVO-konform.</p>
@@ -320,7 +393,7 @@
 
       <div class="blog-grid">
 
-        <a href="/ratgeber/stundenzettel-digital-erfassen-handwerk" class="blog-card">
+        <a href="/ratgeber/stundenzettel-digital-erfassen-handwerk" class="blog-card" data-cluster="handwerk" data-date="2026-06-02">
           <span class="blog-card-tag">Zeiterfassung · Pflicht 2026</span>
           <div class="blog-card-title">Stundenzettel digital erfassen im Handwerk — Arbeitszeit automatisch dokumentieren</div>
           <p class="blog-card-excerpt">Mobile Zeiterfassung per Smartphone von der Baustelle, minutengenau und rechtssicher nach Arbeitszeitgesetz 2026 — und automatisch verbunden mit Lohn und Rechnung. Schluss mit dem Zettelchaos.</p>
@@ -331,7 +404,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/aufmass-in-angebot-umwandeln" class="blog-card">
+        <a href="/ratgeber/aufmass-in-angebot-umwandeln" class="blog-card" data-cluster="handwerk" data-date="2026-05-14">
           <span class="blog-card-tag">Angebots-Workflow</span>
           <div class="blog-card-title">Aufmaß in Angebot umwandeln — automatisch, mit Ihren Preisen</div>
           <p class="blog-card-excerpt">Drei Wege vom Aufmaß zum fertigen PDF — Formular, Foto, Sprachnotiz. Mit Ihrer Preisliste, Briefkopf und Sonderlogik. Aus 2 Stunden werden 15 Minuten.</p>
@@ -342,7 +415,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/material-bestellen-handwerk-lieferanten" class="blog-card">
+        <a href="/ratgeber/material-bestellen-handwerk-lieferanten" class="blog-card" data-cluster="handwerk" data-date="2026-05-15">
           <span class="blog-card-tag">Materialwirtschaft</span>
           <div class="blog-card-title">Materialbestellung im Handwerk automatisieren — Schluss mit Baustopps</div>
           <p class="blog-card-excerpt">Bestandsüberwachung, Bestellungen an Lieferanten versenden, Lieferschein-Abgleich. Mit oder ohne Warenwirtschaft, EDI/Mail/Portal — jeder Lieferant anbindbar.</p>
@@ -353,7 +426,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/ki-automatisierung-handwerk-n8n" class="blog-card">
+        <a href="/ratgeber/ki-automatisierung-handwerk-n8n" class="blog-card" data-cluster="handwerk" data-date="2026-05-14">
           <span class="blog-card-tag">Praxisbeispiele</span>
           <div class="blog-card-title">KI-Automatisierung im Handwerk: 8 konkrete Beispiele aus Bayern</div>
           <p class="blog-card-excerpt">Acht reale Anwendungsfälle aus bayerischen Handwerksbetrieben — von Aufmaß-zu-Angebot bis automatischer Mahnstufen-Logik. Mit Aufwand und Ergebnis.</p>
@@ -364,7 +437,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/rechnungen-automatisieren-handwerk" class="blog-card">
+        <a href="/ratgeber/rechnungen-automatisieren-handwerk" class="blog-card" data-cluster="handwerk" data-date="2026-04-08">
           <span class="blog-card-tag">Praxis-Anleitung</span>
           <div class="blog-card-title">Rechnungen und Mahnungen automatisieren: So spart ein Handwerksbetrieb 10 Stunden pro Woche</div>
           <p class="blog-card-excerpt">Konkrete Workflow-Anleitung für automatisches Rechnungs- und Mahnwesen — für Elektro, SHK, Maler und andere Handwerksbetriebe in Bayern.</p>
@@ -388,7 +461,7 @@
 
       <div class="blog-grid">
 
-        <a href="/ratgeber/digitalbonus-bayern-2026" class="blog-card">
+        <a href="/ratgeber/digitalbonus-bayern-2026" class="blog-card" data-cluster="foerderung" data-date="2026-04-07">
           <span class="blog-card-tag">Förderung</span>
           <div class="blog-card-title">Digitalbonus Bayern 2026: Bis zu 50&nbsp;% Förderung für KI &amp; Automatisierung</div>
           <p class="blog-card-excerpt">Seit 1. April 2026 läuft die neue Antragsrunde. Wer berechtigt ist, was förderfähig ist, und wie der Antrag wirklich funktioniert — Schritt für Schritt.</p>
@@ -399,7 +472,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/digitalbonus-antrag-schritt-fuer-schritt" class="blog-card">
+        <a href="/ratgeber/digitalbonus-antrag-schritt-fuer-schritt" class="blog-card" data-cluster="foerderung" data-date="2026-05-11">
           <span class="blog-card-tag">Praxis · Antrag</span>
           <div class="blog-card-title">Digitalbonus Bayern: Antrag in 5 Schritten zum Förderbescheid</div>
           <p class="blog-card-excerpt">Vom ELSTER-Konto über Anbieter-Angebote bis zur Bewilligung — inklusive Checkliste, typischen Fehlerquellen und realistischen Bearbeitungszeiten.</p>
@@ -410,7 +483,7 @@
           </div>
         </a>
 
-        <a href="/ratgeber/n8n-dsgvo-konform-betreiben" class="blog-card">
+        <a href="/ratgeber/n8n-dsgvo-konform-betreiben" class="blog-card" data-cluster="foerderung" data-date="2026-05-14">
           <span class="blog-card-tag">DSGVO</span>
           <div class="blog-card-title">DSGVO-konforme Automatisierung in Deutschland — was Unternehmen 2026 wissen müssen</div>
           <p class="blog-card-excerpt">Welche Anforderungen ein Automatisierungs-Anbieter erfüllen muss, damit Mandantendaten, Personalakten und Kundeninfos sicher bleiben — ohne Vendor-Lock-in.</p>
@@ -423,6 +496,19 @@
 
       </div>
     </section>
+
+    </div><!-- /#browseView -->
+
+    <!-- Results-Ansicht (JS): flaches, gefiltertes & sortiertes Karten-Raster -->
+    <div id="resultsView" hidden>
+      <div class="rg-context-lead" id="rgContextLead" hidden></div>
+      <div class="blog-grid" id="resultsGrid"></div>
+      <div class="rg-empty" id="rgEmpty" hidden>
+        <div class="rg-empty-title">Kein Ratgeber gefunden</div>
+        <p>Zu Ihrer Suche gibt es aktuell keinen passenden Beitrag. Versuchen Sie einen anderen Begriff oder eine andere Branche.</p>
+        <button type="button" id="rgReset">Filter zurücksetzen</button>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -508,5 +594,197 @@
 
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="/js/main.js" defer></script>
+
+<!-- Ratgeber-Übersicht: Suche, Filter, Sortierung, Featured (Progressive Enhancement) -->
+<script>
+(function(){
+  var browseView  = document.getElementById('browseView');
+  if(!browseView) return;
+  var toolbar     = document.getElementById('rgToolbar');
+  var featured    = document.getElementById('rgFeatured');
+  var resultsView = document.getElementById('resultsView');
+  var resultsGrid = document.getElementById('resultsGrid');
+  var contextLead = document.getElementById('rgContextLead');
+  var emptyBox    = document.getElementById('rgEmpty');
+  var countEl     = document.getElementById('rgCount');
+  var chipsBox    = document.getElementById('rgChips');
+  var searchWrap  = document.getElementById('rgSearchWrap');
+  var searchInput = document.getElementById('rgSearch');
+  var searchClear = document.getElementById('rgSearchClear');
+  var sortBranche = document.getElementById('rgSortBranche');
+  var sortNeueste = document.getElementById('rgSortNeueste');
+  var resetBtn    = document.getElementById('rgReset');
+
+  var CLUSTERS = [
+    ['kmu','Mittelstand & KMU'],
+    ['kanzleien','Steuerkanzleien'],
+    ['makler','Immobilienmakler'],
+    ['dienstleister','Dienstleister'],
+    ['handwerk','Handwerk'],
+    ['foerderung','Förderung']
+  ];
+  var clusterOrder = {};
+  CLUSTERS.forEach(function(c,i){ clusterOrder[c[0]] = i; });
+
+  // Quell-Karten einsammeln (bleiben im DOM für SEO + No-JS + SEO-Agent)
+  var cards = [].slice.call(browseView.querySelectorAll('.blog-card')).map(function(el){
+    return {
+      el: el,
+      cluster: el.getAttribute('data-cluster') || '',
+      ms: Date.parse(el.getAttribute('data-date')) || 0,
+      text: (el.textContent || '').toLowerCase()
+    };
+  });
+  if(!cards.length) return;
+
+  // "Neu"-Badge: Karten innerhalb von 14 Tagen vor dem jüngsten Datum markieren
+  var newestMs = cards.reduce(function(m,c){ return Math.max(m, c.ms); }, 0);
+  var NEW_WINDOW = 14*24*60*60*1000;
+  cards.forEach(function(c){
+    if(newestMs - c.ms <= NEW_WINDOW && !c.el.querySelector('.blog-card-new')){
+      var b = document.createElement('span');
+      b.className = 'blog-card-new';
+      b.textContent = 'Neu';
+      c.el.appendChild(b);
+    }
+  });
+
+  // Featured aus der jüngsten Karte aufbauen
+  var newest = cards.slice().sort(function(a,b){ return b.ms - a.ms; })[0];
+  (function(){
+    function pick(sel){ var n = newest.el.querySelector(sel); return n ? n.innerHTML : ''; }
+    var a = document.createElement('a');
+    a.className = 'rg-featured-card';
+    a.href = newest.el.getAttribute('href');
+    a.innerHTML =
+      '<div class="rg-featured-side"><div class="rg-featured-badge-lg"><span>Neu im Ratgeber</span>Frisch&nbsp;veröffentlicht</div></div>' +
+      '<div class="rg-featured-body">' +
+        '<div class="rg-featured-eyebrow">' + pick('.blog-card-tag') + '</div>' +
+        '<div class="rg-featured-title">' + pick('.blog-card-title') + '</div>' +
+        '<p class="rg-featured-excerpt">' + pick('.blog-card-excerpt') + '</p>' +
+        '<span class="rg-featured-cta">Jetzt lesen →</span>' +
+      '</div>';
+    featured.appendChild(a);
+  })();
+
+  // Filter-Chips bauen (Alle + Branchen, je mit Anzahl)
+  function countFor(key){
+    return key==='alle' ? cards.length : cards.filter(function(c){ return c.cluster===key; }).length;
+  }
+  function makeChip(key,label){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'rg-chip';
+    btn.setAttribute('data-cluster', key);
+    btn.setAttribute('aria-pressed', key==='alle' ? 'true' : 'false');
+    btn.innerHTML = label + ' <span class="rg-chip-count">' + countFor(key) + '</span>';
+    btn.addEventListener('click', function(){ state.cluster = key; apply(); });
+    return btn;
+  }
+  chipsBox.appendChild(makeChip('alle','Alle'));
+  CLUSTERS.forEach(function(c){ chipsBox.appendChild(makeChip(c[0], c[1])); });
+
+  var state = { query:'', cluster:'alle', sort:'branche' };
+
+  // Kontext-Lead je Branche aus der bestehenden Cluster-Überschrift wiederverwenden
+  function clusterContext(key){
+    var sec = document.getElementById('cluster-'+key);
+    if(!sec) return '';
+    var t = sec.querySelector('.cluster-title');
+    var l = sec.querySelector('.cluster-lead');
+    return (t ? '<h2>'+t.innerHTML+'</h2>' : '') + (l ? '<p>'+l.innerHTML+'</p>' : '');
+  }
+
+  function filtered(){
+    var tokens = state.query ? state.query.split(/\s+/).filter(Boolean) : [];
+    return cards.filter(function(c){
+      if(state.cluster!=='alle' && c.cluster!==state.cluster) return false;
+      for(var i=0;i<tokens.length;i++){ if(c.text.indexOf(tokens[i])===-1) return false; }
+      return true;
+    });
+  }
+
+  function sortList(list){
+    var s = list.slice();
+    if(state.sort==='neueste'){
+      s.sort(function(a,b){ return b.ms - a.ms; });
+    } else {
+      s.sort(function(a,b){
+        var d = (clusterOrder[a.cluster]||0) - (clusterOrder[b.cluster]||0);
+        return d !== 0 ? d : b.ms - a.ms;
+      });
+    }
+    return s;
+  }
+
+  function isBrowse(){
+    return state.query==='' && state.cluster==='alle' && state.sort==='branche';
+  }
+
+  function apply(){
+    // Chip- und Sort-Status spiegeln
+    [].slice.call(chipsBox.children).forEach(function(btn){
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-cluster')===state.cluster ? 'true' : 'false');
+    });
+    sortBranche.setAttribute('aria-pressed', state.sort==='branche' ? 'true' : 'false');
+    sortNeueste.setAttribute('aria-pressed', state.sort==='neueste' ? 'true' : 'false');
+    searchWrap.classList.toggle('has-value', !!state.query);
+
+    if(isBrowse()){
+      browseView.hidden = false;
+      featured.hidden = false;
+      resultsView.hidden = true;
+      countEl.hidden = true;
+      return;
+    }
+
+    // Results-Modus
+    browseView.hidden = true;
+    featured.hidden = true;
+    resultsView.hidden = false;
+
+    var list = sortList(filtered());
+
+    if(state.cluster!=='alle'){
+      contextLead.innerHTML = clusterContext(state.cluster);
+      contextLead.hidden = false;
+    } else {
+      contextLead.hidden = true;
+    }
+
+    resultsGrid.innerHTML = '';
+    list.forEach(function(c){ resultsGrid.appendChild(c.el.cloneNode(true)); });
+
+    var n = list.length;
+    countEl.hidden = false;
+    var q = state.query ? ' für „' + searchInput.value.trim() + '"' : '';
+    countEl.innerHTML = '<strong>' + n + '</strong> ' + (n===1 ? 'Beitrag' : 'Beiträge') + q;
+    emptyBox.hidden = n !== 0;
+    resultsGrid.hidden = n === 0;
+  }
+
+  // Events
+  searchInput.addEventListener('input', function(){
+    state.query = this.value.trim().toLowerCase();
+    apply();
+  });
+  searchClear.addEventListener('click', function(){
+    searchInput.value=''; state.query=''; searchInput.focus(); apply();
+  });
+  sortBranche.addEventListener('click', function(){ state.sort='branche'; apply(); });
+  sortNeueste.addEventListener('click', function(){ state.sort='neueste'; apply(); });
+  if(resetBtn) resetBtn.addEventListener('click', function(){
+    state = { query:'', cluster:'alle', sort:'branche' };
+    searchInput.value=''; apply();
+    if(toolbar.scrollIntoView) toolbar.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+
+  // Aktivieren (Progressive Enhancement)
+  document.body.classList.add('js-on');
+  toolbar.hidden = false;
+  featured.hidden = false;
+  apply();
+})();
+</script>
 </body>
 </html>
