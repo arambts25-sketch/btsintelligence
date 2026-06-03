@@ -14,6 +14,9 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="BTS Intelligence">
 <meta name="theme-color" content="#090b12">
+<script>
+(function(){try{var t=localStorage.getItem('bts-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
@@ -81,6 +84,35 @@
   .rg-count { font-size: .85rem; color: var(--text-med); margin: 18px 0 4px; }
   .rg-count strong { color: var(--text-hi); }
 
+  html[data-theme="light"] .rg-toolbar {
+    background: rgba(255,255,255,.92);
+    border-color: rgba(17,21,37,.14);
+    box-shadow: 0 12px 34px rgba(17,21,37,.08);
+  }
+  html[data-theme="light"] .rg-search svg { color: var(--text-med); }
+  html[data-theme="light"] .rg-search input {
+    background: #ffffff;
+    border-color: rgba(17,21,37,.16);
+    color: var(--text-hi);
+  }
+  html[data-theme="light"] .rg-search input::placeholder { color: var(--text-lo); }
+  html[data-theme="light"] .rg-search input:focus {
+    border-color: rgba(56,84,214,.55);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(56,84,214,.14);
+  }
+  html[data-theme="light"] .rg-search-clear,
+  html[data-theme="light"] .rg-sort,
+  html[data-theme="light"] .rg-chip {
+    background: rgba(17,21,37,.04);
+    border-color: rgba(17,21,37,.14);
+  }
+  html[data-theme="light"] .rg-search-clear:hover,
+  html[data-theme="light"] .rg-chip:hover {
+    background: rgba(56,84,214,.09);
+    border-color: rgba(56,84,214,.28);
+  }
+
   /* "Neu"-Badge auf Karten */
   .blog-card { position: relative; }
   .blog-card-new { position: absolute; top: 14px; right: 14px; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1a1100; background: var(--amber-400); border-radius: 999px; padding: 3px 9px; box-shadow: 0 2px 10px rgba(232,168,32,.35); }
@@ -123,6 +155,10 @@
     <li><a href="/demos/">Demos</a></li>
     <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Light Mode aktivieren" aria-pressed="false" title="Light Mode aktivieren">
+    <span class="theme-toggle-track" aria-hidden="true"></span>
+    <span class="theme-toggle-label">Light Mode aktivieren</span>
+  </button>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </div>

@@ -14,6 +14,9 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="BTS Intelligence">
 <meta name="theme-color" content="#090b12">
+<script>
+(function(){try{var t=localStorage.getItem('bts-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
@@ -102,6 +105,10 @@
     <li><a href="/demos/">Demos</a></li>
     <li><a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Light Mode aktivieren" aria-pressed="false" title="Light Mode aktivieren">
+    <span class="theme-toggle-track" aria-hidden="true"></span>
+    <span class="theme-toggle-label">Light Mode aktivieren</span>
+  </button>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
     <span></span><span></span><span></span>
   </div>

@@ -1,3 +1,50 @@
+  // ===== THEME TOGGLE =====
+  (function(){
+    var storageKey = 'bts-theme';
+    var darkThemeColor = '#090b12';
+    var lightThemeColor = '#f7f8fc';
+
+    function getStoredTheme(){
+      try {
+        var stored = localStorage.getItem(storageKey);
+        return stored === 'light' || stored === 'dark' ? stored : 'dark';
+      } catch (err) {
+        return 'dark';
+      }
+    }
+
+    function updateThemeMeta(theme){
+      var themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? lightThemeColor : darkThemeColor);
+    }
+
+    function updateThemeButton(theme){
+      var toggle = document.getElementById('themeToggle');
+      if (!toggle) return;
+      var isLight = theme === 'light';
+      toggle.setAttribute('aria-pressed', String(isLight));
+      toggle.setAttribute('aria-label', isLight ? 'Dark Mode aktivieren' : 'Light Mode aktivieren');
+      toggle.setAttribute('title', isLight ? 'Dark Mode aktivieren' : 'Light Mode aktivieren');
+      var label = toggle.querySelector('.theme-toggle-label');
+      if (label) label.textContent = isLight ? 'Dark Mode aktivieren' : 'Light Mode aktivieren';
+    }
+
+    function setTheme(theme){
+      var nextTheme = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      try { localStorage.setItem(storageKey, nextTheme); } catch (err) {}
+      updateThemeMeta(nextTheme);
+      updateThemeButton(nextTheme);
+    }
+
+    window.toggleTheme = function(){
+      var currentTheme = document.documentElement.getAttribute('data-theme') || getStoredTheme();
+      setTheme(currentTheme === 'light' ? 'dark' : 'light');
+    };
+
+    setTheme(getStoredTheme());
+  })();
+
   // ===== MODAL mit Focus-Trap =====
   var lastFocusedBeforeModal = null;
 
