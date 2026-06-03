@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Mira: Friseur-Website mit KI-Telefonagent</title>
+  <meta name="description" content="Moderne Friseur-Website mit Online-Terminbuchung, KI-Telefonagent und Google-Bewertungsstrecke nach dem Besuch.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.btsintelligence.de/demos/friseur-website/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.btsintelligence.de/demos/friseur-website/">
+  <meta property="og:title" content="Friseur-Website mit KI-Telefonagent">
+  <meta property="og:description" content="Eigenständige moderne Beispiel-Website fuer Friseursalons mit Terminbuchung, KI-Telefonagent und Google-Bewertungs-Slot.">
+  <meta property="og:locale" content="de_DE">
+  <meta name="theme-color" content="#101114">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+  <link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Cabinet Grotesk';font-style:normal;font-weight:700 900;font-display:swap;src:url('/assets/fonts/cabinet-grotesk-900.woff2') format('woff2')}
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:400 700;font-display:swap;src:url('/assets/fonts/manrope-latin.woff2') format('woff2')}
+    :root {
+      --ink: #101114;
+      --ink-soft: #20242a;
+      --paper: #f8f3ed;
+      --paper-2: #eee4d8;
+      --muted: #6d645c;
+      --line: rgba(16,17,20,.13);
+      --copper: #b86f4c;
+      --lime: #c7f05b;
+      --rose: #ead2d4;
+      --sage: #7b9178;
+      --white: #fffaf4;
+      --shadow: 0 24px 70px rgba(16,17,20,.18);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    h1, h2, h3 { font-family: 'Cabinet Grotesk', 'Arial Black', sans-serif; letter-spacing: -.035em; }
+
+    .demo-pill {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 80;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(16,17,20,.82);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(18px);
+      font-size: .78rem;
+      box-shadow: 0 12px 34px rgba(0,0,0,.22);
+    }
+    .demo-pill span { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+
+    .nav {
+      position: fixed;
+      inset: 16px 18px auto;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 18px;
+      background: rgba(248,243,237,.72);
+      backdrop-filter: blur(22px) saturate(1.2);
+      box-shadow: 0 16px 50px rgba(16,17,20,.08);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--ink);
+      color: var(--lime);
+      font-size: .9rem;
+      letter-spacing: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a, .nav-links button {
+      border: 0;
+      background: transparent;
+      color: var(--ink-soft);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: .9rem;
+      cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links button:hover { background: rgba(16,17,20,.07); }
+    .book-now {
+      background: var(--ink) !important;
+      color: var(--white) !important;
+      padding-inline: 16px !important;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      padding: 112px clamp(20px,4vw,58px) 36px;
+      gap: clamp(24px,4vw,54px);
+      align-items: stretch;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(199,240,91,.28), transparent 24%),
+        linear-gradient(135deg, #f8f3ed 0%, #efe2d2 52%, #e6d0d3 100%);
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 760px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,250,244,.62);
+      color: var(--copper);
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 5px rgba(199,240,91,.24); }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3.25rem, 7.5vw, 7.6rem);
+      line-height: .88;
+      max-width: 780px;
+    }
+    .hero-lead {
+      max-width: 590px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.7vw, 1.16rem);
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-dark { background: var(--ink); color: var(--white); box-shadow: var(--shadow); }
+    .btn-light { background: rgba(255,250,244,.74); color: var(--ink); border: 1px solid rgba(16,17,20,.12); }
+    .btn-call { background: var(--lime); color: var(--ink); box-shadow: 0 18px 46px rgba(112,140,22,.2); }
+    .hero-media {
+      position: relative;
+      min-height: 690px;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(16,17,20,0) 30%, rgba(16,17,20,.58)),
+        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1500&q=84') center/cover;
+    }
+    .hero-card {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .metric {
+      min-width: 0;
+      padding: 17px;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 18px;
+      background: rgba(255,250,244,.16);
+      backdrop-filter: blur(18px);
+      color: var(--white);
+    }
+    .metric strong { display: block; font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.55rem; line-height: 1; color: var(--lime); }
+    .metric span { display: block; margin-top: 6px; color: rgba(255,250,244,.82); font-size: .78rem; line-height: 1.35; }
+    .floating-review {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: min(270px, calc(100% - 44px));
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(16,17,20,.78);
+      color: var(--white);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+    .stars { color: #ffd86b; letter-spacing: 2px; font-size: .9rem; }
+    .floating-review strong { display: block; margin-top: 8px; font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.1rem; }
+    .floating-review p { margin: 6px 0 0; color: rgba(255,250,244,.76); font-size: .84rem; }
+
+    .section { padding: clamp(72px,8vw,118px) clamp(20px,5vw,64px); }
+    .wrap { width: min(1180px, 100%); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .48fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .section h2 { margin: 0; font-size: clamp(2.3rem,5vw,4.8rem); line-height: .94; }
+    .section-lead { color: var(--muted); margin: 0; line-height: 1.8; }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+    }
+    .service {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,250,244,.58);
+    }
+    .service:nth-child(2) { background: var(--rose); }
+    .service:nth-child(3) { background: #dde7d5; }
+    .service h3 { margin: 0 0 10px; font-size: 1.35rem; }
+    .service p { margin: 0; color: var(--muted); }
+    .price { margin-top: 28px; font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.55rem; font-weight: 900; }
+
+    .agent-section {
+      background: var(--ink);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .agent-section::before {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -170px;
+      top: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,240,91,.25), transparent 66%);
+      pointer-events: none;
+    }
+    .agent-section .section-lead { color: rgba(255,250,244,.72); }
+    .agent-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .agent-card {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 28px;
+      background: rgba(255,255,255,.07);
+      padding: clamp(24px,3vw,34px);
+    }
+    .agent-phone {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 430px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.045)),
+        radial-gradient(circle at 80% 10%, rgba(199,240,91,.22), transparent 36%);
+    }
+    .agent-status {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(199,240,91,.14);
+      color: var(--lime);
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .agent-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+    .agent-number {
+      display: block;
+      margin: 26px 0 10px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: clamp(2.1rem,5vw,4.2rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      color: var(--white);
+    }
+    .agent-copy { color: rgba(255,250,244,.72); max-width: 520px; }
+    .agent-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .call-log {
+      display: grid;
+      gap: 12px;
+    }
+    .call-bubble {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,250,244,.78);
+    }
+    .call-bubble strong {
+      display: block;
+      color: var(--lime);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    .agent-result {
+      display: none;
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(199,240,91,.15);
+      border: 1px solid rgba(199,240,91,.36);
+      color: var(--white);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr .85fr;
+      grid-auto-rows: 260px;
+      gap: 14px;
+    }
+    .shot {
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: inset 0 -90px 120px rgba(16,17,20,.18);
+    }
+    .shot-large { grid-row: span 2; }
+    .shot-one { background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=82'); }
+    .shot-two { background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=82'); }
+    .shot-three { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=82'); }
+    .shot-four { background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=82'); }
+    .shot-five { background-image: url('https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=800&q=82'); }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--white);
+      box-shadow: 0 18px 60px rgba(16,17,20,.08);
+      padding: clamp(22px,3vw,34px);
+    }
+    .panel-dark {
+      background: var(--ink);
+      color: var(--white);
+      position: sticky;
+      top: 104px;
+    }
+    .panel h3 { margin: 0 0 12px; font-size: 1.7rem; }
+    .summary { margin: 18px 0 0; color: rgba(255,250,244,.76); }
+    .summary strong { display: block; color: var(--lime); font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.55rem; margin-bottom: 8px; }
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 900;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+    }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--copper); box-shadow: 0 0 0 4px rgba(184,111,76,.14); }
+    .slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+    .slot {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 8px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 900;
+    }
+    .slot.is-active { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .confirmation {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(199,240,91,.16);
+      border: 1px solid rgba(199,240,91,.42);
+      color: var(--white);
+    }
+    .confirmation strong { color: var(--lime); }
+    .review-flow {
+      display: none;
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,250,244,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,250,244,.78);
+    }
+    .review-flow-title { display: flex; justify-content: space-between; gap: 12px; align-items: center; color: var(--white); font-weight: 900; }
+    .review-flow-title span { color: #ffd86b; letter-spacing: 2px; }
+    .review-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .review-btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 11px 13px;
+      background: var(--lime);
+      color: var(--ink);
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .review-btn.secondary { background: rgba(255,255,255,.12); color: var(--white); }
+
+    .review-section {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .review-section .section-lead { color: rgba(255,250,244,.7); }
+    .review-board {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .google-slot {
+      border-radius: 28px;
+      padding: clamp(24px,3vw,34px);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(199,240,91,.22), transparent 34%),
+        linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.045));
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .google-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-weight: 900;
+    }
+    .google-logo b:nth-child(1) { color: #4285f4; }
+    .google-logo b:nth-child(2) { color: #ea4335; }
+    .google-logo b:nth-child(3) { color: #fbbc05; }
+    .google-logo b:nth-child(4) { color: #4285f4; }
+    .google-logo b:nth-child(5) { color: #34a853; }
+    .google-logo b:nth-child(6) { color: #ea4335; }
+    .qr {
+      width: 150px;
+      height: 150px;
+      margin: 24px 0 18px;
+      border-radius: 18px;
+      background:
+        linear-gradient(90deg, var(--white) 10px, transparent 10px) 0 0/20px 20px,
+        linear-gradient(var(--white) 10px, transparent 10px) 0 0/20px 20px,
+        var(--ink);
+      border: 12px solid var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .review-cards { display: grid; gap: 12px; }
+    .review-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .review-card p { margin: 8px 0 0; color: rgba(255,250,244,.76); }
+
+    .team { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .person {
+      min-height: 300px;
+      display: flex;
+      align-items: end;
+      padding: 22px;
+      border-radius: 26px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+      color: var(--white);
+    }
+    .person::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(16,17,20,.82)); }
+    .person-info { position: relative; z-index: 1; }
+    .person span { color: var(--lime); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+    .person h3 { margin: 8px 0 5px; font-size: 1.7rem; }
+    .person p { margin: 0; color: rgba(255,250,244,.8); }
+    .p1 { background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=82'); }
+    .p2 { background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=82'); }
+    .p3 { background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=82'); }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      padding: clamp(50px,7vw,86px) clamp(20px,5vw,64px);
+      background: #0b0c0e;
+      color: var(--white);
+    }
+    .footer h2 { margin: 0 0 12px; font-size: clamp(2.3rem,5vw,4.2rem); line-height: .95; }
+    .footer p { color: rgba(255,250,244,.68); max-width: 560px; }
+
+    @media (max-width: 980px) {
+      .hero, .agent-grid, .booking-grid, .review-board, .footer { grid-template-columns: 1fr; }
+      .hero-media { min-height: 560px; }
+      .panel-dark { position: static; }
+      .services { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .shot-large { grid-column: span 2; min-height: 410px; }
+      .section-head { grid-template-columns: 1fr; align-items: start; }
+    }
+    @media (max-width: 680px) {
+      .nav {
+        position: absolute;
+        inset: 12px 12px auto;
+        align-items: flex-start;
+        border-radius: 16px;
+        gap: 8px;
+        max-width: calc(100vw - 24px);
+        overflow: hidden;
+      }
+      .brand { font-size: 1rem; }
+      .brand-mark { width: 30px; height: 30px; }
+      .nav-links { display: none; }
+      .hero {
+        padding: 96px 18px 24px;
+        gap: 22px;
+        max-width: 100vw;
+        overflow: hidden;
+      }
+      .hero h1 {
+        max-width: calc(100vw - 72px);
+        font-size: clamp(2.35rem, 10.8vw, 2.8rem);
+        line-height: .96;
+      }
+      .hero-copy { width: calc(100vw - 92px); max-width: calc(100vw - 92px); }
+      .hero-lead { width: 100%; max-width: 100%; font-size: .96rem; overflow-wrap: anywhere; word-break: normal; }
+      .hero-media { min-height: 460px; border-radius: 22px; }
+      .hero-media { width: calc(100vw - 72px); max-width: calc(100vw - 72px); min-width: 0; }
+      .floating-review { right: 18px; width: calc(100% - 36px); }
+      .floating-review p, .metric span { overflow-wrap: anywhere; }
+      .hero-card { grid-template-columns: 1fr; }
+      .floating-review { left: 18px; right: 18px; top: 18px; width: auto; }
+      .services, .gallery, .team { grid-template-columns: 1fr; }
+      .shot, .shot-large { grid-column: auto; min-height: 320px; }
+      .slots { grid-template-columns: 1fr 1fr; }
+      .demo-pill { left: 12px; right: 12px; justify-content: center; bottom: 12px; }
+      .section { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Friseur-Website mit KI-Telefonagent",
+    "description": "Eigenstaendige Beispielseite einer modernen Friseur-Website mit Terminbuchung, KI-Telefonagent und Google-Bewertungsstrecke",
+    "url": "https://www.btsintelligence.de/demos/friseur-website/",
+    "provider": {"@id": "https://www.btsintelligence.de/#business"}
+  }
+  </script>
+</head>
+<body>
+  <div class="demo-pill" aria-label="Beispiel Hinweis"><span></span> Beispielseite: Ihr Salon, Ihre Termine</div>
+
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a href="#top" class="brand">
+      <span class="brand-mark">AM</span>
+      Atelier Mira
+    </a>
+    <div class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#looks">Looks</a>
+      <a href="#telefonagent">KI-Telefon</a>
+      <a href="#bewertungen">Bewertungen</a>
+      <button class="book-now" type="button" onclick="scrollToBooking()">Termin buchen</button>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Cut · Color · Care</div>
+        <h1>Dein neuer Look beginnt online.</h1>
+        <p class="hero-lead">
+          Eine moderne Friseur-Lösung muss mehr leisten als hübsch aussehen: Sie zeigt Stil,
+          nimmt Terminwünsche online und telefonisch entgegen und sammelt nach dem Besuch
+          automatisch neue Google-Bewertungen ein.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-call" type="button" onclick="simulateCall()">Jetzt anrufen</button>
+          <button class="btn btn-dark" type="button" onclick="scrollToBooking()">Freien Termin wählen</button>
+          <a class="btn btn-light" href="#bewertungen">Google-Bewertungen ansehen</a>
+        </div>
+      </div>
+      <div class="hero-media" role="img" aria-label="Moderner Friseursalon">
+        <div class="floating-review">
+          <div class="stars">★★★★★</div>
+          <strong>4,9 auf Google</strong>
+          <p>Bewertungsanfrage wird nach jedem Termin automatisch vorbereitet.</p>
+        </div>
+        <div class="hero-card">
+          <div class="metric"><strong>24/7</strong><span>Online-Terminwunsch statt Telefon-Pingpong</span></div>
+          <div class="metric"><strong>38%</strong><span>mehr Anfragen durch klare Leistungspakete</span></div>
+          <div class="metric"><strong>+Review</strong><span>Google-Bewertung direkt nach dem Besuch</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Leistungen, die sofort buchbar sind.</h2>
+          <p class="section-lead">Klare Pakete reduzieren Rückfragen. Besucher sehen Dauer, Preisrahmen und Ergebnis, bevor sie einen Termin auswählen.</p>
+        </div>
+        <div class="services">
+          <article class="service"><div><h3>Signature Cut</h3><p>Beratung, Waschen, Schnitt und Styling fuer Damen oder Herren.</p></div><strong class="price">ab 54 EUR</strong></article>
+          <article class="service"><div><h3>Color Refresh</h3><p>Ansatz, Glossing oder komplette Farbauffrischung inklusive Pflege.</p></div><strong class="price">ab 82 EUR</strong></article>
+          <article class="service"><div><h3>Balayage</h3><p>Natürliche Übergänge, Toner, Pflege und Styling mit ausführlicher Beratung.</p></div><strong class="price">ab 149 EUR</strong></article>
+          <article class="service"><div><h3>Bridal Styling</h3><p>Probe, Hochsteckfrisur und Make-up als Paket fuer besondere Tage.</p></div><strong class="price">ab 210 EUR</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section agent-section" id="telefonagent">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Wenn niemand rangeht, geht der KI-Telefonagent ran.</h2>
+          <p class="section-lead">Das Komplettpaket für Friseure: moderne Website, Online-Terminbuchung und ein KI-Telefonagent, der Anrufe annimmt, Leistungen erklärt und Termine im Kalender vormerkt.</p>
+        </div>
+        <div class="agent-grid">
+          <div class="agent-card agent-phone">
+            <div>
+              <span class="agent-status">Live erleben</span>
+              <span class="agent-number">Jetzt anrufen oder direkt buchen.</span>
+              <p class="agent-copy">
+                Kundinnen rufen oft genau dann an, wenn gerade gefärbt, gewaschen oder kassiert wird.
+                Der Telefonagent nimmt den Wunsch auf und kann denselben Terminfluss auslösen wie die Website.
+              </p>
+            </div>
+            <div>
+              <div class="agent-actions">
+                <button class="btn btn-call" type="button" onclick="simulateCall()">Anrufstrecke ansehen</button>
+                <button class="btn btn-light" type="button" onclick="scrollToBooking()">Termin selbst buchen</button>
+              </div>
+              <div class="agent-result" id="agentResult" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="agent-card">
+            <div class="call-log">
+              <div class="call-bubble"><strong>1. Anruf annehmen</strong>„Hallo, Atelier Mira. Ich bin der digitale Telefonassistent. Worum geht es bei Ihrem Termin?“</div>
+              <div class="call-bubble"><strong>2. Wunsch verstehen</strong>Leistung, gewünschter Zeitraum, Stylist und Kontaktdaten werden strukturiert abgefragt.</div>
+              <div class="call-bubble"><strong>3. Termin vormerken</strong>Der Agent findet freie Slots und trägt den Termin in Kalender oder Buchungssystem ein.</div>
+              <div class="call-bubble"><strong>4. Bewertung vorbereiten</strong>Nach dem Besuch kann automatisch der Google-Bewertungslink verschickt werden.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="looks">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Ein Lookbook statt Textwüste.</h2>
+          <p class="section-lead">Die Galerie verkauft das Gefühl des Salons. Gerade bei Friseuren entscheidet der erste visuelle Eindruck oft vor dem ersten Klick.</p>
+        </div>
+        <div class="gallery" aria-label="Lookbook Galerie">
+          <div class="shot shot-large shot-one" role="img" aria-label="Saloninterieur"></div>
+          <div class="shot shot-two" role="img" aria-label="Haarstyling"></div>
+          <div class="shot shot-three" role="img" aria-label="Haarschnitt"></div>
+          <div class="shot shot-four" role="img" aria-label="Make-up"></div>
+          <div class="shot shot-five" role="img" aria-label="Pflegeprodukte"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Termin in unter einer Minute.</h2>
+          <p class="section-lead">So wird aus Interesse ein Termin: Die Anfrage kann direkt in Kalender, WhatsApp, E-Mail oder CRM landen.</p>
+        </div>
+        <div class="booking-grid">
+          <aside class="panel panel-dark">
+            <h3>Terminübersicht</h3>
+            <p class="summary" id="summary">Wähle Leistung, Stylist und Uhrzeit. Die Zusammenfassung aktualisiert sich automatisch.</p>
+            <div class="confirmation" id="confirmation" aria-live="polite"></div>
+            <div class="review-flow" id="reviewFlow">
+              <div class="review-flow-title">Google-Bewertung einholen <span>★★★★★</span></div>
+              <p>Nach einem echten Termin würde hier automatisch ein Bewertungslink per WhatsApp, SMS oder E-Mail vorbereitet werden.</p>
+              <div class="review-actions">
+                <button class="review-btn" type="button" onclick="simulateReview()">Bewertungslink anzeigen</button>
+                <button class="review-btn secondary" type="button" onclick="copyReviewText()">Text kopieren</button>
+              </div>
+              <p id="reviewResult"></p>
+            </div>
+          </aside>
+
+          <form class="panel" onsubmit="submitBooking(event)">
+            <div class="field">
+              <label for="service">Leistung</label>
+              <select id="service" onchange="updateSummary()" required>
+                <option value="">Bitte wählen</option>
+                <option value="Signature Cut|54|60">Signature Cut · 60 min · ab 54 EUR</option>
+                <option value="Color Refresh|82|90">Color Refresh · 90 min · ab 82 EUR</option>
+                <option value="Balayage|149|150">Balayage · 150 min · ab 149 EUR</option>
+                <option value="Bridal Styling|210|180">Bridal Styling · 180 min · ab 210 EUR</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="stylist">Stylist</label>
+              <select id="stylist" onchange="updateSummary()" required>
+                <option value="Mira">Mira · Color & Balayage</option>
+                <option value="Lea">Lea · Cuts & Styling</option>
+                <option value="Noah">Noah · Herren & Pflege</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Wunschzeit</label>
+              <div class="slots">
+                <button type="button" class="slot" onclick="pickSlot(this)">09:30</button>
+                <button type="button" class="slot" onclick="pickSlot(this)">11:00</button>
+                <button type="button" class="slot" onclick="pickSlot(this)">13:45</button>
+                <button type="button" class="slot" onclick="pickSlot(this)">15:30</button>
+                <button type="button" class="slot" onclick="pickSlot(this)">17:00</button>
+                <button type="button" class="slot" onclick="pickSlot(this)">18:15</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="z.B. Anna Beispiel" required>
+            </div>
+            <div class="field">
+              <label for="phone">Telefon</label>
+              <input id="phone" type="tel" placeholder="z.B. 0176 12345678" required>
+            </div>
+            <div class="field">
+              <label for="note">Wunsch oder Hinweis</label>
+              <textarea id="note" placeholder="z.B. Ich möchte heller werden, aber natürlich bleiben."></textarea>
+            </div>
+            <button class="btn btn-dark" type="submit">Termin vormerken</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section review-section" id="bewertungen">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Google-Bewertungen direkt mitdenken.</h2>
+          <p class="section-lead">Der Bewertungs-Slot ist sichtbar in die Website eingebaut. Nach dem Termin kann derselbe Link automatisch per Nachricht verschickt werden.</p>
+        </div>
+        <div class="review-board">
+          <div class="google-slot">
+            <div class="google-logo" aria-label="Google Bewertungen"><b>G</b><b>o</b><b>o</b><b>g</b><b>l</b><b>e</b> Bewertungen</div>
+            <div class="qr" aria-hidden="true"></div>
+            <h3>Bewerten Sie Atelier Mira</h3>
+            <p>In der echten Version wird hier der direkte Google-Bewertungslink oder ein QR-Code Ihres Unternehmens hinterlegt.</p>
+            <button class="btn btn-light" type="button" onclick="simulateReview()">Bewertungslink testen</button>
+          </div>
+          <div class="review-cards">
+            <article class="review-card"><div class="stars">★★★★★</div><p>„Super Beratung, sehr moderner Salon und die Online-Buchung war extrem einfach.“</p></article>
+            <article class="review-card"><div class="stars">★★★★★</div><p>„Ich wurde nach dem Termin freundlich an die Bewertung erinnert. Zwei Klicks, fertig.“</p></article>
+            <article class="review-card"><div class="stars">★★★★★</div><p>„Balayage genau wie gewünscht. Preise und Dauer waren schon vorab klar.“</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Team mit Persönlichkeit.</h2>
+          <p class="section-lead">Profile geben dem Salon ein Gesicht und helfen Kundinnen und Kunden, die passende Person für den Termin zu wählen.</p>
+        </div>
+        <div class="team">
+          <article class="person p1"><div class="person-info"><span>Color Expert</span><h3>Mira</h3><p>Balayage, Glossing und natürliche Farbverläufe.</p></div></article>
+          <article class="person p2"><div class="person-info"><span>Cut Expert</span><h3>Lea</h3><p>Klare Schnitte, weiche Stufen und Styling.</p></div></article>
+          <article class="person p3"><div class="person-info"><span>Care Expert</span><h3>Noah</h3><p>Herrenhaarschnitte, Pflege und Routinen.</p></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <h2>Atelier Mira</h2>
+      <p>Beispielhafte Friseur-Website fuer Verkaufsgespräche: Website, KI-Telefonagent, Terminbuchung und Bewertungsprozess in einem Ablauf.</p>
+    </div>
+    <div>
+      <p><strong>Ihr Komplettpaket:</strong> moderner erster Eindruck, Online-Terminbuchung, KI-Telefonagent und Google-Bewertungen als fester Teil der Kundenreise.</p>
+      <p><a href="/demos/">Weitere Beispiele ansehen</a></p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var selectedSlot = '';
+    var reviewText = 'Danke fuer Ihren Besuch bei Atelier Mira. Wir freuen uns ueber Ihre Google-Bewertung: https://g.page/r/BEISPIEL-BEWERTEN';
+
+    function el(id) { return document.getElementById(id); }
+    function serviceData() {
+      var raw = el('service').value;
+      if (!raw) return null;
+      var parts = raw.split('|');
+      return { name: parts[0], price: parts[1], minutes: parts[2] };
+    }
+
+    window.scrollToBooking = function () {
+      el('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    window.simulateCall = function () {
+      var result = el('agentResult');
+      if (result) {
+        result.style.display = 'block';
+        result.innerHTML =
+          '<strong style="color: var(--lime)">KI-Telefonagent aktiv.</strong><br>' +
+          'Der Agent fragt Leistung, Wunschzeit und Kontaktdaten ab und öffnet anschließend die Terminbuchung.';
+      }
+      setTimeout(function () {
+        el('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 900);
+    };
+
+    window.pickSlot = function (button) {
+      var slots = document.querySelectorAll('.slot');
+      for (var i = 0; i < slots.length; i++) slots[i].classList.remove('is-active');
+      button.classList.add('is-active');
+      selectedSlot = button.textContent;
+      window.updateSummary();
+    };
+
+    window.updateSummary = function () {
+      var service = serviceData();
+      var stylist = el('stylist').value;
+      if (!service) {
+        el('summary').textContent = 'Wähle Leistung, Stylist und Uhrzeit. Die Zusammenfassung aktualisiert sich automatisch.';
+        return;
+      }
+      el('summary').innerHTML =
+        '<strong>' + service.name + '</strong>' +
+        'Stylist: ' + stylist + '<br>' +
+        'Dauer: ca. ' + service.minutes + ' Minuten<br>' +
+        'Preis: ab ' + service.price + ' EUR<br>' +
+        'Zeit: ' + (selectedSlot || 'noch offen');
+    };
+
+    window.submitBooking = function (event) {
+      event.preventDefault();
+      var service = serviceData();
+      var name = el('name').value.trim();
+      if (!service || !selectedSlot || !name) {
+        el('confirmation').style.display = 'block';
+        el('confirmation').innerHTML = '<strong>Fast fertig.</strong><br>Bitte Leistung, Wunschzeit und Namen ausfüllen.';
+        return;
+      }
+      el('confirmation').style.display = 'block';
+      el('confirmation').innerHTML =
+        '<strong>Termin vorgemerkt.</strong><br>' +
+        name + ', dein Termin fuer ' + service.name + ' um ' + selectedSlot +
+        ' bei ' + el('stylist').value + ' wurde vorgemerkt.';
+      el('reviewFlow').style.display = 'block';
+      el('reviewResult').textContent = '';
+    };
+
+    window.simulateReview = function () {
+      var result = el('reviewResult');
+      if (result) {
+        result.textContent = 'Beispiel-Link: https://g.page/r/BEISPIEL-BEWERTEN - hier wird der Google-Link Ihres Salons eingesetzt.';
+      } else {
+        alert('Beispiel-Link: https://g.page/r/BEISPIEL-BEWERTEN');
+      }
+    };
+
+    window.copyReviewText = function () {
+      var result = el('reviewResult');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(reviewText).then(function () {
+          result.textContent = 'Bewertungstext wurde in die Zwischenablage kopiert.';
+        }).catch(function () {
+          result.textContent = reviewText;
+        });
+      } else {
+        result.textContent = reviewText;
+      }
+    };
+
+    window.updateSummary();
+  }());
+  </script>
+</body>
+</html>
