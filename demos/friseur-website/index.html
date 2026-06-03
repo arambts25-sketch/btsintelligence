@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.btsintelligence.de/demos/friseur-website/">
   <meta property="og:title" content="Friseur-Website mit KI-Telefonagent">
-  <meta property="og:description" content="Eigenständige moderne Website fuer Friseursalons mit Terminbuchung, KI-Telefonagent und Google-Bewertungs-Slot.">
+  <meta property="og:description" content="Eigenständige moderne Website für Friseursalons mit Terminbuchung, KI-Telefonagent und Google-Bewertungs-Slot.">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#101114">
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
@@ -632,22 +632,27 @@
         overflow: hidden;
       }
       .hero h1 {
-        max-width: calc(100vw - 72px);
+        max-width: 100%;
         font-size: clamp(2.35rem, 10.8vw, 2.8rem);
         line-height: .96;
       }
-      .hero-copy { width: calc(100vw - 92px); max-width: calc(100vw - 92px); }
-      .hero-lead { width: 100%; max-width: 100%; font-size: .96rem; overflow-wrap: anywhere; word-break: normal; }
-      .hero-media { min-height: 460px; border-radius: 22px; }
-      .hero-media { width: calc(100vw - 72px); max-width: calc(100vw - 72px); min-width: 0; }
-      .floating-review { right: 18px; width: calc(100% - 36px); }
-      .floating-review p, .metric span { overflow-wrap: anywhere; }
-      .hero-card { grid-template-columns: 1fr; }
-      .floating-review { left: 18px; right: 18px; top: 18px; width: auto; }
+      .hero-copy { width: calc(100vw - 140px); max-width: calc(100vw - 140px); min-width: 0; }
+      .hero-lead { width: 100%; max-width: 100%; font-size: .96rem; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
+      .hero-media { min-height: 650px; border-radius: 22px; }
+      .hero-media { width: calc(100vw - 108px); max-width: calc(100vw - 108px); min-width: 0; }
+      .floating-review { right: 54px; width: calc(100% - 72px); padding: 16px; }
+      .floating-review p, .metric span { overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
+      .hero-card { grid-template-columns: 1fr; gap: 10px; left: 18px; right: 54px; bottom: 18px; }
+      .floating-review { left: 18px; right: 54px; top: 18px; width: auto; }
       .services, .gallery, .team { grid-template-columns: 1fr; }
-      .shot, .shot-large { grid-column: auto; min-height: 320px; }
+      .gallery { grid-auto-rows: auto; gap: 18px; }
+      .shot, .shot-large { grid-column: auto; grid-row: auto; min-height: 320px; }
       .slots { grid-template-columns: 1fr 1fr; }
-      .demo-pill { left: 12px; right: 12px; justify-content: center; bottom: 12px; }
+      .demo-pill { left: 12px; right: 12px; justify-content: center; bottom: 12px; font-size: .72rem; }
+      .demo-pill::after { content: 'BTS Intelligence'; }
+      .demo-pill { font-size: 0; }
+      .demo-pill span { margin-right: 8px; }
+      .demo-pill::after { font-size: .72rem; }
       .section { padding-left: 18px; padding-right: 18px; }
     }
   </style>
@@ -656,7 +661,7 @@
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": "Friseur-Website mit KI-Telefonagent",
-    "description": "Eigenstaendige moderne Friseur-Website mit Terminbuchung, KI-Telefonagent und Google-Bewertungsstrecke",
+    "description": "Eigenständige moderne Friseur-Website mit Terminbuchung, KI-Telefonagent und Google-Bewertungsstrecke",
     "url": "https://www.btsintelligence.de/demos/friseur-website/",
     "provider": {"@id": "https://www.btsintelligence.de/#business"}
   }
@@ -717,10 +722,10 @@
           <p class="section-lead">Klare Pakete reduzieren Rückfragen. Besucher sehen Dauer, Preisrahmen und Ergebnis, bevor sie einen Termin auswählen.</p>
         </div>
         <div class="services">
-          <article class="service"><div><h3>Signature Cut</h3><p>Beratung, Waschen, Schnitt und Styling fuer Damen oder Herren.</p></div><strong class="price">ab 54 EUR</strong></article>
+          <article class="service"><div><h3>Signature Cut</h3><p>Beratung, Waschen, Schnitt und Styling für Damen oder Herren.</p></div><strong class="price">ab 54 EUR</strong></article>
           <article class="service"><div><h3>Color Refresh</h3><p>Ansatz, Glossing oder komplette Farbauffrischung inklusive Pflege.</p></div><strong class="price">ab 82 EUR</strong></article>
           <article class="service"><div><h3>Balayage</h3><p>Natürliche Übergänge, Toner, Pflege und Styling mit ausführlicher Beratung.</p></div><strong class="price">ab 149 EUR</strong></article>
-          <article class="service"><div><h3>Bridal Styling</h3><p>Probe, Hochsteckfrisur und Make-up als Paket fuer besondere Tage.</p></div><strong class="price">ab 210 EUR</strong></article>
+          <article class="service"><div><h3>Bridal Styling</h3><p>Probe, Hochsteckfrisur und Make-up als Paket für besondere Tage.</p></div><strong class="price">ab 210 EUR</strong></article>
         </div>
       </div>
     </section>
@@ -916,7 +921,7 @@
   <script>
   (function () {
     var selectedSlot = '';
-    var reviewText = 'Danke fuer Ihren Besuch bei Atelier Mira. Wir freuen uns ueber Ihre Google-Bewertung: https://g.page/r/ATELIER-MIRA';
+    var reviewText = 'Danke für Ihren Besuch bei Atelier Mira. Wir freuen uns über Ihre Google-Bewertung: https://g.page/r/ATELIER-MIRA';
 
     function el(id) { return document.getElementById(id); }
     function serviceData() {
@@ -978,7 +983,7 @@
       el('confirmation').style.display = 'block';
       el('confirmation').innerHTML =
         '<strong>Termin vorgemerkt.</strong><br>' +
-        name + ', dein Termin fuer ' + service.name + ' um ' + selectedSlot +
+        name + ', dein Termin für ' + service.name + ' um ' + selectedSlot +
         ' bei ' + el('stylist').value + ' wurde vorgemerkt.';
       el('reviewFlow').style.display = 'block';
       el('reviewResult').textContent = '';
