@@ -18,7 +18,7 @@
 (function(){try{var t=localStorage.getItem('bts-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
 </script>
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
-<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/icon-512.png" type="image/png">
 <link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
 <link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/css/main.css">
@@ -68,7 +68,7 @@
 
 <header role="banner">
 <nav class="site-nav" aria-label="Hauptnavigation">
-  <a href="/" class="nav-logo"><span class="logo-bts">BTS</span><span class="logo-intel">Intelligence</span></a>
+  <a href="/" class="nav-logo" aria-label="BTS Intelligence Startseite"><img src="/assets/logo-header.png?v=2" alt="BTS Intelligence" class="nav-logo-img" width="52" height="52"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/leistungen/">Leistungen</a></li>
     <li><a href="/demos/">Demos</a></li>
@@ -378,14 +378,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px">
-      <rect width="32" height="32" rx="8" fill="url(#lgdatev)"/>
-      <path d="M9 10h5.5a3.5 3.5 0 0 1 0 7H9V10z" fill="white" fill-opacity=".9"/>
-      <path d="M9 17h6a3.5 3.5 0 0 1 0 7H9V17z" fill="white" fill-opacity=".6"/>
-      <circle cx="22" cy="13" r="2.5" fill="#e8a820"/>
-      <line x1="22" y1="15.5" x2="22" y2="24" stroke="#e8a820" stroke-width="2" stroke-linecap="round"/>
-      <defs><linearGradient id="lgdatev" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4f6bf0"/><stop offset="100%" stop-color="#2a3fa8"/></linearGradient></defs>
-    </svg><span style="background:linear-gradient(115deg,#7b93f5,#b8c8fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">BTS</span><span class="footer-logo-mark"> Intelligence</span>
+    <img src="/assets/logo-header.png?v=2" alt="BTS Intelligence" class="footer-logo-img" width="56" height="56">
   </div>
   <div class="footer-links">
     <a href="/leistungen/">Leistungen</a><a href="/preise/">Preise</a><a href="/ueber-uns/">Über uns</a><a href="/ratgeber/">Ratgeber</a><a href="/demos/">Demos</a><a href="#" onclick="openModal(event)">Termin buchen</a><a href="tel:+491784552028">0178 / 455 2028</a>
