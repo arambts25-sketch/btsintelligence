@@ -114,16 +114,32 @@
   });
 
   // ===== MOBILE NAV TOGGLE =====
+  function setMenuOpen(isOpen) {
+    var navLinks = document.getElementById('navLinks');
+    var nav = document.querySelector('nav.site-nav');
+    var hamburger = document.getElementById('hamburger');
+    if (!navLinks || !nav) return;
+    navLinks.classList.toggle('open', isOpen);
+    nav.classList.toggle('menu-open', isOpen);
+    document.body.classList.toggle('mobile-menu-open', isOpen);
+    if (hamburger) hamburger.setAttribute('aria-expanded', String(isOpen));
+  }
+
   function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
-    document.querySelector('nav.site-nav').classList.toggle('menu-open');
+    var navLinks = document.getElementById('navLinks');
+    setMenuOpen(!(navLinks && navLinks.classList.contains('open')));
   }
   document.querySelectorAll('.nav-links a').forEach(function(a){
     a.addEventListener('click', function(){
-      document.getElementById('navLinks').classList.remove('open');
-      document.querySelector('nav.site-nav').classList.remove('menu-open');
+      setMenuOpen(false);
     });
   });
+  var navCta = document.querySelector('nav.site-nav > .nav-btn');
+  if (navCta) {
+    navCta.addEventListener('click', function(){
+      setMenuOpen(false);
+    });
+  }
 
   // ===== MOBILE STICKY CTA BAR =====
   // Immer sichtbar auf Mobile (CSS-gesteuert), nur ausgeblendet wenn Modal offen.
