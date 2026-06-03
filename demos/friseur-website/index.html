@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.btsintelligence.de/demos/friseur-website/">
   <meta property="og:title" content="Friseur-Website mit KI-Telefonagent">
-  <meta property="og:description" content="Eigenständige moderne Beispiel-Website fuer Friseursalons mit Terminbuchung, KI-Telefonagent und Google-Bewertungs-Slot.">
+  <meta property="og:description" content="Eigenständige moderne Website fuer Friseursalons mit Terminbuchung, KI-Telefonagent und Google-Bewertungs-Slot.">
   <meta property="og:locale" content="de_DE">
   <meta name="theme-color" content="#101114">
   <link rel="icon" href="/assets/favicon.ico" sizes="any">
@@ -656,14 +656,14 @@
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": "Friseur-Website mit KI-Telefonagent",
-    "description": "Eigenstaendige Beispielseite einer modernen Friseur-Website mit Terminbuchung, KI-Telefonagent und Google-Bewertungsstrecke",
+    "description": "Eigenstaendige moderne Friseur-Website mit Terminbuchung, KI-Telefonagent und Google-Bewertungsstrecke",
     "url": "https://www.btsintelligence.de/demos/friseur-website/",
     "provider": {"@id": "https://www.btsintelligence.de/#business"}
   }
   </script>
 </head>
 <body>
-  <div class="demo-pill" aria-label="Beispiel Hinweis"><span></span> Beispielseite: Ihr Salon, Ihre Termine</div>
+  <div class="demo-pill" aria-label="BTS Hinweis"><span></span> Website, Telefonagent & Termine von BTS Intelligence</div>
 
   <nav class="nav" aria-label="Hauptnavigation">
     <a href="#top" class="brand">
@@ -676,7 +676,7 @@
       <a href="#telefonagent">KI-Telefon</a>
       <a href="#bewertungen">Bewertungen</a>
       <button class="book-now" type="button" onclick="scrollToBooking()">Termin buchen</button>
-      <a class="nav-owner" href="https://www.btsintelligence.de/#kontakt">Von BTS Intelligence</a>
+      <a class="nav-owner" href="https://www.btsintelligence.de/#kontakt">Lösung anfragen</a>
     </div>
   </nav>
 
@@ -765,7 +765,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Ein Lookbook statt Textwüste.</h2>
-          <p class="section-lead">Die Galerie verkauft das Gefühl des Salons. Gerade bei Friseuren entscheidet der erste visuelle Eindruck oft vor dem ersten Klick.</p>
+          <p class="section-lead">Die Galerie vermittelt das Gefühl des Salons. Gerade bei Friseuren entscheidet der erste visuelle Eindruck oft vor dem ersten Klick.</p>
         </div>
         <div class="gallery" aria-label="Lookbook Galerie">
           <div class="shot shot-large shot-one" role="img" aria-label="Saloninterieur"></div>
@@ -831,7 +831,7 @@
             </div>
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" type="text" placeholder="z.B. Anna Beispiel" required>
+              <input id="name" type="text" placeholder="z.B. Anna Müller" required>
             </div>
             <div class="field">
               <label for="phone">Telefon</label>
@@ -889,7 +889,7 @@
     <div class="bts-cta-inner">
       <div>
         <div class="bts-cta-kicker">Für Ihren Salon</div>
-        <h2>So eine Lösung für meinen Friseursalon anfragen.</h2>
+        <h2>Website, Telefonagent und Terminbuchung für meinen Salon anfragen.</h2>
         <p>
           BTS Intelligence baut Website, Online-Terminbuchung, KI-Telefonagent und Bewertungsprozess
           als Komplettpaket für Ihren Betrieb.
@@ -897,7 +897,7 @@
       </div>
       <div class="bts-cta-actions">
         <a class="btn btn-bts" href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener">Kostenloses Gespräch buchen</a>
-        <a class="btn btn-light" href="https://www.btsintelligence.de/">Zur BTS-Website</a>
+        <a class="btn btn-light" href="https://www.btsintelligence.de/">Mehr über BTS Intelligence</a>
       </div>
     </div>
   </section>
@@ -905,18 +905,18 @@
   <footer class="footer">
     <div>
       <h2>Atelier Mira</h2>
-      <p>Beispielhafte Friseur-Website fuer Verkaufsgespräche: Website, KI-Telefonagent, Terminbuchung und Bewertungsprozess in einem Ablauf.</p>
+      <p>Moderne Friseur-Website mit KI-Telefonagent, Terminbuchung und Bewertungsprozess in einem Ablauf.</p>
     </div>
     <div>
       <p><strong>Ihr Komplettpaket:</strong> moderner erster Eindruck, Online-Terminbuchung, KI-Telefonagent und Google-Bewertungen als fester Teil der Kundenreise.</p>
-      <p><a href="/demos/">Weitere Beispiele ansehen</a></p>
+      <p><a href="https://www.btsintelligence.de/#kontakt">Lösung für meinen Salon anfragen</a></p>
     </div>
   </footer>
 
   <script>
   (function () {
     var selectedSlot = '';
-    var reviewText = 'Danke fuer Ihren Besuch bei Atelier Mira. Wir freuen uns ueber Ihre Google-Bewertung: https://g.page/r/BEISPIEL-BEWERTEN';
+    var reviewText = 'Danke fuer Ihren Besuch bei Atelier Mira. Wir freuen uns ueber Ihre Google-Bewertung: https://g.page/r/ATELIER-MIRA';
 
     function el(id) { return document.getElementById(id); }
     function serviceData() {
@@ -987,9 +987,9 @@
     window.simulateReview = function () {
       var result = el('reviewResult');
       if (result) {
-        result.textContent = 'Beispiel-Link: https://g.page/r/BEISPIEL-BEWERTEN - hier wird der Google-Link Ihres Salons eingesetzt.';
+        result.textContent = 'Bewertungslink vorbereitet: Der direkte Google-Link Ihres Salons wird hier eingesetzt.';
       } else {
-        alert('Beispiel-Link: https://g.page/r/BEISPIEL-BEWERTEN');
+        alert('Bewertungslink vorbereitet.');
       }
     };
 
