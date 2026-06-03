@@ -122,6 +122,18 @@
       color: var(--white) !important;
       padding-inline: 16px !important;
     }
+    .nav-owner {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 4px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(199,240,91,.18);
+      color: var(--ink);
+      font-weight: 900;
+      font-size: .86rem;
+    }
 
     .hero {
       min-height: 100svh;
@@ -196,7 +208,7 @@
       box-shadow: var(--shadow);
       background:
         linear-gradient(180deg, rgba(16,17,20,0) 30%, rgba(16,17,20,.58)),
-        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1500&q=84') center/cover;
+        url('/assets/demos/friseur-website/hero-salon.jpg') center/cover;
     }
     .hero-card {
       position: absolute;
@@ -375,11 +387,11 @@
       box-shadow: inset 0 -90px 120px rgba(16,17,20,.18);
     }
     .shot-large { grid-row: span 2; }
-    .shot-one { background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=82'); }
-    .shot-two { background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=82'); }
-    .shot-three { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=82'); }
-    .shot-four { background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=82'); }
-    .shot-five { background-image: url('https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=800&q=82'); }
+    .shot-one { background-image: url('/assets/demos/friseur-website/gallery-wash.jpg'); }
+    .shot-two { background-image: url('/assets/demos/friseur-website/gallery-color.jpg'); }
+    .shot-three { background-image: url('/assets/demos/friseur-website/gallery-portrait.jpg'); }
+    .shot-four { background-image: url('/assets/demos/friseur-website/gallery-style.jpg'); }
+    .shot-five { background-image: url('/assets/demos/friseur-website/gallery-products.jpg'); }
 
     .booking-grid {
       display: grid;
@@ -540,9 +552,9 @@
     .person span { color: var(--lime); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
     .person h3 { margin: 8px 0 5px; font-size: 1.7rem; }
     .person p { margin: 0; color: rgba(255,250,244,.8); }
-    .p1 { background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=82'); }
-    .p2 { background-image: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=82'); }
-    .p3 { background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=82'); }
+    .p1 { background-image: url('/assets/demos/friseur-website/team-mira.jpg'); }
+    .p2 { background-image: url('/assets/demos/friseur-website/team-lea.jpg'); }
+    .p3 { background-image: url('/assets/demos/friseur-website/team-noah.jpg'); }
 
     .footer {
       display: grid;
@@ -554,9 +566,44 @@
     }
     .footer h2 { margin: 0 0 12px; font-size: clamp(2.3rem,5vw,4.2rem); line-height: .95; }
     .footer p { color: rgba(255,250,244,.68); max-width: 560px; }
+    .bts-cta {
+      margin: clamp(40px,6vw,72px) clamp(20px,5vw,64px);
+      padding: clamp(30px,5vw,56px);
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 86% 12%, rgba(199,240,91,.34), transparent 32%),
+        linear-gradient(135deg, #101114, #20242a);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .bts-cta-inner {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(260px, .42fr);
+      gap: 26px;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .bts-cta-kicker {
+      color: var(--lime);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .76rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .bts-cta h2 {
+      margin: 0;
+      font-size: clamp(2.15rem,4.6vw,4.4rem);
+      line-height: .95;
+    }
+    .bts-cta p { margin: 16px 0 0; color: rgba(255,250,244,.74); max-width: 650px; }
+    .bts-cta-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .btn-bts { background: var(--lime); color: var(--ink); }
 
     @media (max-width: 980px) {
-      .hero, .agent-grid, .booking-grid, .review-board, .footer { grid-template-columns: 1fr; }
+      .hero, .agent-grid, .booking-grid, .review-board, .footer, .bts-cta-inner { grid-template-columns: 1fr; }
+      .bts-cta-actions { justify-content: flex-start; }
       .hero-media { min-height: 560px; }
       .panel-dark { position: static; }
       .services { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -577,6 +624,7 @@
       .brand { font-size: 1rem; }
       .brand-mark { width: 30px; height: 30px; }
       .nav-links { display: none; }
+      .nav-owner { display: none; }
       .hero {
         padding: 96px 18px 24px;
         gap: 22px;
@@ -628,6 +676,7 @@
       <a href="#telefonagent">KI-Telefon</a>
       <a href="#bewertungen">Bewertungen</a>
       <button class="book-now" type="button" onclick="scrollToBooking()">Termin buchen</button>
+      <a class="nav-owner" href="https://www.btsintelligence.de/#kontakt">Von BTS Intelligence</a>
     </div>
   </nav>
 
@@ -835,6 +884,23 @@
       </div>
     </section>
   </main>
+
+  <section class="bts-cta" aria-label="BTS Intelligence Anfrage">
+    <div class="bts-cta-inner">
+      <div>
+        <div class="bts-cta-kicker">Für Ihren Salon</div>
+        <h2>So eine Lösung für meinen Friseursalon anfragen.</h2>
+        <p>
+          BTS Intelligence baut Website, Online-Terminbuchung, KI-Telefonagent und Bewertungsprozess
+          als Komplettpaket für Ihren Betrieb.
+        </p>
+      </div>
+      <div class="bts-cta-actions">
+        <a class="btn btn-bts" href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener">Kostenloses Gespräch buchen</a>
+        <a class="btn btn-light" href="https://www.btsintelligence.de/">Zur BTS-Website</a>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div>
