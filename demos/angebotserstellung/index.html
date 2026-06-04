@@ -146,7 +146,8 @@
               <input class="angebot-input" type="text" id="angebotKunde" placeholder="z.B. Max Mustermann">
             </div>
 
-            <button id="angebotGenerierenBtn" class="btn-amber" onclick="angebotStart()" disabled style="width:100%;text-align:center;margin-top:4px">Angebot generieren →</button>
+            <button id="angebotGenerierenBtn" class="btn-amber" onclick="angebotStart()" aria-disabled="true" style="width:100%;text-align:center;margin-top:4px">Angebot generieren →</button>
+            <div id="angebotFeedback" class="demo-feedback" role="status" aria-live="polite"></div>
           </div>
         </div>
 
@@ -347,6 +348,18 @@
 
     function el(id) { return document.getElementById(id); }
 
+    function angebotFeedback(msg) {
+      var fb = el('angebotFeedback');
+      fb.textContent = msg || '';
+      fb.classList.toggle('is-visible', !!msg);
+    }
+
+    function angebotMarkInvalid(ids) {
+      ['angebotGewerk', 'angebotMenge'].forEach(function (id) {
+        el(id).classList.toggle('is-invalid', ids.indexOf(id) !== -1);
+      });
+    }
+
     function showState(s) {
       ['angebotFormState', 'angebotProcessingState', 'angebotResultState'].forEach(function (id) {
         el(id).style.display = (id === s) ? '' : 'none';
@@ -366,7 +379,7 @@
       if (!gewerk) {
         group.style.display = 'none';
         mengeGroup.style.display = 'none';
-        el('angebotGenerierenBtn').disabled = true;
+        el('angebotGenerierenBtn').setAttribute('aria-disabled', 'true');
         return;
       }
 
@@ -400,13 +413,28 @@
     window.angebotUpdateBtn = function () {
       var gewerk = el('angebotGewerk').value;
       var menge = parseFloat(el('angebotMenge').value);
-      el('angebotGenerierenBtn').disabled = !(gewerk && menge > 0);
+      var ok = gewerk && menge > 0;
+      el('angebotGenerierenBtn').setAttribute('aria-disabled', ok ? 'false' : 'true');
+      if (ok) {
+        angebotFeedback('');
+        angebotMarkInvalid([]);
+      }
     };
 
     window.angebotStart = function () {
       var gewerk = el('angebotGewerk').value;
       var menge = parseFloat(el('angebotMenge').value);
-      if (!gewerk || !(menge > 0)) return;
+      var missing = [];
+      if (!gewerk) missing.push('Gewerk');
+      if (!(menge > 0)) missing.push('Aufmaß');
+      if (missing.length) {
+        angebotFeedback('Bitte ergänzen: ' + missing.join(' und ') + '. Danach erstellen wir das Demo-Angebot sofort.');
+        angebotMarkInvalid([!gewerk ? 'angebotGewerk' : '', !(menge > 0) ? 'angebotMenge' : ''].filter(Boolean));
+        el(!gewerk ? 'angebotGewerk' : 'angebotMenge').focus();
+        return;
+      }
+      angebotFeedback('');
+      angebotMarkInvalid([]);
 
       showState('angebotProcessingState');
 
@@ -524,7 +552,9 @@
       el('angebotKunde').value = '';
       el('leistungenGroup').style.display = 'none';
       el('mengeGroup').style.display = 'none';
-      el('angebotGenerierenBtn').disabled = true;
+      el('angebotGenerierenBtn').setAttribute('aria-disabled', 'true');
+      angebotFeedback('');
+      angebotMarkInvalid([]);
       el('angebotDocContent').innerHTML = '';
       showState('angebotFormState');
     };

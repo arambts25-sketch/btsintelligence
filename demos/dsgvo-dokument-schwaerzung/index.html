@@ -127,7 +127,8 @@
               <span>Ich bestätige, berechtigt zu sein, diese Datei zu verarbeiten. Sie wird ausschließlich für diese Demo-Schwärzung verwendet und danach nicht gespeichert.</span>
             </label>
 
-            <button id="demoSubmitBtn" class="btn-amber" onclick="demoStart()" disabled style="margin-top:20px;width:100%;text-align:center">Dokument jetzt schwärzen →</button>
+            <button id="demoSubmitBtn" class="btn-amber" onclick="demoStart()" aria-disabled="true" style="margin-top:20px;width:100%;text-align:center">Dokument jetzt schwärzen →</button>
+            <div id="demoFeedback" class="demo-feedback" role="status" aria-live="polite"></div>
           </div>
 
           <!-- State 2: Processing -->
@@ -334,6 +335,18 @@
     var _file = null;
 
     function el(id) { return document.getElementById(id); }
+
+    function demoFeedback(msg) {
+      var fb = el('demoFeedback');
+      fb.textContent = msg || '';
+      fb.classList.toggle('is-visible', !!msg);
+    }
+
+    function demoMarkInvalid(parts) {
+      el('dropZone').classList.toggle('is-invalid', parts.indexOf('file') !== -1);
+      el('consentCheck').closest('.demo-consent-label').classList.toggle('is-invalid', parts.indexOf('consent') !== -1);
+    }
+
     function showState(s) {
       ['demoUploadState','demoProcessingState','demoResultState','demoErrorState'].forEach(function(id) {
         el(id).style.display = (id === s) ? '' : 'none';
@@ -355,12 +368,22 @@
     });
 
     window.demoSetFile = function (file) {
-      if (!file.name.toLowerCase().endsWith('.pdf')) { alert('Bitte nur PDF-Dateien hochladen.'); return; }
-      if (file.size > MAX_MB * 1024 * 1024) { alert('Datei zu groß. Maximal ' + MAX_MB + ' MB erlaubt.'); return; }
+      if (!file.name.toLowerCase().endsWith('.pdf')) {
+        demoFeedback('Bitte wählen Sie eine PDF-Datei aus.');
+        demoMarkInvalid(['file']);
+        return;
+      }
+      if (file.size > MAX_MB * 1024 * 1024) {
+        demoFeedback('Die Datei ist zu groß. Maximal ' + MAX_MB + ' MB sind für diese Demo erlaubt.');
+        demoMarkInvalid(['file']);
+        return;
+      }
       _file = file;
       el('filePreviewName').textContent = file.name;
       el('filePreview').style.display = 'flex';
       el('dropZone').style.display = 'none';
+      demoFeedback('');
+      demoMarkInvalid([]);
       demoUpdateBtn();
     };
 
@@ -373,18 +396,35 @@
     };
 
     window.demoUpdateBtn = function () {
-      el('demoSubmitBtn').disabled = !(_file && el('consentCheck').checked);
+      var ok = _file && el('consentCheck').checked;
+      el('demoSubmitBtn').setAttribute('aria-disabled', ok ? 'false' : 'true');
+      if (ok) {
+        demoFeedback('');
+        demoMarkInvalid([]);
+      }
     };
 
     window.demoReset = function () {
       demoRemoveFile();
       el('consentCheck').checked = false;
       demoUpdateBtn();
+      demoFeedback('');
+      demoMarkInvalid([]);
       showState('demoUploadState');
     };
 
     window.demoStart = async function () {
-      if (!_file) return;
+      var missing = [];
+      if (!_file) missing.push('PDF-Datei');
+      if (!el('consentCheck').checked) missing.push('Bestätigung');
+      if (missing.length) {
+        demoFeedback('Bitte ergänzen: ' + missing.join(' und ') + '. Danach starten wir die Schwärzung sofort.');
+        demoMarkInvalid([!_file ? 'file' : '', !el('consentCheck').checked ? 'consent' : ''].filter(Boolean));
+        (!_file ? el('dropZone') : el('consentCheck')).focus();
+        return;
+      }
+      demoFeedback('');
+      demoMarkInvalid([]);
       showState('demoProcessingState');
       var labels = ['Dokument wird analysiert…','PII-Erkennung läuft…','Daten werden geschwärzt…','Audit wird erstellt…'];
       var li = 0;

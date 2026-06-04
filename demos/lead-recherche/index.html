@@ -173,7 +173,8 @@
               </div>
             </div>
 
-            <button id="leadStartBtn" class="btn-amber" onclick="leadStart()" disabled style="width:100%;text-align:center;margin-top:4px">Lead-Recherche starten →</button>
+            <button id="leadStartBtn" class="btn-amber" onclick="leadStart()" aria-disabled="true" style="width:100%;text-align:center;margin-top:4px">Lead-Recherche starten →</button>
+            <div id="leadFeedback" class="demo-feedback" role="status" aria-live="polite"></div>
             <p style="text-align:center;font-size:.75rem;color:var(--text-lo);margin:14px 0 0">Demo: Daten werden lokal im Browser erzeugt — keine echte Suche, keine Speicherung.</p>
           </div>
         </div>
@@ -338,6 +339,18 @@
 
     function el(id) { return document.getElementById(id); }
 
+    function leadFeedback(msg) {
+      var fb = el('leadFeedback');
+      fb.textContent = msg || '';
+      fb.classList.toggle('is-visible', !!msg);
+    }
+
+    function leadMarkInvalid(ids) {
+      ['leadRegion', 'leadBranche'].forEach(function (id) {
+        el(id).classList.toggle('is-invalid', ids.indexOf(id) !== -1);
+      });
+    }
+
     function showState(s) {
       ['leadFormState', 'leadProcessingState', 'leadResultState'].forEach(function (id) {
         el(id).style.display = (id === s) ? '' : 'none';
@@ -481,13 +494,27 @@
 
     window.leadFormChange = function () {
       var ok = el('leadRegion').value.trim().length > 1 && el('leadBranche').value;
-      el('leadStartBtn').disabled = !ok;
+      el('leadStartBtn').setAttribute('aria-disabled', ok ? 'false' : 'true');
+      if (ok) {
+        leadFeedback('');
+        leadMarkInvalid([]);
+      }
     };
 
     window.leadStart = function () {
       var region = el('leadRegion').value.trim();
       var branche = el('leadBranche').value;
-      if (region.length < 2 || !branche) return;
+      var missing = [];
+      if (region.length < 2) missing.push('Region');
+      if (!branche) missing.push('Branche');
+      if (missing.length) {
+        leadFeedback('Bitte ergänzen: ' + missing.join(' und ') + '. Danach starten wir die Demo-Recherche sofort.');
+        leadMarkInvalid([region.length < 2 ? 'leadRegion' : '', !branche ? 'leadBranche' : ''].filter(Boolean));
+        el(region.length < 2 ? 'leadRegion' : 'leadBranche').focus();
+        return;
+      }
+      leadFeedback('');
+      leadMarkInvalid([]);
       var count = Math.max(3, Math.min(12, parseInt(el('leadCount').value, 10) || 8));
 
       var data = generate(region, branche, count);
@@ -527,7 +554,9 @@
       el('leadBranche').value = '';
       el('leadCount').value = 8;
       el('leadCountVal').textContent = '8';
-      el('leadStartBtn').disabled = true;
+      el('leadStartBtn').setAttribute('aria-disabled', 'true');
+      leadFeedback('');
+      leadMarkInvalid([]);
       el('leadResultContent').innerHTML = '';
       showState('leadFormState');
     };

@@ -150,7 +150,8 @@
               <input class="angebot-input" type="number" id="rechnungAnzahlung" min="0" max="999999" placeholder="z.B. 500" step="0.01">
             </div>
 
-            <button id="rechnungGenerierenBtn" class="btn-amber" onclick="rechnungStart()" disabled style="width:100%;text-align:center;margin-top:4px">Rechnung erstellen →</button>
+            <button id="rechnungGenerierenBtn" class="btn-amber" onclick="rechnungStart()" aria-disabled="true" style="width:100%;text-align:center;margin-top:4px">Rechnung erstellen →</button>
+            <div id="rechnungFeedback" class="demo-feedback" role="status" aria-live="polite"></div>
           </div>
         </div>
 
@@ -351,6 +352,18 @@
 
     function el(id) { return document.getElementById(id); }
 
+    function rechnungFeedback(msg) {
+      var fb = el('rechnungFeedback');
+      fb.textContent = msg || '';
+      fb.classList.toggle('is-visible', !!msg);
+    }
+
+    function rechnungMarkInvalid(ids) {
+      ['rechnungGewerk', 'rechnungMenge'].forEach(function (id) {
+        el(id).classList.toggle('is-invalid', ids.indexOf(id) !== -1);
+      });
+    }
+
     function showState(s) {
       ['rechnungFormState', 'rechnungProcessingState', 'rechnungResultState'].forEach(function (id) {
         el(id).style.display = (id === s) ? '' : 'none';
@@ -374,7 +387,7 @@
       if (!gewerk) {
         group.style.display = 'none';
         mengeGroup.style.display = 'none';
-        el('rechnungGenerierenBtn').disabled = true;
+        el('rechnungGenerierenBtn').setAttribute('aria-disabled', 'true');
         return;
       }
 
@@ -405,13 +418,28 @@
     window.rechnungUpdateBtn = function () {
       var gewerk = el('rechnungGewerk').value;
       var menge = parseFloat(el('rechnungMenge').value);
-      el('rechnungGenerierenBtn').disabled = !(gewerk && menge > 0);
+      var ok = gewerk && menge > 0;
+      el('rechnungGenerierenBtn').setAttribute('aria-disabled', ok ? 'false' : 'true');
+      if (ok) {
+        rechnungFeedback('');
+        rechnungMarkInvalid([]);
+      }
     };
 
     window.rechnungStart = function () {
       var gewerk = el('rechnungGewerk').value;
       var menge = parseFloat(el('rechnungMenge').value);
-      if (!gewerk || !(menge > 0)) return;
+      var missing = [];
+      if (!gewerk) missing.push('Gewerk');
+      if (!(menge > 0)) missing.push('Leistungsmenge');
+      if (missing.length) {
+        rechnungFeedback('Bitte ergänzen: ' + missing.join(' und ') + '. Danach erstellen wir die Demo-Rechnung sofort.');
+        rechnungMarkInvalid([!gewerk ? 'rechnungGewerk' : '', !(menge > 0) ? 'rechnungMenge' : ''].filter(Boolean));
+        el(!gewerk ? 'rechnungGewerk' : 'rechnungMenge').focus();
+        return;
+      }
+      rechnungFeedback('');
+      rechnungMarkInvalid([]);
 
       showState('rechnungProcessingState');
 
@@ -556,7 +584,9 @@
       el('rechnungAnzahlung').value = '';
       el('rLeistungenGroup').style.display = 'none';
       el('rMengeGroup').style.display = 'none';
-      el('rechnungGenerierenBtn').disabled = true;
+      el('rechnungGenerierenBtn').setAttribute('aria-disabled', 'true');
+      rechnungFeedback('');
+      rechnungMarkInvalid([]);
       el('rechnungDocContent').innerHTML = '';
       showState('rechnungFormState');
     };
