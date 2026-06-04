@@ -94,9 +94,11 @@ nav.site-nav{
 }
 .nav-logo-img{
   display:block;width:auto;height:40px;max-width:180px;object-fit:contain;border-radius:0;
+  content:url('/assets/logo-header-dark.png?v=1');
   filter:drop-shadow(0 4px 12px rgba(79,107,240,.18));
 }
 html[data-theme="light"] .nav-logo-img{
+  content:url('/assets/logo-header.png?v=2');
   filter:drop-shadow(0 2px 6px rgba(17,21,37,.12));
 }
 .nav-logo-mark{color:var(--amber-400)}
@@ -523,7 +525,12 @@ footer{
 }
 .footer-logo-img{
   display:block;width:auto;height:44px;max-width:200px;object-fit:contain;border-radius:0;
+  content:url('/assets/logo-header-dark.png?v=1');
   filter:drop-shadow(0 4px 12px rgba(79,107,240,.16));
+}
+html[data-theme="light"] .footer-logo-img{
+  content:url('/assets/logo-header.png?v=2');
+  filter:drop-shadow(0 2px 6px rgba(17,21,37,.12));
 }
 .footer-logo-mark{color:var(--amber-400)}
 .footer-links{display:flex;flex-wrap:wrap;gap:12px 24px}
