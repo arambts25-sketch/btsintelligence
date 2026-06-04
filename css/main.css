@@ -1747,6 +1747,226 @@ html[data-theme="light"] .angebot-select option {
   color: var(--text-hi);
 }
 
+.angebot-flow-panel {
+  max-width: 980px;
+  margin: 0 auto 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(220px, .8fr) minmax(220px, .8fr);
+  gap: 14px;
+}
+
+.angebot-flow-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hi);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.angebot-flow-card.is-active {
+  border-color: rgba(212,144,10,.38);
+  box-shadow: 0 14px 36px rgba(0,0,0,.22);
+}
+
+.angebot-flow-kicker {
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--amber-200);
+  margin-bottom: 12px;
+}
+
+.angebot-mail {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-lo);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.angebot-mail-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.angebot-mail-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(79,107,240,.16);
+  color: var(--blue-200);
+  font-size: .72rem;
+  font-weight: 900;
+}
+
+.angebot-mail-top strong {
+  display: block;
+  color: var(--text-hi);
+  font-size: .86rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.angebot-mail-top span,
+.angebot-mail-top time {
+  color: var(--text-lo);
+  font-size: .72rem;
+}
+
+.angebot-mail-subject {
+  color: var(--text-hi);
+  font-weight: 800;
+  margin-bottom: 8px;
+  font-size: .92rem;
+}
+
+.angebot-mail p {
+  color: var(--text-med);
+  font-size: .82rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.angebot-extract-grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px 12px;
+  align-items: baseline;
+  font-size: .8rem;
+}
+
+.angebot-extract-grid span {
+  color: var(--text-lo);
+}
+
+.angebot-extract-grid strong {
+  color: var(--text-hi);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.angebot-flow-next {
+  display: grid;
+  gap: 8px;
+}
+
+.angebot-flow-next span {
+  color: var(--text-med);
+  font-size: .8rem;
+  padding-left: 18px;
+  position: relative;
+}
+
+.angebot-flow-next span::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber-500);
+  position: absolute;
+  left: 2px;
+  top: .52em;
+}
+
+.angebot-send-panel {
+  margin-top: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hi);
+  border-radius: 12px;
+  padding: 18px;
+  color: var(--text-med);
+}
+
+.angebot-send-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.angebot-send-head strong {
+  display: block;
+  color: var(--text-hi);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.05rem;
+}
+
+.angebot-send-status {
+  border: 1px solid rgba(212,144,10,.28);
+  background: rgba(212,144,10,.1);
+  color: var(--amber-200);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: .72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.angebot-send-panel.is-sent .angebot-send-status {
+  border-color: rgba(34,197,94,.28);
+  background: rgba(34,197,94,.1);
+  color: #4ade80;
+}
+
+.angebot-email-draft {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-lo);
+  border-radius: 10px;
+  padding: 14px;
+  font-size: .84rem;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.angebot-email-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border-lo);
+}
+
+.angebot-email-row span {
+  color: var(--text-lo);
+}
+
+.angebot-email-row strong {
+  color: var(--text-hi);
+  overflow-wrap: anywhere;
+}
+
+.angebot-email-body {
+  color: var(--text-med);
+  white-space: pre-line;
+}
+
+.angebot-send-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.angebot-send-confirm {
+  display: none;
+  color: #4ade80;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.angebot-send-panel.is-sent .angebot-send-confirm {
+  display: inline;
+}
+
 /* Quote document */
 .angebot-doc-wrap { max-width: 700px; margin: 0 auto; }
 
@@ -1906,6 +2126,9 @@ html[data-theme="light"] .angebot-select option {
 }
 
 @media (max-width: 580px) {
+  .angebot-flow-panel { grid-template-columns: 1fr; }
+  .angebot-send-head { flex-direction: column; }
+  .angebot-email-row { grid-template-columns: 1fr; gap: 2px; }
   .angebot-leistungen-grid { grid-template-columns: 1fr; }
   .angebot-form-wrap { padding: 20px 16px; }
   .angebot-doc-header { flex-direction: column; gap: 12px; align-items: flex-start; }

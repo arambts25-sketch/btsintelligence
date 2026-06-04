@@ -25,9 +25,9 @@
   <style>
     @media print {
       header, footer, nav, .skip-to-content, .modal-overlay,
-      #angebotFormState, #angebotProcessingState,
+      #angebotFormState, #angebotProcessingState, .angebot-flow-panel,
       .section:not(#demoPrintSection), .demo-hero,
-      .angebot-doc-actions .btn-ghost { display: none !important; }
+      .angebot-doc-actions .btn-ghost, .angebot-send-panel { display: none !important; }
       body { background: #fff !important; }
       #demoPrintSection { padding: 0 !important; }
       .angebot-doc { box-shadow: none !important; border-radius: 0 !important; }
@@ -40,13 +40,14 @@
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "Angebotserstellung automatisieren",
-    "description": "KI-Workflow: Aufmaßdaten eingeben, Positionen kalkulieren, Angebot erstellen, PDF exportieren",
+    "description": "KI-Workflow: Angebotsanfrage per E-Mail erkennen, Aufmaßdaten extrahieren, Positionen kalkulieren, Angebot erstellen und versenden",
     "provider": {"@id": "https://www.btsintelligence.de/#business"},
     "step": [
-      {"@type": "HowToStep", "name": "Gewerk & Aufmaß eingeben", "text": "Gewerk wählen, Leistungen auswählen und Fläche oder Stückzahl eingeben"},
+      {"@type": "HowToStep", "name": "Anfrage empfangen", "text": "Kundenanfrage per E-Mail, Formular oder App-Integration erkennen"},
+      {"@type": "HowToStep", "name": "Daten extrahieren", "text": "Gewerk, Leistungen, Kundendaten und Aufmaß automatisch aus der Anfrage übernehmen"},
       {"@type": "HowToStep", "name": "KI kalkuliert Positionen", "text": "Preise, Einheiten und Gesamtbeträge werden automatisch berechnet"},
       {"@type": "HowToStep", "name": "Angebot wird erstellt", "text": "Vollständiges Angebot mit Briefkopf, LV-Positionen und Zahlungsbedingungen"},
-      {"@type": "HowToStep", "name": "PDF exportieren", "text": "Angebot direkt als PDF speichern oder versenden"}
+      {"@type": "HowToStep", "name": "Angebot versenden", "text": "PDF mit passender E-Mail vorbereiten, senden und archivieren"}
     ]
   }
   </script>
@@ -113,10 +114,46 @@
       <div class="wrap">
         <p class="eyebrow">Live-Demo</p>
         <h2 class="section-title" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-bottom: 8px;">Jetzt selbst ausprobieren</h2>
-        <p class="section-lead" style="margin: 0 0 32px;">Gewerk und Aufmaß eingeben — fertiges Angebot erscheint sofort.</p>
+        <p class="section-lead" style="margin: 0 0 32px;">So könnte es im Alltag laufen: Anfrage kommt per E-Mail rein, Daten werden übernommen, Angebot wird erstellt und versandfertig vorbereitet.</p>
 
         <!-- State 1: Form -->
         <div id="angebotFormState">
+          <div class="angebot-flow-panel">
+            <div class="angebot-flow-card is-active">
+              <div class="angebot-flow-kicker">Mail-Eingang</div>
+              <div class="angebot-mail">
+                <div class="angebot-mail-top">
+                  <span class="angebot-mail-avatar">KM</span>
+                  <div>
+                    <strong id="angebotMailSender">kundin@example.de</strong>
+                    <span>Anfrage an info@muster-handwerk.de</span>
+                  </div>
+                  <time>08:42</time>
+                </div>
+                <div class="angebot-mail-subject" id="angebotMailSubject">Bitte um Angebot</div>
+                <p id="angebotMailBody">Guten Morgen, wir planen Renovierungsarbeiten und bitten um ein Angebot. Die wichtigsten Eckdaten sehen Sie unten.</p>
+              </div>
+            </div>
+            <div class="angebot-flow-card">
+              <div class="angebot-flow-kicker">Automatisch erkannt</div>
+              <div class="angebot-extract-grid">
+                <span>Kunde</span><strong id="angebotExtractKunde">Max Mustermann</strong>
+                <span>Gewerk</span><strong id="angebotExtractGewerk">noch offen</strong>
+                <span>Aufmaß</span><strong id="angebotExtractMenge">noch offen</strong>
+                <span>Status</span><strong>bereit zur Kalkulation</strong>
+              </div>
+            </div>
+            <div class="angebot-flow-card">
+              <div class="angebot-flow-kicker">Nach Erstellung</div>
+              <div class="angebot-flow-next">
+                <span>PDF erstellen</span>
+                <span>E-Mail-Entwurf schreiben</span>
+                <span>An Kunde versenden</span>
+                <span>Im CRM archivieren</span>
+              </div>
+            </div>
+          </div>
+
           <div class="angebot-form-wrap">
 
             <div class="angebot-form-group">
@@ -143,10 +180,15 @@
 
             <div class="angebot-form-group">
               <label class="angebot-form-label" for="angebotKunde">Kundenname <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--text-lo)">(optional)</span></label>
-              <input class="angebot-input" type="text" id="angebotKunde" placeholder="z.B. Max Mustermann">
+              <input class="angebot-input" type="text" id="angebotKunde" placeholder="z.B. Max Mustermann" oninput="angebotUpdatePreview()">
             </div>
 
-            <button id="angebotGenerierenBtn" class="btn-amber" onclick="angebotStart()" aria-disabled="true" style="width:100%;text-align:center;margin-top:4px">Angebot generieren →</button>
+            <div class="angebot-form-group">
+              <label class="angebot-form-label" for="angebotEmail">Kunden-E-Mail <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--text-lo)">(optional)</span></label>
+              <input class="angebot-input" type="email" id="angebotEmail" placeholder="z.B. kunde@example.de" oninput="angebotUpdatePreview()">
+            </div>
+
+            <button id="angebotGenerierenBtn" class="btn-amber" onclick="angebotStart()" aria-disabled="true" style="width:100%;text-align:center;margin-top:4px">Angebot aus Anfrage erstellen →</button>
             <div id="angebotFeedback" class="demo-feedback" role="status" aria-live="polite"></div>
           </div>
         </div>
@@ -155,8 +197,8 @@
         <div id="angebotProcessingState" class="demo-processing" style="display:none">
           <div class="demo-spinner"></div>
           <div class="demo-processing-text">
-            <strong id="angebotProcessLabel">Aufmaßdaten werden verarbeitet…</strong>
-            <span>KI-gestützte Kalkulation läuft</span>
+            <strong id="angebotProcessLabel">E-Mail-Anfrage wird gelesen…</strong>
+            <span>KI-gestützter Angebotsworkflow läuft</span>
           </div>
         </div>
 
@@ -176,28 +218,28 @@
 
         <div class="workflow-steps">
           <div class="workflow-step">
-            <span class="workflow-step-icon">📋</span>
+            <span class="workflow-step-icon">📬</span>
             <div class="workflow-step-num">Schritt 1</div>
-            <div class="workflow-step-title">Aufmaßdaten eingeben</div>
-            <div class="workflow-step-desc">Gewerk, Leistungen und Fläche werden per Formular, E-Mail oder App-Integration übergeben.</div>
+            <div class="workflow-step-title">Mail-Eingang erkennen</div>
+            <div class="workflow-step-desc">Neue Angebotsanfragen werden aus E-Mail, Formular oder CRM automatisch erkannt und priorisiert.</div>
+          </div>
+          <div class="workflow-step">
+            <span class="workflow-step-icon">📋</span>
+            <div class="workflow-step-num">Schritt 2</div>
+            <div class="workflow-step-title">Daten extrahieren</div>
+            <div class="workflow-step-desc">Kunde, Gewerk, Leistungen, Aufmaß und Rückfragen werden aus dem Text übernommen.</div>
           </div>
           <div class="workflow-step">
             <span class="workflow-step-icon">🧮</span>
-            <div class="workflow-step-num">Schritt 2</div>
-            <div class="workflow-step-title">KI kalkuliert</div>
-            <div class="workflow-step-desc">Positionen, Einheitspreise und Gesamtbeträge werden automatisch auf Basis Ihrer Preisliste berechnet.</div>
-          </div>
-          <div class="workflow-step">
-            <span class="workflow-step-icon">📄</span>
             <div class="workflow-step-num">Schritt 3</div>
-            <div class="workflow-step-title">Angebot erstellen</div>
-            <div class="workflow-step-desc">Vollständiges Dokument mit Briefkopf, LV-Positionen, MwSt. und Zahlungsbedingungen.</div>
+            <div class="workflow-step-title">Angebot kalkulieren</div>
+            <div class="workflow-step-desc">Positionen, Einheitspreise und Gesamtbeträge werden auf Basis Ihrer Preisliste berechnet.</div>
           </div>
           <div class="workflow-step">
-            <span class="workflow-step-icon">📬</span>
+            <span class="workflow-step-icon">✅</span>
             <div class="workflow-step-num">Schritt 4</div>
-            <div class="workflow-step-title">Versenden &amp; Archivieren</div>
-            <div class="workflow-step-desc">PDF automatisch per E-Mail an den Kunden — und ins CRM oder Laufwerk archiviert.</div>
+            <div class="workflow-step-title">Versenden &amp; archivieren</div>
+            <div class="workflow-step-desc">PDF und E-Mail-Entwurf werden vorbereitet, versendet und im CRM oder Laufwerk abgelegt.</div>
           </div>
         </div>
 
@@ -348,6 +390,49 @@
 
     function el(id) { return document.getElementById(id); }
 
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+      });
+    }
+
+    function getKunde() {
+      return el('angebotKunde').value.trim() || 'Max Mustermann';
+    }
+
+    function getEmail() {
+      var raw = el('angebotEmail').value.trim();
+      if (raw) return raw;
+      return getKunde().toLowerCase()
+        .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+        .replace(/[^a-z0-9]+/g, '.').replace(/^\.+|\.+$/g, '') + '@example.de';
+    }
+
+    function angebotUnitLabel(gewerk) {
+      return gewerk ? MENGE_INFO[gewerk].label.replace('Gesamtfläche in ', '').replace('Anzahl ', '') : 'Aufmaß';
+    }
+
+    window.angebotUpdatePreview = function () {
+      var kunde = getKunde();
+      var email = getEmail();
+      var gewerk = el('angebotGewerk').value;
+      var menge = parseFloat(el('angebotMenge').value);
+      var gewerkLabel = gewerk ? GEWERK_LABELS[gewerk] : 'noch offen';
+      var mengeText = menge > 0 ? menge.toLocaleString('de-DE') + ' ' + angebotUnitLabel(gewerk) : 'noch offen';
+      var firstLetters = kunde.split(/\s+/).slice(0, 2).map(function (p) { return p.charAt(0); }).join('').toUpperCase() || 'KM';
+
+      el('angebotMailSender').textContent = email;
+      document.querySelector('.angebot-mail-avatar').textContent = firstLetters;
+      el('angebotMailSubject').textContent = gewerk ? 'Anfrage Angebot ' + gewerkLabel : 'Bitte um Angebot';
+      el('angebotMailBody').textContent =
+        'Guten Morgen, wir planen Arbeiten im Bereich ' + gewerkLabel + '. ' +
+        'Bitte erstellen Sie uns ein Angebot für ' + mengeText + '. ' +
+        'Rückfragen gerne per E-Mail. Viele Grüße, ' + kunde;
+      el('angebotExtractKunde').textContent = kunde;
+      el('angebotExtractGewerk').textContent = gewerkLabel;
+      el('angebotExtractMenge').textContent = mengeText;
+    };
+
     function angebotFeedback(msg) {
       var fb = el('angebotFeedback');
       fb.textContent = msg || '';
@@ -380,6 +465,7 @@
         group.style.display = 'none';
         mengeGroup.style.display = 'none';
         el('angebotGenerierenBtn').setAttribute('aria-disabled', 'true');
+        angebotUpdatePreview();
         return;
       }
 
@@ -399,6 +485,7 @@
       group.style.display = '';
       mengeGroup.style.display = '';
       angebotUpdateBtn();
+      angebotUpdatePreview();
     }
 
     window.angebotGeverkChange = angebotGeverkChanged;
@@ -415,6 +502,7 @@
       var menge = parseFloat(el('angebotMenge').value);
       var ok = gewerk && menge > 0;
       el('angebotGenerierenBtn').setAttribute('aria-disabled', ok ? 'false' : 'true');
+      angebotUpdatePreview();
       if (ok) {
         angebotFeedback('');
         angebotMarkInvalid([]);
@@ -439,10 +527,11 @@
       showState('angebotProcessingState');
 
       var steps = [
-        'Aufmaßdaten werden verarbeitet…',
+        'E-Mail-Anfrage wird gelesen…',
+        'Kundendaten und Aufmaß werden extrahiert…',
         'Leistungspositionen werden kalkuliert…',
-        'Einheitspreise werden ermittelt…',
         'Angebot wird formatiert…',
+        'Versand-E-Mail wird vorbereitet…',
       ];
       var si = 0;
       el('angebotProcessLabel').textContent = steps[0];
@@ -459,7 +548,8 @@
     };
 
     function renderAngebot(gewerk, menge) {
-      var kunde = (el('angebotKunde').value.trim() || 'Max Mustermann');
+      var kunde = getKunde();
+      var email = getEmail();
       var now = new Date();
       var nr = 'ANG-' + now.getFullYear() + '-' + (Math.floor(Math.random() * 9000) + 1000);
       var datum = now.toLocaleDateString('de-DE');
@@ -481,11 +571,17 @@
       var netto = positionen.reduce(function (s, p) { return s + p.gp; }, 0);
       var mwst19 = netto * 0.19;
       var brutto = netto + mwst19;
+      var emailBody =
+        'Guten Tag ' + kunde + ',\n\n' +
+        'vielen Dank für Ihre Anfrage. Anbei erhalten Sie unser Angebot ' + nr +
+        ' für die angefragten Leistungen im Bereich ' + gewerkLabel + '.\n\n' +
+        'Wenn alles passt, genügt eine kurze Bestätigung per E-Mail. Für Rückfragen sind wir jederzeit erreichbar.\n\n' +
+        'Freundliche Grüße\nMuster Handwerk GmbH';
 
       var rows = positionen.map(function (p) {
-        return '<tr><td>' + p.pos + '</td><td>' + p.text + '</td>' +
+        return '<tr><td>' + p.pos + '</td><td>' + esc(p.text) + '</td>' +
           '<td class="r">' + p.menge.toLocaleString('de-DE') + '</td>' +
-          '<td class="r">' + p.einheit + '</td>' +
+          '<td class="r">' + esc(p.einheit) + '</td>' +
           '<td class="r">' + p.ep.toLocaleString('de-DE', { minimumFractionDigits: 2 }) + ' €</td>' +
           '<td class="r">' + fmt(p.gp) + '</td></tr>';
       }).join('');
@@ -495,18 +591,18 @@
           '<div class="angebot-doc-header">' +
             '<div>' +
               '<div class="angebot-doc-logo-name">Muster Handwerk GmbH</div>' +
-              '<div class="angebot-doc-logo-sub">Fachbetrieb für ' + gewerkLabel + '</div>' +
+              '<div class="angebot-doc-logo-sub">Fachbetrieb für ' + esc(gewerkLabel) + '</div>' +
             '</div>' +
             '<div class="angebot-doc-title-block">' +
               '<div class="angebot-doc-title">ANGEBOT</div>' +
-              '<div class="angebot-doc-nr">' + nr + ' · ' + datum + '</div>' +
+              '<div class="angebot-doc-nr">' + esc(nr) + ' · ' + esc(datum) + '</div>' +
             '</div>' +
           '</div>' +
           '<div class="angebot-doc-body">' +
             '<div class="angebot-doc-addresses">' +
               '<div>' +
                 '<div class="angebot-doc-addr-label">Auftraggeber</div>' +
-                '<strong>' + kunde + '</strong><br>' +
+                '<strong>' + esc(kunde) + '</strong><br>' +
                 'Musterstraße 1<br>80331 München<br>Deutschland' +
               '</div>' +
               '<div style="text-align:right">' +
@@ -515,7 +611,7 @@
                 'Handwerkerstr. 12<br>80339 München<br>info@muster-handwerk.de' +
               '</div>' +
             '</div>' +
-            '<div class="angebot-doc-betreff">Angebot – Leistungen im Bereich ' + gewerkLabel + '</div>' +
+            '<div class="angebot-doc-betreff">Angebot – Leistungen im Bereich ' + esc(gewerkLabel) + '</div>' +
             '<table class="angebot-doc-table">' +
               '<thead><tr>' +
                 '<th style="width:36px">Pos.</th>' +
@@ -535,7 +631,7 @@
             '<div class="angebot-doc-note">' +
               '<strong>Gültigkeit:</strong> Dieses Angebot gilt bis zum ' + gueltigBis + '.<br>' +
               '<strong>Zahlung:</strong> 30 % Anzahlung bei Auftragserteilung, Rest nach Abnahme, 14 Tage netto.<br>' +
-              'Alle Preise netto zzgl. gesetzlicher MwSt. Dieses Angebot wurde automatisch auf Basis Ihrer Aufmaßdaten erstellt.' +
+              'Alle Preise netto zzgl. gesetzlicher MwSt. Dieses Angebot wurde automatisch aus der Kundenanfrage erstellt.' +
             '</div>' +
           '</div>' +
           '<div class="angebot-doc-actions">' +
@@ -543,21 +639,51 @@
             '<button class="btn-ghost" onclick="angebotReset()" style="font-size:.85rem;padding:10px 20px">Neues Angebot</button>' +
             '<span class="angebot-doc-badge">⚡ Automatisch generiert</span>' +
           '</div>' +
+        '</div>' +
+        '<div class="angebot-send-panel" id="angebotSendPanel">' +
+          '<div class="angebot-send-head">' +
+            '<div><strong>Angebot versenden</strong><span>Die E-Mail ist bereits vorbereitet und das PDF hängt als Anlage an.</span></div>' +
+            '<span class="angebot-send-status" id="angebotSendStatus">Versandbereit</span>' +
+          '</div>' +
+          '<div class="angebot-email-draft">' +
+            '<div class="angebot-email-row"><span>An</span><strong>' + esc(email) + '</strong></div>' +
+            '<div class="angebot-email-row"><span>Betreff</span><strong>Angebot ' + esc(nr) + ' - ' + esc(gewerkLabel) + '</strong></div>' +
+            '<div class="angebot-email-row"><span>Anhang</span><strong>' + esc(nr) + '.pdf</strong></div>' +
+            '<div class="angebot-email-body">' + esc(emailBody) + '</div>' +
+          '</div>' +
+          '<div class="angebot-send-actions">' +
+            '<button class="btn-amber" id="angebotSendBtn" onclick="angebotSend()" style="font-size:.85rem;padding:10px 20px">Angebot per E-Mail versenden →</button>' +
+            '<span class="angebot-send-confirm" id="angebotSendConfirm">Gesendet und im CRM archiviert.</span>' +
+          '</div>' +
         '</div>';
     }
+
+    window.angebotSend = function () {
+      var panel = el('angebotSendPanel');
+      var btn = el('angebotSendBtn');
+      panel.classList.add('is-sent');
+      el('angebotSendStatus').textContent = 'Gesendet';
+      btn.textContent = 'Angebot versendet';
+      btn.disabled = true;
+      btn.setAttribute('aria-disabled', 'true');
+    };
 
     window.angebotReset = function () {
       el('angebotGewerk').value = '';
       el('angebotMenge').value = '';
       el('angebotKunde').value = '';
+      el('angebotEmail').value = '';
       el('leistungenGroup').style.display = 'none';
       el('mengeGroup').style.display = 'none';
       el('angebotGenerierenBtn').setAttribute('aria-disabled', 'true');
       angebotFeedback('');
       angebotMarkInvalid([]);
       el('angebotDocContent').innerHTML = '';
+      angebotUpdatePreview();
       showState('angebotFormState');
     };
+
+    angebotUpdatePreview();
 
   })();
   </script>
