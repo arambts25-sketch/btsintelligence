@@ -7,73 +7,73 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/leistungen/</loc>
+    <loc>https://www.btsintelligence.de/leistungen</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/preise/</loc>
+    <loc>https://www.btsintelligence.de/preise</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ueber-uns/</loc>
+    <loc>https://www.btsintelligence.de/ueber-uns</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-ingolstadt/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-ingolstadt</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-muenchen/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-muenchen</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-nuernberg/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-nuernberg</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-augsburg/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-augsburg</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-regensburg/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-regensburg</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-wuerzburg/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-wuerzburg</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-landshut/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-landshut</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ki-automatisierung-rosenheim/</loc>
+    <loc>https://www.btsintelligence.de/ki-automatisierung-rosenheim</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/ratgeber/</loc>
+    <loc>https://www.btsintelligence.de/ratgeber</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -175,6 +175,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.btsintelligence.de/ratgeber/wartungstermine-automatisch-verwalten-handwerk</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.btsintelligence.de/ratgeber/aufmass-in-angebot-umwandeln</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -223,39 +229,45 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/demos/</loc>
+    <loc>https://www.btsintelligence.de/demos</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/demos/dsgvo-dokument-schwaerzung/</loc>
+    <loc>https://www.btsintelligence.de/demos/dsgvo-dokument-schwaerzung</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/demos/angebotserstellung/</loc>
+    <loc>https://www.btsintelligence.de/demos/angebotserstellung</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/demos/rechnungsstellung/</loc>
+    <loc>https://www.btsintelligence.de/demos/rechnungsstellung</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/demos/lead-recherche/</loc>
+    <loc>https://www.btsintelligence.de/demos/lead-recherche</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.btsintelligence.de/datenschutz/</loc>
+    <loc>https://www.btsintelligence.de/datenschutz</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.btsintelligence.de/ratgeber/no-show-friseur-reduzieren</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
