@@ -120,6 +120,7 @@
   /* Results-Grid (flache, gefilterte Ansicht) */
   #resultsView { margin-top: 8px; }
   #resultsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
+  .rg-title-mobile-break { display: none; }
   .rg-context-lead { margin: 8px 0 4px; }
   .rg-context-lead h2 { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--text-hi); margin: 0 0 8px; line-height: 1.2; }
   .rg-context-lead p { font-size: 1rem; line-height: 1.65; color: var(--text-med); max-width: 720px; margin: 0; }
@@ -135,6 +136,104 @@
   @media (prefers-reduced-motion: reduce) {
     .rg-featured-card, .rg-chip, .rg-sort button, .rg-search input { transition: none; }
     .rg-featured-card:hover { transform: none; }
+  }
+
+  @media (max-width: 760px) {
+    .section > .wrap {
+      width: 100%;
+      min-width: 0;
+    }
+    .section-title,
+    .section-lead,
+    .rg-featured-title,
+    .rg-featured-excerpt,
+    .blog-card-title,
+    .blog-card-excerpt {
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+    .cluster { margin: 40px 0; }
+    .cluster-head { margin-bottom: 20px; padding-bottom: 16px; }
+    .rg-title-mobile-break { display: inline; }
+    .rg-featured { margin: 24px 0 4px; }
+    .rg-featured-card,
+    .rg-featured-body,
+    .blog-card {
+      min-width: 0;
+    }
+    .rg-featured-body {
+      padding: 24px;
+    }
+    .rg-toolbar {
+      position: static;
+      top: auto;
+      margin: 20px 0 6px;
+      padding: 10px;
+      border-radius: 14px;
+    }
+    .rg-search-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .rg-search {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+    .rg-search svg {
+      left: 12px;
+      width: 16px;
+      height: 16px;
+    }
+    .rg-search input {
+      min-height: 42px;
+      padding: 9px 36px 9px 36px;
+      font-size: .9rem;
+    }
+    .rg-search-clear {
+      right: 6px;
+      width: 24px;
+      height: 24px;
+    }
+    .rg-sort {
+      width: max-content;
+      max-width: 100%;
+      gap: 2px;
+      padding: 3px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .rg-sort::-webkit-scrollbar { display: none; }
+    .rg-sort button {
+      padding: 7px 11px;
+      font-size: .78rem;
+      white-space: nowrap;
+    }
+    .rg-chips {
+      flex-wrap: nowrap;
+      gap: 6px;
+      margin: 8px -10px 0;
+      padding: 0 10px 2px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .rg-chips::-webkit-scrollbar { display: none; }
+    .rg-chip {
+      flex: 0 0 auto;
+      gap: 5px;
+      padding: 7px 11px;
+      font-size: .8rem;
+    }
+    .rg-chip-count { font-size: .7rem; }
+    .rg-count { margin: 10px 0 0; }
+    #resultsGrid { grid-template-columns: 1fr; gap: 16px; margin-top: 18px; }
+  }
+
+  @media (max-width: 420px) {
+    .rg-sort button { padding: 7px 10px; }
+    .rg-chip { padding: 7px 10px; }
+    .rg-search input::placeholder { font-size: .88rem; }
   }
 </style>
 </head>
@@ -173,7 +272,7 @@
       <span>Ratgeber</span>
     </div>
     <div class="eyebrow">Wissen &amp; Praxis</div>
-    <h1 class="section-title">Ratgeber: Prozesse<br>im Unternehmen automatisieren</h1>
+    <h1 class="section-title">Ratgeber: Prozesse<br>im Unternehmen <span class="rg-title-mobile-break"><br></span>automatisieren</h1>
     <p class="section-lead">Konkret. Aus Bayern. Ohne IT-Jargon. Wir zeigen, wo in Ihrem Betrieb echte Zeit verschwindet — und wie Sie sie zurückholen. Suchen Sie nach Thema oder filtern Sie nach Ihrer Branche:</p>
 
     <!-- Featured: neuester Artikel (per JS befüllt) -->
