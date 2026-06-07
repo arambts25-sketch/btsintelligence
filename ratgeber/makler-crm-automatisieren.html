@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makler-CRM automatisieren | BTS Intelligence</title>
+<meta name="description" content="Makler-CRM automatisieren: Leads aus Portalen qualifizieren, Besichtigungen priorisieren und Follow-ups mit n8n sauber steuern.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.btsintelligence.de/ratgeber/makler-crm-automatisieren">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.btsintelligence.de/ratgeber/makler-crm-automatisieren">
+<meta property="og:title" content="Makler-CRM automatisieren | BTS Intelligence">
+<meta property="og:description" content="Makler-CRM automatisieren: Leads aus Portalen qualifizieren, Besichtigungen priorisieren und Follow-ups mit n8n sauber steuern.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="BTS Intelligence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Makler-CRM automatisieren | BTS Intelligence">
+<meta name="twitter:description" content="Makler-CRM automatisieren: Leads aus Portalen qualifizieren, Besichtigungen priorisieren und Follow-ups mit n8n sauber steuern.">
+<meta name="theme-color" content="#090b12">
+<script>
+(function(){try{var t=localStorage.getItem('bts-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/icon-512.png" type="image/png">
+<link rel="preload" as="font" href="/assets/fonts/cabinet-grotesk-900.woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/css/main.css">
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://www.btsintelligence.de/ratgeber/makler-crm-automatisieren",
+    "headline": "Makler-CRM automatisieren: Immobilien-Leads qualifizieren, Besichtigungen planen und nichts mehr im Postfach verlieren",
+    "description": "Makler-CRM automatisieren: Leads aus Portalen qualifizieren, Besichtigungen priorisieren und Follow-ups mit n8n sauber steuern.",
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "author": {
+      "@type": "Person",
+      "@id": "https://www.btsintelligence.de/#founder",
+      "name": "Burak Bas"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://www.btsintelligence.de/#business",
+      "name": "BTS Intelligence"
+    },
+    "url": "https://www.btsintelligence.de/ratgeber/makler-crm-automatisieren",
+    "inLanguage": "de-DE",
+    "about": ["Makler-CRM automatisieren", "Immobilien-Leads qualifizieren", "Makler Automatisierung", "n8n Immobilienmakler", "Besichtigungstermine automatisieren"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.btsintelligence.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://www.btsintelligence.de/ratgeber"},
+      {"@type": "ListItem", "position": 3, "name": "Makler-CRM automatisieren", "item": "https://www.btsintelligence.de/ratgeber/makler-crm-automatisieren"}
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist ein Makler-CRM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ein Makler-CRM bündelt Eigentümer, Interessenten, Objektbezug, Anfragen, Besichtigungen, Aufgaben und Follow-ups in einem System. Wichtig ist nicht nur die Ablage, sondern die saubere Verbindung: Welche Person interessiert sich für welches Objekt, welche Unterlagen fehlen, wann wurde zuletzt geantwortet und welcher nächste Schritt ist fällig?"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Funktioniert die Automatisierung mit onOffice, Flowfact oder Propstack?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, in der Regel funktioniert die Automatisierung mit onOffice, Flowfact und Propstack über API, E-Mail-Übergabe oder strukturierte Exporte. Der n8n-Workflow wird als Schicht über das vorhandene System gelegt. Er ersetzt die Maklersoftware nicht, sondern sorgt dafür, dass neue Leads, Rückfragen, Termine und Follow-ups automatisch dort landen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Können ImmoScout24- und Immowelt-Anfragen automatisch ins CRM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Portalanfragen können über Postfach-Regeln, IMAP, Gmail oder Microsoft Outlook ausgelesen, per n8n strukturiert und anschließend ins CRM übertragen werden. Dabei werden Objektbezug, Kontaktdaten, Nachrichtentext, Dringlichkeit und Dublettenprüfung getrennt verarbeitet, damit nicht jede Anfrage ungefiltert als gleich wichtiger Kontakt erscheint."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist automatische Lead-Qualifizierung DSGVO-konform?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, wenn nur geschäftlich erforderliche Daten verarbeitet werden, Zugriffe sauber begrenzt sind und ein Auftragsverarbeitungsvertrag mit den beteiligten Dienstleistern besteht. In der Praxis bleiben private Notizen, Finanzierungsunterlagen und sensible Dokumente getrennt vom ersten Lead-Scoring. Automatisch entschieden wird nur die Priorität, nicht die endgültige Maklerentscheidung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert die Einrichtung eines Makler-CRM-Workflows?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Für ein Maklerbüro mit vorhandener Maklersoftware und klaren Lead-Regeln sind typischerweise 3 bis 4 Wochen realistisch. In der ersten Woche werden Postfächer, Portale und CRM-Felder geprüft, danach folgt der Workflow-Aufbau mit Testdaten. Nach einer kostenlosen Potenzialanalyse erhalten Sie innerhalb von 48 Stunden ein verbindliches Festpreisangebot."
+        }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
+
+<header role="banner">
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a href="/" class="nav-logo" aria-label="BTS Intelligence Startseite"><img src="/assets/logo-header.svg?v=3" alt="BTS Intelligence" class="nav-logo-img" width="99" height="52"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/leistungen">Leistungen</a></li>
+    <li><a href="/demos">Demos</a></li>
+    <li><a href="/preise">Preise</a></li>
+    <li><a href="/#digitalbonus-bayern">Förderung</a></li>
+    <li><a href="/ratgeber" aria-current="page">Ratgeber</a></li>
+    <li><a href="/ueber-uns">Über uns</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Light Mode aktivieren" aria-pressed="false" title="Light Mode aktivieren">
+    <span class="theme-toggle-track" aria-hidden="true"></span>
+    <span class="theme-toggle-label">Light Mode aktivieren</span>
+  </button>
+  <a href="#" onclick="openModal(event)" class="nav-btn">Termin buchen →</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<!-- ARTICLE HERO -->
+<section class="article-hero section--alt" style="padding-top: calc(60px + 72px); padding-bottom: 48px; text-align: center;">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">Startseite</a>
+      <span>›</span>
+      <a href="/ratgeber">Ratgeber</a>
+      <span>›</span>
+      <span>Makler-CRM automatisieren</span>
+    </div>
+    <div class="hero-badge" style="margin-bottom: 20px; display: inline-flex;">
+      <span class="badge-pulse"></span>
+      Makler-Praxis · n8n · Lead-Qualifizierung
+    </div>
+    <h1 class="section-title" style="max-width: 980px; margin: 0 auto 20px;">
+      Makler-CRM automatisieren:<br>Immobilien-Leads qualifizieren, Besichtigungen planen und nichts mehr im Postfach verlieren
+    </h1>
+    <p class="author-meta">Von <strong>Burak Bas</strong>, KI- und Automatisierungsexperte bei BTS Intelligence — <a href="/ueber-uns">Über uns</a></p>
+    <div class="article-meta">
+      <span>📅 7. Juni 2026</span>
+      <span>✍ Burak Bas, BTS Intelligence</span>
+      <span>⏱ ca. 10 Min. Lesezeit</span>
+    </div>
+
+    <!-- Key Facts Box -->
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>55–70</em></div>
+        <div class="foerder-card-desc">Anfragen/Woche sauber sortiert</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>4–6 h</em></div>
+        <div class="foerder-card-desc">weniger Nacharbeit pro Woche</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val"><em>3–4 Wo.</em></div>
+        <div class="foerder-card-desc">typischer Go-Live</div>
+      </div>
+      <div class="foerder-card" style="min-width: 160px; flex: 0 1 auto;">
+        <div class="foerder-card-val">bis <em>50 %</em></div>
+        <div class="foerder-card-desc">Digitalbonus Bayern förderfähig</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<div class="article-body" style="padding-top: 56px;">
+
+  <p>Montagmorgen, 8:12 Uhr: Im Outlook-Postfach liegen neue Anfragen von ImmoScout24, Immowelt, Kleinanzeigen, der Website und zwei direkten E-Mails. Manche Interessenten schreiben nur "Bitte Exposé", andere nennen Finanzierung, Suchgebiet und flexible Zeiten. Ein Kontakt fragt zum zweiten Mal zum selben Objekt an, ein anderer passt eigentlich besser zu einer Immobilie, die erst nächste Woche online geht. Genau hier entscheidet sich, ob ein Makler-CRM automatisiert arbeitet oder ob gute Immobilien-Leads im Postfach neben schwachen Anfragen untergehen.</p>
+
+  <p><strong>Makler-CRM automatisieren</strong> heißt nicht, das Bauchgefühl eines erfahrenen Maklers zu ersetzen. Es heißt, die ersten 10 bis 15 Minuten pro Anfrage nicht mehr manuell zu verlieren: Objekt erkennen, Kontakt anlegen, Dubletten prüfen, Rückfrage senden, Besichtigung vormerken, Follow-up setzen und den Lead im CRM auf "hot", "warm" oder "unklar" stellen.</p>
+
+  <h2>Warum Makler-Leads anders sind als normale CRM-Kontakte</h2>
+
+  <p>In einem normalen Dienstleister-CRM ist ein Lead meist ein Unternehmen oder eine Person mit einem klaren Bedarf. Im Maklerbüro hängt der Wert einer Anfrage aber am Objektbezug. Dieselbe Person kann für eine Wohnung in Ingolstadt unpassend sein, für ein Haus im Landkreis Regensburg aber sehr interessant. Genau deshalb scheitern einfache Kontaktformulare und generische CRM-Regeln oft.</p>
+
+  <p>Aus unserer Arbeit mit bayerischen Betrieben sehen wir drei wiederkehrende Muster:</p>
+
+  <ul>
+    <li><strong>Portaltexte sind uneinheitlich:</strong> ImmoScout24, Immowelt und Kleinanzeigen liefern andere E-Mail-Formate, Betreffzeilen und Kontaktfelder.</li>
+    <li><strong>Objektbezug ist nicht immer eindeutig:</strong> Manche Anfragen enthalten Objekt-ID, Adresse oder Titel, andere nur eine Weiterleitung aus dem Portal.</li>
+    <li><strong>Priorität entsteht aus Kontext:</strong> Finanzierung, Verfügbarkeit, Familiengröße, gewünschter Termin und Antwortqualität sind wichtiger als die reine Reihenfolge im Postfach.</li>
+  </ul>
+
+  <p>Ein guter Workflow bildet genau diese Realität ab. Er macht aus einer unstrukturierten Nachricht keinen perfekten Abschluss. Er macht daraus einen sauberen Datensatz mit nächstem Schritt, damit der Makler schneller entscheiden kann.</p>
+
+  <h2>Wie ein n8n-Workflow neue Immobilien-Leads verarbeitet</h2>
+
+  <p>Der Workflow beginnt dort, wo die Anfrage heute schon landet: im Postfach, im Webformular oder über eine Schnittstelle Ihrer Maklersoftware. In n8n setzen wir dafür je nach Ausgangslage unterschiedliche Trigger ein. Bei Portalen arbeiten wir häufig mit `IMAP Email`, `Gmail` oder `Microsoft Outlook`. Bei Website-Formularen ist ein `Webhook` sauberer, weil die Daten direkt strukturiert ankommen. Für onOffice, Flowfact, Propstack, HubSpot oder Pipedrive kommt meist ein `HTTP Request` gegen die jeweilige API dazu.</p>
+
+  <h3>1. Anfrage erkennen und normalisieren</h3>
+
+  <p>Im ersten Schritt schreibt n8n alle Eingänge in ein einheitliches Format. Name, E-Mail, Telefonnummer, Portal, Objekt, Nachrichtentext, Zeitpunkt und Anhänge landen in klaren Feldern. Der `Set`-Node bereinigt Feldnamen, ein `IF`-Node trennt Objektanfrage, Eigentümeranfrage und allgemeine Rückfrage. Wenn mehrere Portale parallel laufen, nutzen wir oft einen `Switch`-Node, damit jedes Format eigene Regeln bekommt.</p>
+
+  <h3>2. Objekt und Dubletten prüfen</h3>
+
+  <p>Danach wird geprüft, ob das Objekt eindeutig erkannt wird. Bei vorhandener Maklersoftware gleicht der Workflow Objekt-ID, Titel, Adresse oder Portalreferenz gegen onOffice, Flowfact oder Propstack ab. Bei kleineren Büros kann auch eine gepflegte Google-Sheet- oder Airtable-Liste reichen. Parallel läuft eine Dublettenprüfung: gleiche E-Mail, ähnliche Telefonnummer oder identischer Name mit gleichem Objektbezug. Unsichere Treffer werden nicht blind zusammengeführt, sondern als Prüfaufgabe markiert.</p>
+
+  <h3>3. Lead qualifizieren, ohne vorschnell auszusortieren</h3>
+
+  <p>Das Scoring sollte im Maklergeschäft bewusst konservativ sein. Ein knapper Text ist nicht automatisch ein schlechter Lead. Praktisch bewährt haben sich weiche Kriterien: Hat die Person eine Telefonnummer angegeben? Wird ein konkreter Besichtigungstermin vorgeschlagen? Gibt es Hinweise auf Finanzierung oder Suchzeitraum? Passt der Wunsch zur Immobilie? Der Workflow setzt daraus eine Priorität, aber die finale Entscheidung bleibt beim Makler.</p>
+
+  <h3>4. Antwort und Besichtigung vorbereiten</h3>
+
+  <p>Für klare Standardfälle kann n8n sofort eine Antwort vorbereiten: Exposé-Link, Rückfrage zur Finanzierung, verfügbare Besichtigungsfenster oder Hinweis auf fehlende Angaben. Mit `Google Calendar` oder Microsoft 365 lassen sich verfügbare Slots prüfen. Wichtig ist eine Sperrlogik: Ein Termin wird nicht endgültig vergeben, bevor der Makler oder die definierte Regel ihn freigibt. Für SMS-Fallbacks bei besonders kurzfristigen Terminen lässt sich `Twilio` anbinden.</p>
+
+  <h3>5. CRM und Team sauber aktualisieren</h3>
+
+  <p>Am Ende landet der Lead im CRM: mit Objektbezug, Quelle, Priorität, Antwortstatus, Follow-up-Datum und zuständiger Person. In HubSpot oder Pipedrive kann zusätzlich eine Pipeline-Stufe gesetzt werden. In onOffice, Flowfact oder Propstack geht es meist um Kontaktanlage, Aktivität, Wiedervorlage und Objektverknüpfung. Der Unterschied im Alltag ist deutlich: Das Team öffnet nicht mehr das Postfach, sondern eine sortierte Arbeitsliste.</p>
+
+  <h2>Praxisbeispiel: Maklerbüro in Regensburg mit 8 aktiven Objekten</h2>
+
+  <p>Ein Maklerbüro mit 4 Mitarbeitenden in Regensburg betreute parallel 8 aktive Objekte. Pro Woche kamen je nach Vermarktungsphase 55 bis 70 Anfragen über ImmoScout24, Immowelt, Kleinanzeigen, die Website und direkte E-Mails herein. Vor der Automatisierung wurden gute Anfragen zwar meist beantwortet, aber Follow-ups, Dubletten und Terminwünsche blieben oft im Postfach hängen.</p>
+
+  <p>Der Aufbau dauerte 4 Wochen: In Woche eins wurden Portale, Postfächer, bestehende CRM-Felder und Objektlisten geprüft. In Woche zwei bauten wir den n8n-Prototyp mit `IMAP Email`, `Microsoft Outlook`, `Set`, `IF`, `Switch` und `HTTP Request`. In Woche drei liefen echte Testanfragen in eine Prüfliste. In Woche vier wurden die Freigaberegeln, Besichtigungsfenster und Wiedervorlagen mit dem Team nachgeschärft.</p>
+
+  <p>Nach dem Go-Live sparte das Büro realistisch 4 bis 6 Stunden pro Woche, vor allem bei Erfassung, Dublettenprüfung und Wiedervorlagen. Wichtiger als die reine Zeit war die Zuverlässigkeit: Jeder Lead hatte einen Status, jeder Besichtigungswunsch einen nächsten Schritt, und keine Portalantwort blieb ohne Zuordnung im Postfach liegen.</p>
+
+  <h2>Welche Daten ins Makler-CRM gehören — und welche nicht</h2>
+
+  <p>Ein häufiger Fehler ist, im ersten Lead-Schritt zu viel erfassen zu wollen. Für die erste Qualifizierung reichen meist wenige Felder:</p>
+
+  <table style="width:100%; border-collapse: collapse; margin: 24px 0;">
+    <thead>
+      <tr>
+        <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-lo);">Feld</th>
+        <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-lo);">Warum es hilft</th>
+        <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-lo);">Automatisierbar?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Objektbezug</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Verhindert, dass Kontakte ohne Immobilie im CRM liegen</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Ja, über Portal-ID, Betreff oder Link</td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Kontaktweg</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Zeigt, ob E-Mail, Telefon oder WhatsApp sinnvoll ist</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Ja, aus Anfrage und Kontaktdaten</td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Such- oder Kaufabsicht</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Hilft bei Priorisierung und Rückfragen</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Teilweise, immer mit Prüfung</td></tr>
+      <tr><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Besichtigungsfenster</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Reduziert Termin-Pingpong</td><td style="padding: 12px; border-bottom: 1px solid var(--border-lo);">Ja, wenn Kalenderregeln klar sind</td></tr>
+      <tr><td style="padding: 12px;">Sensible Unterlagen</td><td style="padding: 12px;">Gehören nicht in den ersten Scoring-Schritt</td><td style="padding: 12px;">Nein, separat behandeln</td></tr>
+    </tbody>
+  </table>
+
+  <p>Gerade bei Datenschutz lohnt sich Zurückhaltung. Finanzierungsbestätigungen, Ausweiskopien oder vertrauliche Eigentümerunterlagen gehören nicht in denselben Workflow wie eine erste Portalanfrage. Dafür richten wir getrennte Ablagen, Freigaben und Löschregeln ein.</p>
+
+  <h2>Was vor dem Start geklärt sein muss</h2>
+
+  <p>Ein Makler-CRM-Workflow wird nur stabil, wenn die Spielregeln vorher klar sind. In der Potenzialanalyse prüfen wir deshalb nicht zuerst die Technik, sondern den Prozess:</p>
+
+  <ul>
+    <li>Welche Portale und Postfächer liefern heute Anfragen?</li>
+    <li>Welche Maklersoftware ist führend: onOffice, Flowfact, Propstack, HubSpot, Pipedrive oder ein anderes System?</li>
+    <li>Welche Felder müssen zwingend im CRM stehen?</li>
+    <li>Wann darf automatisch geantwortet werden, wann nur als Entwurf?</li>
+    <li>Welche Kriterien machen einen Lead dringend?</li>
+    <li>Wer bekommt welche Wiedervorlage?</li>
+  </ul>
+
+  <p>Der wichtigste Praxispunkt: Nicht jede Ausnahme muss am ersten Tag automatisiert sein. Wir starten mit den häufigsten 70 bis 80 % der Fälle und lassen Sonderfälle bewusst in einer Prüfliste landen. So geht der Workflow schnell produktiv, ohne riskante Vollautomatik.</p>
+
+  <h2>Woran Sie merken, dass sich die Automatisierung lohnt</h2>
+
+  <p>Ein Maklerbüro braucht nicht sofort einen komplexen KI-Assistenten. Automatisierung lohnt sich besonders, wenn mindestens drei dieser Punkte zutreffen:</p>
+
+  <ul>
+    <li>Mehrere Portale liefern Anfragen in verschiedene Postfächer.</li>
+    <li>Besichtigungstermine werden per E-Mail hin und her koordiniert.</li>
+    <li>Leads werden mehrfach angelegt oder verlieren ihren Objektbezug.</li>
+    <li>Follow-ups hängen an einzelnen Personen statt an einem System.</li>
+    <li>Das Team weiß morgens nicht sofort, welche Anfrage zuerst bearbeitet werden sollte.</li>
+  </ul>
+
+  <p>Wenn nur wenige Anfragen pro Woche eingehen, reicht oft eine saubere Postfachregel und konsequente CRM-Pflege. Bei wachsendem Volumen ist n8n dagegen eine pragmatische Zwischenschicht: Es verbindet vorhandene Werkzeuge, ohne dass das Maklerbüro seine Softwarelandschaft neu aufbauen muss.</p>
+
+  <!-- Inline CTA -->
+  <div class="article-cta">
+    <div class="foerder-badge" style="margin-bottom: 16px; display: inline-flex;">⚙️ Makler-Workflow prüfen</div>
+    <h3>Welche Lead-Schritte kann Ihr Maklerbüro automatisieren?</h3>
+    <p>Wir prüfen in einer kostenlosen Potenzialanalyse Ihre Portale, Ihr Postfach und Ihr CRM. Danach erhalten Sie innerhalb von 48 Stunden ein verbindliches Festpreisangebot — keine Standardpakete, sondern passend zu Ihrem Prozess.</p>
+    <div class="cta-actions" style="justify-content: center;">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Kostenlose Potenzialanalyse →</a>
+      <a href="/leistungen" class="btn-ghost">Alle Leistungen</a>
+    </div>
+    <p style="font-size: .8rem; color: var(--text-lo); margin-top: 16px; margin-bottom: 0;">Kostenlos &amp; unverbindlich · Direkt mit den Gründern · 30 Min.</p>
+  </div>
+
+  <h2>FAQ</h2>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Was ist ein Makler-CRM?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ein Makler-CRM bündelt Eigentümer, Interessenten, Objektbezug, Anfragen, Besichtigungen, Aufgaben und Follow-ups in einem System. Entscheidend ist die Verbindung: Welche Person interessiert sich für welches Objekt, welche Unterlagen fehlen, wann wurde zuletzt geantwortet und welcher nächste Schritt ist fällig?</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Funktioniert die Automatisierung mit onOffice, Flowfact oder Propstack?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja, in der Regel funktioniert die Automatisierung mit onOffice, Flowfact und Propstack über API, E-Mail-Übergabe oder strukturierte Exporte. Der n8n-Workflow ersetzt die Maklersoftware nicht, sondern sorgt dafür, dass neue Leads, Rückfragen, Termine und Follow-ups automatisch dort landen.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Können ImmoScout24- und Immowelt-Anfragen automatisch ins CRM?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja. Portalanfragen können über Postfach-Regeln, IMAP, Gmail oder Microsoft Outlook ausgelesen, per n8n strukturiert und anschließend ins CRM übertragen werden. Objektbezug, Kontaktdaten, Nachrichtentext, Dringlichkeit und Dublettenprüfung werden getrennt verarbeitet.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Ist automatische Lead-Qualifizierung DSGVO-konform?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Ja, wenn nur geschäftlich erforderliche Daten verarbeitet werden, Zugriffe sauber begrenzt sind und ein Auftragsverarbeitungsvertrag mit den beteiligten Dienstleistern besteht. Automatisch entschieden wird nur die Priorität, nicht die endgültige Maklerentscheidung.</p>
+  </details>
+
+  <details style="margin-bottom: 16px; border: 1px solid var(--border-lo); border-radius: 10px; padding: 0 20px;">
+    <summary style="padding: 18px 0; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+      Wie lange dauert die Einrichtung eines Makler-CRM-Workflows?
+      <span style="font-size: 1.2rem; color: var(--text-lo);">+</span>
+    </summary>
+    <p style="padding-bottom: 18px; margin: 0; color: var(--text-med); line-height: 1.7;">Für ein Maklerbüro mit vorhandener Maklersoftware und klaren Lead-Regeln sind typischerweise 3 bis 4 Wochen realistisch. Nach einer kostenlosen Potenzialanalyse erhalten Sie innerhalb von 48 Stunden ein verbindliches Festpreisangebot. Digitalbonus Bayern: bis zu 50 % der Kosten förderfähig.</p>
+  </details>
+
+  <!-- Weiterlesen -->
+  <div class="article-box" style="margin-top: 48px;">
+    <div class="article-box-title">📚 Weitere Ratgeber für Maklerbüros</div>
+    <ul>
+      <li><a href="/ratgeber/expose-schneller-erstellen-makler">Exposé schneller erstellen — aus Objektdaten und Fotos zum fertigen PDF</a></li>
+      <li><a href="/ratgeber/vertraege-dsgvo-konform-schwaerzen">Verträge und Dokumente DSGVO-konform schwärzen — automatisch</a></li>
+      <li><a href="/ratgeber/crm-pflege-automatisieren-dienstleister">CRM-Pflege automatisieren — Datenqualität ohne manuelles Nachtragen</a></li>
+    </ul>
+  </div>
+
+  <!-- Author box -->
+  <div class="article-box" style="margin-top: 48px; display: flex; gap: 20px; align-items: flex-start;">
+    <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(79,107,240,.15); border: 1px solid rgba(79,107,240,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;" aria-hidden="true">👤</div>
+    <div>
+      <div class="article-box-title" style="margin-bottom: 4px;">Burak Bas</div>
+      <p style="font-size: .88rem; color: var(--text-med); margin-bottom: 0; line-height: 1.65;">KI- und Automatisierungsexperte bei BTS Intelligence. Spezialisiert auf n8n-Workflows für Maklerbüros, Dienstleister und KMU in Bayern. BTS Intelligence implementiert praxisnahe Automatisierungslösungen — vom ersten Gespräch bis zum laufenden Betrieb.</p>
+    </div>
+  </div>
+
+  <!-- Back to ratgeber -->
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-lo); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/ratgeber" class="btn-ghost" style="font-size: .875rem;">← Alle Ratgeber-Artikel</a>
+    <a href="/ratgeber/digitalbonus-bayern-2026" class="btn-ghost" style="font-size: .875rem;">Digitalbonus Bayern 2026 →</a>
+    <a href="/" class="btn-ghost" style="font-size: .875rem;">Zur Startseite</a>
+  </div>
+
+</div><!-- /.article-body -->
+
+<!-- BOTTOM CTA SECTION -->
+<section class="foerder-section" style="margin-top: 64px;">
+  <div class="foerder-inner">
+    <div class="foerder-top">
+      <div>
+        <div class="foerder-badge">🏛 Förderung prüfen</div>
+        <h2 class="foerder-headline">Digitalbonus Bayern: bis zu 50 % der Kosten förderfähig</h2>
+        <p class="foerder-sub">Wir prüfen kostenlos, ob Ihr Makler-CRM-Workflow förderfähig ist, und sagen Ihnen, welche Unterlagen für den Antrag sauber vorbereitet sein müssen.</p>
+      </div>
+      <div class="foerder-logo-box">
+        <span class="foerder-logo-flag">🦁</span>
+        Digitalbonus Bayern<br>Freistaat Bayern
+      </div>
+    </div>
+    <div class="foerder-cta-row">
+      <a href="https://calendly.com/btsintelligence/30min" target="_blank" rel="noopener" class="btn-amber">Förderfähigkeit im Erstgespräch prüfen →</a>
+      <span class="foerder-small">Kostenlos &amp; unverbindlich · 30 Min. · direkt mit den Gründern</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="ctaModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+    <div class="modal-eyebrow">Kostenlos & unverbindlich</div>
+    <h2 id="modalHeading" class="modal-title">Wie möchten Sie<br>Kontakt aufnehmen?</h2>
+    <p class="modal-sub">Buchen Sie direkt einen Termin oder hinterlassen Sie uns eine Nachricht — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="modal-options">
+      <a href="https://calendly.com/btsintelligence/30min" id="modalCalendlyLink" target="_blank" rel="noopener" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon calendly">📅</div>
+        <div class="modal-option-text">
+          <div class="modal-option-title">Termin direkt buchen</div>
+          <div class="modal-option-desc">30 Min · kostenlos · direkt mit den Gründern</div>
+        </div>
+      </a>
+      <a href="/#ki-beratung-kostenlos" class="modal-option" onclick="closeModal()">
+        <div class="modal-option-icon form">✉</div>
+        <div class="modal-option-text">
+          <div class="modal-option-title">Nachricht hinterlassen</div>
+          <div class="modal-option-desc">Formular ausfüllen · Antwort innerhalb 24 Stunden</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="/assets/logo-header.svg?v=3" alt="BTS Intelligence" class="footer-logo-img" width="107" height="56">
+  </div>
+  <div class="footer-links">
+    <a href="/leistungen">Leistungen</a>
+    <a href="/preise">Preise</a>
+    <a href="/ueber-uns">Über uns</a>
+    <a href="/ratgeber">Ratgeber</a>
+    <a href="/demos">Demos</a>
+    <a href="#" onclick="openModal(event)">Termin buchen</a>
+    <a href="tel:+491784552028">0178 / 455 2028</a>
+  </div>
+  <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
+  <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz" style="color:inherit">Datenschutz</a></div>
+</footer>
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
+  <a href="#" onclick="openModal(event)" class="primary">Kostenlose Analyse →</a>
+  <a href="tel:+491784552028" class="secondary" aria-label="Anrufen">📞</a>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
