@@ -6,9 +6,9 @@
   <title>Angebotserstellung automatisieren: Demo | BTS Intelligence</title>
   <meta name="description" content="Live-Demo: Gewerk wählen, Aufmaß eingeben — KI generiert automatisch ein fertiges Angebot mit Positionen, Preisen und Briefkopf. Direkt als PDF exportierbar.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.btsintelligence.de/demos/angebotserstellung/">
+  <link rel="canonical" href="https://www.btsintelligence.de/demos/angebotserstellung">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.btsintelligence.de/demos/angebotserstellung/">
+  <meta property="og:url" content="https://www.btsintelligence.de/demos/angebotserstellung">
   <meta property="og:title" content="Angebotserstellung automatisieren Demo | BTS Intelligence">
   <meta property="og:description" content="Aufmaßdaten eingeben, Angebot in Sekunden — KI-gestützte Angebotserstellung live erleben.">
   <meta property="og:locale" content="de_DE">
@@ -57,14 +57,14 @@
 
   <header role="banner">
     <nav class="site-nav" aria-label="Hauptnavigation">
-      <a href="/" class="nav-logo" aria-label="BTS Intelligence Startseite"><img src="/assets/logo-header.png?v=2" alt="BTS Intelligence" class="nav-logo-img" width="52" height="52"></a>
+      <a href="/" class="nav-logo" aria-label="BTS Intelligence Startseite"><img src="/assets/logo-header.svg?v=3" alt="BTS Intelligence" class="nav-logo-img" width="99" height="52"></a>
       <ul class="nav-links" id="navLinks">
-    <li><a href="/leistungen/">Leistungen</a></li>
-    <li><a href="/demos/" aria-current="page">Demos</a></li>
-    <li><a href="/preise/">Preise</a></li>
+    <li><a href="/leistungen">Leistungen</a></li>
+    <li><a href="/demos" aria-current="page">Demos</a></li>
+    <li><a href="/preise">Preise</a></li>
     <li><a href="/#digitalbonus-bayern">Förderung</a></li>
-    <li><a href="/ratgeber/">Ratgeber</a></li>
-    <li><a href="/ueber-uns/">Über uns</a></li>
+    <li><a href="/ratgeber">Ratgeber</a></li>
+    <li><a href="/ueber-uns">Über uns</a></li>
   </ul>
   <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Light Mode aktivieren" aria-pressed="false" title="Light Mode aktivieren">
     <span class="theme-toggle-track" aria-hidden="true"></span>
@@ -86,7 +86,7 @@
           <ol style="display:flex;gap:8px;list-style:none;padding:0;margin:0;font-size:.85rem;color:var(--text-lo)">
             <li><a href="/" style="color:var(--text-lo);text-decoration:none;">Startseite</a></li>
             <li style="opacity:.5">›</li>
-            <li><a href="/demos/" style="color:var(--text-lo);text-decoration:none;">Demos</a></li>
+            <li><a href="/demos" style="color:var(--text-lo);text-decoration:none;">Demos</a></li>
             <li style="opacity:.5">›</li>
             <li style="color:var(--text-med)">Angebotserstellung</li>
           </ol>
@@ -122,16 +122,27 @@
             <div class="angebot-flow-card is-active">
               <div class="angebot-flow-kicker">Mail-Eingang</div>
               <div class="angebot-mail">
+                <div class="angebot-mail-toolbar">
+                  <span>Posteingang</span>
+                  <strong>Neue Anfrage</strong>
+                  <span>Angebot</span>
+                </div>
                 <div class="angebot-mail-top">
                   <span class="angebot-mail-avatar">KM</span>
                   <div>
-                    <strong id="angebotMailSender">kundin@example.de</strong>
-                    <span>Anfrage an info@muster-handwerk.de</span>
+                    <strong id="angebotMailName">Max Mustermann</strong>
+                    <span><span id="angebotMailSender">max.mustermann@example.de</span> an info@muster-handwerk.de</span>
                   </div>
                   <time>08:42</time>
                 </div>
                 <div class="angebot-mail-subject" id="angebotMailSubject">Bitte um Angebot</div>
-                <p id="angebotMailBody">Guten Morgen, wir planen Renovierungsarbeiten und bitten um ein Angebot. Die wichtigsten Eckdaten sehen Sie unten.</p>
+                <div class="angebot-mail-body" id="angebotMailBody">Guten Morgen,
+wir planen Renovierungsarbeiten und bitten um ein Angebot.
+Die wichtigsten Eckdaten sehen Sie unten.</div>
+                <div class="angebot-mail-attachments">
+                  <span id="angebotMailAttachment">anfrage-aufmass.txt</span>
+                  <span>KI: Daten erkannt</span>
+                </div>
               </div>
             </div>
             <div class="angebot-flow-card">
@@ -298,7 +309,7 @@
         </p>
         <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
           <a href="#" onclick="openModal(event)" class="btn-amber">Kostenloses Erstgespräch →</a>
-          <a href="/demos/" class="btn-ghost">← Alle Demos</a>
+          <a href="/demos" class="btn-ghost">← Alle Demos</a>
         </div>
       </div>
     </section>
@@ -307,19 +318,19 @@
 
   <footer>
     <div class="footer-logo">
-    <img src="/assets/logo-header.png?v=2" alt="BTS Intelligence" class="footer-logo-img" width="56" height="56">
+    <img src="/assets/logo-header.svg?v=3" alt="BTS Intelligence" class="footer-logo-img" width="107" height="56">
   </div>
     <div class="footer-links">
-      <a href="/leistungen/">Leistungen</a>
-      <a href="/preise/">Preise</a>
-      <a href="/demos/">Demos</a>
-      <a href="/ueber-uns/">Über uns</a>
-      <a href="/ratgeber/">Ratgeber</a>
+      <a href="/leistungen">Leistungen</a>
+      <a href="/preise">Preise</a>
+      <a href="/demos">Demos</a>
+      <a href="/ueber-uns">Über uns</a>
+      <a href="/ratgeber">Ratgeber</a>
       <a href="#" onclick="openModal(event)">Termin buchen</a>
       <a href="tel:+491784552028">0178 / 455 2028</a>
     </div>
     <div class="footer-trust">🇩🇪 Made in Germany &nbsp;·&nbsp; BTS E-Commerce UG (haftungsbeschränkt)</div>
-    <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz/" style="color:inherit">Datenschutz</a></div>
+    <div class="footer-legal">Alle Preise netto zzgl. MwSt. · Einrichtung &amp; Betreuung frei kombinierbar · © 2026 BTS E-Commerce UG · <a href="/#impressum" style="color:inherit">Impressum</a> · <a href="/datenschutz" style="color:inherit">Datenschutz</a></div>
   </footer>
 <!-- MOBILE STICKY CTA -->
 <div class="mobile-sticky-cta" id="mobileStickyCta" aria-hidden="false">
@@ -422,12 +433,17 @@
       var firstLetters = kunde.split(/\s+/).slice(0, 2).map(function (p) { return p.charAt(0); }).join('').toUpperCase() || 'KM';
 
       el('angebotMailSender').textContent = email;
+      el('angebotMailName').textContent = kunde;
       document.querySelector('.angebot-mail-avatar').textContent = firstLetters;
       el('angebotMailSubject').textContent = gewerk ? 'Anfrage Angebot ' + gewerkLabel : 'Bitte um Angebot';
       el('angebotMailBody').textContent =
-        'Guten Morgen, wir planen Arbeiten im Bereich ' + gewerkLabel + '. ' +
-        'Bitte erstellen Sie uns ein Angebot für ' + mengeText + '. ' +
-        'Rückfragen gerne per E-Mail. Viele Grüße, ' + kunde;
+        'Guten Morgen,\n\n' +
+        'wir planen Arbeiten im Bereich ' + gewerkLabel + ' und bitten um ein Angebot für ' + mengeText + '.\n' +
+        'Falls noch Angaben fehlen, melden Sie sich gerne per E-Mail.\n\n' +
+        'Viele Grüße\n' + kunde;
+      el('angebotMailAttachment').textContent = gewerk
+        ? 'aufmass-' + gewerk + '.txt'
+        : 'anfrage-aufmass.txt';
       el('angebotExtractKunde').textContent = kunde;
       el('angebotExtractGewerk').textContent = gewerkLabel;
       el('angebotExtractMenge').textContent = mengeText;

@@ -94,11 +94,11 @@ nav.site-nav{
 }
 .nav-logo-img{
   display:block;width:auto;height:40px;max-width:180px;object-fit:contain;border-radius:0;
-  content:url('/assets/logo-header-dark.png?v=1');
+  content:url('/assets/logo-header-dark.svg?v=3');
   filter:drop-shadow(0 4px 12px rgba(79,107,240,.18));
 }
 html[data-theme="light"] .nav-logo-img{
-  content:url('/assets/logo-header.png?v=2');
+  content:url('/assets/logo-header.svg?v=3');
   filter:drop-shadow(0 2px 6px rgba(17,21,37,.12));
 }
 .nav-logo-mark{color:var(--amber-400)}
@@ -533,11 +533,11 @@ footer{
 }
 .footer-logo-img{
   display:block;width:auto;height:44px;max-width:200px;object-fit:contain;border-radius:0;
-  content:url('/assets/logo-header-dark.png?v=1');
+  content:url('/assets/logo-header-dark.svg?v=3');
   filter:drop-shadow(0 4px 12px rgba(79,107,240,.16));
 }
 html[data-theme="light"] .footer-logo-img{
-  content:url('/assets/logo-header.png?v=2');
+  content:url('/assets/logo-header.svg?v=3');
   filter:drop-shadow(0 2px 6px rgba(17,21,37,.12));
 }
 .footer-logo-mark{color:var(--amber-400)}
@@ -1105,6 +1105,7 @@ details[open] .faq-q::after{transform:rotate(45deg)}
 .article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 20px; }
 .article-body li { font-size: 1rem; line-height: 1.75; color: var(--text-hi); margin-bottom: 8px; }
 .article-body strong { color: var(--text-hi); font-weight: 600; }
+.article-label { color: var(--text-hi); font-weight: 600; }
 .article-body a { color: var(--blue-400); text-decoration: underline; }
 .article-body a:hover { color: var(--blue-200); }
 .article-box { background: var(--bg-card); border: 1px solid var(--border-hi); border-radius: 14px; padding: 24px 28px; margin: 32px 0; }
@@ -1751,7 +1752,7 @@ html[data-theme="light"] .angebot-select option {
   max-width: 980px;
   margin: 0 auto 24px;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(220px, .8fr) minmax(220px, .8fr);
+  grid-template-columns: minmax(0, 1.55fr) minmax(220px, .8fr) minmax(220px, .8fr);
   gap: 14px;
 }
 
@@ -1781,7 +1782,40 @@ html[data-theme="light"] .angebot-select option {
   background: var(--bg-raised);
   border: 1px solid var(--border-lo);
   border-radius: 10px;
-  padding: 14px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.angebot-mail-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-lo);
+  background: rgba(238,240,255,.025);
+  color: var(--text-lo);
+  font-size: .68rem;
+  font-weight: 700;
+}
+
+.angebot-mail-toolbar strong {
+  color: var(--amber-200);
+  font-weight: 800;
+}
+
+.angebot-mail-toolbar span {
+  white-space: nowrap;
+}
+
+.angebot-mail-toolbar span + strong::before,
+.angebot-mail-toolbar strong + span::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(238,240,255,.34);
+  margin: 0 8px 1px 0;
 }
 
 .angebot-mail-top {
@@ -1789,7 +1823,7 @@ html[data-theme="light"] .angebot-select option {
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 10px;
   align-items: center;
-  margin-bottom: 12px;
+  padding: 14px 14px 10px;
 }
 
 .angebot-mail-avatar {
@@ -1820,18 +1854,47 @@ html[data-theme="light"] .angebot-select option {
   font-size: .72rem;
 }
 
+.angebot-mail-top span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .angebot-mail-subject {
   color: var(--text-hi);
   font-weight: 800;
-  margin-bottom: 8px;
+  padding: 0 14px;
+  margin-bottom: 10px;
   font-size: .92rem;
 }
 
-.angebot-mail p {
+.angebot-mail-body {
   color: var(--text-med);
   font-size: .82rem;
-  line-height: 1.6;
-  margin: 0;
+  line-height: 1.55;
+  margin: 0 14px 12px;
+  white-space: pre-line;
+}
+
+.angebot-mail-attachments {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 14px 14px;
+  border-top: 1px solid var(--border-lo);
+}
+
+.angebot-mail-attachments span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(79,107,240,.28);
+  background: rgba(79,107,240,.08);
+  color: var(--blue-200);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: .7rem;
+  font-weight: 800;
 }
 
 .angebot-extract-grid {
