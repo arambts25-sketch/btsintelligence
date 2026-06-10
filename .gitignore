@@ -1,6 +1,9 @@
 # Claude Code lokale Einstellungen (gehören nicht ins Repo)
 .claude/
 
+# Lokales Astro-Mirror-Repo (eigenes Git-Repository)
+astro/
+
 # OS / Editor
 Thumbs.db
 .DS_Store

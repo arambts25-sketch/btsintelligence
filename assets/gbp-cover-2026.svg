@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 608" width="1080" height="608">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1080" y2="608" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#05070d"/>
+      <stop offset="55%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#101522"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="612" y1="80" x2="1038" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#14223d"/>
+      <stop offset="100%" stop-color="#0a0f1b"/>
+    </linearGradient>
+    <linearGradient id="blueLine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a7cff"/>
+      <stop offset="100%" stop-color="#0b4fb3"/>
+    </linearGradient>
+    <linearGradient id="amberLine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff8a1c"/>
+      <stop offset="100%" stop-color="#f15b12"/>
+    </linearGradient>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0v72" fill="none" stroke="#ffffff" stroke-opacity=".035" stroke-width="1"/>
+    </pattern>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity=".32"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="608" fill="url(#bg)"/>
+  <rect width="1080" height="608" fill="url(#grid)"/>
+
+  <path d="M708 0h372v608H592L708 0z" fill="url(#panel)" opacity=".92"/>
+  <path d="M872 -36h208v122H835z" fill="#fa6b0c" opacity=".95"/>
+  <path d="M826 0h128L606 608H478z" fill="#0652bd" opacity=".18"/>
+  <path d="M1026 112l54-26v322l-174 84z" fill="#0652bd" opacity=".16"/>
+  <path d="M0 560h1080v48H0z" fill="#04070d" opacity=".66"/>
+
+  <image href="logo-header-dark.png" x="8" y="-52" width="340" height="340" preserveAspectRatio="xMidYMid meet"/>
+
+  <text x="72" y="220" font-family="Arial Black, Arial, sans-serif" font-size="58" font-weight="900" fill="#f8fbff">Digitalisierung</text>
+  <text x="72" y="284" font-family="Arial Black, Arial, sans-serif" font-size="58" font-weight="900" fill="#f8fbff">KI</text>
+  <text x="72" y="345" font-family="Arial Black, Arial, sans-serif" font-size="52" font-weight="900" fill="#f8fbff">Automatisierung</text>
+  <rect x="72" y="369" width="456" height="4" rx="2" fill="url(#amberLine)"/>
+  <text x="72" y="411" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#d8e3ff">Digitale Prozesse · KI-Agenten · Automation</text>
+  <text x="72" y="443" font-family="Arial, sans-serif" font-size="20" fill="#99a9ca">Wir verbinden Tools, Daten und Teams zu klaren</text>
+  <text x="72" y="470" font-family="Arial, sans-serif" font-size="20" fill="#99a9ca">Abläufen, die Zeit sparen und zuverlässig skalieren.</text>
+
+  <rect x="72" y="492" width="252" height="48" rx="24" fill="#0f1a2d" stroke="#2a7cff" stroke-opacity=".55" stroke-width="1.5"/>
+  <circle cx="101" cy="516" r="8" fill="#fa6b0c"/>
+  <text x="124" y="523" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#eaf0ff">Ingolstadt &amp; ganz Bayern</text>
+
+  <g filter="url(#softShadow)" transform="translate(34 0)">
+    <rect x="642" y="118" width="338" height="364" rx="28" fill="#0c1322" stroke="#263b63" stroke-width="1.4"/>
+    <rect x="666" y="142" width="290" height="316" rx="22" fill="#111b2f" stroke="#ffffff" stroke-opacity=".06"/>
+
+    <line x1="812" y1="216" x2="812" y2="312" stroke="#284978" stroke-width="3"/>
+    <line x1="746" y1="252" x2="812" y2="312" stroke="#284978" stroke-width="3"/>
+    <line x1="879" y1="252" x2="812" y2="312" stroke="#284978" stroke-width="3"/>
+    <line x1="747" y1="377" x2="812" y2="312" stroke="#284978" stroke-width="3"/>
+    <line x1="879" y1="377" x2="812" y2="312" stroke="#284978" stroke-width="3"/>
+
+    <rect x="754" y="254" width="116" height="116" rx="24" fill="#08101e" stroke="url(#amberLine)" stroke-width="2.4"/>
+    <text x="812" y="305" font-family="Arial Black, Arial, sans-serif" font-size="34" font-weight="900" fill="#f8fbff" text-anchor="middle">KI</text>
+    <text x="812" y="331" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#fa8a2a" text-anchor="middle">Agent</text>
+
+    <rect x="724" y="170" width="176" height="52" rx="16" fill="#07111f" stroke="#2a7cff" stroke-opacity=".72" stroke-width="1.3"/>
+    <text x="812" y="202" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#eaf0ff" text-anchor="middle">Daten &amp; Tools</text>
+
+    <rect x="690" y="228" width="122" height="48" rx="15" fill="#07111f" stroke="#fa6b0c" stroke-opacity=".75" stroke-width="1.3"/>
+    <text x="751" y="258" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#eaf0ff" text-anchor="middle">Prozesse</text>
+
+    <rect x="818" y="228" width="126" height="48" rx="15" fill="#07111f" stroke="#2a7cff" stroke-opacity=".72" stroke-width="1.3"/>
+    <text x="881" y="258" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#eaf0ff" text-anchor="middle">Workflows</text>
+
+    <rect x="686" y="374" width="130" height="48" rx="15" fill="#07111f" stroke="#2a7cff" stroke-opacity=".72" stroke-width="1.3"/>
+    <text x="751" y="404" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#eaf0ff" text-anchor="middle">Automation</text>
+
+    <rect x="826" y="374" width="118" height="48" rx="15" fill="#07111f" stroke="#fa6b0c" stroke-opacity=".75" stroke-width="1.3"/>
+    <text x="885" y="404" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#eaf0ff" text-anchor="middle">Reports</text>
+  </g>
+
+  <g opacity=".92">
+    <rect x="72" y="548" width="936" height="1" fill="#25334e"/>
+    <text x="72" y="582" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#d8e3ff">btsintelligence.de</text>
+    <text x="249" y="582" font-family="Arial, sans-serif" font-size="16" fill="#7f8fac">info@btsintelligence.de</text>
+    <text x="473" y="582" font-family="Arial, sans-serif" font-size="16" fill="#7f8fac">+49 178 455 2028</text>
+    <text x="786" y="582" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#fa8a2a">Potenzialanalyse in 30 Min.</text>
+  </g>
+</svg>
