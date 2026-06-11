@@ -111,7 +111,7 @@
               <div class="demo-upload-zone-text">
                 <strong>PDF hier ablegen</strong>
                 <span>oder klicken zum Auswählen</span>
-                <span class="demo-upload-hint">Nur PDF · max. 5 MB · Datei wird nach Verarbeitung nicht gespeichert</span>
+                <span class="demo-upload-hint">Nur PDF · max. 25 MB · Datei wird nach Verarbeitung nicht gespeichert</span>
               </div>
             </div>
             <input type="file" id="pdfInput" accept=".pdf" style="display:none" aria-hidden="true">
@@ -331,7 +331,7 @@
   <script>
   (function () {
     var WEBHOOK = 'https://n8n.btsintelligence.de/webhook/dsgvo-demo';
-    var MAX_MB = 5;
+    var MAX_MB = 25;
     var _file = null;
 
     function el(id) { return document.getElementById(id); }
